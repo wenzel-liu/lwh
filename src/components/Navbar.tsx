@@ -29,17 +29,6 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
     [0.6, 0.8, 0.9]
   );
 
-  const menuItems = [
-    { label: '关于', href: '#about' },
-    { label: '论文发表', href: '#publications' },
-    { label: '学术报告', href: '#presentations' },
-    { label: '联系方式', href: '#contact' }
-  ];
-
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
-
   return (
     <motion.nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${className}`}
@@ -66,116 +55,11 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
             </a>
           </motion.div>
 
-          {/* 桌面端菜单 */}
-          <div className="hidden sm:flex sm:items-center sm:space-x-4">
-            <div className="flex items-baseline space-x-4">
-              {menuItems.map((item, index) => (
-                <motion.a
-                  key={item.label}
-                  href={item.href}
-                  className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                >
-                  {item.label}
-                </motion.a>
-              ))}
-            </div>
-            {/* 暗色模式切换器 */}
+          {/* 右侧只保留暗色模式切换器 */}
+          <div className="flex items-center">
             <DarkModeToggle />
-          </div>
-
-          {/* 移动端汉堡菜单按钮和暗色模式切换器 */}
-          <div className="flex items-center space-x-2 sm:hidden">
-            <DarkModeToggle />
-            <motion.button
-              onClick={toggleMobileMenu}
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500"
-              whileTap={{ scale: 0.95 }}
-            >
-              <span className="sr-only">打开主菜单</span>
-              {/* 汉堡菜单图标 */}
-              <motion.div
-                className="relative h-6 w-6"
-                animate={isMobileMenuOpen ? "open" : "closed"}
-              >
-                <motion.span
-                  className="absolute h-0.5 w-6 bg-current transform transition-all duration-300"
-                  variants={{
-                    closed: { rotate: 0, y: 0 },
-                    open: { rotate: 45, y: 8 }
-                  }}
-                  style={{ top: '6px' }}
-                />
-                <motion.span
-                  className="absolute h-0.5 w-6 bg-current transform transition-all duration-300"
-                  variants={{
-                    closed: { opacity: 1 },
-                    open: { opacity: 0 }
-                  }}
-                  style={{ top: '12px' }}
-                />
-                <motion.span
-                  className="absolute h-0.5 w-6 bg-current transform transition-all duration-300"
-                  variants={{
-                    closed: { rotate: 0, y: 0 },
-                    open: { rotate: -45, y: -8 }
-                  }}
-                  style={{ top: '18px' }}
-                />
-              </motion.div>
-            </motion.button>
           </div>
         </div>
-
-        {/* 移动端菜单 */}
-        <motion.div
-          className="sm:hidden"
-          initial="closed"
-          animate={isMobileMenuOpen ? "open" : "closed"}
-          variants={{
-            open: {
-              opacity: 1,
-              height: "auto",
-              transition: {
-                duration: 0.3,
-                ease: "easeInOut"
-              }
-            },
-            closed: {
-              opacity: 0,
-              height: 0,
-              transition: {
-                duration: 0.3,
-                ease: "easeInOut"
-              }
-            }
-          }}
-          style={{ overflow: 'hidden' }}
-        >
-          <div className="px-2 pt-2 pb-3 space-y-1 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm rounded-b-lg">
-            {menuItems.map((item, index) => (
-              <motion.a
-                key={item.label}
-                href={item.href}
-                className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200"
-                onClick={() => setIsMobileMenuOpen(false)}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ 
-                  opacity: isMobileMenuOpen ? 1 : 0, 
-                  x: isMobileMenuOpen ? 0 : -20 
-                }}
-                transition={{ delay: index * 0.1 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                {item.label}
-              </motion.a>
-            ))}
-          </div>
-        </motion.div>
       </div>
     </motion.nav>
   );
