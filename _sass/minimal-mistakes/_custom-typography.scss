@@ -1,0 +1,165 @@
+/* ==========================================================================
+   Custom Typography
+   ========================================================================== */
+
+/* Custom fonts will be loaded via fonts.css in head.html */
+
+/* Base body text - Source Sans 3 */
+body {
+  font-family: $global-font-family;
+  font-weight: 400;
+  line-height: 1.6; // Sans 正文 1.6
+}
+
+/* Headers - Source Serif 4 */
+h1, h2, h3, h4, h5, h6 {
+  font-family: $header-font-family;
+  font-weight: 600; // 标题用 600
+  line-height: 1.3; // Serif 标题 1.3
+}
+
+/* Specific header sizes */
+h1 {
+  font-size: $h-size-1; // 2.4rem
+  font-weight: 700; // 可以用 700 for emphasis
+}
+
+h2 {
+  font-size: $h-size-2; // 1.8rem
+}
+
+h3 {
+  font-size: $h-size-3; // 1.5rem
+}
+
+/* Body text */
+p, li, dl {
+  font-size: $type-size-5; // 1rem
+  max-width: 65ch; // 60-70 字符宽度，减少跳行
+}
+
+/* Lead paragraphs - can use 600 to guide attention */
+.page__lead,
+.page__content > p:first-of-type {
+  font-weight: 600; // 首段可 600 引导视线
+}
+
+/* Page titles in hero/splash - Source Serif 4 */
+.page__hero .page__title,
+.page__hero--overlay .page__title {
+  font-family: $header-font-family;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+/* Introductory text/excerpt - Source Serif 4 */
+.page__hero .page__lead,
+.page__hero--overlay .page__lead {
+  font-family: $header-font-family;
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+/* Navigation - Source Sans 3 */
+.masthead__inner-wrap {
+  font-family: $sans-serif;
+  font-weight: 400;
+}
+
+.site-title {
+  font-family: $sans-serif;
+  font-weight: 700;
+}
+
+/* Buttons - Source Sans 3 */
+.btn {
+  font-family: $sans-serif;
+  font-weight: 600;
+}
+
+/* Forms - Source Sans 3 */
+input, textarea, select, label {
+  font-family: $sans-serif;
+  font-weight: 400;
+}
+
+/* Captions - Source Sans 3 with tracking */
+.page__hero-caption,
+figcaption,
+.image-caption {
+  font-family: $caption-font-family;
+  font-weight: 400;
+  letter-spacing: 0.1em; // Regular + 0.1 em tracking
+}
+
+/* Footer - Source Sans 3 */
+.page__footer {
+  font-family: $global-font-family;
+  font-weight: 400;
+}
+
+.page__footer-copyright {
+  font-family: $global-font-family;
+  font-weight: 400;
+}
+
+/* Archive/Card content - Source Sans 3 */
+.archive__item-title {
+  font-family: $header-font-family; // Titles use serif
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.archive__item-excerpt {
+  font-family: $global-font-family; // Body text uses sans
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+/* Feature row content */
+.feature__item {
+  .archive__item-title {
+    font-family: $header-font-family;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+  
+  .archive__item-excerpt {
+    font-family: $global-font-family;
+    font-weight: 400;
+    line-height: 1.6;
+  }
+}
+
+/* Sidebar author info */
+.sidebar .author__name {
+  font-family: $sans-serif;
+  font-weight: 600;
+}
+
+.author__bio {
+  font-family: $sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+/* Table content */
+table {
+  font-family: $global-font-family;
+  font-weight: 400;
+}
+
+th {
+  font-weight: 600;
+}
+
+/* Definition lists */
+dt {
+  font-family: $sans-serif;
+  font-weight: 600;
+}
+
+dd {
+  font-family: $sans-serif;
+  font-weight: 400;
+} 

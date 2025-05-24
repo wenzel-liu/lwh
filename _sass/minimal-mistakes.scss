@@ -4,6 +4,9 @@
 /* Variables */
 @import "minimal-mistakes/variables";
 
+/* Custom Typography */
+@import "minimal-mistakes/custom-typography";
+
 /* Mixins and functions */
 @import "minimal-mistakes/vendor/breakpoint/breakpoint";
 @include breakpoint-set("to ems", true);
@@ -34,4 +37,4 @@
 @import "minimal-mistakes/page";
 @import "minimal-mistakes/archive";
 @import "minimal-mistakes/sidebar";
-@import "minimal-mistakes/print";
+@import "minimal-mistakes/print"; 
