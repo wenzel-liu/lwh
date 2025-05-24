@@ -8,15 +8,21 @@ search: false
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
 
-/* Custom CSS for masthead layout modification */
+/* Custom CSS for masthead layout modification with Fluent Design effects */
 .masthead {
   /* Increase height to accommodate two-row layout */
   min-height: auto;
   position: relative;
-  /* White background with subtle shadow */
-  background-color: #ffffff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  border-bottom: 1px solid #dee2e6;
+  /* Fluent Design background with blur effect */
+  background-color: rgba(255, 255, 255, 0.85) !important;
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.125);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Ensure it stays on top */
+  z-index: 1000;
   
   &__inner-wrap {
     /* Change from flex to block layout for vertical stacking */
@@ -39,6 +45,7 @@ search: false
     flex-direction: column;
     align-items: center;
     min-height: auto;
+    background: transparent !important;
     
     .site-title {
       /* Center title and give it proper spacing */
@@ -50,6 +57,12 @@ search: false
       text-align: center;
       order: -1;
       flex: none;
+      /* Fluent Design text styling */
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 600;
       
       /* Allow title to break to multiple lines if needed */
       @media (max-width: 768px) {
@@ -78,17 +91,114 @@ search: false
       
       li {
         flex: none;
+        position: relative;
       }
       
       a {
         margin: 0 0.8em;
+        position: relative;
+        padding: 12px 20px;
+        border-radius: 6px;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        overflow: hidden;
+        color: #333;
+        font-weight: 500;
+        
+        /* Reveal effect base */
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), 
+                      rgba(255, 255, 255, 0.8) 0%, 
+                      rgba(255, 255, 255, 0.1) 40%, 
+                      transparent 70%);
+          opacity: 0;
+          transition: opacity 0.3s ease;
+          border-radius: 6px;
+          z-index: 1;
+        }
+        
+        /* Subtle background */
+        &::after {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: rgba(255, 255, 255, 0.1);
+          border-radius: 6px;
+          opacity: 0;
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          z-index: 0;
+        }
+        
+        /* Text should be above effects */
+        span, & {
+          position: relative;
+          z-index: 2;
+        }
+        
+        /* Hover effects */
+        &:hover {
+          transform: translateY(-2px);
+          color: #1a1a1a;
+          text-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+          
+          &::before {
+            opacity: 1;
+          }
+          
+          &::after {
+            opacity: 1;
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+          }
+        }
+        
+        /* Active state */
+        &:active {
+          transform: translateY(0);
+        }
         
         @media (max-width: 768px) {
           margin: 0 0.5em;
           font-size: 0.9em;
+          padding: 10px 16px;
         }
       }
     }
+  }
+}
+
+/* Enhanced Reveal effect with JavaScript tracking */
+.reveal-effect {
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), 
+                rgba(102, 126, 234, 0.3) 0%, 
+                rgba(118, 75, 162, 0.1) 40%, 
+                transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 1;
+  }
+  
+  &:hover::before {
+    opacity: 1;
   }
 }
 
@@ -102,63 +212,100 @@ search: false
   margin-top: 1em;
 }
 
-/* Custom background color for better visual comfort */
+/* Custom background color for better visual comfort with blur support */
 body {
-  background-color: #f8f9fa !important; /* Light gray background */
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%) !important;
+  min-height: 100vh;
 }
 
-/* Ensure content areas have proper background */
+/* Ensure content areas have proper background with Fluent Design */
 .page {
   background-color: transparent;
 }
 
 .page__content {
-  background-color: #ffffff;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   padding: 1.5em;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.125);
   margin-bottom: 1em;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.15);
+  }
 }
 
-/* Sidebar background adjustment */
+/* Sidebar background adjustment with Fluent Design */
 .sidebar {
-  background-color: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.125);
   padding: 1em;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.15);
+  }
   
   .author__avatar {
     img {
       border-radius: 50%;
-      border: 3px solid #e9ecef;
+      border: 3px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      
+      &:hover {
+        transform: scale(1.05);
+        box-shadow: 0 12px 48px rgba(0, 0, 0, 0.2);
+      }
     }
   }
 }
 
 /* Footer background adjustment */
 .page__footer {
-  background-color: #e9ecef;
-  border-top: 1px solid #dee2e6;
+  background: rgba(233, 236, 239, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255, 255, 255, 0.125);
   
   footer {
     background-color: transparent;
   }
 }
 
-/* Archive and post list styling */
+/* Archive and post list styling with Fluent Design */
 .archive {
-  background-color: #ffffff;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   padding: 1.5em;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.125);
   margin-bottom: 1em;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.15);
+  }
 }
 
-/* Navigation links hover effect */
+/* Enhanced navigation links hover effect */
 .greedy-nav .visible-links a:hover {
-  background-color: #f8f9fa;
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+  border-radius: 6px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Make single layout pages use the same extended width as archive layout (home page) */
@@ -176,4 +323,24 @@ body {
       padding-right: 300px; /* Add padding to maintain readable content */
     }
   }
+}
+
+/* Scrollbar styling for Fluent Design */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.6) 0%, rgba(118, 75, 162, 0.6) 100%);
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.8) 0%, rgba(118, 75, 162, 0.8) 100%);
 }
