@@ -1,6 +1,6 @@
 ---
 layout: single
 title: "Techno-Industrialist"
-permalink: /about/
+permalink: /Techno-Industrialist/
 author_profile: true
 ---
