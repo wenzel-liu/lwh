@@ -312,16 +312,83 @@ body {
 /* Extend content into sidebar area like archive pages do */
 .layout--single {
   .page__content {
-    /* Extend content area into sidebar space to match archive layout */
+    /* Publications & Presentations 内容栏宽度×2 */
     @media (min-width: 1024px) {
-      margin-right: -200px; /* Extend by sidebar width narrow */
-      padding-right: 200px; /* Add padding to maintain readable content */
+      /* 不扩展到侧边栏区域，而是让内容栏占据更多空间 */
+      margin-right: 0;
+      padding-right: 0;
+      /* 使用flex布局让内容栏占据更多比例 */
+      max-width: none;
+      width: 100%;
     }
 
     @media (min-width: 1280px) {
-      margin-right: -300px; /* Extend by sidebar width */
-      padding-right: 300px; /* Add padding to maintain readable content */
+      margin-right: 0;
+      padding-right: 0;
+      max-width: none;
+      width: 100%;
     }
+  }
+}
+
+/* 重新定义 Publications & Presentations 页面的布局比例 */
+@media (min-width: 1024px) {
+  .layout--single {
+    #main {
+      display: flex;
+      gap: 2rem;
+      max-width: 1400px; /* 增加最大宽度以容纳更宽的内容 */
+      margin: 0 auto;
+      padding: 0 1em;
+    }
+    
+    .sidebar {
+      /* 固定侧边栏宽度，保持不变 */
+      flex: 0 0 280px; /* 固定宽度，不伸缩 */
+      width: 280px;
+      min-width: 280px;
+      max-width: 280px;
+    }
+    
+    .page {
+      /* 右侧内容栏占据剩余空间×2的比例 */
+      flex: 2; /* 这让内容栏比默认情况宽2倍 */
+      width: auto;
+      float: none;
+      padding-inline-end: 0;
+      min-width: 0; /* 允许flexbox正确计算宽度 */
+    }
+  }
+}
+
+@media (min-width: 1280px) {
+  .layout--single {
+    #main {
+      max-width: 1600px; /* 在大屏幕上进一步增加最大宽度 */
+    }
+    
+    .sidebar {
+      flex: 0 0 320px; /* 在大屏幕上稍微增加侧边栏宽度 */
+      width: 320px;
+      min-width: 320px;
+      max-width: 320px;
+    }
+  }
+}
+
+/* 确保移动端（≤640px）保持单列布局不受影响 */
+@media (max-width: 1023px) {
+  .layout--single #main {
+    display: block; /* 恢复默认布局 */
+  }
+  
+  .layout--single .sidebar,
+  .layout--single .page {
+    flex: none;
+    width: 100%;
+    float: none;
+    padding: 0;
+    margin: 0;
   }
 }
 
