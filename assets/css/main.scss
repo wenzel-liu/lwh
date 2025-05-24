@@ -332,103 +332,107 @@ body {
 }
 
 /* 重新定义 Publications & Presentations 页面的布局比例 */
+/* 使用更强的选择器确保覆盖默认样式 */
 @media (min-width: 1024px) {
-  .layout--single {
-    #main {
-      display: flex;
-      gap: 2rem;
-      max-width: 1400px; /* 增加最大宽度以容纳更宽的内容 */
-      margin: 0 auto;
-      padding: 0 1em;
-    }
-    
-    .sidebar {
-      /* 使用原始的侧边栏宽度，保持原状 */
-      flex: 0 0 200px; /* 使用原始的 narrow 宽度 */
-      width: 200px;
-      min-width: 200px;
-      max-width: 200px;
-      /* 恢复原始高度行为 */
-      height: auto;
-      min-height: auto;
-    }
-    
-    .page {
-      /* 右侧内容栏占据剩余空间×2的比例 */
-      flex: 2; /* 这让内容栏比默认情况宽2倍 */
-      width: auto;
-      float: none;
-      padding-inline-end: 0;
-      min-width: 0; /* 允许flexbox正确计算宽度 */
-      
-      /* 确保内容能够充分利用可用宽度 */
-      .page__inner-wrap {
-        width: 100%;
-        max-width: none; /* 移除最大宽度限制 */
-      }
-      
-      .page__content {
-        width: 100%;
-        max-width: none; /* 移除最大宽度限制，让文字排版利用全部宽度 */
-        
-        /* 确保文字段落能够利用全部宽度 */
-        p, li, ol, ul {
-          max-width: none;
-          width: 100%;
-        }
-        
-        /* 针对列表项目的特殊处理 */
-        ol li, ul li {
-          margin-bottom: 1em;
-          line-height: 1.6;
-          
-          /* 让文字内容使用完整宽度 */
-          p {
-            margin: 0.5em 0;
-            width: 100%;
-          }
-        }
-      }
-    }
+  .layout--single #main {
+    display: flex !important;
+    gap: 2rem !important;
+    max-width: 1400px !important; /* 增加最大宽度以容纳更宽的内容 */
+    margin: 0 auto !important;
+    padding: 0 1em !important;
+  }
+  
+  .layout--single .sidebar {
+    /* 使用原始的侧边栏宽度，保持原状 */
+    flex: 0 0 200px !important; /* 使用原始的 narrow 宽度 */
+    width: 200px !important;
+    min-width: 200px !important;
+    max-width: 200px !important;
+    /* 恢复原始高度行为 */
+    height: auto !important;
+    min-height: auto !important;
+    float: none !important;
+  }
+  
+  .layout--single .page {
+    /* 右侧内容栏占据剩余空间×2的比例 */
+    flex: 2 !important; /* 这让内容栏比默认情况宽2倍 */
+    width: auto !important;
+    float: none !important;
+    padding-inline-end: 0 !important;
+    min-width: 0 !important; /* 允许flexbox正确计算宽度 */
+  }
+  
+  /* 确保内容能够充分利用可用宽度 */
+  .layout--single .page .page__inner-wrap {
+    width: 100% !important;
+    max-width: none !important; /* 移除最大宽度限制 */
+  }
+  
+  .layout--single .page .page__content {
+    width: 100% !important;
+    max-width: none !important; /* 移除最大宽度限制，让文字排版利用全部宽度 */
+  }
+  
+  /* 确保文字段落能够利用全部宽度 */
+  .layout--single .page__content p,
+  .layout--single .page__content li,
+  .layout--single .page__content ol,
+  .layout--single .page__content ul {
+    max-width: none !important;
+    width: 100% !important;
+  }
+  
+  /* 针对列表项目的特殊处理 */
+  .layout--single .page__content ol li,
+  .layout--single .page__content ul li {
+    margin-bottom: 1em !important;
+    line-height: 1.6 !important;
+  }
+  
+  /* 让文字内容使用完整宽度 */
+  .layout--single .page__content ol li p,
+  .layout--single .page__content ul li p {
+    margin: 0.5em 0 !important;
+    width: 100% !important;
   }
 }
 
 @media (min-width: 1280px) {
-  .layout--single {
-    #main {
-      max-width: 1600px; /* 在大屏幕上进一步增加最大宽度 */
-    }
-    
-    .sidebar {
-      /* 使用原始的侧边栏宽度 */
-      flex: 0 0 300px; /* 使用原始的标准宽度 */
-      width: 300px;
-      min-width: 300px;
-      max-width: 300px;
-    }
-    
-    .page {
-      /* 在大屏幕上确保内容区域能够充分利用空间 */
-      .page__content {
-        /* 在大屏幕上优化文字排版 */
-        font-size: 1rem;
-        line-height: 1.7;
-        
-        /* 确保列表和段落使用完整宽度 */
-        ol, ul {
-          width: 100%;
-          
-          li {
-            margin-bottom: 1.2em;
-            
-            /* 确保 PDF 链接和文字在同一行时也能正确布局 */
-            a[href$=".PDF"], a[href$=".pdf"] {
-              margin-left: 0.5em;
-            }
-          }
-        }
-      }
-    }
+  .layout--single #main {
+    max-width: 1600px !important; /* 在大屏幕上进一步增加最大宽度 */
+  }
+  
+  .layout--single .sidebar {
+    /* 使用原始的侧边栏宽度 */
+    flex: 0 0 300px !important; /* 使用原始的标准宽度 */
+    width: 300px !important;
+    min-width: 300px !important;
+    max-width: 300px !important;
+  }
+  
+  /* 在大屏幕上确保内容区域能够充分利用空间 */
+  .layout--single .page .page__content {
+    /* 在大屏幕上优化文字排版 */
+    font-size: 1rem !important;
+    line-height: 1.7 !important;
+  }
+  
+  /* 确保列表和段落使用完整宽度 */
+  .layout--single .page__content ol,
+  .layout--single .page__content ul {
+    width: 100% !important;
+  }
+  
+  .layout--single .page__content ol li,
+  .layout--single .page__content ul li {
+    margin-bottom: 1.2em !important;
+  }
+  
+  /* 确保 PDF 链接和文字在同一行时也能正确布局 */
+  .layout--single .page__content a[href$=".PDF"],
+  .layout--single .page__content a[href$=".pdf"] {
+    margin-left: 0.5em !important;
   }
 }
 
