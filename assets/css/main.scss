@@ -160,3 +160,51 @@ body {
   border-radius: 4px;
   transition: background-color 0.3s ease;
 }
+
+/* Custom width adjustments - Double the page width */
+.layout--single {
+  .page {
+    width: calc(100% - 300px);
+    max-width: 2560px; /* Double the original 1280px */
+    
+    @media (min-width: 2560px) {
+      max-width: 2560px;
+    }
+    
+    @media (min-width: 1280px) {
+      width: calc(100% - 300px);
+    }
+  }
+}
+
+/* Adjust the overall container max-width */
+.masthead__inner-wrap,
+.page__footer-wrap,
+.greedy-nav {
+  max-width: 2560px !important;
+}
+
+/* Specific adjustments for Publications page to use full width */
+.page__content {
+  max-width: none;
+  
+  /* Ensure content utilizes the full available width */
+  ol, ul {
+    max-width: none;
+    width: 100%;
+  }
+  
+  /* Style publication list items for better readability in wider layout */
+  li {
+    margin-bottom: 1.5em;
+    line-height: 1.6;
+    
+    /* Add subtle borders for better separation */
+    padding-bottom: 1em;
+    border-bottom: 1px solid #e9ecef;
+    
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+}
