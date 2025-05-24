@@ -343,11 +343,14 @@ body {
     }
     
     .sidebar {
-      /* 固定侧边栏宽度，保持不变 */
-      flex: 0 0 280px; /* 固定宽度，不伸缩 */
-      width: 280px;
-      min-width: 280px;
-      max-width: 280px;
+      /* 使用原始的侧边栏宽度，保持原状 */
+      flex: 0 0 200px; /* 使用原始的 narrow 宽度 */
+      width: 200px;
+      min-width: 200px;
+      max-width: 200px;
+      /* 恢复原始高度行为 */
+      height: auto;
+      min-height: auto;
     }
     
     .page {
@@ -357,6 +360,35 @@ body {
       float: none;
       padding-inline-end: 0;
       min-width: 0; /* 允许flexbox正确计算宽度 */
+      
+      /* 确保内容能够充分利用可用宽度 */
+      .page__inner-wrap {
+        width: 100%;
+        max-width: none; /* 移除最大宽度限制 */
+      }
+      
+      .page__content {
+        width: 100%;
+        max-width: none; /* 移除最大宽度限制，让文字排版利用全部宽度 */
+        
+        /* 确保文字段落能够利用全部宽度 */
+        p, li, ol, ul {
+          max-width: none;
+          width: 100%;
+        }
+        
+        /* 针对列表项目的特殊处理 */
+        ol li, ul li {
+          margin-bottom: 1em;
+          line-height: 1.6;
+          
+          /* 让文字内容使用完整宽度 */
+          p {
+            margin: 0.5em 0;
+            width: 100%;
+          }
+        }
+      }
     }
   }
 }
@@ -368,10 +400,34 @@ body {
     }
     
     .sidebar {
-      flex: 0 0 320px; /* 在大屏幕上稍微增加侧边栏宽度 */
-      width: 320px;
-      min-width: 320px;
-      max-width: 320px;
+      /* 使用原始的侧边栏宽度 */
+      flex: 0 0 300px; /* 使用原始的标准宽度 */
+      width: 300px;
+      min-width: 300px;
+      max-width: 300px;
+    }
+    
+    .page {
+      /* 在大屏幕上确保内容区域能够充分利用空间 */
+      .page__content {
+        /* 在大屏幕上优化文字排版 */
+        font-size: 1rem;
+        line-height: 1.7;
+        
+        /* 确保列表和段落使用完整宽度 */
+        ol, ul {
+          width: 100%;
+          
+          li {
+            margin-bottom: 1.2em;
+            
+            /* 确保 PDF 链接和文字在同一行时也能正确布局 */
+            a[href$=".PDF"], a[href$=".pdf"] {
+              margin-left: 0.5em;
+            }
+          }
+        }
+      }
     }
   }
 }
