@@ -161,6 +161,19 @@ body {
   transition: background-color 0.3s ease;
 }
 
-/* Make single layout pages use the same width as archive layout (home page) */
-/* The default minimal-mistakes styles already provide consistent widths */
-/* Both archive and single layouts should now have the same content width */
+/* Make single layout pages use the same extended width as archive layout (home page) */
+/* Extend content into sidebar area like archive pages do */
+.layout--single {
+  .page__content {
+    /* Extend content area into sidebar space to match archive layout */
+    @media (min-width: 1024px) {
+      margin-right: -200px; /* Extend by sidebar width narrow */
+      padding-right: 200px; /* Add padding to maintain readable content */
+    }
+
+    @media (min-width: 1280px) {
+      margin-right: -300px; /* Extend by sidebar width */
+      padding-right: 300px; /* Add padding to maintain readable content */
+    }
+  }
+}
