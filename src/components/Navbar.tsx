@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import DarkModeToggle from './DarkModeToggle';
 
 interface NavbarProps {
   className?: string;
@@ -29,10 +30,10 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
   );
 
   const menuItems = [
-    { label: '首页', href: '#home' },
     { label: '关于', href: '#about' },
-    { label: '项目', href: '#projects' },
-    { label: '联系', href: '#contact' }
+    { label: '论文发表', href: '#publications' },
+    { label: '学术报告', href: '#presentations' },
+    { label: '联系方式', href: '#contact' }
   ];
 
   const toggleMobileMenu = () => {
@@ -49,7 +50,7 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
       initial={{ y: 0 }}
     >
       {/* 背景模糊效果 */}
-      <div className="absolute inset-0 backdrop-blur-[8px] bg-white/60" />
+      <div className="absolute inset-0 backdrop-blur-[8px] bg-white/60 dark:bg-gray-900/60" />
       
       {/* 导航内容 */}
       <div className="relative px-4 sm:px-6 lg:px-8">
@@ -60,19 +61,19 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <a href="#home" className="text-xl font-bold text-gray-900">
-              MyPage
+            <a href="#home" className="text-xl font-bold text-gray-900 dark:text-white">
+              学术主页
             </a>
           </motion.div>
 
           {/* 桌面端菜单 */}
-          <div className="hidden sm:block">
-            <div className="ml-10 flex items-baseline space-x-4">
+          <div className="hidden sm:flex sm:items-center sm:space-x-4">
+            <div className="flex items-baseline space-x-4">
               {menuItems.map((item, index) => (
                 <motion.a
                   key={item.label}
                   href={item.href}
-                  className="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
+                  className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   initial={{ opacity: 0, y: -20 }}
@@ -83,23 +84,26 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
                 </motion.a>
               ))}
             </div>
+            {/* 暗色模式切换器 */}
+            <DarkModeToggle />
           </div>
 
-          {/* 移动端汉堡菜单按钮 */}
-          <div className="sm:hidden">
+          {/* 移动端汉堡菜单按钮和暗色模式切换器 */}
+          <div className="flex items-center space-x-2 sm:hidden">
+            <DarkModeToggle />
             <motion.button
               onClick={toggleMobileMenu}
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500"
+              className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500"
               whileTap={{ scale: 0.95 }}
             >
               <span className="sr-only">打开主菜单</span>
               {/* 汉堡菜单图标 */}
               <motion.div
-                className="block h-6 w-6"
+                className="relative h-6 w-6"
                 animate={isMobileMenuOpen ? "open" : "closed"}
               >
                 <motion.span
-                  className="block absolute h-0.5 w-6 bg-current transform transition duration-500"
+                  className="absolute h-0.5 w-6 bg-current transform transition-all duration-300"
                   variants={{
                     closed: { rotate: 0, y: 0 },
                     open: { rotate: 45, y: 8 }
@@ -107,7 +111,7 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
                   style={{ top: '6px' }}
                 />
                 <motion.span
-                  className="block absolute h-0.5 w-6 bg-current transform transition duration-500"
+                  className="absolute h-0.5 w-6 bg-current transform transition-all duration-300"
                   variants={{
                     closed: { opacity: 1 },
                     open: { opacity: 0 }
@@ -115,7 +119,7 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
                   style={{ top: '12px' }}
                 />
                 <motion.span
-                  className="block absolute h-0.5 w-6 bg-current transform transition duration-500"
+                  className="absolute h-0.5 w-6 bg-current transform transition-all duration-300"
                   variants={{
                     closed: { rotate: 0, y: 0 },
                     open: { rotate: -45, y: -8 }
@@ -152,12 +156,12 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
           }}
           style={{ overflow: 'hidden' }}
         >
-          <div className="px-2 pt-2 pb-3 space-y-1 bg-white/80 backdrop-blur-sm rounded-b-lg">
+          <div className="px-2 pt-2 pb-3 space-y-1 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm rounded-b-lg">
             {menuItems.map((item, index) => (
               <motion.a
                 key={item.label}
                 href={item.href}
-                className="text-gray-700 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200"
+                className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200"
                 onClick={() => setIsMobileMenuOpen(false)}
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ 

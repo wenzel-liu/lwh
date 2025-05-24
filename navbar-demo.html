@@ -124,7 +124,7 @@
                             </div>
 
                             {/* 移动端汉堡菜单按钮 */}
-                            <div className="sm:hidden">
+                            <div className="flex sm:hidden">
                                 <motion.button
                                     onClick={toggleMobileMenu}
                                     className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500"
@@ -132,21 +132,21 @@
                                 >
                                     <span className="sr-only">打开主菜单</span>
                                     {/* 汉堡菜单图标 */}
-                                    <div className="block h-6 w-6 relative">
+                                    <div className="relative h-6 w-6">
                                         <span
-                                            className={`block absolute h-0.5 w-6 bg-current transform transition duration-500 ${
+                                            className={`absolute h-0.5 w-6 bg-current transform transition-all duration-300 ${
                                                 isMobileMenuOpen ? 'rotate-45 translate-y-2' : ''
                                             }`}
                                             style={{ top: '6px' }}
                                         />
                                         <span
-                                            className={`block absolute h-0.5 w-6 bg-current transform transition duration-500 ${
+                                            className={`absolute h-0.5 w-6 bg-current transform transition-all duration-300 ${
                                                 isMobileMenuOpen ? 'opacity-0' : 'opacity-100'
                                             }`}
                                             style={{ top: '12px' }}
                                         />
                                         <span
-                                            className={`block absolute h-0.5 w-6 bg-current transform transition duration-500 ${
+                                            className={`absolute h-0.5 w-6 bg-current transform transition-all duration-300 ${
                                                 isMobileMenuOpen ? '-rotate-45 -translate-y-2' : ''
                                             }`}
                                             style={{ top: '18px' }}
