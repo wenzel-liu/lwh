@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>网站样式预览 - Wenzel Liu</title>
+    <style>
+        /* 基础样式重置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial, sans-serif;
+            line-height: 1.6;
+            color: #494e52;
+            background-color: #f8f9fa; /* 淡灰色背景 */
+        }
+
+        /* 页眉样式 */
+        .masthead {
+            min-height: auto;
+            position: relative;
+            background-color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid #dee2e6;
+            margin-bottom: 2em;
+        }
+
+        .masthead__inner-wrap {
+            display: block;
+            text-align: center;
+            padding: 1em;
+            max-width: 100%;
+            position: relative;
+        }
+
+        .masthead__menu {
+            float: none;
+            width: 100%;
+        }
+
+        .greedy-nav {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            min-height: auto;
+        }
+
+        .site-title {
+            position: static;
+            transform: none;
+            left: auto;
+            font-size: 1.3em;
+            margin: 0 0 1em 0;
+            text-align: center;
+            order: -1;
+            flex: none;
+            font-weight: bold;
+            color: #494e52;
+            text-decoration: none;
+        }
+
+        .visible-links {
+            display: flex;
+            justify-content: center;
+            margin-top: 0;
+            flex-wrap: wrap;
+            gap: 0.5em;
+            list-style: none;
+        }
+
+        .visible-links li {
+            flex: none;
+        }
+
+        .visible-links a {
+            margin: 0 0.8em;
+            color: #494e52;
+            text-decoration: none;
+            padding: 0.5em 1em;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .visible-links a:hover {
+            background-color: #f8f9fa;
+            color: #2c3e50;
+        }
+
+        /* 主要内容区域 */
+        .initial-content {
+            margin-top: 1em;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 1em;
+        }
+
+        .page {
+            background-color: transparent;
+        }
+
+        .page__content {
+            background-color: #ffffff;
+            padding: 1.5em;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1em;
+            width: 70%;
+            float: left;
+        }
+
+        /* 侧边栏 */
+        .sidebar {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            padding: 1em;
+            width: 25%;
+            float: right;
+            margin-left: 2%;
+        }
+
+        .author__avatar img {
+            border-radius: 50%;
+            border: 3px solid #e9ecef;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .author__content h3 {
+            margin: 1em 0 0.5em 0;
+            font-size: 1.2em;
+        }
+
+        .author__bio {
+            margin: 0.5em 0;
+            color: #6c757d;
+        }
+
+        .author__urls-wrapper {
+            margin-top: 1em;
+        }
+
+        .author__urls {
+            list-style: none;
+        }
+
+        .author__urls li {
+            margin: 0.5em 0;
+        }
+
+        .author__urls a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .author__urls a:hover {
+            text-decoration: underline;
+        }
+
+        /* 页脚 */
+        .page__footer {
+            background-color: #e9ecef;
+            border-top: 1px solid #dee2e6;
+            margin-top: 2em;
+            padding: 1em;
+            text-align: center;
+            clear: both;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .site-title {
+                font-size: 1.1em;
+                line-height: 1.3;
+                margin-bottom: 0.8em;
+            }
+
+            .visible-links {
+                margin-top: 0;
+                gap: 0.3em;
+            }
+
+            .visible-links a {
+                margin: 0 0.5em;
+                font-size: 0.9em;
+            }
+
+            .page__content {
+                width: 100%;
+                float: none;
+            }
+
+            .sidebar {
+                width: 100%;
+                float: none;
+                margin-left: 0;
+                margin-top: 1em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .site-title {
+                font-size: 1em;
+                line-height: 1.2;
+            }
+        }
+
+        /* 清除浮动 */
+        .clearfix::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        h1, h2, h3 {
+            color: #2c3e50;
+            margin-bottom: 0.5em;
+        }
+
+        p {
+            margin-bottom: 1em;
+        }
+    </style>
+</head>
+<body>
+    <div class="masthead">
+        <div class="masthead__inner-wrap">
+            <div class="masthead__menu">
+                <nav class="greedy-nav">
+                    <a class="site-title" href="/">
+                        Wenzel Liu | Cardiologist & Techno-Industrialist thinker
+                    </a>
+                    <ul class="visible-links">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/about/">About</a></li>
+                        <li><a href="/research/">Research</a></li>
+                        <li><a href="/publications/">Publications</a></li>
+                        <li><a href="/Techno-Industrialist/">Techno-Industrialist</a></li>
+                        <li><a href="/assets/files/Curriculum Vitae.pdf">Curriculum Vitae</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <div class="initial-content">
+        <div class="clearfix">
+            <div class="page__content">
+                <h1>欢迎来到我的个人网站</h1>
+                <p>这是网站样式修改后的预览效果。主要变化包括：</p>
+                
+                <h2>设计改进</h2>
+                <ul>
+                    <li><strong>淡灰色背景：</strong>整个页面采用淡灰色背景（#f8f9fa），让视觉效果更加舒适</li>
+                    <li><strong>标题居中：</strong>网站标题"Wenzel Liu | Cardiologist & Techno-Industrialist thinker"现在居中显示</li>
+                    <li><strong>导航下移：</strong>导航菜单移到标题下方，避免了标题被截断的问题</li>
+                    <li><strong>卡片式设计：</strong>内容区域和侧边栏采用白色背景，带有轻微的阴影效果</li>
+                    <li><strong>响应式设计：</strong>在不同屏幕尺寸下都能良好显示</li>
+                </ul>
+
+                <h2>视觉特点</h2>
+                <p>新的设计具有以下特点：</p>
+                <ul>
+                    <li>清晰的层次结构</li>
+                    <li>舒适的色彩搭配</li>
+                    <li>现代化的卡片式布局</li>
+                    <li>良好的可读性</li>
+                    <li>专业而亲和的视觉效果</li>
+                </ul>
+
+                <p>这样的设计让网站看起来更加专业和现代，同时保持了良好的用户体验。</p>
+            </div>
+
+            <div class="sidebar">
+                <div class="author__avatar">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUwIiBoZWlnaHQ9IjE1MCIgdmlld0JveD0iMCAwIDE1MCAxNTAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxNTAiIGhlaWdodD0iMTUwIiBmaWxsPSIjZGRkIi8+Cjx0ZXh0IHg9Ijc1IiB5PSI4MCIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE0IiBmaWxsPSIjOTk5IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5BdmF0YXI8L3RleHQ+Cjwvc3ZnPgo=" alt="Wenzel Liu">
+                </div>
+                <div class="author__content">
+                    <h3>Wenzel Liu</h3>
+                    <div class="author__bio">a M.D. Ph.D. in Cardiology and a Techno-Industrialist thinker</div>
+                    <div class="author__urls-wrapper">
+                        <ul class="author__urls">
+                            <li><a href="mailto:wenzel_liu@outlook.jp">📧 Email</a></li>
+                            <li><a href="https://www.linkedin.com/in/wenhao-liu-m-d-649112178/">💼 LinkedIn</a></li>
+                            <li><a href="https://orcid.org/0000-0002-2243-8391">🔬 ORCID</a></li>
+                            <li>📍 Tokyo, JP</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page__footer">
+        <footer>
+            <div>© 2024 Wenzel Liu. 由Jekyll和Minimal Mistakes主题驱动。</div>
+        </footer>
+    </div>
+</body>
+</html> 
