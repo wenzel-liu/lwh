@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "Publications"
+title: "Publications & Presentations"
 permalink: /publications/
 author_profile: true
 ---
@@ -30,3 +30,17 @@ author_profile: true
 11. LI Bin, **LIU Wenhao**, LI Xuesong, SHI Liu, GU Shaoke, ZHAO Yangyang & MAO Jingyuan. (2020). Using Speckle Tracking Imaging to Evaluate the Left Ventricular Systolic Function of Heart Failure with Preserved Ejection Fraction by Treatment of YangyinShuxin Decoction. Chinese Journal of Integrated Traditional And Western Medicine (09),1064-1069. [PDF](link-to-pdf)
 
 12. **LIU Wenhao** & LI Bin. (2019). Rhabdomyolysis associated with bezafibrate therapy: a case report. Chinese Circulation Journal (08),828-829. [PDF](link-to-pdf)
+
+## Presentations
+
+1. **W. Liu**, Y. Higashikuni, T. Obana et al. "The DEAD-box RNA helicase Ddx41 contributes to adverse cardiac remodeling during pressure overload through modulation of RNA metabolism" AHA Scientific Sessions 2023, Nov 11-13, poster presentation.
+
+2. **W. Liu**, Y. Higashikuni, T. Hirata et al. "The DEAD-box RNA helicase Ddx41 contributes to adverse cardiac remodeling induced by pressure overload through modulation of RNA metabolism" The 88th Annual Scientific Meeting of the Japanese Circulation Society (JCS2024) 2024, Mar 8-10, poster presentation.
+
+3. **W. Liu**, Y. Higashikuni, T. Hirata et al. "Rbm15b is an RNA-binding protein that protects against adverse cardiac remodeling during pressure overload" The 88th Annual Scientific Meeting of the Japanese Circulation Society (JCS2024) 2024, Mar 8-10, poster presentation.
+
+4. **W. Liu**, Y Higashikuni, Y Hirata, M Sata, T Matsumura, N Takeda. "N6-methyladenosine regulator Rbm15b protects against adverse cardiac remodeling under pressure overload" ISHR 2024, 2024, Dec 11-13, poster presentation.
+
+5. **W. Liu**, Y Higashikuni, S. Tumurbaatar, A. Matsumoto, Y Hirata, M Sata, T Matsumura, N Takeda. "N6-methyladenosine regulator Rbm15b protects against adverse cardiac remodeling during pressure overload by modulating RNA methylation" ISHR 2025, 2025, May 11-14, poster presentation.
+
+6. **W. Liu**, Y Higashikuni, S. Tumurbaatar, A. Matsumoto, Y Hirata, M Sata, T Matsumura, N Takeda. "N6-methyladenosine regulator Rbm15b protects against adverse cardiac remodeling under pressure overload through modulating RNA methylation" ESC Congress 2025, 2025, Aug 29-Sep 1, moderated poster presentation.
