@@ -125,12 +125,12 @@ const MainContent: React.FC = () => {
             transition={{ duration: 0.6 }}
           >
             <section className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-8">
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">欢迎来到我的个人主页</h2>
-              <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+              <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4">欢迎来到我的个人主页</h2>
+              <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-6" style={{ lineHeight: '1.6' }}>
                 我是一名专注于前端开发和技术研究的工程师，在现代Web开发、用户界面设计、
                 以及技术产业趋势等领域拥有丰富的经验和深入的研究。
               </p>
-              <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+              <p className="text-gray-600 dark:text-gray-300 leading-relaxed" style={{ lineHeight: '1.6' }}>
                 通过这个网站，您可以了解我的研究工作、学术发表、技术分享以及对技术产业的思考。
                 我致力于推动技术创新，促进学术交流，并分享实用的开发经验。
               </p>
@@ -147,28 +147,43 @@ const MainContent: React.FC = () => {
             transition={{ duration: 0.6 }}
           >
             <section className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-8">
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">关于我</h2>
+              <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-6">关于我</h2>
               <div className="space-y-6">
                 <div>
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">教育背景</h3>
-                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">教育背景</h3>
+                  <p className="text-gray-600 dark:text-gray-300" style={{ lineHeight: '1.6' }}>
                     计算机科学硕士学位，专注于人机交互与前端技术研究。在学术期间，
                     深入研究了现代Web开发技术、用户体验设计以及跨平台应用开发。
                   </p>
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">研究兴趣</h3>
-                  <ul className="text-gray-600 dark:text-gray-300 leading-relaxed list-disc list-inside space-y-2">
-                    <li>现代JavaScript框架与库的性能优化</li>
-                    <li>响应式设计与跨平台开发模式</li>
-                    <li>用户界面中的机器学习应用</li>
-                    <li>Web无障碍性与包容性设计</li>
-                    <li>技术产业趋势与创新分析</li>
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">研究兴趣</h3>
+                  <ul className="text-gray-600 dark:text-gray-300 space-y-2 ml-0" style={{ lineHeight: '1.6' }}>
+                    <li className="flex items-start">
+                      <span className="inline-block w-2 h-2 bg-blue-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                      <span>现代JavaScript框架与库的性能优化</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="inline-block w-2 h-2 bg-blue-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                      <span>响应式设计与跨平台开发模式</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="inline-block w-2 h-2 bg-blue-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                      <span>用户界面中的机器学习应用</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="inline-block w-2 h-2 bg-blue-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                      <span>Web无障碍性与包容性设计</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="inline-block w-2 h-2 bg-blue-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                      <span>技术产业趋势与创新分析</span>
+                    </li>
                   </ul>
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">工作经历</h3>
-                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">工作经历</h3>
+                  <p className="text-gray-600 dark:text-gray-300" style={{ lineHeight: '1.6' }}>
                     现任某知名科技公司前端架构师，负责大规模Web应用的架构设计与性能优化。
                     曾参与多个开源项目的开发，并在国际会议上发表多篇技术论文。
                   </p>
@@ -187,32 +202,32 @@ const MainContent: React.FC = () => {
             transition={{ duration: 0.6 }}
           >
             <section className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-8">
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">研究领域</h2>
+              <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-6">研究领域</h2>
               <div className="grid gap-6 md:grid-cols-2">
                 <div className="space-y-4">
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white">前端技术研究</h3>
-                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white">前端技术研究</h3>
+                  <p className="text-gray-600 dark:text-gray-300" style={{ lineHeight: '1.6' }}>
                     专注于现代前端框架的性能优化、组件化架构设计、以及新兴Web标准的应用研究。
                     重点关注React生态系统、TypeScript应用、以及Webpack等构建工具的优化策略。
                   </p>
                 </div>
                 <div className="space-y-4">
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white">用户体验设计</h3>
-                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white">用户体验设计</h3>
+                  <p className="text-gray-600 dark:text-gray-300" style={{ lineHeight: '1.6' }}>
                     研究人机交互原理在Web界面设计中的应用，包括响应式设计模式、
                     无障碍性优化、以及跨设备用户体验的一致性设计方法。
                   </p>
                 </div>
                 <div className="space-y-4">
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white">性能优化</h3>
-                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white">性能优化</h3>
+                  <p className="text-gray-600 dark:text-gray-300" style={{ lineHeight: '1.6' }}>
                     深入研究Web应用性能优化技术，包括代码分割、懒加载、缓存策略、
                     以及运行时性能监控与分析。致力于提升大规模应用的用户体验。
                   </p>
                 </div>
                 <div className="space-y-4">
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white">技术创新</h3>
-                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white">技术创新</h3>
+                  <p className="text-gray-600 dark:text-gray-300" style={{ lineHeight: '1.6' }}>
                     探索新兴技术在前端开发中的应用可能性，包括WebAssembly、PWA、
                     以及AI辅助开发工具等前沿技术的实践与研究。
                   </p>
@@ -233,7 +248,7 @@ const MainContent: React.FC = () => {
             {/* Publications 部分 */}
             <section>
               <motion.h2 
-                className="text-2xl font-bold text-gray-900 dark:text-white mb-8"
+                className="text-xl font-bold text-gray-900 dark:text-white mb-8"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
@@ -255,7 +270,7 @@ const MainContent: React.FC = () => {
                   >
                     <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-3">
                       <div className="flex-1">
-                        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                        <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
                           <a href={pub.link} className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
                             {pub.title}
                           </a>
@@ -269,7 +284,7 @@ const MainContent: React.FC = () => {
                         {pub.type}
                       </span>
                     </div>
-                    <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                    <p className="text-gray-600 dark:text-gray-300" style={{ lineHeight: '1.6' }}>
                       {pub.description}
                     </p>
                   </motion.article>
@@ -280,7 +295,7 @@ const MainContent: React.FC = () => {
             {/* Presentations 部分 */}
             <section>
               <motion.h2 
-                className="text-2xl font-bold text-gray-900 dark:text-white mb-8"
+                className="text-xl font-bold text-gray-900 dark:text-white mb-8"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
@@ -302,7 +317,7 @@ const MainContent: React.FC = () => {
                   >
                     <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-3">
                       <div className="flex-1">
-                        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                        <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
                           <a href={pres.slides} className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
                             {pres.title}
                           </a>
@@ -316,7 +331,7 @@ const MainContent: React.FC = () => {
                         {pres.type}
                       </span>
                     </div>
-                    <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                    <p className="text-gray-600 dark:text-gray-300" style={{ lineHeight: '1.6' }}>
                       {pres.description}
                     </p>
                   </motion.article>
@@ -335,35 +350,35 @@ const MainContent: React.FC = () => {
             transition={{ duration: 0.6 }}
           >
             <section className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-8">
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">技术产业思考</h2>
+              <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-6">技术产业思考</h2>
               <div className="space-y-6">
                 <div>
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">数字化转型趋势</h3>
-                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">数字化转型趋势</h3>
+                  <p className="text-gray-600 dark:text-gray-300" style={{ lineHeight: '1.6' }}>
                     在当今快速发展的数字经济时代，企业数字化转型已成为不可逆转的趋势。
                     从传统制造业到服务业，各行各业都在寻求通过技术创新来提升效率、
                     降低成本并创造新的商业价值。
                   </p>
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">技术创新与产业融合</h3>
-                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">技术创新与产业融合</h3>
+                  <p className="text-gray-600 dark:text-gray-300" style={{ lineHeight: '1.6' }}>
                     人工智能、物联网、区块链等新兴技术正在重塑传统产业格局。
                     这些技术的融合应用不仅提高了生产效率，更催生了全新的商业模式和价值链条。
                     作为技术从业者，我们需要深入理解这些变化趋势。
                   </p>
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">可持续发展的技术策略</h3>
-                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">可持续发展的技术策略</h3>
+                  <p className="text-gray-600 dark:text-gray-300" style={{ lineHeight: '1.6' }}>
                     面对全球气候变化和环境挑战，技术企业和产业界需要承担更多社会责任。
                     绿色计算、可持续软件开发、以及环保技术的推广应用，
                     将成为未来技术发展的重要方向。
                   </p>
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">人才培养与产业发展</h3>
-                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">人才培养与产业发展</h3>
+                  <p className="text-gray-600 dark:text-gray-300" style={{ lineHeight: '1.6' }}>
                     技术产业的快速发展对人才培养提出了新的要求。
                     跨学科知识结构、持续学习能力、以及创新思维将成为未来技术人才的核心竞争力。
                     教育体系和企业培训需要与时俱进，培养适应未来产业需求的复合型人才。
@@ -404,7 +419,7 @@ const MainContent: React.FC = () => {
         </div>
       </div>
 
-      {/* 页面标题 - 移出内容栏外部 */}
+      {/* 页面标题 - 移出内容栏外部，仅保留一个 H1 */}
       <div className="container mx-auto px-4">
         <motion.h1 
           className="text-2xl font-bold text-gray-900 dark:text-white px-4 mt-6"
@@ -438,37 +453,71 @@ const MainContent: React.FC = () => {
                   transition={{ duration: 0.3 }}
                 >
                   <div className="text-center mb-6">
+                    {/* 压缩头像尺寸 */}
                     <motion.div 
-                      className="w-32 h-32 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full mx-auto mb-4 flex items-center justify-center text-white text-4xl font-bold"
+                      className="w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full mx-auto mb-4 flex items-center justify-center text-white text-2xl font-bold"
                       whileHover={{ scale: 1.05 }}
                     >
                       张
                     </motion.div>
-                    <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">张三</h2>
-                    <p className="text-gray-600 dark:text-gray-300 mb-4">前端开发工程师 | 技术研究员</p>
+                    <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-2">张三</h2>
+                    <p className="text-gray-600 dark:text-gray-300 mb-4 text-sm">前端开发工程师 | 技术研究员</p>
                   </div>
 
-                  {/* 联系信息 */}
-                  <div className="space-y-3">
-                    <div className="flex items-center space-x-3 text-gray-600 dark:text-gray-300">
+                  {/* 联系信息 - 圆形图标按钮 */}
+                  <div className="flex justify-center space-x-4">
+                    {/* Email 图标按钮 */}
+                    <motion.a
+                      href="mailto:zhangsan@example.com"
+                      className="w-10 h-10 bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 rounded-full flex items-center justify-center hover:bg-blue-200 dark:hover:bg-blue-800 transition-colors"
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.95 }}
+                      title="Email"
+                    >
                       <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                         <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
                         <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
                       </svg>
-                      <span className="text-sm">zhangsan@example.com</span>
-                    </div>
-                    <div className="flex items-center space-x-3 text-gray-600 dark:text-gray-300">
-                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd"/>
+                    </motion.a>
+
+                    {/* LinkedIn 图标按钮 */}
+                    <motion.a
+                      href="https://linkedin.com/in/zhangsan"
+                      className="w-10 h-10 bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 rounded-full flex items-center justify-center hover:bg-blue-200 dark:hover:bg-blue-800 transition-colors"
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.95 }}
+                      title="LinkedIn"
+                    >
+                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
                       </svg>
-                      <span className="text-sm">北京, 中国</span>
-                    </div>
-                    <div className="flex items-center space-x-3 text-gray-600 dark:text-gray-300">
-                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM4.332 8.027a6.012 6.012 0 011.912-2.706C6.512 5.73 6.974 6 7.5 6A1.5 1.5 0 019 7.5V8a2 2 0 004 0 2 2 0 011.523-1.943A5.977 5.977 0 0116 10c0 .34-.028.675-.083 1H15a2 2 0 00-2 2v2.197A5.973 5.973 0 0110 16v-2a2 2 0 00-2-2 2 2 0 01-2-2 2 2 0 00-1.668-1.973z" clipRule="evenodd"/>
+                    </motion.a>
+
+                    {/* ORCID 图标按钮 */}
+                    <motion.a
+                      href="https://orcid.org/0000-0000-0000-0000"
+                      className="w-10 h-10 bg-green-100 dark:bg-green-900 text-green-600 dark:text-green-300 rounded-full flex items-center justify-center hover:bg-green-200 dark:hover:bg-green-800 transition-colors"
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.95 }}
+                      title="ORCID"
+                    >
+                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.946.946 0 01-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.016-5.325 5.016h-3.919V7.416zm1.444 1.303v7.444h2.297c2.359 0 3.925-1.303 3.925-3.722 0-2.297-1.303-3.722-3.925-3.722h-2.297z"/>
                       </svg>
-                      <span className="text-sm">github.com/zhangsan</span>
-                    </div>
+                    </motion.a>
+
+                    {/* GitHub 图标按钮 */}
+                    <motion.a
+                      href="https://github.com/zhangsan"
+                      className="w-10 h-10 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-full flex items-center justify-center hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.95 }}
+                      title="GitHub"
+                    >
+                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                      </svg>
+                    </motion.a>
                   </div>
                 </motion.div>
 
