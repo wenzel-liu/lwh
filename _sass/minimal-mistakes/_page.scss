@@ -66,7 +66,7 @@ body {
 
 .page__title {
   margin-top: 0;
-  line-height: 1;
+  line-height: 1.2;
 
   a {
     color: $text-color;
@@ -81,12 +81,27 @@ body {
 .page__lead {
   font-family: $global-font-family;
   font-size: $type-size-4;
+  line-height: 1.6;
 }
 
 .page__content {
+  line-height: 1.6;
+  
   h2 {
     padding-bottom: 0.5em;
     border-bottom: 1px solid $border-color;
+    margin-top: 2em;
+    margin-bottom: 1em;
+  }
+  
+  h3 {
+    margin-top: 1.5em;
+    margin-bottom: 0.75em;
+  }
+  
+  h4, h5, h6 {
+    margin-top: 1.25em;
+    margin-bottom: 0.5em;
   }
 
 	h1, h2, h3, h4, h5, h6 {
@@ -110,17 +125,76 @@ body {
   li,
   dl {
     font-size: 1em;
+    line-height: 1.6;
   }
 
   /* paragraph indents */
   p {
     margin: 0 0 $indent-var;
+    line-height: 1.6;
 
     /* sibling indentation*/
     @if $paragraph-indent == true {
       & + p {
         text-indent: $indent-var;
         margin-top: -($indent-var);
+      }
+    }
+  }
+  
+  /* Improved list styling for better alignment */
+  ul, ol {
+    margin: 1em 0;
+    padding-left: 0;
+    
+    li {
+      margin-bottom: 0.5em;
+      line-height: 1.6;
+      
+      /* Custom bullet points to avoid visual jaggedness */
+      list-style: none;
+      position: relative;
+      padding-left: 1.5em;
+      
+      &::before {
+        content: "•";
+        color: $primary-color;
+        font-weight: bold;
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+    }
+  }
+  
+  /* Ordered lists with better alignment */
+  ol {
+    counter-reset: custom-counter;
+    
+    li {
+      counter-increment: custom-counter;
+      
+      &::before {
+        content: counter(custom-counter) ".";
+        color: $primary-color;
+        font-weight: bold;
+        position: absolute;
+        left: 0;
+        top: 0;
+        min-width: 1.2em;
+      }
+    }
+  }
+  
+  /* Nested lists */
+  ul ul, ol ol, ul ol, ol ul {
+    margin: 0.5em 0;
+    
+    li {
+      margin-bottom: 0.25em;
+      
+      &::before {
+        font-size: 0.8em;
       }
     }
   }
@@ -153,22 +227,29 @@ body {
     margin-top: 1em;
     font-family: $sans-serif;
     font-weight: bold;
+    line-height: 1.6;
   }
 
   dd {
     margin-inline-start: 1em;
     font-family: $sans-serif;
     font-size: $type-size-6;
+    line-height: 1.6;
   }
 
   .small {
     font-size: $type-size-6;
+    line-height: 1.6;
   }
 
   /* blockquote citations */
-  blockquote + .small {
-    margin-top: -1.5em;
-    padding-inline-start: 1.25rem;
+  blockquote {
+    line-height: 1.6;
+    
+    + .small {
+      margin-top: -1.5em;
+      padding-inline-start: 1.25rem;
+    }
   }
 }
 

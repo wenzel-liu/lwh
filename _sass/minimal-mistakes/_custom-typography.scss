@@ -162,4 +162,253 @@ dt {
 dd {
   font-family: $sans-serif;
   font-weight: 400;
+}
+
+/* ==========================================================================
+   CUSTOM TYPOGRAPHY IMPROVEMENTS
+   ========================================================================== */
+
+/* Ensure H1 is used only for main page/post titles */
+.page__title h1,
+.archive__item-title h1 {
+  font-size: $type-size-1;
+  line-height: 1.2;
+  margin-bottom: 0.5em;
+}
+
+/* Improve heading hierarchy - H2 for main sections */
+.page__content h2,
+.archive__item h2 {
+  font-size: $type-size-2;
+  line-height: 1.3;
+  margin-top: 2em;
+  margin-bottom: 1em;
+  color: $text-color;
+  font-weight: 600;
+}
+
+/* H3 for subsections */
+.page__content h3,
+.archive__item h3 {
+  font-size: $type-size-3;
+  line-height: 1.4;
+  margin-top: 1.5em;
+  margin-bottom: 0.75em;
+  color: $text-color;
+  font-weight: 600;
+}
+
+/* H4-H6 for smaller subdivisions */
+.page__content h4,
+.archive__item h4 {
+  font-size: $type-size-4;
+  line-height: 1.4;
+  margin-top: 1.25em;
+  margin-bottom: 0.5em;
+  color: $text-color;
+  font-weight: 600;
+}
+
+.page__content h5,
+.archive__item h5 {
+  font-size: $type-size-5;
+  line-height: 1.4;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+  color: $text-color;
+  font-weight: 600;
+}
+
+.page__content h6,
+.archive__item h6 {
+  font-size: $type-size-6;
+  line-height: 1.4;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+  color: $text-color;
+  font-weight: 600;
+}
+
+/* Improved paragraph spacing and readability */
+.page__content p,
+.archive__item p {
+  line-height: 1.6;
+  margin-bottom: 1.2em;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+/* Better list styling for improved alignment */
+.page__content ul,
+.page__content ol,
+.archive__item ul,
+.archive__item ol {
+  margin: 1em 0 1.5em 0;
+  padding-left: 0;
+  
+  li {
+    line-height: 1.6;
+    margin-bottom: 0.5em;
+    list-style: none;
+    position: relative;
+    padding-left: 1.5em;
+    text-align: justify;
+    text-justify: inter-word;
+  }
+}
+
+/* Custom bullet points for unordered lists */
+.page__content ul li::before,
+.archive__item ul li::before {
+  content: "•";
+  color: $primary-color;
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+  top: 0;
+  line-height: 1.6;
+}
+
+/* Custom numbering for ordered lists */
+.page__content ol,
+.archive__item ol {
+  counter-reset: custom-counter;
+  
+  li {
+    counter-increment: custom-counter;
+    
+    &::before {
+      content: counter(custom-counter) ".";
+      color: $primary-color;
+      font-weight: bold;
+      position: absolute;
+      left: 0;
+      top: 0;
+      min-width: 1.2em;
+      line-height: 1.6;
+    }
+  }
+}
+
+/* Nested lists styling */
+.page__content ul ul li::before,
+.page__content ol ol li::before,
+.archive__item ul ul li::before,
+.archive__item ol ol li::before {
+  font-size: 0.85em;
+  color: $muted-text-color;
+}
+
+/* Improved blockquote styling */
+.page__content blockquote,
+.archive__item blockquote {
+  line-height: 1.6;
+  margin: 1.5em 0;
+  padding: 1em 1.5em;
+  border-left: 4px solid $primary-color;
+  background-color: mix($primary-color, $background-color, 5%);
+  font-style: italic;
+  
+  p {
+    margin-bottom: 0.5em;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+/* Better code block styling */
+.page__content pre,
+.archive__item pre {
+  line-height: 1.4;
+  margin: 1.5em 0;
+}
+
+/* Inline code improvements */
+.page__content :not(pre) > code,
+.archive__item :not(pre) > code {
+  line-height: 1.6;
+  padding: 0.15em 0.4em;
+  font-size: 0.85em;
+}
+
+/* Table improvements */
+.page__content table,
+.archive__item table {
+  line-height: 1.6;
+  margin: 1.5em 0;
+  
+  th, td {
+    padding: 0.75em 1em;
+    line-height: 1.6;
+  }
+}
+
+/* Definition list improvements */
+.page__content dt,
+.archive__item dt {
+  line-height: 1.6;
+  margin-top: 1.2em;
+  font-weight: 600;
+}
+
+.page__content dd,
+.archive__item dd {
+  line-height: 1.6;
+  margin-bottom: 1em;
+  margin-left: 1.5em;
+}
+
+/* Archive page specific improvements */
+.archive__item-title {
+  margin-bottom: 0.5em;
+  
+  a {
+    text-decoration: none;
+    
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.archive__item-excerpt {
+  line-height: 1.6;
+  margin-bottom: 1em;
+  
+  p {
+    margin-bottom: 0.5em;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+/* Responsive typography adjustments */
+@include breakpoint($small) {
+  .page__content,
+  .archive__item {
+    font-size: $type-size-6;
+    
+    h2 { font-size: $type-size-3; }
+    h3 { font-size: $type-size-4; }
+    h4 { font-size: $type-size-5; }
+    h5 { font-size: $type-size-6; }
+    h6 { font-size: $type-size-6; }
+  }
+}
+
+@include breakpoint($medium) {
+  .page__content,
+  .archive__item {
+    font-size: $type-size-5;
+    
+    h2 { font-size: $type-size-2; }
+    h3 { font-size: $type-size-3; }
+    h4 { font-size: $type-size-4; }
+    h5 { font-size: $type-size-5; }
+    h6 { font-size: $type-size-6; }
+  }
 } 

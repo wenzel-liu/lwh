@@ -58,7 +58,7 @@
   li {
     font-family: $sans-serif;
     font-size: $type-size-6;
-    line-height: 1.5;
+    line-height: 1.6;
   }
 
   img {
@@ -134,11 +134,11 @@
   }
 
   img {
-    max-width: 110px;
+    max-width: 80px;
     border-radius: 50%;
 
     @include breakpoint($large) {
-      padding: 5px;
+      padding: 3px;
       border: 1px solid $border-color;
     }
   }
@@ -148,7 +148,7 @@
   display: table-cell;
   vertical-align: top;
   padding-inline: 15px 25px;
-  line-height: 1;
+  line-height: 1.6;
 
   @include breakpoint($large) {
     display: block;
@@ -261,6 +261,11 @@
     border: 0;
     background: transparent;
     box-shadow: none;
+    
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
   }
 
   &::before {
@@ -304,6 +309,10 @@
 
   li {
     white-space: nowrap;
+    
+    @include breakpoint($large) {
+      margin: 0;
+    }
   }
 
   a {
@@ -314,9 +323,74 @@
     color: inherit;
     font-size: $type-size-5;
     text-decoration: none;
+    line-height: 1.6;
+
+    @include breakpoint($large) {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0;
+      padding: 0;
+      transition: all 0.3s ease;
+      
+      &[href*="mailto:"] {
+        background-color: #007bff;
+        color: white;
+        
+        &:hover {
+          background-color: #0056b3;
+          transform: scale(1.1);
+        }
+      }
+      
+      &[href*="linkedin"] {
+        background-color: #0077b5;
+        color: white;
+        
+        &:hover {
+          background-color: #005885;
+          transform: scale(1.1);
+        }
+      }
+      
+      &[href*="orcid"] {
+        background-color: #a6ce39;
+        color: white;
+        
+        &:hover {
+          background-color: #8fb32a;
+          transform: scale(1.1);
+        }
+      }
+      
+      &[href*="github"] {
+        background-color: #333;
+        color: white;
+        
+        &:hover {
+          background-color: #1a1a1a;
+          transform: scale(1.1);
+        }
+      }
+      
+      .label {
+        display: none;
+      }
+      
+      i {
+        font-size: 18px;
+      }
+    }
 
     &:hover {
       text-decoration: underline;
+      
+      @include breakpoint($large) {
+        text-decoration: none;
+      }
     }
   }
 }

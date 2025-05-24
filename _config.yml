@@ -121,13 +121,16 @@ author:
   links:
     - label: "Email"
       icon: "fas fa-envelope"
-      url: "wenzel_liu@outlook.jp"
+      url: "mailto:wenzel_liu@outlook.jp"
     - label: "LinkedIn"
       icon: "fab fa-linkedin"
       url: "https://www.linkedin.com/in/wenhao-liu-m-d-649112178/"
     - label: "ORCID"
       icon: "ai ai-orcid"
       url: "https://orcid.org/0000-0002-2243-8391"
+    - label: "GitHub"
+      icon: "fab fa-github"
+      url: "https://github.com/wenzel-liu"
 
 # Site Footer
 footer:
