@@ -8,7 +8,7 @@ main:
     url: /research/
   - title: "Publications"
     url: /publications/
-  - title: "Blog"
-    url: /blog/
-  - title: "CV (PDF)"
-    url: /assets/files/Curriculum Vitae_20250515.pdf
+  - title: "Techno-Industrialist"
+    url: /Techno-Industrialist/
+  - title: "Curriculum Vitae"
+    url: /assets/files/Curriculum Vitae.pdf
