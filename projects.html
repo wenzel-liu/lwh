@@ -11,6 +11,10 @@
             box-sizing: border-box;
         }
 
+        html, body {
+            height: 100%;
+        }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             background: url('assets/images/background.jpg') no-repeat center center fixed;
@@ -18,7 +22,8 @@
             color: #ffffff;
             line-height: 1.6;
             position: relative;
-            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
         /* Background overlay with subtle blur effect */
@@ -45,6 +50,19 @@
             height: 100%;
             background: rgba(0, 0, 0, 0.3);
             z-index: -1;
+        }
+
+        /* Global lighting effect */
+        .light-effect {
+            position: fixed;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(76, 175, 80, 0.15) 0%, rgba(76, 175, 80, 0.05) 30%, transparent 70%);
+            pointer-events: none;
+            z-index: 1;
+            transition: all 0.3s ease;
+            transform: translate(-50%, -50%);
         }
 
         .container {
@@ -218,9 +236,15 @@
         }
 
         /* Main Content */
+        .main-wrapper {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
         .main-content {
             padding: 60px 0;
-            min-height: 80vh;
+            flex: 1;
         }
 
         .page-title {
@@ -381,7 +405,7 @@
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             color: #cccccc;
             font-size: 14px;
-            margin-top: 60px;
+            margin-top: auto;
         }
 
         .footer a {
@@ -416,6 +440,9 @@
     </style>
 </head>
 <body>
+    <!-- Global lighting effect -->
+    <div class="light-effect" id="lightEffect"></div>
+
     <header class="header">
         <div class="container">
             <div class="nav-container">
@@ -440,8 +467,9 @@
         </div>
     </header>
 
-    <main class="container">
-        <div class="main-content">
+    <div class="main-wrapper">
+        <main class="container">
+            <div class="main-content">
             <h1 class="page-title">Projects</h1>
             <p class="page-subtitle">Building tools and applications that make a difference</p>
             
@@ -586,12 +614,13 @@
         </div>
     </main>
 
-    <footer class="footer">
-        <div class="container">
-            <p>© 2024 Wenzel Liu. This work is licensed under <a href="#">CC BY-NC-ND 4.0</a></p>
-            <p>Published with <a href="#">Hugo Blog Builder</a> — the free, <a href="#">open source</a> website builder that empowers creators.</p>
-        </div>
-    </footer>
+        <footer class="footer">
+            <div class="container">
+                <p>© 2024 Wenzel Liu. This work is licensed under <a href="#">CC BY-NC-ND 4.0</a></p>
+                <p>Published with <a href="#">Hugo Blog Builder</a> — the free, <a href="#">open source</a> website builder that empowers creators.</p>
+            </div>
+        </footer>
+    </div>
 
     <script>
         // Navigation items data
@@ -606,14 +635,21 @@
         // Update mobile nav with hidden items
         function updateMobileNav() {
             const navMobile = document.getElementById('navMobile');
-            const visibleNavItems = document.querySelectorAll('.nav a:not([style*="display: none"])');
-            const hiddenItems = navItems.slice(visibleNavItems.length);
+            const nav = document.querySelector('.nav');
+            const visibleNavItems = Array.from(nav.children).filter(item => 
+                window.getComputedStyle(item).display !== 'none'
+            );
+            const hiddenItems = navItems.filter((item, index) => index >= visibleNavItems.length);
             
             navMobile.innerHTML = '';
             hiddenItems.forEach(item => {
                 const link = document.createElement('a');
                 link.href = item.href;
                 link.textContent = item.text;
+                if (item.href === window.location.pathname || 
+                    (item.href === 'projects.html' && window.location.pathname.includes('projects'))) {
+                    link.classList.add('active');
+                }
                 navMobile.appendChild(link);
             });
         }
@@ -650,12 +686,29 @@
             }
         });
 
-        // Add subtle parallax effect to background
+        // Global lighting effect
+        const lightEffect = document.getElementById('lightEffect');
+        
         document.addEventListener('mousemove', (e) => {
+            // Update light position
+            lightEffect.style.left = e.clientX + 'px';
+            lightEffect.style.top = e.clientY + 'px';
+            
+            // Add subtle parallax effect to background
             const x = (e.clientX / window.innerWidth) * 100;
             const y = (e.clientY / window.innerHeight) * 100;
             
             document.body.style.backgroundPosition = `${50 + (x - 50) * 0.1}% ${50 + (y - 50) * 0.1}%`;
+        });
+
+        // Hide light effect when mouse leaves window
+        document.addEventListener('mouseleave', () => {
+            lightEffect.style.opacity = '0';
+        });
+
+        // Show light effect when mouse enters window
+        document.addEventListener('mouseenter', () => {
+            lightEffect.style.opacity = '1';
         });
     </script>
 </body>

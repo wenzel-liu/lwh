@@ -11,6 +11,10 @@
             box-sizing: border-box;
         }
 
+        html, body {
+            height: 100%;
+        }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             background: url('assets/images/background.jpg') no-repeat center center fixed;
@@ -18,7 +22,8 @@
             color: #ffffff;
             line-height: 1.6;
             position: relative;
-            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
         /* Background overlay with subtle blur effect */
@@ -45,6 +50,19 @@
             height: 100%;
             background: rgba(0, 0, 0, 0.3);
             z-index: -1;
+        }
+
+        /* Global lighting effect */
+        .light-effect {
+            position: fixed;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(76, 175, 80, 0.15) 0%, rgba(76, 175, 80, 0.05) 30%, transparent 70%);
+            pointer-events: none;
+            z-index: 1;
+            transition: all 0.3s ease;
+            transform: translate(-50%, -50%);
         }
 
         .container {
@@ -218,9 +236,15 @@
         }
 
         /* Main Content */
+        .main-wrapper {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
         .main-content {
             padding: 60px 0;
-            min-height: 80vh;
+            flex: 1;
         }
 
         .page-title {
@@ -333,7 +357,7 @@
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             color: #cccccc;
             font-size: 14px;
-            margin-top: 60px;
+            margin-top: auto;
         }
 
         .footer a {
@@ -371,6 +395,9 @@
     </style>
 </head>
 <body>
+    <!-- Global lighting effect -->
+    <div class="light-effect" id="lightEffect"></div>
+
     <header class="header">
         <div class="container">
             <div class="nav-container">
@@ -395,171 +422,173 @@
         </div>
     </header>
 
-    <main class="container">
-        <div class="main-content">
-            <h1 class="page-title">Experience</h1>
-            
-            <div class="section">
-                <div class="experience-list">
-                    <div class="experience-item">
-                        <div class="experience-header">
-                            <span class="experience-icon">🏢</span>
-                            <div class="experience-title">Director of Cloud Infrastructure</div>
+    <div class="main-wrapper">
+        <main class="container">
+            <div class="main-content">
+                <h1 class="page-title">Experience</h1>
+                
+                <div class="section">
+                    <div class="experience-list">
+                        <div class="experience-item">
+                            <div class="experience-header">
+                                <span class="experience-icon">🏢</span>
+                                <div class="experience-title">Director of Cloud Infrastructure</div>
+                            </div>
+                            <div class="experience-company">GenCoin</div>
+                            <div class="experience-period">January 2021 – Present</div>
+                            <div class="experience-description">
+                                Responsibilities include:
+                                <div class="experience-responsibilities">
+                                    <ul>
+                                        <li>lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
+                                        <li>lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
+                                        <li>lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
-                        <div class="experience-company">GenCoin</div>
-                        <div class="experience-period">January 2021 – Present</div>
-                        <div class="experience-description">
-                            Responsibilities include:
-                            <div class="experience-responsibilities">
-                                <ul>
-                                    <li>lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
-                                    <li>lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
-                                    <li>lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
-                                </ul>
+
+                        <div class="experience-item">
+                            <div class="experience-header">
+                                <span class="experience-icon">🏢</span>
+                                <div class="experience-title">Backend Software Engineer</div>
+                            </div>
+                            <div class="experience-company">X</div>
+                            <div class="experience-period">January 2016 – December 2020</div>
+                            <div class="experience-description">
+                                Responsibilities include:
+                                <div class="experience-responsibilities">
+                                    <ul>
+                                        <li>Migrated infrastructure to a new data center</li>
+                                        <li>lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
+                                        <li>lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <div class="experience-item">
-                        <div class="experience-header">
-                            <span class="experience-icon">🏢</span>
-                            <div class="experience-title">Backend Software Engineer</div>
+                <div class="section">
+                    <h2 class="section-title">Education</h2>
+                    <div class="experience-list">
+                        <div class="experience-item">
+                            <div class="experience-header">
+                                <span class="experience-icon">🎓</span>
+                                <div class="experience-title">PhD Artificial Intelligence</div>
+                            </div>
+                            <div class="experience-company">Stanford University</div>
+                            <div class="experience-period">January 2016 – December 2020</div>
+                            <div class="experience-description">
+                                Thesis on <em>Why LLMs are awesome</em>. Supervised by <strong>Prof Joe Smith</strong>. Presented papers at 5 IEEE conferences with the contributions being published in 2 Springer journals.
+                            </div>
                         </div>
-                        <div class="experience-company">X</div>
-                        <div class="experience-period">January 2016 – December 2020</div>
-                        <div class="experience-description">
-                            Responsibilities include:
-                            <div class="experience-responsibilities">
-                                <ul>
-                                    <li>Migrated infrastructure to a new data center</li>
-                                    <li>lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
-                                    <li>lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
-                                </ul>
+
+                        <div class="experience-item">
+                            <div class="experience-header">
+                                <span class="experience-icon">🎓</span>
+                                <div class="experience-title">MEng Artificial Intelligence</div>
+                            </div>
+                            <div class="experience-company">Massachusetts Institute of Technology</div>
+                            <div class="experience-period">January 2016 – December 2020</div>
+                            <div class="experience-description">
+                                GPA: 3.8/4.0
+                                <br><br>
+                                Courses included:
+                                <div class="experience-responsibilities">
+                                    <ul>
+                                        <li>lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
+                                        <li>lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
+                                        <li>lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="experience-item">
+                            <div class="experience-header">
+                                <span class="experience-icon">🎓</span>
+                                <div class="experience-title">BSc Artificial Intelligence</div>
+                            </div>
+                            <div class="experience-company">Massachusetts Institute of Technology</div>
+                            <div class="experience-period">January 2016 – December 2020</div>
+                            <div class="experience-description">
+                                GPA: 3.4/4.0
+                                <br><br>
+                                Courses included:
+                                <div class="experience-responsibilities">
+                                    <ul>
+                                        <li>lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
+                                        <li>lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
+                                        <li>lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2 class="section-title">Skills & Hobbies</h2>
+                    <div class="experience-list">
+                        <div class="experience-item">
+                            <div class="experience-header">
+                                <span class="experience-icon">💻</span>
+                                <div class="experience-title">Technical Skills</div>
+                            </div>
+                            <div class="experience-description">
+                                <div class="experience-responsibilities">
+                                    <ul>
+                                        <li><strong>🐍 PYTHON</strong></li>
+                                        <li><strong>📊 DATA SCIENCE</strong></li>
+                                        <li><strong>🗄️ SQL</strong></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="experience-item">
+                            <div class="experience-header">
+                                <span class="experience-icon">🎯</span>
+                                <div class="experience-title">Hobbies</div>
+                            </div>
+                            <div class="experience-description">
+                                <div class="experience-responsibilities">
+                                    <ul>
+                                        <li><strong>🥾 HIKING</strong></li>
+                                        <li><strong>🐱 CATS</strong></li>
+                                        <li><strong>📸 PHOTOGRAPHY</strong></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2 class="section-title">Awards</h2>
+                    <div class="experience-list">
+                        <div class="experience-item">
+                            <div class="experience-header">
+                                <span class="experience-icon">🏆</span>
+                                <div class="experience-title">Neural Networks and Deep Learning</div>
+                            </div>
+                            <div class="experience-description">
+                                An online non-credit course authorized by DeepLearning.AI and offered through Coursera
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </main>
 
-            <div class="section">
-                <h2 class="section-title">Education</h2>
-                <div class="experience-list">
-                    <div class="experience-item">
-                        <div class="experience-header">
-                            <span class="experience-icon">🎓</span>
-                            <div class="experience-title">PhD Artificial Intelligence</div>
-                        </div>
-                        <div class="experience-company">Stanford University</div>
-                        <div class="experience-period">January 2016 – December 2020</div>
-                        <div class="experience-description">
-                            Thesis on <em>Why LLMs are awesome</em>. Supervised by <strong>Prof Joe Smith</strong>. Presented papers at 5 IEEE conferences with the contributions being published in 2 Springer journals.
-                        </div>
-                    </div>
-
-                    <div class="experience-item">
-                        <div class="experience-header">
-                            <span class="experience-icon">🎓</span>
-                            <div class="experience-title">MEng Artificial Intelligence</div>
-                        </div>
-                        <div class="experience-company">Massachusetts Institute of Technology</div>
-                        <div class="experience-period">January 2016 – December 2020</div>
-                        <div class="experience-description">
-                            GPA: 3.8/4.0
-                            <br><br>
-                            Courses included:
-                            <div class="experience-responsibilities">
-                                <ul>
-                                    <li>lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
-                                    <li>lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
-                                    <li>lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="experience-item">
-                        <div class="experience-header">
-                            <span class="experience-icon">🎓</span>
-                            <div class="experience-title">BSc Artificial Intelligence</div>
-                        </div>
-                        <div class="experience-company">Massachusetts Institute of Technology</div>
-                        <div class="experience-period">January 2016 – December 2020</div>
-                        <div class="experience-description">
-                            GPA: 3.4/4.0
-                            <br><br>
-                            Courses included:
-                            <div class="experience-responsibilities">
-                                <ul>
-                                    <li>lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
-                                    <li>lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
-                                    <li>lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <footer class="footer">
+            <div class="container">
+                <p>© 2024 Me. This work is licensed under <a href="#">CC BY-NC-ND 4.0</a></p>
+                <p>Published with <a href="#">Hugo Blog Builder</a> — the free, <a href="#">open source</a> website builder that empowers creators.</p>
             </div>
-
-            <div class="section">
-                <h2 class="section-title">Skills & Hobbies</h2>
-                <div class="experience-list">
-                    <div class="experience-item">
-                        <div class="experience-header">
-                            <span class="experience-icon">💻</span>
-                            <div class="experience-title">Technical Skills</div>
-                        </div>
-                        <div class="experience-description">
-                            <div class="experience-responsibilities">
-                                <ul>
-                                    <li><strong>🐍 PYTHON</strong></li>
-                                    <li><strong>📊 DATA SCIENCE</strong></li>
-                                    <li><strong>🗄️ SQL</strong></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="experience-item">
-                        <div class="experience-header">
-                            <span class="experience-icon">🎯</span>
-                            <div class="experience-title">Hobbies</div>
-                        </div>
-                        <div class="experience-description">
-                            <div class="experience-responsibilities">
-                                <ul>
-                                    <li><strong>🥾 HIKING</strong></li>
-                                    <li><strong>🐱 CATS</strong></li>
-                                    <li><strong>📸 PHOTOGRAPHY</strong></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="section">
-                <h2 class="section-title">Awards</h2>
-                <div class="experience-list">
-                    <div class="experience-item">
-                        <div class="experience-header">
-                            <span class="experience-icon">🏆</span>
-                            <div class="experience-title">Neural Networks and Deep Learning</div>
-                        </div>
-                        <div class="experience-description">
-                            An online non-credit course authorized by DeepLearning.AI and offered through Coursera
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <footer class="footer">
-        <div class="container">
-            <p>© 2024 Me. This work is licensed under <a href="#">CC BY-NC-ND 4.0</a></p>
-            <p>Published with <a href="#">Hugo Blog Builder</a> — the free, <a href="#">open source</a> website builder that empowers creators.</p>
-        </div>
-    </footer>
+        </footer>
+    </div>
 
     <script>
         // Navigation items data
@@ -574,14 +603,21 @@
         // Update mobile nav with hidden items
         function updateMobileNav() {
             const navMobile = document.getElementById('navMobile');
-            const visibleNavItems = document.querySelectorAll('.nav a:not([style*="display: none"])');
-            const hiddenItems = navItems.slice(visibleNavItems.length);
+            const nav = document.querySelector('.nav');
+            const visibleNavItems = Array.from(nav.children).filter(item => 
+                window.getComputedStyle(item).display !== 'none'
+            );
+            const hiddenItems = navItems.filter((item, index) => index >= visibleNavItems.length);
             
             navMobile.innerHTML = '';
             hiddenItems.forEach(item => {
                 const link = document.createElement('a');
                 link.href = item.href;
                 link.textContent = item.text;
+                if (item.href === window.location.pathname || 
+                    (item.href === 'experience.html' && window.location.pathname.includes('experience'))) {
+                    link.classList.add('active');
+                }
                 navMobile.appendChild(link);
             });
         }
@@ -618,12 +654,29 @@
             }
         });
 
-        // Add subtle parallax effect to background
+        // Global lighting effect
+        const lightEffect = document.getElementById('lightEffect');
+        
         document.addEventListener('mousemove', (e) => {
+            // Update light position
+            lightEffect.style.left = e.clientX + 'px';
+            lightEffect.style.top = e.clientY + 'px';
+            
+            // Add subtle parallax effect to background
             const x = (e.clientX / window.innerWidth) * 100;
             const y = (e.clientY / window.innerHeight) * 100;
             
             document.body.style.backgroundPosition = `${50 + (x - 50) * 0.1}% ${50 + (y - 50) * 0.1}%`;
+        });
+
+        // Hide light effect when mouse leaves window
+        document.addEventListener('mouseleave', () => {
+            lightEffect.style.opacity = '0';
+        });
+
+        // Show light effect when mouse enters window
+        document.addEventListener('mouseenter', () => {
+            lightEffect.style.opacity = '1';
         });
     </script>
 </body>
