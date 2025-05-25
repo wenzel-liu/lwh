@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RNA代谢在心脏疾病中的关键作用 - Wenzel Liu</title>
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: url('../assets/images/background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #ffffff;
+            line-height: 1.6;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Background overlay with increased blur effect */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('../assets/images/background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            filter: blur(5px) brightness(0.6);
+            z-index: -2;
+        }
+
+        /* Light overlay for better text readability */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Navigation */
+        .header {
+            padding: 20px 0;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex: 1;
+        }
+
+        .nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 12px 24px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            position: relative;
+            white-space: nowrap;
+        }
+
+        .nav a:hover, .nav a.active {
+            color: #4CAF50;
+            background: rgba(76, 175, 80, 0.1);
+            box-shadow: 0 4px 16px rgba(76, 175, 80, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Main Content */
+        .main-wrapper {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .main-content {
+            padding: 60px 0;
+            flex: 1;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #4CAF50;
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: #66BB6A;
+            transform: translateX(-5px);
+        }
+
+        .post-header {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .post-title {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+
+        .post-meta {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+        }
+
+        .post-date {
+            color: #4CAF50;
+            font-weight: 600;
+        }
+
+        .post-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 15px;
+        }
+
+        .tag {
+            background: rgba(76, 175, 80, 0.2);
+            color: #4CAF50;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .post-content {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 40px;
+            margin-bottom: 40px;
+        }
+
+        .post-content h1 {
+            font-size: 36px;
+            margin-bottom: 30px;
+            color: #ffffff;
+        }
+
+        .post-content h2 {
+            font-size: 28px;
+            margin: 30px 0 20px 0;
+            color: #ffffff;
+        }
+
+        .post-content h3 {
+            font-size: 22px;
+            margin: 25px 0 15px 0;
+            color: #4CAF50;
+        }
+
+        .post-content h4 {
+            font-size: 18px;
+            margin: 20px 0 10px 0;
+            color: #66BB6A;
+        }
+
+        .post-content p {
+            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 16px;
+        }
+
+        .post-content ul, .post-content ol {
+            margin: 20px 0;
+            padding-left: 30px;
+        }
+
+        .post-content li {
+            margin-bottom: 8px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .post-content strong {
+            color: #4CAF50;
+            font-weight: 600;
+        }
+
+        .post-content a {
+            color: #4CAF50;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .post-content a:hover {
+            color: #66BB6A;
+            text-decoration: underline;
+        }
+
+        .post-content hr {
+            border: none;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.2);
+            margin: 30px 0;
+        }
+
+        .post-content em {
+            color: rgba(255, 255, 255, 0.8);
+            font-style: italic;
+        }
+
+        .post-content code {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            color: #4CAF50;
+        }
+
+        .post-content pre {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 20px 0;
+            border-left: 4px solid #4CAF50;
+        }
+
+        .post-content pre code {
+            background: none;
+            padding: 0;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px 0;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #cccccc;
+            font-size: 14px;
+            margin-top: auto;
+        }
+
+        .footer a {
+            color: #4CAF50;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: #66BB6A;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .post-title {
+                font-size: 36px;
+            }
+
+            .post-content {
+                padding: 30px 20px;
+            }
+
+            .post-content h1 {
+                font-size: 28px;
+            }
+
+            .post-content h2 {
+                font-size: 24px;
+            }
+
+            .post-meta {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .post-content {
+                padding: 20px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="nav-container">
+                <nav class="nav">
+                    <a href="../index.html">Bio</a>
+                    <a href="../blog.html" class="active">Blog</a>
+                    <a href="../experience.html">Experience</a>
+                    <a href="../research.html">Papers & Talks</a>
+                    <a href="../projects.html">Projects</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-wrapper">
+        <main class="container">
+            <div class="main-content">
+                <a href="../blog.html" class="back-link">
+                    ← 返回博客列表
+                </a>
+
+                <div class="post-header">
+                    <h1 class="post-title">RNA代谢在心脏疾病中的关键作用</h1>
+                    <div class="post-meta">
+                        <span class="post-date">2025年1月10日</span>
+                        <span>•</span>
+                        <span>🔬 研究分享</span>
+                    </div>
+                    <div class="post-tags">
+                        <span class="tag">RNA metabolism</span>
+                        <span class="tag">heart disease</span>
+                        <span class="tag">Ddx41</span>
+                        <span class="tag">Rbm15b</span>
+                        <span class="tag">cardiac remodeling</span>
+                    </div>
+                </div>
+
+                <div class="post-content">
+                    <p>心脏重构是多种心血管疾病的共同病理过程，其中RNA代谢的调控起着至关重要的作用。在我们最新的研究中，我们发现了两个关键的RNA代谢调节因子：<strong>DEAD-box RNA解旋酶Ddx41</strong>和<strong>N6-甲基腺苷调节因子Rbm15b</strong>。</p>
+
+                    <h2>研究背景</h2>
+
+                    <h3>心脏重构的分子机制</h3>
+                    <p>心脏重构是指在病理条件下，心脏在结构和功能上发生的适应性改变。这个过程涉及：</p>
+                    <ul>
+                        <li>心肌细胞肥大</li>
+                        <li>细胞外基质重塑</li>
+                        <li>心肌纤维化</li>
+                        <li>血管新生异常</li>
+                    </ul>
+
+                    <h3>RNA代谢的重要性</h3>
+                    <p>RNA代谢包括RNA的合成、加工、修饰、转运和降解等过程。这些过程的异常调控与多种疾病密切相关，包括：</p>
+                    <ol>
+                        <li><strong>转录调控异常</strong></li>
+                        <li><strong>RNA剪接模式改变</strong></li>
+                        <li><strong>RNA修饰失衡</strong></li>
+                        <li><strong>microRNA表达异常</strong></li>
+                    </ol>
+
+                    <h2>我们的研究发现</h2>
+
+                    <h3>Ddx41在心脏重构中的作用</h3>
+                    <p><strong>DEAD-box RNA解旋酶Ddx41</strong>是我们重点研究的RNA代谢调节因子之一。</p>
+
+                    <h4>主要发现：</h4>
+                    <ul>
+                        <li>Ddx41在压力超负荷条件下表达显著上调</li>
+                        <li>Ddx41参与调控心肌细胞的RNA代谢过程</li>
+                        <li>Ddx41缺失可以减轻心脏重构的程度</li>
+                    </ul>
+
+                    <h4>机制研究：</h4>
+                    <p>我们通过以下实验方法揭示了Ddx41的作用机制：</p>
+                    <pre><code>实验设计：
+1. 转基因小鼠模型构建
+2. 压力超负荷诱导（主动脉缩窄术）
+3. RNA测序分析
+4. 蛋白质组学分析
+5. 功能验证实验</code></pre>
+
+                    <h3>Rbm15b的保护作用</h3>
+                    <p><strong>N6-甲基腺苷调节因子Rbm15b</strong>显示出对心脏的保护作用。</p>
+
+                    <h4>关键结果：</h4>
+                    <ul>
+                        <li>Rbm15b在心脏重构过程中发挥保护作用</li>
+                        <li>通过调节RNA甲基化修饰影响基因表达</li>
+                        <li>Rbm15b过表达可以改善心脏功能</li>
+                    </ul>
+
+                    <h2>临床意义</h2>
+
+                    <h3>诊断价值</h3>
+                    <p>这些RNA代谢调节因子可能成为：</p>
+                    <ul>
+                        <li><strong>早期诊断标志物</strong>：在心脏结构改变之前检测到分子水平的变化</li>
+                        <li><strong>预后评估指标</strong>：预测疾病进展和治疗反应</li>
+                        <li><strong>疗效监测工具</strong>：评估治疗干预的效果</li>
+                    </ul>
+
+                    <h3>治疗潜力</h3>
+                    <p>基于我们的研究发现，可能的治疗策略包括：</p>
+                    <ol>
+                        <li><strong>靶向Ddx41的小分子抑制剂</strong></li>
+                        <li><strong>Rbm15b功能增强药物</strong></li>
+                        <li><strong>RNA甲基化修饰调节剂</strong></li>
+                    </ol>
+
+                    <h2>未来研究方向</h2>
+
+                    <h3>短期目标</h3>
+                    <ul>
+                        <li>深入研究Ddx41和Rbm15b的下游分子机制</li>
+                        <li>开发特异性的药物靶点</li>
+                        <li>验证在其他心血管疾病模型中的作用</li>
+                    </ul>
+
+                    <h3>长期愿景</h3>
+                    <ul>
+                        <li>推进转化医学研究</li>
+                        <li>开展临床前药物筛选</li>
+                        <li>探索个性化医疗的可能性</li>
+                    </ul>
+
+                    <h2>学术交流与合作</h2>
+                    <p>我们的研究成果已在多个国际会议上展示：</p>
+
+                    <h3>会议展示</h3>
+                    <ul>
+                        <li><strong>AHA Scientific Sessions 2023</strong>：首次报告Ddx41的研究发现</li>
+                        <li><strong>JCS 2024</strong>：展示Ddx41和Rbm15b的双重研究成果</li>
+                        <li><strong>ISHR 2024/2025</strong>：深入探讨RNA甲基化在心脏保护中的作用</li>
+                    </ul>
+
+                    <h3>即将发表</h3>
+                    <p>我们正在准备将这些研究成果整理成高质量的学术论文，投稿至顶级心血管疾病期刊。</p>
+
+                    <h2>结语</h2>
+                    <p>RNA代谢在心脏疾病中的作用是一个充满前景的研究领域。通过深入理解这些分子机制，我们有望为心血管疾病的诊断和治疗开辟新的途径。</p>
+
+                    <p>这项研究不仅加深了我们对心脏病理生理学的理解，也为未来的精准医疗提供了重要的理论基础。</p>
+
+                    <hr>
+                    <p><em>想要了解更多关于我们研究的详细信息，欢迎查看我的<a href="../research.html">Publications页面</a>或直接与我联系。</em></p>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <div class="container">
+                <p>© 2025. This work is licensed under <a href="#">CC BY-NC-ND 4.0</a></p>
+                <p>Created by Wenzel Liu, ChatGPT and Claude.</p>
+            </div>
+        </footer>
+    </div>
+</body>
+</html> 

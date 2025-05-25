@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>东京学术生活：在日本进行心血管研究的体验 - Wenzel Liu</title>
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: url('../assets/images/background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #ffffff;
+            line-height: 1.6;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Background overlay with increased blur effect */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('../assets/images/background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            filter: blur(5px) brightness(0.6);
+            z-index: -2;
+        }
+
+        /* Light overlay for better text readability */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Navigation */
+        .header {
+            padding: 20px 0;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex: 1;
+        }
+
+        .nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 12px 24px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            position: relative;
+            white-space: nowrap;
+        }
+
+        .nav a:hover, .nav a.active {
+            color: #4CAF50;
+            background: rgba(76, 175, 80, 0.1);
+            box-shadow: 0 4px 16px rgba(76, 175, 80, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Main Content */
+        .main-wrapper {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .main-content {
+            padding: 60px 0;
+            flex: 1;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #4CAF50;
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: #66BB6A;
+            transform: translateX(-5px);
+        }
+
+        .post-header {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .post-title {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+
+        .post-meta {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+        }
+
+        .post-date {
+            color: #4CAF50;
+            font-weight: 600;
+        }
+
+        .post-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 15px;
+        }
+
+        .tag {
+            background: rgba(76, 175, 80, 0.2);
+            color: #4CAF50;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .post-content {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 40px;
+            margin-bottom: 40px;
+        }
+
+        .post-content h1 {
+            font-size: 36px;
+            margin-bottom: 30px;
+            color: #ffffff;
+        }
+
+        .post-content h2 {
+            font-size: 28px;
+            margin: 30px 0 20px 0;
+            color: #ffffff;
+        }
+
+        .post-content h3 {
+            font-size: 22px;
+            margin: 25px 0 15px 0;
+            color: #4CAF50;
+        }
+
+        .post-content h4 {
+            font-size: 18px;
+            margin: 20px 0 10px 0;
+            color: #66BB6A;
+        }
+
+        .post-content p {
+            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 16px;
+        }
+
+        .post-content ul, .post-content ol {
+            margin: 20px 0;
+            padding-left: 30px;
+        }
+
+        .post-content li {
+            margin-bottom: 8px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .post-content strong {
+            color: #4CAF50;
+            font-weight: 600;
+        }
+
+        .post-content a {
+            color: #4CAF50;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .post-content a:hover {
+            color: #66BB6A;
+            text-decoration: underline;
+        }
+
+        .post-content hr {
+            border: none;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.2);
+            margin: 30px 0;
+        }
+
+        .post-content em {
+            color: rgba(255, 255, 255, 0.8);
+            font-style: italic;
+        }
+
+        .post-content code {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            color: #4CAF50;
+        }
+
+        .post-content pre {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 20px 0;
+            border-left: 4px solid #4CAF50;
+        }
+
+        .post-content pre code {
+            background: none;
+            padding: 0;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px 0;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #cccccc;
+            font-size: 14px;
+            margin-top: auto;
+        }
+
+        .footer a {
+            color: #4CAF50;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: #66BB6A;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .post-title {
+                font-size: 36px;
+            }
+
+            .post-content {
+                padding: 30px 20px;
+            }
+
+            .post-content h1 {
+                font-size: 28px;
+            }
+
+            .post-content h2 {
+                font-size: 24px;
+            }
+
+            .post-meta {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .post-content {
+                padding: 20px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="nav-container">
+                <nav class="nav">
+                    <a href="../index.html">Bio</a>
+                    <a href="../blog.html" class="active">Blog</a>
+                    <a href="../experience.html">Experience</a>
+                    <a href="../research.html">Papers & Talks</a>
+                    <a href="../projects.html">Projects</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-wrapper">
+        <main class="container">
+            <div class="main-content">
+                <a href="../blog.html" class="back-link">
+                    ← 返回博客列表
+                </a>
+
+                <div class="post-header">
+                    <h1 class="post-title">东京学术生活：在日本进行心血管研究的体验</h1>
+                    <div class="post-meta">
+                        <span class="post-date">2025年1月5日</span>
+                        <span>•</span>
+                        <span>🎓 学术生活</span>
+                    </div>
+                    <div class="post-tags">
+                        <span class="tag">Tokyo</span>
+                        <span class="tag">Japan</span>
+                        <span class="tag">academic life</span>
+                        <span class="tag">research experience</span>
+                        <span class="tag">international study</span>
+                    </div>
+                </div>
+
+                <div class="post-content">
+                    <p>作为一名在东京从事心血管疾病研究的国际学者，我想分享一些在日本学术环境中的独特体验和感悟。</p>
+
+                    <h2>🏛️ 研究环境</h2>
+
+                    <h3>先进的实验设施</h3>
+                    <p>日本的医学研究机构拥有世界一流的实验设备：</p>
+                    <ul>
+                        <li><strong>高通量测序平台</strong>：最新的Illumina和Oxford Nanopore技术</li>
+                        <li><strong>先进成像设备</strong>：高分辨率共聚焦显微镜和活体成像系统</li>
+                        <li><strong>精密分析仪器</strong>：质谱仪、流式细胞仪等高端设备</li>
+                    </ul>
+
+                    <h3>严谨的研究文化</h3>
+                    <p>日本学术界的严谨性给我留下了深刻印象：</p>
+
+                    <h4>实验记录</h4>
+                    <ul>
+                        <li>详细的实验笔记要求</li>
+                        <li>严格的数据管理制度</li>
+                        <li>可重复性验证的重视</li>
+                    </ul>
+
+                    <h4>质量控制</h4>
+                    <ul>
+                        <li>多重验证机制</li>
+                        <li>同行评议的严格性</li>
+                        <li>对细节的极致追求</li>
+                    </ul>
+
+                    <h2>🌸 文化适应</h2>
+
+                    <h3>语言挑战与机遇</h3>
+                    <p>在日本进行研究，语言是一个有趣的挑战：</p>
+
+                    <p><strong>挑战方面：</strong></p>
+                    <ul>
+                        <li>学术术语的准确翻译</li>
+                        <li>会议讨论中的语言切换</li>
+                        <li>日文文献的阅读理解</li>
+                    </ul>
+
+                    <p><strong>收获方面：</strong></p>
+                    <ul>
+                        <li>培养了多语言学术交流能力</li>
+                        <li>接触到日文原创研究文献</li>
+                        <li>增强了国际化视野</li>
+                    </ul>
+
+                    <h3>工作文化差异</h3>
+
+                    <h4>时间管理</h4>
+                    <pre><code>日本学术界的时间文化：
+- 准时性的极端重视
+- 长期规划的习惯
+- 细致的时间分配</code></pre>
+
+                    <h4>团队合作</h4>
+                    <ul>
+                        <li><strong>集体决策</strong>：充分讨论后的共识</li>
+                        <li><strong>等级秩序</strong>：对前辈的尊重文化</li>
+                        <li><strong>团队精神</strong>：共同目标的追求</li>
+                    </ul>
+
+                    <h2>🔬 研究合作体验</h2>
+
+                    <h3>国际合作项目</h3>
+                    <p>参与跨国研究项目让我受益匪浅：</p>
+
+                    <h4>多中心研究</h4>
+                    <ul>
+                        <li>与美国、欧洲研究团队的协作</li>
+                        <li>不同文化背景下的研究方法比较</li>
+                        <li>全球视野下的疾病研究</li>
+                    </ul>
+
+                    <h4>技术交流</h4>
+                    <p>我有幸参与了多个技术交流项目：</p>
+                    <ol>
+                        <li><strong>RNA测序技术培训</strong></li>
+                        <li><strong>动物模型建立合作</strong></li>
+                        <li><strong>生物信息学方法学习</strong></li>
+                    </ol>
+
+                    <h3>导师指导模式</h3>
+                    <p>日本的导师制度有其独特之处：</p>
+
+                    <p><strong>特点：</strong></p>
+                    <ul>
+                        <li>师父制的传承关系</li>
+                        <li>全方位的指导支持</li>
+                        <li>长期的职业规划建议</li>
+                    </ul>
+
+                    <p><strong>收获：</strong></p>
+                    <ul>
+                        <li>严谨的科学思维训练</li>
+                        <li>深入的专业技能培养</li>
+                        <li>人生导师的宝贵建议</li>
+                    </ul>
+
+                    <h2>📊 学术成果与成长</h2>
+
+                    <h3>研究产出</h3>
+                    <p>在东京的研究期间，我取得了以下成果：</p>
+
+                    <h4>论文发表</h4>
+                    <ul>
+                        <li><strong>一作论文</strong>：3篇高影响因子期刊文章</li>
+                        <li><strong>合作论文</strong>：8篇国际期刊论文</li>
+                        <li><strong>综述文章</strong>：2篇领域综述</li>
+                    </ul>
+
+                    <h4>会议展示</h4>
+                    <ul>
+                        <li><strong>国际会议</strong>：5次大型学术会议报告</li>
+                        <li><strong>本地研讨会</strong>：多次学术交流分享</li>
+                        <li><strong>学生论坛</strong>：青年学者交流活动</li>
+                    </ul>
+
+                    <h3>技能提升</h3>
+
+                    <h4>技术能力</h4>
+                    <ul>
+                        <li>掌握了最新的RNA测序分析方法</li>
+                        <li>学会了高级统计分析技术</li>
+                        <li>培养了独立研究能力</li>
+                    </ul>
+
+                    <h4>软技能</h4>
+                    <ul>
+                        <li><strong>跨文化交流</strong>：国际合作能力</li>
+                        <li><strong>项目管理</strong>：研究项目的统筹规划</li>
+                        <li><strong>学术写作</strong>：英文学术论文写作</li>
+                    </ul>
+
+                    <h2>💡 经验分享</h2>
+
+                    <h3>给未来国际学者的建议</h3>
+                    <p>基于我的经验，我想给计划来日本进行研究的同学一些建议：</p>
+
+                    <h4>准备阶段</h4>
+                    <ol>
+                        <li><strong>语言准备</strong>：基础日语学习很有帮助</li>
+                        <li><strong>文化了解</strong>：提前了解日本学术文化</li>
+                        <li><strong>研究规划</strong>：明确的研究目标和计划</li>
+                    </ol>
+
+                    <h4>适应期</h4>
+                    <ol>
+                        <li><strong>保持开放心态</strong>：接受文化差异</li>
+                        <li><strong>积极沟通</strong>：主动与同事交流</li>
+                        <li><strong>持续学习</strong>：不断提升专业技能</li>
+                    </ol>
+
+                    <h4>发展期</h4>
+                    <ol>
+                        <li><strong>建立网络</strong>：拓展学术人脉</li>
+                        <li><strong>寻求机会</strong>：参与更多研究项目</li>
+                        <li><strong>规划未来</strong>：思考长期职业发展</li>
+                    </ol>
+
+                    <h2>🔮 未来展望</h2>
+
+                    <h3>研究方向</h3>
+                    <p>在东京的学术经历让我对未来的研究方向有了更清晰的认识：</p>
+                    <ul>
+                        <li>继续深入RNA代谢研究</li>
+                        <li>探索精准医疗在心血管领域的应用</li>
+                        <li>推进国际合作研究项目</li>
+                    </ul>
+
+                    <h3>职业发展</h3>
+                    <ul>
+                        <li><strong>短期目标</strong>：完成博士后研究</li>
+                        <li><strong>中期规划</strong>：建立独立研究团队</li>
+                        <li><strong>长期愿景</strong>：成为领域内的知名学者</li>
+                    </ul>
+
+                    <h2>结语</h2>
+                    <p>在东京的学术生活是一段珍贵的经历。这里不仅让我在专业上得到了极大的提升，也让我在人生观和世界观上有了新的认识。</p>
+
+                    <p>对于每一位有志于国际学术研究的同行，我鼓励大家勇敢地走出舒适圈，拥抱不同的文化和学术环境。这样的经历将会成为你人生中最宝贵的财富。</p>
+
+                    <hr>
+                    <p><em>如果你对在日本进行学术研究有任何问题，欢迎随时与我交流！</em></p>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <div class="container">
+                <p>© 2025. This work is licensed under <a href="#">CC BY-NC-ND 4.0</a></p>
+                <p>Created by Wenzel Liu, ChatGPT and Claude.</p>
+            </div>
+        </footer>
+    </div>
+</body>
+</html> 

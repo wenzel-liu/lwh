@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>欢迎来到我的博客 - Wenzel Liu</title>
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: url('../assets/images/background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #ffffff;
+            line-height: 1.6;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Background overlay with increased blur effect */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('../assets/images/background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            filter: blur(5px) brightness(0.6);
+            z-index: -2;
+        }
+
+        /* Light overlay for better text readability */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Navigation */
+        .header {
+            padding: 20px 0;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex: 1;
+        }
+
+        .nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 12px 24px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            position: relative;
+            white-space: nowrap;
+        }
+
+        .nav a:hover, .nav a.active {
+            color: #4CAF50;
+            background: rgba(76, 175, 80, 0.1);
+            box-shadow: 0 4px 16px rgba(76, 175, 80, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Main Content */
+        .main-wrapper {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .main-content {
+            padding: 60px 0;
+            flex: 1;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #4CAF50;
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: #66BB6A;
+            transform: translateX(-5px);
+        }
+
+        .post-header {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .post-title {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+
+        .post-meta {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+        }
+
+        .post-date {
+            color: #4CAF50;
+            font-weight: 600;
+        }
+
+        .post-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 15px;
+        }
+
+        .tag {
+            background: rgba(76, 175, 80, 0.2);
+            color: #4CAF50;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .post-content {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 40px;
+            margin-bottom: 40px;
+        }
+
+        .post-content h1 {
+            font-size: 36px;
+            margin-bottom: 30px;
+            color: #ffffff;
+        }
+
+        .post-content h2 {
+            font-size: 28px;
+            margin: 30px 0 20px 0;
+            color: #ffffff;
+        }
+
+        .post-content h3 {
+            font-size: 22px;
+            margin: 25px 0 15px 0;
+            color: #4CAF50;
+        }
+
+        .post-content p {
+            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 16px;
+        }
+
+        .post-content ul, .post-content ol {
+            margin: 20px 0;
+            padding-left: 30px;
+        }
+
+        .post-content li {
+            margin-bottom: 8px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .post-content strong {
+            color: #4CAF50;
+            font-weight: 600;
+        }
+
+        .post-content a {
+            color: #4CAF50;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .post-content a:hover {
+            color: #66BB6A;
+            text-decoration: underline;
+        }
+
+        .post-content hr {
+            border: none;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.2);
+            margin: 30px 0;
+        }
+
+        .post-content em {
+            color: rgba(255, 255, 255, 0.8);
+            font-style: italic;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px 0;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #cccccc;
+            font-size: 14px;
+            margin-top: auto;
+        }
+
+        .footer a {
+            color: #4CAF50;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: #66BB6A;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .post-title {
+                font-size: 36px;
+            }
+
+            .post-content {
+                padding: 30px 20px;
+            }
+
+            .post-content h1 {
+                font-size: 28px;
+            }
+
+            .post-content h2 {
+                font-size: 24px;
+            }
+
+            .post-meta {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .post-content {
+                padding: 20px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="nav-container">
+                <nav class="nav">
+                    <a href="../index.html">Bio</a>
+                    <a href="../blog.html" class="active">Blog</a>
+                    <a href="../experience.html">Experience</a>
+                    <a href="../research.html">Papers & Talks</a>
+                    <a href="../projects.html">Projects</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-wrapper">
+        <main class="container">
+            <div class="main-content">
+                <a href="../blog.html" class="back-link">
+                    ← 返回博客列表
+                </a>
+
+                <div class="post-header">
+                    <h1 class="post-title">欢迎来到我的博客</h1>
+                    <div class="post-meta">
+                        <span class="post-date">2025年1月15日</span>
+                        <span>•</span>
+                        <span>📝 个人分享</span>
+                    </div>
+                    <div class="post-tags">
+                        <span class="tag">welcome</span>
+                        <span class="tag">introduction</span>
+                        <span class="tag">cardiology</span>
+                        <span class="tag">research</span>
+                    </div>
+                </div>
+
+                <div class="post-content">
+                    <p>大家好！我是Wenzel Liu，一名心脏病学的医学博士和博士研究生。欢迎来到我的个人博客。</p>
+
+                    <h2>关于这个博客</h2>
+                    <p>在这个博客中，我计划分享：</p>
+
+                    <h3>🔬 研究内容</h3>
+                    <ul>
+                        <li>心血管疾病的最新研究进展</li>
+                        <li>RNA代谢与心脏重构的关系</li>
+                        <li>生物信息学在心脏病学中的应用</li>
+                    </ul>
+
+                    <h3>📚 学术生活</h3>
+                    <ul>
+                        <li>研究生涯的经验分享</li>
+                        <li>论文写作与发表技巧</li>
+                        <li>学术会议见闻</li>
+                    </ul>
+
+                    <h3>💡 技术思考</h3>
+                    <ul>
+                        <li>人工智能在医学中的应用</li>
+                        <li>数据科学与生物医学研究</li>
+                        <li>数字健康技术的发展</li>
+                    </ul>
+
+                    <h2>我的研究兴趣</h2>
+                    <p>目前我的主要研究方向包括：</p>
+                    <ul>
+                        <li><strong>RNA代谢调控</strong>：研究RNA结合蛋白和RNA修饰在心脏疾病中的作用</li>
+                        <li><strong>心脏重构机制</strong>：探索压力超负荷引起的心脏重构的分子机制</li>
+                        <li><strong>生物信息学应用</strong>：利用大数据分析方法研究心血管疾病</li>
+                    </ul>
+
+                    <h2>最新动态</h2>
+                    <p>我刚刚在ISHR 2024和JCS 2024会议上展示了关于DEAD-box RNA解旋酶Ddx41和N6-甲基腺苷调节因子Rbm15b的研究成果。这些研究揭示了RNA代谢在心脏病理过程中的重要作用。</p>
+
+                    <h2>联系方式</h2>
+                    <p>如果你对我的研究感兴趣，或者想要讨论相关话题，欢迎通过以下方式联系我：</p>
+                    <ul>
+                        <li>📧 Email: <a href="mailto:wenzel_liu@outlook.jp">wenzel_liu@outlook.jp</a></li>
+                        <li>🔗 LinkedIn: <a href="https://www.linkedin.com/in/wenhao-liu-m-d-649112178/" target="_blank">Wenhao Liu</a></li>
+                        <li>📄 ORCID: <a href="https://orcid.org/0000-0002-2243-8391" target="_blank">0000-0002-2243-8391</a></li>
+                    </ul>
+
+                    <p>期待与大家的交流！</p>
+
+                    <hr>
+                    <p><em>这篇文章发表于2025年1月15日</em></p>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <div class="container">
+                <p>© 2025. This work is licensed under <a href="#">CC BY-NC-ND 4.0</a></p>
+                <p>Created by Wenzel Liu, ChatGPT and Claude.</p>
+            </div>
+        </footer>
+    </div>
+</body>
+</html> 
