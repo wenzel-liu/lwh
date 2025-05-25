@@ -1,15 +1,16 @@
 @import "minimal-mistakes";
 
-/* Custom styles for publications page title positioning */
+/* Custom styles for external title positioning */
 
-/* Publications title wrapper - positioned above content area, aligned with content column */
-.publications-title-wrapper {
+/* External title wrapper - positioned above content area, aligned with content text */
+.external-title-wrapper {
   /* Desktop ≥ 1024px: Position title above content area, aligned with content */
   @media (min-width: 1024px) {
     float: inline-end;
     width: calc(100% - 200px); /* $right-sidebar-width-narrow */
     padding-inline-end: 200px;
     margin-bottom: 1.5rem; /* mt-6 equivalent */
+    /* No additional padding - align with content text */
   }
   
   @media (min-width: 1280px) {
@@ -24,8 +25,8 @@
   }
 }
 
-/* Publications page title styling */
-.page__title--publications {
+/* External page title styling */
+.page__title--external {
   margin-top: 0;
   margin-bottom: 0;
   line-height: 1.2;
@@ -36,8 +37,8 @@
   }
 }
 
-/* Publications archive content adjustments */
-.archive--publications {
+/* Archive content adjustments for external title layout */
+.archive--with-external-title {
   /* Desktop ≥ 1024px: Position alongside sidebar */
   @media (min-width: 1024px) {
     float: inline-end;
@@ -56,4 +57,17 @@
     width: 100%;
     margin-top: 0;
   }
+}
+
+/* Legacy support for publications layout */
+.publications-title-wrapper {
+  @extend .external-title-wrapper;
+}
+
+.page__title--publications {
+  @extend .page__title--external;
+}
+
+.archive--publications {
+  @extend .archive--with-external-title;
 } 
