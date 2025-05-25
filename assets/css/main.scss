@@ -3,6 +3,8 @@
 search: false
 ---
 
+/* CSS Compiled at: 2024-12-28 - Force cache refresh */
+
 @charset "utf-8";
 
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
@@ -535,5 +537,116 @@ body {
   /* 确保author name从正确位置开始 */
   .layout--single .sidebar .author__name {
     margin-top: 0 !important;
+  }
+}
+
+/* 强力修复：专门针对布局对齐问题的CSS */
+@media screen and (min-width: 1024px) {
+  /* 更强的选择器确保覆盖所有可能的样式 */
+  body.layout--single #main {
+    display: flex !important;
+    align-items: flex-start !important;
+    gap: 2rem !important;
+    margin: 0 auto !important;
+    padding: 0 1em !important;
+    max-width: 1400px !important;
+  }
+  
+  /* 强制侧边栏从顶部开始 */
+  body.layout--single .sidebar.sticky {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    align-self: flex-start !important;
+    flex: 0 0 200px !important;
+    max-width: 200px !important;
+  }
+  
+  /* 强制页面内容从顶部开始 */
+  body.layout--single article.page {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    flex: 2 !important;
+    align-self: flex-start !important;
+  }
+  
+  /* 强制页面内部包装器从顶部开始 */
+  body.layout--single .page__inner-wrap {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+  
+  /* 强制页面标题从顶部开始 */
+  body.layout--single h1.page__title {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+  
+  /* 移除可能影响对齐的所有margin和padding */
+  body.layout--single .sidebar > * {
+    margin-top: 0 !important;
+  }
+  
+  body.layout--single .sidebar > *:first-child {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+  
+  /* 确保author profile卡片本身没有顶部间距 */
+  body.layout--single .sidebar h-card,
+  body.layout--single .sidebar [itemscope] {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  body.layout--single #main {
+    max-width: 1600px !important;
+  }
+  
+  body.layout--single .sidebar.sticky {
+    flex: 0 0 300px !important;
+    max-width: 300px !important;
+  }
+}
+
+/* Emergency alignment fix - Very specific targeting */
+@media screen and (min-width: 1024px) {
+  /* Direct targeting of the specific elements shown in the screenshot */
+  .layout--single div#main {
+    display: flex !important;
+    align-items: flex-start !important;
+    gap: 2rem !important;
+  }
+  
+  /* Target the specific sidebar class combination */
+  .layout--single .sidebar.sticky,
+  .layout--single div.sidebar {
+    margin: 0 !important;
+    padding-top: 0 !important;
+    transform: translateY(0) !important;
+    position: relative !important;
+    top: 0 !important;
+  }
+  
+  /* Target the specific page article */
+  .layout--single article.page {
+    margin: 0 !important;
+    padding-top: 0 !important;
+    transform: translateY(0) !important;
+  }
+  
+  /* Reset any potential CSS that might cause offset */
+  .layout--single .page__inner-wrap header,
+  .layout--single .page__inner-wrap h1 {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+  
+  /* Ensure both containers start at the same baseline */
+  .layout--single .sidebar > *:first-child,
+  .layout--single .page > *:first-child {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
   }
 }
