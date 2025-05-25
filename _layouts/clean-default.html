@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="{{ site.locale | replace: "_", "-" | default: "en" }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+    <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}">
+    
+    <!-- Custom CSS for modern homepage -->
+    <link rel="stylesheet" href="{{ '/assets/css/modern-style.css' | relative_url }}">
+    
+    <!-- Favicon -->
+    {% if site.favicon %}
+      <link rel="icon" type="image/x-icon" href="{{ site.favicon | relative_url }}">
+    {% endif %}
+  </head>
+
+  <body>
+    {{ content }}
+  </body>
+</html> 

@@ -17,11 +17,11 @@ minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt"
 # Site Settings
 locale                   : "en-US"
 rtl                      : # true, false (default) # turns direction of the page into right to left for RTL languages
-title                    : "Wenzel Liu | Cardiologist & Techno-Industrialist thinker"
+title                    : "Shiung | AI Researcher"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
-name                     : 
-description              : "Bridging clinical trials, molecular biology, and data science"
+name                     : "Shiung"
+description              : "Designing large language models at OpenAI"
 url                      : "https://wenzel-liu.github.io"  # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "/mypage" # the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
