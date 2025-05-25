@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog - Wenzel Liu</title>
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
     <style>
         * {
             margin: 0;
@@ -63,11 +64,11 @@
         }
 
         /* Apply glow effect to all interactive elements */
-        button, .blog-post, .blog-title, .blog-link, h1, .nav a {
+        button, .blog-item, .nav a, .search-box {
             transition: all 0.3s ease;
         }
 
-        button:hover, .blog-post:hover, .blog-title:hover, .blog-link:hover, h1:hover, .nav a:hover {
+        button:hover, .blog-item:hover, .nav a:hover, .search-box:focus {
             box-shadow: 0 4px 16px rgba(76, 175, 80, 0.2), 0 0 20px rgba(76, 175, 80, 0.1);
             transform: translateY(-2px);
         }
@@ -252,14 +253,60 @@
         .main-content {
             padding: 60px 0;
             flex: 1;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(30px);
+            border-radius: 20px;
+            margin: 20px 0;
+            border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
         .page-title {
             text-align: center;
             font-size: 48px;
             font-weight: 700;
-            margin-bottom: 60px;
+            margin-bottom: 40px;
             color: #ffffff;
+        }
+
+        /* Search Box Styles */
+        .search-container {
+            max-width: 600px;
+            margin: 0 auto 40px auto;
+            position: relative;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 15px 50px 15px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 25px;
+            color: #ffffff;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .search-box::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 18px;
+            pointer-events: none;
+        }
+
+        .no-results {
+            text-align: center;
+            color: #888888;
+            font-style: italic;
+            margin-top: 40px;
+            display: none;
         }
 
         .blog-list {
@@ -401,6 +448,11 @@
             <div class="main-content">
             <h1 class="page-title">Blog</h1>
             
+            <div class="search-container">
+                <input type="text" class="search-box" placeholder="Search blog posts..." id="searchInput">
+                <span class="search-icon">🔍</span>
+            </div>
+            
             <div class="blog-list">
                 <div class="blog-item">
                     <div class="blog-date">Oct 27, 2023</div>
@@ -472,13 +524,17 @@
                     </div>
                 </div>
             </div>
+            
+            <div class="no-results" id="noResults">
+                No blog posts found matching your search.
+            </div>
         </div>
     </main>
 
         <footer class="footer">
             <div class="container">
                 <p>© 2024 Me. This work is licensed under <a href="#">CC BY-NC-ND 4.0</a></p>
-                <p>Published with <a href="#">Hugo Blog Builder</a> — the free, <a href="#">open source</a> website builder that empowers creators.</p>
+                <p>Created by Wenzel Liu, ChatGPT and Claude.</p>
             </div>
         </footer>
     </div>
@@ -550,9 +606,40 @@
         // Add glow effect to interactive elements
         document.addEventListener('DOMContentLoaded', () => {
             // Add glow effect class to interactive elements
-            const interactiveElements = document.querySelectorAll('button, .blog-item, .blog-title, .read-more, h1');
+            const interactiveElements = document.querySelectorAll('button, .blog-item, .search-box');
             interactiveElements.forEach(element => {
                 element.classList.add('glow-effect');
+            });
+        });
+
+        // Blog search functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const searchInput = document.getElementById('searchInput');
+            const blogItems = document.querySelectorAll('.blog-item');
+            const noResults = document.getElementById('noResults');
+
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase().trim();
+                let visibleItems = 0;
+
+                blogItems.forEach(item => {
+                    const title = item.querySelector('.blog-title').textContent.toLowerCase();
+                    const description = item.querySelector('.blog-description').textContent.toLowerCase();
+                    
+                    if (searchTerm === '' || title.includes(searchTerm) || description.includes(searchTerm)) {
+                        item.style.display = 'flex';
+                        visibleItems++;
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+
+                // Show/hide no results message
+                if (visibleItems === 0 && searchTerm !== '') {
+                    noResults.style.display = 'block';
+                } else {
+                    noResults.style.display = 'none';
+                }
             });
         });
     </script>

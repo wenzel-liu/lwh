@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shiung - Personal Homepage</title>
+    <title>Wenzel - Personal Homepage</title>
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
     <style>
         * {
             margin: 0;
@@ -63,11 +64,11 @@
         }
 
         /* Apply glow effect to all interactive elements */
-        button, .research-list li, .greeting, .subtitle, .description, h3, .content-left, .content-right, .profile-image, .social-links a, .footer a {
+        button, .content-left, .content-right, .profile-image, .social-links a, .footer a {
             transition: all 0.3s ease;
         }
 
-        button:hover, .research-list li:hover, .greeting:hover, .subtitle:hover, .description:hover, h3:hover, .content-left:hover, .content-right:hover, .profile-image:hover, .social-links a:hover, .footer a:hover {
+        button:hover, .content-left:hover, .content-right:hover, .profile-image:hover, .social-links a:hover, .footer a:hover {
             box-shadow: 0 4px 16px rgba(76, 175, 80, 0.2), 0 0 20px rgba(76, 175, 80, 0.1);
             transform: translateY(-2px);
         }
@@ -256,6 +257,11 @@
             padding: 60px 0;
             gap: 60px;
             flex: 1;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(30px);
+            border-radius: 20px;
+            margin: 20px 0;
+            border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
         .content-left {
@@ -263,9 +269,9 @@
             min-width: 0;
             padding: 40px;
             border-radius: 20px;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
@@ -281,9 +287,9 @@
             min-width: 280px;
             padding: 30px;
             border-radius: 20px;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
@@ -633,7 +639,7 @@
         <footer class="footer">
             <div class="container">
                 <p>© 2024 Me. This work is licensed under <a href="#">CC BY-NC-ND 4.0</a></p>
-                <p>Published with <a href="#">Hugo Blog Builder</a> — the free, <a href="#">open source</a> website builder that empowers creators.</p>
+                <p>Created by Wenzel Liu, ChatGPT and Claude.</p>
             </div>
         </footer>
     </div>
@@ -705,7 +711,7 @@
         // Add glow effect to interactive elements
         document.addEventListener('DOMContentLoaded', () => {
             // Add glow effect class to interactive elements
-            const interactiveElements = document.querySelectorAll('button, .research-list li, .greeting, .subtitle, .description, h3');
+            const interactiveElements = document.querySelectorAll('button, .content-left, .content-right, .profile-image, .social-links a, .footer a');
             interactiveElements.forEach(element => {
                 element.classList.add('glow-effect');
             });

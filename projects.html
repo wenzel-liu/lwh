@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects - Wenzel Liu</title>
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
     <style>
         * {
             margin: 0;
@@ -63,11 +64,11 @@
         }
 
         /* Apply glow effect to all interactive elements */
-        button, .project-card, .project-title, .project-link, h1, .nav a {
+        button, .project-card, .nav a {
             transition: all 0.3s ease;
         }
 
-        button:hover, .project-card:hover, .project-title:hover, .project-link:hover, h1:hover, .nav a:hover {
+        button:hover, .project-card:hover, .nav a:hover {
             box-shadow: 0 4px 16px rgba(76, 175, 80, 0.2), 0 0 20px rgba(76, 175, 80, 0.1);
             transform: translateY(-2px);
         }
@@ -252,6 +253,11 @@
         .main-content {
             padding: 60px 0;
             flex: 1;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(30px);
+            border-radius: 20px;
+            margin: 20px 0;
+            border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
         .page-title {
@@ -623,7 +629,7 @@
         <footer class="footer">
             <div class="container">
                 <p>© 2024 Wenzel Liu. This work is licensed under <a href="#">CC BY-NC-ND 4.0</a></p>
-                <p>Published with <a href="#">Hugo Blog Builder</a> — the free, <a href="#">open source</a> website builder that empowers creators.</p>
+                <p>Created by Wenzel Liu, ChatGPT and Claude.</p>
             </div>
         </footer>
     </div>
@@ -695,7 +701,7 @@
         // Add glow effect to interactive elements
         document.addEventListener('DOMContentLoaded', () => {
             // Add glow effect class to interactive elements
-            const interactiveElements = document.querySelectorAll('button, .project-card, .project-title, .project-link, h1');
+            const interactiveElements = document.querySelectorAll('button, .project-card');
             interactiveElements.forEach(element => {
                 element.classList.add('glow-effect');
             });
