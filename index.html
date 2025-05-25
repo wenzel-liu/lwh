@@ -21,7 +21,7 @@
             min-height: 100vh;
         }
 
-        /* Background overlay with blur effect */
+        /* Background overlay with subtle blur effect */
         body::before {
             content: '';
             position: fixed;
@@ -31,11 +31,11 @@
             height: 100%;
             background: url('assets/images/background.jpg') no-repeat center center fixed;
             background-size: cover;
-            filter: blur(8px) brightness(0.3);
+            filter: blur(2px) brightness(0.6);
             z-index: -2;
         }
 
-        /* Dark overlay for better text readability */
+        /* Light overlay for better text readability */
         body::after {
             content: '';
             position: fixed;
@@ -43,7 +43,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.6);
+            background: rgba(0, 0, 0, 0.3);
             z-index: -1;
         }
 
@@ -87,14 +87,11 @@
             border-radius: 8px;
             transition: all 0.3s ease;
             position: relative;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .nav a:hover {
             color: #4CAF50;
             background: rgba(76, 175, 80, 0.1);
-            border-color: rgba(76, 175, 80, 0.3);
             box-shadow: 0 4px 16px rgba(76, 175, 80, 0.2);
             transform: translateY(-2px);
         }
@@ -165,22 +162,7 @@
             overflow: hidden;
         }
 
-        .content-left::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(76, 175, 80, 0.1) 0%, transparent 50%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            pointer-events: none;
-        }
 
-        .content-left:hover::before {
-            opacity: 1;
-        }
 
         .content-left:hover {
             background: rgba(255, 255, 255, 0.08);
@@ -201,22 +183,7 @@
             overflow: hidden;
         }
 
-        .content-right::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(76, 175, 80, 0.1) 0%, transparent 50%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            pointer-events: none;
-        }
 
-        .content-right:hover::before {
-            opacity: 1;
-        }
 
         .content-right:hover {
             background: rgba(255, 255, 255, 0.08);
@@ -388,12 +355,11 @@
     <header class="header">
         <div class="container">
             <nav class="nav">
-                <a href="#bio">Bio</a>
-                <a href="#blog">Blog</a>
-                <a href="#experience">Experience</a>
-                <a href="#research">Research</a>
-                <a href="#projects">Projects</a>
-                # <a href="#uses">Uses</a>
+                <a href="index.html">Bio</a>
+                <a href="blog.html">Blog</a>
+                <a href="experience.html">Experience</a>
+                <a href="research.html">Research</a>
+                <a href="projects.html">Projects</a>
             </nav>
         </div>
     </header>
@@ -489,14 +455,7 @@
             });
         }
 
-        // Apply mouse tracking to interactive elements
-        document.addEventListener('DOMContentLoaded', () => {
-            const contentLeft = document.querySelector('.content-left');
-            const contentRight = document.querySelector('.content-right');
-            
-            if (contentLeft) addMouseTracking(contentLeft);
-            if (contentRight) addMouseTracking(contentRight);
-        });
+        // Mouse tracking is disabled for main content areas
 
         // Enhanced theme toggle functionality
         const themeToggle = document.querySelector('.theme-toggle');
