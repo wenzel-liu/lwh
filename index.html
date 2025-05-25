@@ -52,17 +52,24 @@
             z-index: -1;
         }
 
-        /* Global lighting effect */
-        .light-effect {
-            position: fixed;
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(76, 175, 80, 0.15) 0%, rgba(76, 175, 80, 0.05) 30%, transparent 70%);
-            pointer-events: none;
-            z-index: 1;
+        /* Global hover glow effect for interactive elements */
+        .glow-effect {
             transition: all 0.3s ease;
-            transform: translate(-50%, -50%);
+        }
+
+        .glow-effect:hover {
+            box-shadow: 0 4px 16px rgba(76, 175, 80, 0.2), 0 0 20px rgba(76, 175, 80, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Apply glow effect to all interactive elements */
+        button, .research-list li, .greeting, .subtitle, .description, h3, .content-left, .content-right, .profile-image, .social-links a, .footer a {
+            transition: all 0.3s ease;
+        }
+
+        button:hover, .research-list li:hover, .greeting:hover, .subtitle:hover, .description:hover, h3:hover, .content-left:hover, .content-right:hover, .profile-image:hover, .social-links a:hover, .footer a:hover {
+            box-shadow: 0 4px 16px rgba(76, 175, 80, 0.2), 0 0 20px rgba(76, 175, 80, 0.1);
+            transform: translateY(-2px);
         }
 
         .container {
@@ -267,8 +274,6 @@
         .content-left:hover {
             background: rgba(255, 255, 255, 0.08);
             border-color: rgba(76, 175, 80, 0.3);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 20px rgba(76, 175, 80, 0.1);
-            transform: translateY(-5px);
         }
 
         .content-right {
@@ -291,8 +296,6 @@
         .content-right:hover {
             background: rgba(255, 255, 255, 0.08);
             border-color: rgba(76, 175, 80, 0.3);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 20px rgba(76, 175, 80, 0.1);
-            transform: translateY(-5px);
         }
 
         .greeting {
@@ -304,6 +307,15 @@
             gap: 10px;
             flex-wrap: wrap;
             word-break: break-word;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .greeting:hover {
+            background: rgba(76, 175, 80, 0.1);
+            color: #4CAF50;
         }
 
         .wave {
@@ -316,6 +328,15 @@
             margin-bottom: 30px;
             line-height: 1.4;
             word-wrap: break-word;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .subtitle:hover {
+            background: rgba(76, 175, 80, 0.1);
+            color: #ffffff;
         }
 
         .description {
@@ -324,6 +345,15 @@
             margin-bottom: 30px;
             line-height: 1.6;
             word-wrap: break-word;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .description:hover {
+            background: rgba(76, 175, 80, 0.1);
+            color: #ffffff;
         }
 
         .research-interests {
@@ -334,6 +364,15 @@
             font-size: clamp(16px, 2.5vw, 18px);
             margin-bottom: 15px;
             color: #ffffff;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .research-interests h3:hover {
+            background: rgba(76, 175, 80, 0.1);
+            color: #4CAF50;
         }
 
         .research-list {
@@ -354,6 +393,14 @@
             color: #4CAF50;
             position: absolute;
             left: 0;
+        }
+
+        .research-list li:hover {
+            color: #ffffff;
+            background: rgba(76, 175, 80, 0.1);
+            border-radius: 8px;
+            padding: 8px 12px;
+            margin: 4px -12px;
         }
 
         .lorem-text {
@@ -377,7 +424,6 @@
 
         .profile-image:hover {
             border-color: rgba(76, 175, 80, 0.5);
-            box-shadow: 0 0 20px rgba(76, 175, 80, 0.3);
         }
 
         .profile-image img {
@@ -409,7 +455,6 @@
 
         .social-links a:hover {
             opacity: 0.7;
-            transform: scale(1.1);
             background: rgba(76, 175, 80, 0.2);
         }
 
@@ -439,11 +484,14 @@
         .footer a {
             color: #4CAF50;
             text-decoration: none;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
         }
 
         .footer a:hover {
             color: #66BB6A;
+            background: rgba(76, 175, 80, 0.1);
+            padding: 4px 8px;
+            border-radius: 4px;
         }
 
         /* Responsive Design */
@@ -491,9 +539,6 @@
     </style>
 </head>
 <body>
-    <!-- Global lighting effect -->
-    <div class="light-effect" id="lightEffect"></div>
-
     <header class="header">
         <div class="container">
             <div class="nav-container">
@@ -657,29 +702,13 @@
             }
         });
 
-        // Global lighting effect
-        const lightEffect = document.getElementById('lightEffect');
-        
-        document.addEventListener('mousemove', (e) => {
-            // Update light position
-            lightEffect.style.left = e.clientX + 'px';
-            lightEffect.style.top = e.clientY + 'px';
-            
-            // Add subtle parallax effect to background
-            const x = (e.clientX / window.innerWidth) * 100;
-            const y = (e.clientY / window.innerHeight) * 100;
-            
-            document.body.style.backgroundPosition = `${50 + (x - 50) * 0.1}% ${50 + (y - 50) * 0.1}%`;
-        });
-
-        // Hide light effect when mouse leaves window
-        document.addEventListener('mouseleave', () => {
-            lightEffect.style.opacity = '0';
-        });
-
-        // Show light effect when mouse enters window
-        document.addEventListener('mouseenter', () => {
-            lightEffect.style.opacity = '1';
+        // Add glow effect to interactive elements
+        document.addEventListener('DOMContentLoaded', () => {
+            // Add glow effect class to interactive elements
+            const interactiveElements = document.querySelectorAll('button, .research-list li, .greeting, .subtitle, .description, h3');
+            interactiveElements.forEach(element => {
+                element.classList.add('glow-effect');
+            });
         });
     </script>
 </body>

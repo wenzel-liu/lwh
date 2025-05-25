@@ -52,17 +52,24 @@
             z-index: -1;
         }
 
-        /* Global lighting effect */
-        .light-effect {
-            position: fixed;
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(76, 175, 80, 0.15) 0%, rgba(76, 175, 80, 0.05) 30%, transparent 70%);
-            pointer-events: none;
-            z-index: 1;
+        /* Global hover glow effect for interactive elements */
+        .glow-effect {
             transition: all 0.3s ease;
-            transform: translate(-50%, -50%);
+        }
+
+        .glow-effect:hover {
+            box-shadow: 0 4px 16px rgba(76, 175, 80, 0.2), 0 0 20px rgba(76, 175, 80, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Apply glow effect to all interactive elements */
+        button, .paper-item, .paper-title, .paper-link, h1, .nav a {
+            transition: all 0.3s ease;
+        }
+
+        button:hover, .paper-item:hover, .paper-title:hover, .paper-link:hover, h1:hover, .nav a:hover {
+            box-shadow: 0 4px 16px rgba(76, 175, 80, 0.2), 0 0 20px rgba(76, 175, 80, 0.1);
+            transform: translateY(-2px);
         }
 
         .container {
@@ -387,8 +394,7 @@
     </style>
 </head>
 <body>
-    <!-- Global lighting effect -->
-    <div class="light-effect" id="lightEffect"></div>
+
 
     <header class="header">
         <div class="container">
@@ -632,29 +638,13 @@
             }
         });
 
-        // Global lighting effect
-        const lightEffect = document.getElementById('lightEffect');
-        
-        document.addEventListener('mousemove', (e) => {
-            // Update light position
-            lightEffect.style.left = e.clientX + 'px';
-            lightEffect.style.top = e.clientY + 'px';
-            
-            // Add subtle parallax effect to background
-            const x = (e.clientX / window.innerWidth) * 100;
-            const y = (e.clientY / window.innerHeight) * 100;
-            
-            document.body.style.backgroundPosition = `${50 + (x - 50) * 0.1}% ${50 + (y - 50) * 0.1}%`;
-        });
-
-        // Hide light effect when mouse leaves window
-        document.addEventListener('mouseleave', () => {
-            lightEffect.style.opacity = '0';
-        });
-
-        // Show light effect when mouse enters window
-        document.addEventListener('mouseenter', () => {
-            lightEffect.style.opacity = '1';
+        // Add glow effect to interactive elements
+        document.addEventListener('DOMContentLoaded', () => {
+            // Add glow effect class to interactive elements
+            const interactiveElements = document.querySelectorAll('button, .paper-item, .paper-title, .paper-link, h1');
+            interactiveElements.forEach(element => {
+                element.classList.add('glow-effect');
+            });
         });
     </script>
 </body>
