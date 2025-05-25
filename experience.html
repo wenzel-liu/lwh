@@ -73,10 +73,18 @@
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
         }
 
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
         .nav {
             display: flex;
             justify-content: center;
             gap: 30px;
+            flex: 1;
         }
 
         .nav a {
@@ -87,6 +95,7 @@
             border-radius: 8px;
             transition: all 0.3s ease;
             position: relative;
+            white-space: nowrap;
         }
 
         .nav a:hover, .nav a.active {
@@ -112,32 +121,100 @@
             opacity: 1;
         }
 
-        /* Theme toggle */
-        .theme-toggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            margin-left: auto;
+        }
+
+        .hamburger:hover {
+            background: rgba(76, 175, 80, 0.1);
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #ffffff;
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        .nav-mobile {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            min-width: 200px;
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.2);
-            color: #ffffff;
-            font-size: 20px;
-            cursor: pointer;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
+            border-radius: 10px;
+            margin-top: 10px;
+            padding: 20px;
+            flex-direction: column;
+            gap: 10px;
             z-index: 1000;
         }
 
-        .theme-toggle:hover {
-            background: rgba(255, 255, 255, 0.15);
-            border-color: rgba(76, 175, 80, 0.3);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-            transform: scale(1.1);
+        .nav-mobile.active {
+            display: flex;
+        }
+
+        .nav-mobile a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 12px 20px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .nav-mobile a:hover {
+            color: #4CAF50;
+            background: rgba(76, 175, 80, 0.1);
+        }
+
+        /* Progressive hiding of nav items */
+        @media (max-width: 900px) {
+            .nav a:nth-child(5) { display: none; }
+            .hamburger { display: flex; }
+        }
+
+        @media (max-width: 800px) {
+            .nav a:nth-child(4) { display: none; }
+        }
+
+        @media (max-width: 700px) {
+            .nav a:nth-child(3) { display: none; }
+        }
+
+        @media (max-width: 600px) {
+            .nav a:nth-child(2) { display: none; }
+        }
+
+        @media (max-width: 500px) {
+            .nav a:nth-child(1) { display: none; }
+            .nav { display: none; }
         }
 
         /* Main Content */
@@ -284,26 +361,37 @@
             .experience-description {
                 margin-left: 0;
             }
+        }
 
-            .nav {
-                justify-content: center;
-                gap: 20px;
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
             }
         }
     </style>
 </head>
 <body>
-    <button class="theme-toggle">☀</button>
-    
     <header class="header">
         <div class="container">
-            <nav class="nav">
-                <a href="index.html">Bio</a>
-                <a href="blog.html">Blog</a>
-                <a href="experience.html" class="active">Experience</a>
-                <a href="research.html">Papers & Talks</a>
-                <a href="projects.html">Projects</a>
-            </nav>
+            <div class="nav-container">
+                <nav class="nav">
+                    <a href="index.html">Bio</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="experience.html" class="active">Experience</a>
+                    <a href="research.html">Papers & Talks</a>
+                    <a href="projects.html">Projects</a>
+                </nav>
+                
+                <div class="hamburger" onclick="toggleMobileNav()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                
+                <nav class="nav-mobile" id="navMobile">
+                    <!-- Hidden nav items will be dynamically added here -->
+                </nav>
+            </div>
         </div>
     </header>
 
@@ -474,19 +562,59 @@
     </footer>
 
     <script>
-        // Enhanced theme toggle functionality
-        const themeToggle = document.querySelector('.theme-toggle');
-        let isDarkTheme = true;
+        // Navigation items data
+        const navItems = [
+            { text: 'Bio', href: 'index.html' },
+            { text: 'Blog', href: 'blog.html' },
+            { text: 'Experience', href: 'experience.html' },
+            { text: 'Papers & Talks', href: 'research.html' },
+            { text: 'Projects', href: 'projects.html' }
+        ];
 
-        themeToggle.addEventListener('click', () => {
-            isDarkTheme = !isDarkTheme;
+        // Update mobile nav with hidden items
+        function updateMobileNav() {
+            const navMobile = document.getElementById('navMobile');
+            const visibleNavItems = document.querySelectorAll('.nav a:not([style*="display: none"])');
+            const hiddenItems = navItems.slice(visibleNavItems.length);
             
-            if (isDarkTheme) {
-                document.body.style.filter = 'none';
-                themeToggle.textContent = '☀';
-            } else {
-                document.body.style.filter = 'invert(1) hue-rotate(180deg)';
-                themeToggle.textContent = '🌙';
+            navMobile.innerHTML = '';
+            hiddenItems.forEach(item => {
+                const link = document.createElement('a');
+                link.href = item.href;
+                link.textContent = item.text;
+                navMobile.appendChild(link);
+            });
+        }
+
+        // Mobile navigation toggle
+        function toggleMobileNav() {
+            const hamburger = document.querySelector('.hamburger');
+            const navMobile = document.getElementById('navMobile');
+            
+            updateMobileNav();
+            hamburger.classList.toggle('active');
+            navMobile.classList.toggle('active');
+        }
+
+        // Close mobile nav when clicking outside
+        document.addEventListener('click', function(event) {
+            const hamburger = document.querySelector('.hamburger');
+            const navMobile = document.getElementById('navMobile');
+            const navContainer = document.querySelector('.nav-container');
+            
+            if (!navContainer.contains(event.target)) {
+                hamburger.classList.remove('active');
+                navMobile.classList.remove('active');
+            }
+        });
+
+        // Update mobile nav on window resize
+        window.addEventListener('resize', function() {
+            const hamburger = document.querySelector('.hamburger');
+            const navMobile = document.getElementById('navMobile');
+            
+            if (hamburger.classList.contains('active')) {
+                updateMobileNav();
             }
         });
 
