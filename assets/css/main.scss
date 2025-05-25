@@ -340,6 +340,7 @@ body {
     max-width: 1400px !important; /* 增加最大宽度以容纳更宽的内容 */
     margin: 0 auto !important;
     padding: 0 1em !important;
+    align-items: flex-start !important; /* 确保两栏顶部对齐 */
   }
   
   .layout--single .sidebar {
@@ -352,6 +353,15 @@ body {
     height: auto !important;
     min-height: auto !important;
     float: none !important;
+    /* 移除可能影响对齐的margin */
+    margin-top: 0 !important;
+    
+    /* 确保侧边栏内容从顶部开始 */
+    > * {
+      &:first-child {
+        margin-top: 0 !important;
+      }
+    }
   }
   
   .layout--single .page {
@@ -361,12 +371,19 @@ body {
     float: none !important;
     padding-inline-end: 0 !important;
     min-width: 0 !important; /* 允许flexbox正确计算宽度 */
+    margin-top: 0 !important; /* 移除顶部margin确保对齐 */
   }
   
-  /* 确保内容能够充分利用可用宽度 */
+  /* 确保页面内容容器也从顶部开始 */
   .layout--single .page .page__inner-wrap {
     width: 100% !important;
     max-width: none !important; /* 移除最大宽度限制 */
+    margin-top: 0 !important; /* 移除顶部margin确保对齐 */
+  }
+  
+  /* 确保页面标题从顶部开始 */
+  .layout--single .page__title {
+    margin-top: 0 !important;
   }
   
   .layout--single .page .page__content {
@@ -401,6 +418,7 @@ body {
 @media (min-width: 1280px) {
   .layout--single #main {
     max-width: 1600px !important; /* 在大屏幕上进一步增加最大宽度 */
+    align-items: flex-start !important; /* 确保大屏幕上也保持顶部对齐 */
   }
   
   .layout--single .sidebar {
@@ -409,6 +427,28 @@ body {
     width: 300px !important;
     min-width: 300px !important;
     max-width: 300px !important;
+    margin-top: 0 !important; /* 确保大屏幕上也无顶部margin */
+    
+    /* 确保侧边栏内容从顶部开始 */
+    > * {
+      &:first-child {
+        margin-top: 0 !important;
+      }
+    }
+  }
+  
+  /* 确保大屏幕上页面容器也从顶部开始 */
+  .layout--single .page {
+    margin-top: 0 !important;
+  }
+  
+  .layout--single .page .page__inner-wrap {
+    margin-top: 0 !important;
+  }
+  
+  /* 确保页面标题从顶部开始 */
+  .layout--single .page__title {
+    margin-top: 0 !important;
   }
   
   /* 在大屏幕上确保内容区域能够充分利用空间 */
@@ -470,4 +510,30 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(135deg, rgba(102, 126, 234, 0.8) 0%, rgba(118, 75, 162, 0.8) 100%);
+}
+
+/* 专门针对author profile的对齐修复 */
+@media (min-width: 1024px) {
+  .layout--single .sidebar .author__avatar,
+  .layout--single .sidebar .author__content,
+  .layout--single .sidebar .author__urls-wrapper {
+    margin-top: 0 !important;
+  }
+  
+  /* 确保第一个author相关元素没有顶部margin */
+  .layout--single .sidebar [itemscope="itemscope"] {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+  
+  /* 移除可能导致错位的第一个子元素的margin */
+  .layout--single .sidebar > :first-child {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+  
+  /* 确保author name从正确位置开始 */
+  .layout--single .sidebar .author__name {
+    margin-top: 0 !important;
+  }
 }
