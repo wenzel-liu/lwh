@@ -48,7 +48,7 @@
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 800px;
             margin: 0 auto;
             padding: 0 20px;
         }
@@ -150,132 +150,101 @@
             text-align: center;
             font-size: 48px;
             font-weight: 700;
-            margin-bottom: 20px;
+            margin-bottom: 60px;
             color: #ffffff;
         }
 
-        .page-subtitle {
-            text-align: center;
-            font-size: 20px;
-            color: #cccccc;
+        .section {
             margin-bottom: 60px;
         }
 
-        .timeline {
-            position: relative;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: linear-gradient(to bottom, #4CAF50, rgba(76, 175, 80, 0.3));
-            transform: translateX(-50%);
-        }
-
-        .timeline-item {
-            position: relative;
-            margin-bottom: 50px;
-            width: 50%;
-        }
-
-        .timeline-item:nth-child(odd) {
-            left: 0;
-            padding-right: 40px;
-            text-align: right;
-        }
-
-        .timeline-item:nth-child(even) {
-            left: 50%;
-            padding-left: 40px;
-            text-align: left;
-        }
-
-        .timeline-content {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 30px;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .timeline-content:hover {
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(76, 175, 80, 0.3);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 20px rgba(76, 175, 80, 0.1);
-            transform: translateY(-5px);
-        }
-
-        .timeline-date {
-            color: #4CAF50;
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-
-        .timeline-title {
+        .section-title {
             font-size: 24px;
             font-weight: 600;
             color: #ffffff;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .experience-list {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .experience-item {
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .experience-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 0 -20px;
+        }
+
+        .experience-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
             margin-bottom: 10px;
         }
 
-        .timeline-company {
-            font-size: 18px;
-            color: #4CAF50;
-            margin-bottom: 15px;
+        .experience-icon {
+            font-size: 20px;
+            width: 24px;
+            text-align: center;
         }
 
-        .timeline-description {
-            color: #cccccc;
+        .experience-title {
             font-size: 16px;
-            line-height: 1.6;
-            margin-bottom: 15px;
+            font-weight: 600;
+            color: #ffffff;
+            flex: 1;
         }
 
-        .timeline-skills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .timeline-item:nth-child(odd) .timeline-skills {
-            justify-content: flex-end;
-        }
-
-        .skill-tag {
-            background: rgba(76, 175, 80, 0.2);
+        .experience-company {
+            font-size: 14px;
             color: #4CAF50;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 500;
+            margin-bottom: 5px;
         }
 
-        .timeline-dot {
+        .experience-period {
+            font-size: 14px;
+            color: #888888;
+            margin-bottom: 10px;
+        }
+
+        .experience-description {
+            color: #cccccc;
+            font-size: 14px;
+            line-height: 1.5;
+            margin-left: 39px;
+        }
+
+        .experience-responsibilities {
+            margin-top: 10px;
+        }
+
+        .experience-responsibilities ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .experience-responsibilities li {
+            color: #cccccc;
+            font-size: 14px;
+            margin-bottom: 5px;
+            position: relative;
+            padding-left: 15px;
+        }
+
+        .experience-responsibilities li:before {
+            content: "•";
+            color: #4CAF50;
             position: absolute;
-            top: 30px;
-            width: 16px;
-            height: 16px;
-            background: #4CAF50;
-            border: 4px solid rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            z-index: 1;
-        }
-
-        .timeline-item:nth-child(odd) .timeline-dot {
-            right: -8px;
-        }
-
-        .timeline-item:nth-child(even) .timeline-dot {
-            left: -8px;
+            left: 0;
         }
 
         /* Footer */
@@ -306,25 +275,14 @@
                 font-size: 36px;
             }
 
-            .timeline::before {
-                left: 20px;
+            .experience-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5px;
             }
 
-            .timeline-item {
-                width: 100%;
-                left: 0 !important;
-                padding-left: 50px !important;
-                padding-right: 0 !important;
-                text-align: left !important;
-            }
-
-            .timeline-dot {
-                left: 12px !important;
-                right: auto !important;
-            }
-
-            .timeline-skills {
-                justify-content: flex-start !important;
+            .experience-description {
+                margin-left: 0;
             }
 
             .nav {
@@ -343,7 +301,7 @@
                 <a href="index.html">Bio</a>
                 <a href="blog.html">Blog</a>
                 <a href="experience.html" class="active">Experience</a>
-                <a href="research.html">Research</a>
+                <a href="research.html">Papers & Talks</a>
                 <a href="projects.html">Projects</a>
             </nav>
         </div>
@@ -352,99 +310,157 @@
     <main class="container">
         <div class="main-content">
             <h1 class="page-title">Experience</h1>
-            <p class="page-subtitle">My professional journey and educational background</p>
             
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-date">2023 - Present</div>
-                        <h3 class="timeline-title">Research Scientist</h3>
-                        <div class="timeline-company">OpenAI</div>
-                        <p class="timeline-description">
-                            Leading research on large language models, specifically working on training ChatGPT v100. 
-                            Focus on improving model performance, safety, and alignment with human values.
-                        </p>
-                        <div class="timeline-skills">
-                            <span class="skill-tag">Machine Learning</span>
-                            <span class="skill-tag">NLP</span>
-                            <span class="skill-tag">Python</span>
-                            <span class="skill-tag">PyTorch</span>
+            <div class="section">
+                <div class="experience-list">
+                    <div class="experience-item">
+                        <div class="experience-header">
+                            <span class="experience-icon">🏢</span>
+                            <div class="experience-title">Director of Cloud Infrastructure</div>
+                        </div>
+                        <div class="experience-company">GenCoin</div>
+                        <div class="experience-period">January 2021 – Present</div>
+                        <div class="experience-description">
+                            Responsibilities include:
+                            <div class="experience-responsibilities">
+                                <ul>
+                                    <li>lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
+                                    <li>lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
+                                    <li>lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                    <div class="timeline-dot"></div>
-                </div>
 
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-date">2020 - 2023</div>
-                        <h3 class="timeline-title">Senior Cardiologist</h3>
-                        <div class="timeline-company">Tokyo Medical University Hospital</div>
-                        <p class="timeline-description">
-                            Specialized in heart failure treatment and cardiovascular research. 
-                            Led clinical trials and implemented AI-driven diagnostic tools in clinical practice.
-                        </p>
-                        <div class="timeline-skills">
-                            <span class="skill-tag">Cardiology</span>
-                            <span class="skill-tag">Clinical Research</span>
-                            <span class="skill-tag">Heart Failure</span>
-                            <span class="skill-tag">Medical AI</span>
+                    <div class="experience-item">
+                        <div class="experience-header">
+                            <span class="experience-icon">🏢</span>
+                            <div class="experience-title">Backend Software Engineer</div>
+                        </div>
+                        <div class="experience-company">X</div>
+                        <div class="experience-period">January 2016 – December 2020</div>
+                        <div class="experience-description">
+                            Responsibilities include:
+                            <div class="experience-responsibilities">
+                                <ul>
+                                    <li>Migrated infrastructure to a new data center</li>
+                                    <li>lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
+                                    <li>lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                    <div class="timeline-dot"></div>
                 </div>
+            </div>
 
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-date">2018 - 2020</div>
-                        <h3 class="timeline-title">Cardiology Fellow</h3>
-                        <div class="timeline-company">University of Tokyo Hospital</div>
-                        <p class="timeline-description">
-                            Completed advanced fellowship training in interventional cardiology and heart failure management. 
-                            Conducted research on omics analysis in cardiovascular diseases.
-                        </p>
-                        <div class="timeline-skills">
-                            <span class="skill-tag">Interventional Cardiology</span>
-                            <span class="skill-tag">Omics Analysis</span>
-                            <span class="skill-tag">Research</span>
+            <div class="section">
+                <h2 class="section-title">Education</h2>
+                <div class="experience-list">
+                    <div class="experience-item">
+                        <div class="experience-header">
+                            <span class="experience-icon">🎓</span>
+                            <div class="experience-title">PhD Artificial Intelligence</div>
+                        </div>
+                        <div class="experience-company">Stanford University</div>
+                        <div class="experience-period">January 2016 – December 2020</div>
+                        <div class="experience-description">
+                            Thesis on <em>Why LLMs are awesome</em>. Supervised by <strong>Prof Joe Smith</strong>. Presented papers at 5 IEEE conferences with the contributions being published in 2 Springer journals.
                         </div>
                     </div>
-                    <div class="timeline-dot"></div>
+
+                    <div class="experience-item">
+                        <div class="experience-header">
+                            <span class="experience-icon">🎓</span>
+                            <div class="experience-title">MEng Artificial Intelligence</div>
+                        </div>
+                        <div class="experience-company">Massachusetts Institute of Technology</div>
+                        <div class="experience-period">January 2016 – December 2020</div>
+                        <div class="experience-description">
+                            GPA: 3.8/4.0
+                            <br><br>
+                            Courses included:
+                            <div class="experience-responsibilities">
+                                <ul>
+                                    <li>lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
+                                    <li>lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
+                                    <li>lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="experience-header">
+                            <span class="experience-icon">🎓</span>
+                            <div class="experience-title">BSc Artificial Intelligence</div>
+                        </div>
+                        <div class="experience-company">Massachusetts Institute of Technology</div>
+                        <div class="experience-period">January 2016 – December 2020</div>
+                        <div class="experience-description">
+                            GPA: 3.4/4.0
+                            <br><br>
+                            Courses included:
+                            <div class="experience-responsibilities">
+                                <ul>
+                                    <li>lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
+                                    <li>lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
+                                    <li>lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+            </div>
 
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-date">2015 - 2018</div>
-                        <h3 class="timeline-title">Internal Medicine Resident</h3>
-                        <div class="timeline-company">Tokyo General Hospital</div>
-                        <p class="timeline-description">
-                            Completed internal medicine residency with rotations in various specialties. 
-                            Developed strong foundation in clinical medicine and patient care.
-                        </p>
-                        <div class="timeline-skills">
-                            <span class="skill-tag">Internal Medicine</span>
-                            <span class="skill-tag">Patient Care</span>
-                            <span class="skill-tag">Clinical Skills</span>
+            <div class="section">
+                <h2 class="section-title">Skills & Hobbies</h2>
+                <div class="experience-list">
+                    <div class="experience-item">
+                        <div class="experience-header">
+                            <span class="experience-icon">💻</span>
+                            <div class="experience-title">Technical Skills</div>
+                        </div>
+                        <div class="experience-description">
+                            <div class="experience-responsibilities">
+                                <ul>
+                                    <li><strong>🐍 PYTHON</strong></li>
+                                    <li><strong>📊 DATA SCIENCE</strong></li>
+                                    <li><strong>🗄️ SQL</strong></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                    <div class="timeline-dot"></div>
+
+                    <div class="experience-item">
+                        <div class="experience-header">
+                            <span class="experience-icon">🎯</span>
+                            <div class="experience-title">Hobbies</div>
+                        </div>
+                        <div class="experience-description">
+                            <div class="experience-responsibilities">
+                                <ul>
+                                    <li><strong>🥾 HIKING</strong></li>
+                                    <li><strong>🐱 CATS</strong></li>
+                                    <li><strong>📸 PHOTOGRAPHY</strong></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+            </div>
 
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-date">2009 - 2015</div>
-                        <h3 class="timeline-title">Doctor of Medicine (M.D.)</h3>
-                        <div class="timeline-company">University of Tokyo School of Medicine</div>
-                        <p class="timeline-description">
-                            Graduated with honors from one of Japan's top medical schools. 
-                            Thesis focused on computational approaches to cardiovascular disease prediction.
-                        </p>
-                        <div class="timeline-skills">
-                            <span class="skill-tag">Medical Education</span>
-                            <span class="skill-tag">Research</span>
-                            <span class="skill-tag">Computational Biology</span>
+            <div class="section">
+                <h2 class="section-title">Awards</h2>
+                <div class="experience-list">
+                    <div class="experience-item">
+                        <div class="experience-header">
+                            <span class="experience-icon">🏆</span>
+                            <div class="experience-title">Neural Networks and Deep Learning</div>
+                        </div>
+                        <div class="experience-description">
+                            An online non-credit course authorized by DeepLearning.AI and offered through Coursera
                         </div>
                     </div>
-                    <div class="timeline-dot"></div>
                 </div>
             </div>
         </div>
@@ -452,7 +468,7 @@
 
     <footer class="footer">
         <div class="container">
-            <p>© 2024 Wenzel Liu. This work is licensed under <a href="#">CC BY-NC-ND 4.0</a></p>
+            <p>© 2024 Me. This work is licensed under <a href="#">CC BY-NC-ND 4.0</a></p>
             <p>Published with <a href="#">Hugo Blog Builder</a> — the free, <a href="#">open source</a> website builder that empowers creators.</p>
         </div>
     </footer>
