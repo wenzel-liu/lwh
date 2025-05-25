@@ -17,10 +17,14 @@ layout: default
 <div id="main" role="main">
   {% include sidebar.html %}
 
-  <div class="archive">
-    {% unless page.header.overlay_color or page.header.overlay_image %}
-      <h1 id="page-title" class="page__title"{% if page.locale %} lang="{{ page.locale }}"{% endif %}>{{ page.title }}</h1>
-    {% endunless %}
+  <!-- Page title positioned above content area, aligned with content -->
+  {% unless page.header.overlay_color or page.header.overlay_image %}
+    <div class="publications-title-wrapper">
+      <h1 id="page-title" class="page__title page__title--publications"{% if page.locale %} lang="{{ page.locale }}"{% endif %}>{{ page.title }}</h1>
+    </div>
+  {% endunless %}
+
+  <div class="archive archive--publications">
     {{ content }}
   </div>
-</div>
+</div> 
