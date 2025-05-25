@@ -139,18 +139,19 @@
             margin-bottom: 40px;
         }
 
-        /* Profile Image Placeholder */
+        /* Profile Image */
         .profile-image {
             width: 300px;
             height: 400px;
-            background: linear-gradient(135deg, #2d5a27, #4CAF50);
             border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #ffffff;
-            font-size: 18px;
+            overflow: hidden;
             margin-bottom: 30px;
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         /* Social Links */
@@ -259,15 +260,14 @@
             
             <div class="content-right">
                 <div class="profile-image">
-                    Profile Image Placeholder
+                    <img src="/assets/images/avatar.jpg" alt="Shiung's Profile Picture">
                 </div>
                 
                 <div class="social-links">
-                    <a href="#" title="Dribbble">⚪</a>
-                    <a href="#" title="Twitter">🐦</a>
+                    <a href="mailto:your.email@example.com" title="Email">📧</a>
+                    <a href="#" title="X (Twitter)">🐦</a>
                     <a href="#" title="GitHub">⚫</a>
                     <a href="#" title="LinkedIn">💼</a>
-                    <a href="#" title="Instagram">📷</a>
                 </div>
             </div>
         </div>
