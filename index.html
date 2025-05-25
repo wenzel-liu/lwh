@@ -457,6 +457,8 @@
         @media (max-width: 768px) {
             .main-content {
                 flex-direction: column;
+                align-items: center;
+                justify-content: center;
                 text-align: center;
                 gap: 40px;
                 min-height: auto;
@@ -464,12 +466,14 @@
 
             .content-left {
                 flex: none;
-                max-width: none;
+                max-width: 600px;
+                width: 100%;
             }
 
             .content-right {
                 flex: none;
                 min-width: auto;
+                max-width: 400px;
                 width: 100%;
             }
 
