@@ -10,15 +10,15 @@
     width: calc(100% - 200px); /* $right-sidebar-width-narrow */
     padding-inline-end: 200px;
     margin-bottom: 1.5rem; /* mt-6 equivalent */
-    /* Add same padding as #main to align with content text */
-    padding-inline-start: 1em;
+    /* Match archive content padding (1.5em) plus #main padding (1em) */
+    padding-inline-start: 2.5em;
   }
   
   @media (min-width: 1280px) {
     width: calc(100% - 300px); /* $right-sidebar-width */
     padding-inline-end: 300px;
     /* Keep same left padding */
-    padding-inline-start: 1em;
+    padding-inline-start: 2.5em;
   }
   
   /* Mobile and tablet: Full width, normal spacing */
