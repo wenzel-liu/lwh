@@ -64,11 +64,11 @@
         }
 
         /* Apply glow effect to all interactive elements */
-        button, .blog-item, .nav a, .search-box {
+        button, .blog-item, .nav a {
             transition: all 0.3s ease;
         }
 
-        button:hover, .blog-item:hover, .nav a:hover, .search-box:focus {
+        button:hover, .blog-item:hover, .nav a:hover {
             box-shadow: 0 4px 16px rgba(76, 175, 80, 0.2), 0 0 20px rgba(76, 175, 80, 0.1);
             transform: translateY(-2px);
         }
@@ -482,136 +482,37 @@
             <h1 class="page-title">Blog</h1>
             <p class="page-subtitle">Sharing insights on cardiovascular research, academic life, and technology</p>
             
-            <div class="search-container">
-                <input type="text" class="search-box" placeholder="Search blog posts..." id="searchInput">
-            </div>
-            
             <div class="blog-grid">
-                <div class="blog-card">
+                <div class="blog-card featured-blog">
+                    <div class="featured-badge">Featured</div>
                     <div class="blog-header">
-                        <div class="blog-icon">📝</div>
-                        <div class="blog-date">Jan 15, 2025</div>
+                        <div class="blog-icon">🧬</div>
+                        <div class="blog-date">Project</div>
                     </div>
                     <h2 class="blog-title">
-                        欢迎来到我的博客
+                        MedPrism
                     </h2>
                     <p class="blog-description">
-                        这是我博客的第一篇文章，在这里我将分享关于心脏病学研究、学术生活以及技术思考的内容。
+                        A comprehensive platform for medical research and data analysis, designed to accelerate cardiovascular research through advanced analytics and collaborative tools.
                     </p>
                     <div class="blog-links">
-                        <a href="posts/welcome-to-my-blog.html" class="blog-link">Read more →</a>
+                        <a href="https://whliu.notion.site/medprism?v=214aeaa78a4c81718d16000c31332e38&source=copy_link" class="blog-link" target="_blank">🌐 Visit Project →</a>
                     </div>
                 </div>
 
                 <div class="blog-card">
                     <div class="blog-header">
                         <div class="blog-icon">🔬</div>
-                        <div class="blog-date">Jan 10, 2025</div>
+                        <div class="blog-date">Project</div>
                     </div>
                     <h2 class="blog-title">
-                        RNA代谢在心脏疾病中的关键作用
+                        Sci-Industrialist
                     </h2>
                     <p class="blog-description">
-                        深入探讨RNA代谢调控在心脏重构过程中的分子机制，重点介绍我们最新的Ddx41和Rbm15b研究成果。
+                        An innovative platform bridging scientific research and industrial applications, focusing on translating cardiovascular research into real-world healthcare solutions.
                     </p>
                     <div class="blog-links">
-                        <a href="posts/rna-metabolism-heart-disease.html" class="blog-link">Read more →</a>
-                    </div>
-                </div>
-
-                <div class="blog-card">
-                    <div class="blog-header">
-                        <div class="blog-icon">🎓</div>
-                        <div class="blog-date">Jan 5, 2025</div>
-                    </div>
-                    <h2 class="blog-title">
-                        东京学术生活：在日本进行心血管研究的体验
-                    </h2>
-                    <p class="blog-description">
-                        分享在东京进行心血管疾病研究的学术生活体验，包括研究环境、文化差异和个人成长的感悟。
-                    </p>
-                    <div class="blog-links">
-                        <a href="posts/academic-life-in-tokyo.html" class="blog-link">Read more →</a>
-                    </div>
-                </div>
-
-                <div class="blog-card">
-                    <div class="blog-header">
-                        <div class="blog-icon">🤖</div>
-                        <div class="blog-date">Oct 27, 2023</div>
-                    </div>
-                    <h2 class="blog-title">
-                        Easily create your own simple yet highly customizable blog
-                    </h2>
-                    <p class="blog-description">
-                        Take full control of your personal brand and privacy by migrating away from the big tech platforms!
-                    </p>
-                    <div class="blog-links">
-                        <a href="#" class="blog-link">Read more →</a>
-                    </div>
-                </div>
-
-                <div class="blog-card">
-                    <div class="blog-header">
-                        <div class="blog-icon">🧠</div>
-                        <div class="blog-date">Oct 26, 2023</div>
-                    </div>
-                    <h2 class="blog-title">
-                        Sharpen your thinking with a second brain
-                    </h2>
-                    <p class="blog-description">
-                        Create a personal knowledge base and share your knowledge with your peers.
-                    </p>
-                    <div class="blog-links">
-                        <a href="#" class="blog-link">Read more →</a>
-                    </div>
-                </div>
-
-                <div class="blog-card">
-                    <div class="blog-header">
-                        <div class="blog-icon">📊</div>
-                        <div class="blog-date">Oct 25, 2023</div>
-                    </div>
-                    <h2 class="blog-title">
-                        Communicate your results effectively with the best data visualizations
-                    </h2>
-                    <p class="blog-description">
-                        Use popular tools such as Plotly, Mermaid, and data frames.
-                    </p>
-                    <div class="blog-links">
-                        <a href="#" class="blog-link">Read more →</a>
-                    </div>
-                </div>
-
-                <div class="blog-card">
-                    <div class="blog-header">
-                        <div class="blog-icon">🎓</div>
-                        <div class="blog-date">Oct 24, 2023</div>
-                    </div>
-                    <h2 class="blog-title">
-                        Teach academic courses
-                    </h2>
-                    <p class="blog-description">
-                        Embed videos, podcasts, code, LaTeX math, and even test students!
-                    </p>
-                    <div class="blog-links">
-                        <a href="#" class="blog-link">Read more →</a>
-                    </div>
-                </div>
-
-                <div class="blog-card">
-                    <div class="blog-header">
-                        <div class="blog-icon">📁</div>
-                        <div class="blog-date">Oct 23, 2023</div>
-                    </div>
-                    <h2 class="blog-title">
-                        Manage your projects
-                    </h2>
-                    <p class="blog-description">
-                        Easily manage your projects - create ideation mind maps, Gantt charts, todo lists, and more!
-                    </p>
-                    <div class="blog-links">
-                        <a href="#" class="blog-link">Read more →</a>
+                        <a href="https://whliu.notion.site/sci-industrialist?v=200aeaa78a4c80739092000ce65639af&source=copy_link" class="blog-link" target="_blank">🌐 Visit Project →</a>
                     </div>
                 </div>
             </div>
@@ -697,42 +598,10 @@
         // Add glow effect to interactive elements
         document.addEventListener('DOMContentLoaded', () => {
             // Add glow effect class to interactive elements
-            const interactiveElements = document.querySelectorAll('button, .blog-card, .search-box');
+            const interactiveElements = document.querySelectorAll('button, .blog-card');
             interactiveElements.forEach(element => {
                 element.classList.add('glow-effect');
             });
-        });
-
-        // Search functionality
-        function searchBlogs() {
-            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-            const blogCards = document.querySelectorAll('.blog-card');
-            const noResults = document.getElementById('noResults');
-            let visibleCount = 0;
-
-            blogCards.forEach(card => {
-                const title = card.querySelector('.blog-title').textContent.toLowerCase();
-                const description = card.querySelector('.blog-description').textContent.toLowerCase();
-                
-                if (title.includes(searchTerm) || description.includes(searchTerm)) {
-                    card.style.display = 'block';
-                    visibleCount++;
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-
-            if (visibleCount === 0 && searchTerm !== '') {
-                noResults.style.display = 'block';
-            } else {
-                noResults.style.display = 'none';
-            }
-        }
-
-        // Add search event listener
-        document.addEventListener('DOMContentLoaded', function() {
-            const searchInput = document.getElementById('searchInput');
-            searchInput.addEventListener('input', searchBlogs);
             
             // Update mobile nav on load and resize
             updateMobileNav();
