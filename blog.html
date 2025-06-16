@@ -306,6 +306,9 @@
             grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
             gap: 30px;
             margin-bottom: 60px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .blog-card {
@@ -388,24 +391,6 @@
             color: #66BB6A;
         }
 
-        .featured-blog {
-            grid-column: 1 / -1;
-            background: linear-gradient(135deg, rgba(76, 175, 80, 0.1), rgba(76, 175, 80, 0.05));
-            border: 2px solid rgba(76, 175, 80, 0.3);
-        }
-
-        .featured-badge {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: #4CAF50;
-            color: white;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-        }
-
         /* Footer */
         .footer {
             text-align: center;
@@ -436,10 +421,7 @@
 
             .blog-grid {
                 grid-template-columns: 1fr;
-            }
-
-            .featured-blog {
-                grid-column: 1;
+                max-width: 500px;
             }
 
             .nav {
@@ -483,8 +465,7 @@
             <p class="page-subtitle">Sharing insights on cardiovascular research, academic life, and technology</p>
             
             <div class="blog-grid">
-                <div class="blog-card featured-blog">
-                    <div class="featured-badge">Featured</div>
+                <div class="blog-card">
                     <div class="blog-header">
                         <div class="blog-icon">🧬</div>
                         <div class="blog-date">Project</div>
