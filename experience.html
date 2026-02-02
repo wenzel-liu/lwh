@@ -222,23 +222,19 @@
 
         /* Progressive hiding of nav items */
         @media (max-width: 900px) {
-            .nav a:nth-child(5) { display: none; }
+            .nav a:nth-child(4) { display: none; }
             .hamburger { display: flex; }
         }
 
         @media (max-width: 800px) {
-            .nav a:nth-child(4) { display: none; }
-        }
-
-        @media (max-width: 700px) {
             .nav a:nth-child(3) { display: none; }
         }
 
-        @media (max-width: 600px) {
+        @media (max-width: 700px) {
             .nav a:nth-child(2) { display: none; }
         }
 
-        @media (max-width: 500px) {
+        @media (max-width: 600px) {
             .nav a:nth-child(1) { display: none; }
             .nav { display: none; }
         }
@@ -276,7 +272,7 @@
         }
 
         .experience-list {
-            max-width: 600px;
+            max-width: 700px;
             margin: 0 auto;
         }
 
@@ -378,26 +374,18 @@
             color: #66BB6A;
         }
 
-        /* Responsive Design */
         @media (max-width: 768px) {
             .page-title {
                 font-size: 36px;
             }
 
-            .experience-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 5px;
+            .section-title {
+                font-size: 20px;
             }
 
-            .experience-description {
-                margin-left: 0;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .container {
-                padding: 0 15px;
+            .nav {
+                justify-content: center;
+                gap: 20px;
             }
         }
     </style>
@@ -413,7 +401,6 @@
                     <a href="blog.html">Blog</a>
                     <a href="experience.html" class="active">Experience</a>
                     <a href="research.html">Papers & Talks</a>
-                    <a href="projects.html">Projects</a>
                 </nav>
                 
                 <div class="hamburger" onclick="toggleMobileNav()">
@@ -435,21 +422,21 @@
                 <h1 class="page-title">Experience</h1>
                 
                 <div class="section">
+                    <h2 class="section-title">Professional & Research Experience</h2>
                     <div class="experience-list">
                         <div class="experience-item">
                             <div class="experience-header">
-                                <span class="experience-icon">🏢</span>
-                                <div class="experience-title">Director of Cloud Infrastructure</div>
+                                <span class="experience-icon">🔬</span>
+                                <div class="experience-title">Ph.D. Candidate</div>
                             </div>
-                            <div class="experience-company">GenCoin</div>
-                            <div class="experience-period">January 2021 – Present</div>
+                            <div class="experience-company">The University of Tokyo, Graduate School of Medicine</div>
+                            <div class="experience-period">April 2022 – Present | Tokyo, Japan</div>
                             <div class="experience-description">
-                                Responsibilities include:
                                 <div class="experience-responsibilities">
                                     <ul>
-                                        <li>lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
-                                        <li>lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
-                                        <li>lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
+                                        <li>Prioritized and advanced validation of a DEAD-box RNA helicase as a therapeutic target for heart failure, focusing resources on the most promising path.</li>
+                                        <li>Built Python/R analytics across scRNA-seq, CUT&Tag, ChIP-seq, and eCLIP to elucidate an RNA-metabolism mechanism and guide experiment design.</li>
+                                        <li>Presented findings to senior academic & industry audiences at AHA/ESC (6 talks), strengthening external visibility and partnership interest.</li>
                                     </ul>
                                 </div>
                             </div>
@@ -457,18 +444,51 @@
 
                         <div class="experience-item">
                             <div class="experience-header">
-                                <span class="experience-icon">🏢</span>
-                                <div class="experience-title">Backend Software Engineer</div>
+                                <span class="experience-icon">🔬</span>
+                                <div class="experience-title">Foreign Research Student</div>
                             </div>
-                            <div class="experience-company">X</div>
-                            <div class="experience-period">January 2016 – December 2020</div>
+                            <div class="experience-company">The University of Tokyo, Department of Cardiovascular Medicine</div>
+                            <div class="experience-period">September 2020 – March 2022 | Tokyo, Japan</div>
                             <div class="experience-description">
-                                Responsibilities include:
                                 <div class="experience-responsibilities">
                                     <ul>
-                                        <li>Migrated infrastructure to a new data center</li>
-                                        <li>lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
-                                        <li>lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
+                                        <li>Invented & validated a bioluminescent ATP probe for real-time cardiomyocyte imaging; published in Circulation and delivered reusable protocols/toolkits across labs.</li>
+                                        <li>Coordinated cross-lab collaboration (imaging × cardiology) to accelerate method adoption and reproducibility.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="experience-item">
+                            <div class="experience-header">
+                                <span class="experience-icon">🏥</span>
+                                <div class="experience-title">Resident Physician, Department of Cardiovascular Medicine</div>
+                            </div>
+                            <div class="experience-company">First Teaching Hospital of Tianjin University of Traditional Chinese Medicine</div>
+                            <div class="experience-period">July 2019 – August 2020 | Tianjin, China</div>
+                            <div class="experience-description">
+                                <div class="experience-responsibilities">
+                                    <ul>
+                                        <li>Co-led a randomized controlled trial on heart failure with preserved ejection fraction (HFpEF); contributed to protocol design, monitoring, and analysis.</li>
+                                        <li>Synthesized echocardiography + CPET datasets to isolate peripheral contributors and reframe the care pathway for HFpEF.</li>
+                                        <li>Authored multiple publications translating clinical data into peer-reviewed evidence.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="experience-item">
+                            <div class="experience-header">
+                                <span class="experience-icon">🏥</span>
+                                <div class="experience-title">Resident Physician, Department of Internal Medicine</div>
+                            </div>
+                            <div class="experience-company">First Teaching Hospital of Tianjin University of Traditional Chinese Medicine</div>
+                            <div class="experience-period">September 2017 – June 2019 | Tianjin, China</div>
+                            <div class="experience-description">
+                                <div class="experience-responsibilities">
+                                    <ul>
+                                        <li>Managed inpatient (incl. CCU) and outpatient care; delivered diagnosis, treatment plans, and patient education.</li>
+                                        <li>Completed all clinical rotations; earned Certificate of Completion of National Physician Residency Training.</li>
                                     </ul>
                                 </div>
                             </div>
@@ -482,61 +502,61 @@
                         <div class="experience-item">
                             <div class="experience-header">
                                 <span class="experience-icon">🎓</span>
-                                <div class="experience-title">PhD Artificial Intelligence</div>
+                                <div class="experience-title">Ph.D. in Cardiovascular Medicine</div>
                             </div>
-                            <div class="experience-company">Stanford University</div>
-                            <div class="experience-period">January 2016 – December 2020</div>
+                            <div class="experience-company">The University of Tokyo</div>
+                            <div class="experience-period">April 2022 – March 2026 (Expected) | Tokyo, Japan</div>
                             <div class="experience-description">
-                                Thesis on <em>Why LLMs are awesome</em>. Supervised by <strong>Prof Joe Smith</strong>. Presented papers at 5 IEEE conferences with the contributions being published in 2 Springer journals.
+                                Thesis: Novel heart failure therapy targeting DEAD-box RNA helicase.<br>
+                                <strong>The University of Tokyo Award</strong>
                             </div>
                         </div>
 
                         <div class="experience-item">
                             <div class="experience-header">
                                 <span class="experience-icon">🎓</span>
-                                <div class="experience-title">MEng Artificial Intelligence</div>
+                                <div class="experience-title">Bachelor of Medicine & Bachelor of Surgery (MBBS)</div>
                             </div>
-                            <div class="experience-company">Massachusetts Institute of Technology</div>
-                            <div class="experience-period">January 2016 – December 2020</div>
-                            <div class="experience-description">
-                                GPA: 3.8/4.0
-                                <br><br>
-                                Courses included:
-                                <div class="experience-responsibilities">
-                                    <ul>
-                                        <li>lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
-                                        <li>lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
-                                        <li>lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="experience-item">
-                            <div class="experience-header">
-                                <span class="experience-icon">🎓</span>
-                                <div class="experience-title">BSc Artificial Intelligence</div>
-                            </div>
-                            <div class="experience-company">Massachusetts Institute of Technology</div>
-                            <div class="experience-period">January 2016 – December 2020</div>
-                            <div class="experience-description">
-                                GPA: 3.4/4.0
-                                <br><br>
-                                Courses included:
-                                <div class="experience-responsibilities">
-                                    <ul>
-                                        <li>lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
-                                        <li>lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
-                                        <li>lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
-                                    </ul>
-                                </div>
-                            </div>
+                            <div class="experience-company">Tianjin University of Traditional Chinese Medicine</div>
+                            <div class="experience-period">September 2012 – June 2017 | Tianjin, China</div>
                         </div>
                     </div>
                 </div>
 
                 <div class="section">
-                    <h2 class="section-title">Skills & Hobbies</h2>
+                    <h2 class="section-title">Training</h2>
+                    <div class="experience-list">
+                        <div class="experience-item">
+                            <div class="experience-header">
+                                <span class="experience-icon">📚</span>
+                                <div class="experience-title">Fellow of Echocardiography</div>
+                            </div>
+                            <div class="experience-company">Fuwai Hospital, National Center for Cardiovascular Diseases, CAMS & PUMC</div>
+                            <div class="experience-period">September 2019 – October 2019 | Beijing, China</div>
+                        </div>
+
+                        <div class="experience-item">
+                            <div class="experience-header">
+                                <span class="experience-icon">📚</span>
+                                <div class="experience-title">Resident Physician, Department of Cardiovascular Medicine</div>
+                            </div>
+                            <div class="experience-company">First Teaching Hospital of Tianjin University of Traditional Chinese Medicine</div>
+                            <div class="experience-period">July 2019 – August 2020 | Tianjin, China</div>
+                        </div>
+
+                        <div class="experience-item">
+                            <div class="experience-header">
+                                <span class="experience-icon">📚</span>
+                                <div class="experience-title">Resident Physician, Department of Internal Medicine</div>
+                            </div>
+                            <div class="experience-company">First Teaching Hospital of Tianjin University of Traditional Chinese Medicine</div>
+                            <div class="experience-period">September 2017 – June 2019 | Tianjin, China</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2 class="section-title">Skills & Languages</h2>
                     <div class="experience-list">
                         <div class="experience-item">
                             <div class="experience-header">
@@ -546,9 +566,10 @@
                             <div class="experience-description">
                                 <div class="experience-responsibilities">
                                     <ul>
-                                        <li><strong>🐍 PYTHON</strong></li>
-                                        <li><strong>📊 DATA SCIENCE</strong></li>
-                                        <li><strong>🗄️ SQL</strong></li>
+                                        <li><strong>Programming:</strong> Python, R, SPSS</li>
+                                        <li><strong>Bioinformatics:</strong> scRNA-seq, CUT&Tag, ChIP-seq, eCLIP, RNA-seq analysis</li>
+                                        <li><strong>Clinical:</strong> Echocardiography (Speckle Tracking, Doppler), CPET, Clinical Trial Design (RCT)</li>
+                                        <li><strong>Research:</strong> Animal Models (Pressure Overload, MI), Molecular Biology, Immunohistochemistry</li>
                                     </ul>
                                 </div>
                             </div>
@@ -556,32 +577,17 @@
 
                         <div class="experience-item">
                             <div class="experience-header">
-                                <span class="experience-icon">🎯</span>
-                                <div class="experience-title">Hobbies</div>
+                                <span class="experience-icon">🌐</span>
+                                <div class="experience-title">Languages</div>
                             </div>
                             <div class="experience-description">
                                 <div class="experience-responsibilities">
                                     <ul>
-                                        <li><strong>🥾 HIKING</strong></li>
-                                        <li><strong>🐱 CATS</strong></li>
-                                        <li><strong>📸 PHOTOGRAPHY</strong></li>
+                                        <li><strong>Chinese:</strong> Native</li>
+                                        <li><strong>Japanese:</strong> Fluent (N1)</li>
+                                        <li><strong>English:</strong> Fluent</li>
                                     </ul>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="section">
-                    <h2 class="section-title">Awards</h2>
-                    <div class="experience-list">
-                        <div class="experience-item">
-                            <div class="experience-header">
-                                <span class="experience-icon">🏆</span>
-                                <div class="experience-title">Neural Networks and Deep Learning</div>
-                            </div>
-                            <div class="experience-description">
-                                An online non-credit course authorized by DeepLearning.AI and offered through Coursera
                             </div>
                         </div>
                     </div>
@@ -603,8 +609,7 @@
             { text: 'Bio', href: 'index.html' },
             { text: 'Blog', href: 'blog.html' },
             { text: 'Experience', href: 'experience.html' },
-            { text: 'Papers & Talks', href: 'research.html' },
-            { text: 'Projects', href: 'projects.html' }
+            { text: 'Papers & Talks', href: 'research.html' }
         ];
 
         // Update mobile nav with hidden items
@@ -671,4 +676,4 @@
         });
     </script>
 </body>
-</html> 
+</html>

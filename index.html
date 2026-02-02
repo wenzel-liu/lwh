@@ -222,23 +222,19 @@
 
         /* Progressive hiding of nav items */
         @media (max-width: 900px) {
-            .nav a:nth-child(5) { display: none; }
+            .nav a:nth-child(4) { display: none; }
             .hamburger { display: flex; }
         }
 
         @media (max-width: 800px) {
-            .nav a:nth-child(4) { display: none; }
-        }
-
-        @media (max-width: 700px) {
             .nav a:nth-child(3) { display: none; }
         }
 
-        @media (max-width: 600px) {
+        @media (max-width: 700px) {
             .nav a:nth-child(2) { display: none; }
         }
 
-        @media (max-width: 500px) {
+        @media (max-width: 600px) {
             .nav a:nth-child(1) { display: none; }
             .nav { display: none; }
         }
@@ -510,7 +506,6 @@
                     <a href="blog.html">Blog</a>
                     <a href="experience.html">Experience</a>
                     <a href="research.html">Papers & Talks</a>
-                    <a href="projects.html">Projects</a>
                 </nav>
                 
                 <div class="hamburger" onclick="toggleMobileNav()">
@@ -607,8 +602,7 @@
             { text: 'Bio', href: 'index.html' },
             { text: 'Blog', href: 'blog.html' },
             { text: 'Experience', href: 'experience.html' },
-            { text: 'Papers & Talks', href: 'research.html' },
-            { text: 'Projects', href: 'projects.html' }
+            { text: 'Papers & Talks', href: 'research.html' }
         ];
 
         // Update mobile nav with hidden items
