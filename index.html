@@ -16,6 +16,21 @@
             height: 100%;
         }
 
+        :root {
+            --liquid-panel:
+                radial-gradient(140% 120% at 10% 5%, rgba(194, 255, 205, 0.24) 0%, rgba(194, 255, 205, 0) 42%),
+                radial-gradient(130% 120% at 90% 0%, rgba(111, 196, 127, 0.18) 0%, rgba(111, 196, 127, 0) 44%),
+                linear-gradient(145deg, rgba(44, 92, 56, 0.56) 0%, rgba(15, 42, 24, 0.66) 100%);
+            --liquid-panel-soft:
+                radial-gradient(140% 120% at 10% 5%, rgba(194, 255, 205, 0.18) 0%, rgba(194, 255, 205, 0) 44%),
+                radial-gradient(130% 120% at 90% 0%, rgba(111, 196, 127, 0.12) 0%, rgba(111, 196, 127, 0) 44%),
+                linear-gradient(145deg, rgba(40, 84, 52, 0.44) 0%, rgba(13, 34, 20, 0.58) 100%);
+            --liquid-border: rgba(181, 245, 191, 0.34);
+            --liquid-shadow: 0 10px 34px rgba(5, 20, 10, 0.42), inset 0 1px 0 rgba(224, 255, 228, 0.24);
+            --liquid-filter: blur(24px) saturate(180%) contrast(112%);
+            --liquid-filter-strong: blur(28px) saturate(190%) contrast(114%);
+        }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             background: url('assets/images/background.jpg') no-repeat center center fixed;
@@ -100,6 +115,24 @@
             }
         }
 
+        @keyframes liquidPanelFlow {
+            0% {
+                background-position: 10% 5%, 90% 0%, center center;
+            }
+            100% {
+                background-position: 18% 12%, 82% 8%, center center;
+            }
+        }
+
+        .header,
+        .nav-mobile,
+        .content-left,
+        .content-right,
+        .footer {
+            background-size: 180% 180%, 170% 170%, 100% 100%;
+            animation: liquidPanelFlow 18s ease-in-out infinite alternate;
+        }
+
         @media (prefers-reduced-motion: reduce) {
             body::before,
             body::after {
@@ -112,6 +145,14 @@
 
             .liquid-filters {
                 display: none;
+            }
+
+            .header,
+            .nav-mobile,
+            .content-left,
+            .content-right,
+            .footer {
+                animation: none;
             }
         }
 
@@ -144,10 +185,11 @@
         /* Header Navigation - Fluent Design */
         .header {
             padding: 20px 0;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            background: var(--liquid-panel-soft);
+            backdrop-filter: var(--liquid-filter);
+            -webkit-backdrop-filter: var(--liquid-filter);
+            border-bottom: 1px solid var(--liquid-border);
+            box-shadow: var(--liquid-shadow);
             position: relative;
         }
 
@@ -252,9 +294,11 @@
             top: 100%;
             right: 0;
             min-width: 200px;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: var(--liquid-panel);
+            backdrop-filter: var(--liquid-filter);
+            -webkit-backdrop-filter: var(--liquid-filter);
+            border: 1px solid var(--liquid-border);
+            box-shadow: var(--liquid-shadow);
             border-radius: 10px;
             margin-top: 10px;
             padding: 20px;
@@ -322,16 +366,18 @@
             min-width: 0;
             padding: 40px;
             border-radius: 20px;
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(25px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            background: var(--liquid-panel);
+            backdrop-filter: var(--liquid-filter-strong);
+            -webkit-backdrop-filter: var(--liquid-filter-strong);
+            border: 1px solid var(--liquid-border);
+            box-shadow: var(--liquid-shadow);
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
         }
 
         .content-left:hover {
-            background: rgba(255, 255, 255, 0.08);
+            background: var(--liquid-panel);
             border-color: rgba(76, 175, 80, 0.3);
         }
 
@@ -340,9 +386,11 @@
             min-width: 280px;
             padding: 30px;
             border-radius: 20px;
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(25px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            background: var(--liquid-panel);
+            backdrop-filter: var(--liquid-filter-strong);
+            -webkit-backdrop-filter: var(--liquid-filter-strong);
+            border: 1px solid var(--liquid-border);
+            box-shadow: var(--liquid-shadow);
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
@@ -490,9 +538,11 @@
         .footer {
             text-align: center;
             padding: 40px 0;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(20px);
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            background: var(--liquid-panel-soft);
+            backdrop-filter: var(--liquid-filter);
+            -webkit-backdrop-filter: var(--liquid-filter);
+            border-top: 1px solid var(--liquid-border);
+            box-shadow: var(--liquid-shadow);
             color: #cccccc;
             font-size: clamp(12px, 1.5vw, 14px);
             margin-top: auto;
