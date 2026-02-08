@@ -27,7 +27,7 @@
                 linear-gradient(145deg, rgba(40, 84, 52, 0.44) 0%, rgba(13, 34, 20, 0.58) 100%);
             --liquid-border: rgba(181, 245, 191, 0.34);
             --liquid-shadow: 0 10px 34px rgba(5, 20, 10, 0.42), inset 0 1px 0 rgba(224, 255, 228, 0.24);
-            --liquid-filter: blur(24px) saturate(180%) contrast(112%);
+            --liquid-filter: blur(10px) saturate(132%) contrast(104%);
         }
 
         body {
@@ -64,12 +64,12 @@
             background-repeat: no-repeat;
             background-size: cover, 140% 140%, 130% 130%, 160% 160%;
             background-position: center center, 18% 24%, 82% 28%, 50% 82%;
-            filter: url(#liquid-distort-desktop) blur(12px) saturate(1.26) contrast(1.06) brightness(0.74);
+            filter: blur(7px) saturate(1.12) contrast(1.02) brightness(0.78);
             mix-blend-mode: screen;
             opacity: 0.9;
             transform: scale(1.08);
             transform-origin: center center;
-            animation: liquidDrift 26s ease-in-out infinite alternate;
+            animation: none;
             z-index: -2;
             pointer-events: none;
         }
@@ -88,7 +88,7 @@
                 linear-gradient(160deg, rgba(10, 20, 12, 0.3) 0%, rgba(9, 18, 11, 0.36) 60%, rgba(6, 14, 8, 0.44) 100%),
                 repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.026) 0 2px, rgba(0, 0, 0, 0.018) 2px 4px);
             background-repeat: no-repeat;
-            animation: liquidSheen 24s ease-in-out infinite alternate;
+            animation: none;
             z-index: -1;
             pointer-events: none;
         }
@@ -127,7 +127,7 @@
         .nav-mobile,
         .footer {
             background-size: 180% 180%, 170% 170%, 100% 100%;
-            animation: liquidPanelFlow 18s ease-in-out infinite alternate;
+            animation: none;
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -137,7 +137,7 @@
             }
 
             body::before {
-                filter: blur(11px) saturate(1.18) contrast(1.03) brightness(0.76);
+                filter: blur(6px) saturate(1.08) contrast(1.01) brightness(0.8);
             }
 
             .liquid-filters {
@@ -479,7 +479,7 @@
 
         @media (max-width: 768px) {
             body::before {
-                filter: url(#liquid-distort-mobile) blur(9px) saturate(1.16) contrast(1.02) brightness(0.78);
+                filter: blur(6px) saturate(1.1) contrast(1.01) brightness(0.8);
                 opacity: 0.84;
             }
 
@@ -507,30 +507,6 @@
     </style>
 </head>
 <body>
-    <svg class="liquid-filters" aria-hidden="true" focusable="false">
-        <defs>
-            <filter id="liquid-distort-desktop" x="-20%" y="-20%" width="140%" height="140%">
-                <feTurbulence type="fractalNoise" baseFrequency="0.008 0.014" numOctaves="2" seed="7" result="noise">
-                    <animate attributeName="baseFrequency" dur="24s" values="0.008 0.014;0.012 0.018;0.008 0.014" repeatCount="indefinite" />
-                </feTurbulence>
-                <feDisplacementMap in="SourceGraphic" in2="noise" scale="22" xChannelSelector="R" yChannelSelector="G" result="distorted">
-                    <animate attributeName="scale" dur="18s" values="18;26;18" repeatCount="indefinite" />
-                </feDisplacementMap>
-                <feGaussianBlur in="distorted" stdDeviation="0.25" />
-            </filter>
-
-            <filter id="liquid-distort-mobile" x="-20%" y="-20%" width="140%" height="140%">
-                <feTurbulence type="fractalNoise" baseFrequency="0.007 0.012" numOctaves="2" seed="7" result="noise">
-                    <animate attributeName="baseFrequency" dur="28s" values="0.007 0.012;0.009 0.014;0.007 0.012" repeatCount="indefinite" />
-                </feTurbulence>
-                <feDisplacementMap in="SourceGraphic" in2="noise" scale="12" xChannelSelector="R" yChannelSelector="G" result="distorted">
-                    <animate attributeName="scale" dur="22s" values="10;14;10" repeatCount="indefinite" />
-                </feDisplacementMap>
-                <feGaussianBlur in="distorted" stdDeviation="0.2" />
-            </filter>
-        </defs>
-    </svg>
-
     <header class="header">
         <div class="container">
             <div class="nav-container">
