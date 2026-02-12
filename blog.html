@@ -1,170 +1,45 @@
 <!doctype html>
 <html lang="en" data-theme="light">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Project notes and writing by Wenzel Liu on cardiovascular research, translational medicine, and technology strategy.">
-  <title>Blog | Wenzel Liu</title>
-  <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
-  <link rel="stylesheet" href="assets/css/fonts.css">
-  <link rel="stylesheet" href="assets/css/bento-base.css">
-  <link rel="stylesheet" href="assets/css/bento-pages.css">
-  <script>
-    (function () {
-      document.documentElement.classList.add("reveal-ready");
-      try {
-        var key = "site-theme";
-        var pref = localStorage.getItem(key) || "system";
-        var dark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-        var resolved = pref === "system" ? (dark ? "dark" : "light") : pref;
-        document.documentElement.setAttribute("data-theme-preference", pref);
-        document.documentElement.setAttribute("data-theme", resolved);
-        document.documentElement.classList.toggle("dark", resolved === "dark");
-      } catch (err) {
-        document.documentElement.setAttribute("data-theme", "light");
-      }
-    })();
-  </script>
-</head>
-<body>
-  <div class="site-shell">
-    <header class="topbar">
-      <div class="topbar-inner">
-        <a class="brand" href="index.html" aria-label="Wenzel Liu homepage">
-          <span class="brand-dot"></span>
-          <span class="brand-text">Wenzel Liu</span>
-        </a>
-
-        <nav class="top-nav" aria-label="Primary" data-top-nav>
-          <a class="nav-link" href="index.html" data-nav-link>Bio</a>
-          <a class="nav-link" href="blog.html" data-nav-link>Blog</a>
-          <a class="nav-link" href="experience.html" data-nav-link>Experience</a>
-          <a class="nav-link" href="research.html" data-nav-link>Papers & Talks</a>
-        </nav>
-
-        <div class="topbar-actions">
-          <div class="theme-control" data-theme-control>
-            <button class="icon-button" type="button" data-theme-toggle aria-haspopup="true" aria-expanded="false" aria-label="Theme options">
-              <span aria-hidden="true">◐</span>
-              <span class="theme-label" data-theme-current>System</span>
-            </button>
-            <div class="theme-menu" data-theme-menu role="menu" aria-label="Theme mode">
-              <button class="theme-option" type="button" data-theme-option="light" role="menuitem">Light</button>
-              <button class="theme-option" type="button" data-theme-option="dark" role="menuitem">Dark</button>
-              <button class="theme-option" type="button" data-theme-option="system" role="menuitem">System</button>
-            </div>
-          </div>
-
-          <button class="icon-button mobile-toggle" type="button" data-mobile-toggle aria-controls="mobile-nav" aria-expanded="false" aria-label="Toggle navigation">☰</button>
-        </div>
-      </div>
-
-      <nav class="mobile-nav" id="mobile-nav" data-mobile-nav aria-label="Mobile navigation">
-        <a class="nav-link" href="index.html" data-nav-link>Bio</a>
-        <a class="nav-link" href="blog.html" data-nav-link>Blog</a>
-        <a class="nav-link" href="experience.html" data-nav-link>Experience</a>
-        <a class="nav-link" href="research.html" data-nav-link>Papers & Talks</a>
-      </nav>
-    </header>
-
-    <main class="site-content">
-      <section class="page-intro" data-reveal>
-        <p class="page-kicker">Writing & Builds</p>
-        <h1 class="page-title">Projects, Notes, and Experiments</h1>
-        <p class="page-description">A focused space for practical projects and reflective writing around cardiovascular science, research operations, and technology translation.</p>
-      </section>
-
-      <section class="bento-grid" aria-label="Blog content">
-        <article class="bento-card span-3" data-reveal data-reveal-delay="20">
-          <h2 class="card-title">How I Use This Page</h2>
-          <p class="card-subtitle">This section tracks active project surfaces and selected long-form notes. The goal is not volume, but reusable thinking artifacts and applied outputs.</p>
-          <div class="chips" style="margin-top:0.75rem;">
-            <span class="chip soft">Research Workflow</span>
-            <span class="chip soft">Translation</span>
-            <span class="chip soft">Technical Execution</span>
-          </div>
-        </article>
-
-        <article class="bento-card" data-reveal data-reveal-delay="70">
-          <h3 class="card-title">MedPrism</h3>
-          <p class="card-subtitle">A structured workspace for cardiovascular research intelligence, experimental planning, and synthesis.</p>
-          <div class="chips" style="margin-top:0.7rem;">
-            <span class="chip">Research Ops</span>
-            <span class="chip">Knowledge Base</span>
-          </div>
-          <div class="cta-actions">
-            <a class="button-link secondary" href="https://whliu.notion.site/medprism?v=214aeaa78a4c81718d16000c31332e38&source=copy_link" target="_blank" rel="noopener noreferrer">Visit Project</a>
-          </div>
-        </article>
-
-        <article class="bento-card" data-reveal data-reveal-delay="100">
-          <h3 class="card-title">Sci-Industrialist</h3>
-          <p class="card-subtitle">An exploration hub for bridging scientific novelty with industrial and clinical implementation pathways.</p>
-          <div class="chips" style="margin-top:0.7rem;">
-            <span class="chip">Strategy</span>
-            <span class="chip">Translation</span>
-          </div>
-          <div class="cta-actions">
-            <a class="button-link secondary" href="https://whliu.notion.site/sci-industrialist?v=200aeaa78a4c80739092000ce65639af&source=copy_link" target="_blank" rel="noopener noreferrer">Visit Project</a>
-          </div>
-        </article>
-
-        <article class="bento-card" data-reveal data-reveal-delay="130">
-          <h3 class="card-title">Recent Notes</h3>
-          <div class="list-compact">
-            <div class="list-item">
-              <h4>Academic Life in Tokyo</h4>
-              <p>Reflections on research culture and adaptation in Tokyo.</p>
-              <a class="link-inline" href="posts/academic-life-in-tokyo.html">Read note</a>
-            </div>
-            <div class="list-item">
-              <h4>RNA Metabolism and Heart Disease</h4>
-              <p>Practical implications of RNA regulation in cardiovascular pathology.</p>
-              <a class="link-inline" href="posts/rna-metabolism-heart-disease.html">Read note</a>
-            </div>
-            <div class="list-item">
-              <h4>Welcome Note</h4>
-              <p>Context for this site and what I am building here.</p>
-              <a class="link-inline" href="posts/welcome-to-my-blog.html">Read note</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="bento-card span-2" data-reveal data-reveal-delay="170">
-          <h3 class="card-title">Themes I Work Through</h3>
-          <div class="entry-grid">
-            <div class="entry">
-              <h4>Cardiovascular Mechanisms</h4>
-              <p class="desc">From molecular circuits to clinically relevant endpoints in pressure overload and heart failure.</p>
-            </div>
-            <div class="entry">
-              <h4>Data-to-Decision Design</h4>
-              <p class="desc">Building concise, action-oriented representations from high-dimensional biological data.</p>
-            </div>
-            <div class="entry">
-              <h4>Science to Industry Interface</h4>
-              <p class="desc">Framing research outputs so they can be evaluated and deployed in real operating environments.</p>
-            </div>
-          </div>
-        </article>
-
-        <article class="bento-card cta-card" data-reveal data-reveal-delay="220">
-          <h3 class="card-title">Share a Build Idea</h3>
-          <p class="card-subtitle">If your team is exploring translational cardiology, omics analytics, or research workflow design, I’m happy to connect.</p>
-          <div class="cta-actions">
-            <a class="button-link" href="mailto:wenzel_liu@outlook.jp">Start a Conversation</a>
-          </div>
-        </article>
-      </section>
-    </main>
-
-    <footer class="site-footer">
-      <p>© 2026 Wenzel Liu. Licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC-ND 4.0</a>.</p>
-    </footer>
-  </div>
-
-  <script src="assets/js/site-theme.js"></script>
-  <script src="assets/js/site-nav.js"></script>
-  <script src="assets/js/site-motion.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Project notes and writing by Wenzel Liu on cardiovascular research, translational medicine, and technology strategy."
+    />
+    <title>Blog | Wenzel Liu</title>
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      (function () {
+        document.documentElement.classList.add('reveal-ready');
+        try {
+          var key = 'site-theme';
+          var pref = localStorage.getItem(key) || 'system';
+          var valid = ['light', 'dark', 'system'];
+          if (valid.indexOf(pref) < 0) {
+            pref = 'system';
+          }
+          var dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          var resolved = pref === 'system' ? (dark ? 'dark' : 'light') : pref;
+          document.documentElement.setAttribute('data-theme-preference', pref);
+          document.documentElement.setAttribute('data-theme', resolved);
+          document.documentElement.classList.toggle('dark', resolved === 'dark');
+        } catch {
+          document.documentElement.setAttribute('data-theme', 'light');
+        }
+      })();
+    </script>
+    <script type="module" crossorigin src="/lwh/app-assets/blog-COFRyHVZ.js"></script>
+    <link rel="modulepreload" crossorigin href="/lwh/app-assets/renderPage-WM0V_lah.js">
+    <link rel="stylesheet" crossorigin href="/lwh/app-assets/renderPage-CiHJrMpg.css">
+  </head>
+  <body>
+    <div id="app"></div>
+  </body>
 </html>

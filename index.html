@@ -1,232 +1,45 @@
 <!doctype html>
 <html lang="en" data-theme="light">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Wenzel Liu - Cardiologist and techno-industrialist focusing on heart failure, omics analysis, and translational cardiovascular research.">
-  <title>Bio | Wenzel Liu</title>
-  <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
-  <link rel="stylesheet" href="assets/css/fonts.css">
-  <link rel="stylesheet" href="assets/css/bento-base.css">
-  <link rel="stylesheet" href="assets/css/bento-pages.css">
-  <script>
-    (function () {
-      document.documentElement.classList.add("reveal-ready");
-      try {
-        var key = "site-theme";
-        var pref = localStorage.getItem(key) || "system";
-        var dark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-        var resolved = pref === "system" ? (dark ? "dark" : "light") : pref;
-        document.documentElement.setAttribute("data-theme-preference", pref);
-        document.documentElement.setAttribute("data-theme", resolved);
-        document.documentElement.classList.toggle("dark", resolved === "dark");
-      } catch (err) {
-        document.documentElement.setAttribute("data-theme", "light");
-      }
-    })();
-  </script>
-</head>
-<body>
-  <div class="site-shell">
-    <header class="topbar">
-      <div class="topbar-inner">
-        <a class="brand" href="index.html" aria-label="Wenzel Liu homepage">
-          <span class="brand-dot"></span>
-          <span class="brand-text">Wenzel Liu</span>
-        </a>
-
-        <nav class="top-nav" aria-label="Primary" data-top-nav>
-          <a class="nav-link" href="index.html" data-nav-link>Bio</a>
-          <a class="nav-link" href="blog.html" data-nav-link>Blog</a>
-          <a class="nav-link" href="experience.html" data-nav-link>Experience</a>
-          <a class="nav-link" href="research.html" data-nav-link>Papers & Talks</a>
-        </nav>
-
-        <div class="topbar-actions">
-          <div class="theme-control" data-theme-control>
-            <button class="icon-button" type="button" data-theme-toggle aria-haspopup="true" aria-expanded="false" aria-label="Theme options">
-              <span aria-hidden="true">◐</span>
-              <span class="theme-label" data-theme-current>System</span>
-            </button>
-            <div class="theme-menu" data-theme-menu role="menu" aria-label="Theme mode">
-              <button class="theme-option" type="button" data-theme-option="light" role="menuitem">Light</button>
-              <button class="theme-option" type="button" data-theme-option="dark" role="menuitem">Dark</button>
-              <button class="theme-option" type="button" data-theme-option="system" role="menuitem">System</button>
-            </div>
-          </div>
-
-          <button class="icon-button mobile-toggle" type="button" data-mobile-toggle aria-controls="mobile-nav" aria-expanded="false" aria-label="Toggle navigation">☰</button>
-        </div>
-      </div>
-
-      <nav class="mobile-nav" id="mobile-nav" data-mobile-nav aria-label="Mobile navigation">
-        <a class="nav-link" href="index.html" data-nav-link>Bio</a>
-        <a class="nav-link" href="blog.html" data-nav-link>Blog</a>
-        <a class="nav-link" href="experience.html" data-nav-link>Experience</a>
-        <a class="nav-link" href="research.html" data-nav-link>Papers & Talks</a>
-      </nav>
-    </header>
-
-    <main class="site-content">
-      <section class="page-intro" data-reveal>
-        <p class="page-kicker">Open to Collaboration</p>
-        <h1 class="page-title">Cardiovascular Research, Clinical Insight, and Applied Technology</h1>
-        <p class="page-description">I work at the intersection of medicine and computation, translating mechanistic insights into practical pathways for heart failure research and care.</p>
-      </section>
-
-      <section class="bento-grid" aria-label="Homepage overview">
-        <article class="bento-card span-2 row-2 hero-card" data-reveal data-reveal-delay="20">
-          <div class="hero-main">
-            <h2>Wenzel Liu, M.D.</h2>
-            <p class="hero-tagline">Cardiologist, Ph.D. candidate, and techno-industrialist based in Tokyo, focused on heart failure, RNA biology, and translational analytics.</p>
-
-            <div class="hero-meta">
-              <span class="chip soft">Heart Failure</span>
-              <span class="chip soft">Omics Analysis</span>
-              <span class="chip soft">Real-World Data</span>
-              <span class="chip">Python</span>
-              <span class="chip">R</span>
-              <span class="chip">Clinical Trials</span>
-            </div>
-
-            <hr class="card-divider">
-
-            <h3 class="card-title">Current Focus</h3>
-            <ul class="text-list">
-              <li>Target validation of DEAD-box RNA helicases for adverse cardiac remodeling.</li>
-              <li>Integrated analysis across scRNA-seq, CUT&Tag, ChIP-seq, eCLIP, and RNA-seq.</li>
-              <li>Bridging mechanistic biology and clinically deployable evidence pathways.</li>
-            </ul>
-          </div>
-
-          <aside class="hero-aside">
-            <div class="avatar-wrap">
-              <img src="assets/images/avatar.jpg" alt="Portrait of Wenzel Liu">
-            </div>
-
-            <div class="info-pair">
-              <span class="info-key">Location</span>
-              <span class="info-val">Tokyo, Japan</span>
-            </div>
-
-            <div class="info-pair">
-              <span class="info-key">Contact</span>
-              <span class="info-val"><a class="link-inline" href="mailto:wenzel_liu@outlook.jp">wenzel_liu@outlook.jp</a></span>
-            </div>
-
-            <div class="social-row" aria-label="Social links">
-              <a class="social-link" href="https://github.com/wenzel-liu" target="_blank" rel="noopener noreferrer">GitHub</a>
-              <a class="social-link" href="https://www.linkedin.com/in/wenhao-liu-m-d-649112178/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-              <a class="social-link" href="https://x.com/monteopanquieu" target="_blank" rel="noopener noreferrer">X</a>
-              <a class="social-link" href="https://orcid.org/0000-0002-2243-8391" target="_blank" rel="noopener noreferrer">ORCID</a>
-            </div>
-          </aside>
-        </article>
-
-        <article class="bento-card row-2" data-reveal data-reveal-delay="60">
-          <h3 class="card-title">Selected Experience</h3>
-          <div class="timeline-list">
-            <div class="timeline-item">
-              <h4>Ph.D. Candidate · The University of Tokyo</h4>
-              <p>Apr 2022 - Present · Cardiovascular medicine and RNA-centric therapeutic strategy.</p>
-            </div>
-            <div class="timeline-item">
-              <h4>Foreign Research Student · The University of Tokyo</h4>
-              <p>Sep 2020 - Mar 2022 · Bioluminescent ATP probe development and translational imaging workflow.</p>
-            </div>
-            <div class="timeline-item">
-              <h4>Resident Physician · Cardiovascular Medicine</h4>
-              <p>Jul 2019 - Aug 2020 · Heart failure trial operations, multimodal diagnostic synthesis.</p>
-            </div>
-          </div>
-          <p class="card-meta"><a class="link-inline" href="experience.html">View full experience timeline</a></p>
-        </article>
-
-        <article class="bento-card span-2" data-reveal data-reveal-delay="120">
-          <h3 class="card-title">Selected Publications & Talks</h3>
-          <div class="list-compact">
-            <div class="list-item">
-              <h4>Chronobiological rhythms and artificial light at night in vascular physiology and pathology</h4>
-              <p>Hypertension Research (2024) · Liu W, Higashikuni Y, Sata M.</p>
-            </div>
-            <div class="list-item">
-              <h4>NLRP3 Inflammasome Activation Through Heart-Brain Interaction During Pressure Overload</h4>
-              <p>Circulation (2023) · Co-authored mechanistic inflammation study.</p>
-            </div>
-            <div class="list-item">
-              <h4>ESC Congress 2025 · Moderated Poster</h4>
-              <p>Rbm15b protects against adverse cardiac remodeling under pressure overload.</p>
-            </div>
-          </div>
-          <p class="card-meta"><a class="link-inline" href="research.html">Browse complete papers & conference talks</a></p>
-        </article>
-
-        <article class="bento-card span-2" data-reveal data-reveal-delay="180">
-          <h3 class="card-title">Projects</h3>
-          <div class="project-grid">
-            <section class="project-card">
-              <h4>MedPrism</h4>
-              <p>Platform concept for medical research and analytics workflows in cardiovascular contexts.</p>
-              <div class="chips">
-                <span class="chip">Research Ops</span>
-                <span class="chip">Knowledge Workflow</span>
-              </div>
-              <a class="button-link secondary" href="https://whliu.notion.site/medprism?v=214aeaa78a4c81718d16000c31332e38&source=copy_link" target="_blank" rel="noopener noreferrer">Visit Project</a>
-            </section>
-
-            <section class="project-card">
-              <h4>Sci-Industrialist</h4>
-              <p>Bridge between frontier scientific output and industrial execution opportunities.</p>
-              <div class="chips">
-                <span class="chip">Translation</span>
-                <span class="chip">Strategy</span>
-              </div>
-              <a class="button-link secondary" href="https://whliu.notion.site/sci-industrialist?v=200aeaa78a4c80739092000ce65639af&source=copy_link" target="_blank" rel="noopener noreferrer">Visit Project</a>
-            </section>
-          </div>
-          <p class="card-meta"><a class="link-inline" href="blog.html">See all project notes and writing</a></p>
-        </article>
-
-        <article class="bento-card" data-reveal data-reveal-delay="220">
-          <h3 class="card-title">Core Stack</h3>
-          <div class="chips">
-            <span class="chip">Python</span>
-            <span class="chip">R</span>
-            <span class="chip">SPSS</span>
-            <span class="chip">scRNA-seq</span>
-            <span class="chip">CUT&Tag</span>
-            <span class="chip">ChIP-seq</span>
-            <span class="chip">eCLIP</span>
-            <span class="chip">Echocardiography</span>
-            <span class="chip">CPET</span>
-            <span class="chip">RCT Design</span>
-          </div>
-          <hr class="card-divider">
-          <div class="chips">
-            <span class="chip soft">Chinese · Native</span>
-            <span class="chip soft">Japanese · N1</span>
-            <span class="chip soft">English · Fluent</span>
-          </div>
-        </article>
-
-        <article class="bento-card cta-card span-3" data-reveal data-reveal-delay="260">
-          <h3 class="card-title">Let’s Connect</h3>
-          <p class="card-subtitle">I am available for research collaborations, translational strategy work, and technical partnerships in cardiovascular medicine.</p>
-          <div class="cta-actions">
-            <a class="button-link" href="mailto:wenzel_liu@outlook.jp">Email Me</a>
-            <a class="button-link secondary" href="assets/files/Curriculum Vitae.pdf" download>Download CV</a>
-          </div>
-        </article>
-      </section>
-    </main>
-
-    <footer class="site-footer">
-      <p>© 2026 Wenzel Liu. Licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC-ND 4.0</a>.</p>
-    </footer>
-  </div>
-
-  <script src="assets/js/site-theme.js"></script>
-  <script src="assets/js/site-nav.js"></script>
-  <script src="assets/js/site-motion.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Wenzel Liu - Cardiologist and techno-industrialist focusing on heart failure, omics analysis, and translational cardiovascular research."
+    />
+    <title>Bio | Wenzel Liu</title>
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      (function () {
+        document.documentElement.classList.add('reveal-ready');
+        try {
+          var key = 'site-theme';
+          var pref = localStorage.getItem(key) || 'system';
+          var valid = ['light', 'dark', 'system'];
+          if (valid.indexOf(pref) < 0) {
+            pref = 'system';
+          }
+          var dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          var resolved = pref === 'system' ? (dark ? 'dark' : 'light') : pref;
+          document.documentElement.setAttribute('data-theme-preference', pref);
+          document.documentElement.setAttribute('data-theme', resolved);
+          document.documentElement.classList.toggle('dark', resolved === 'dark');
+        } catch {
+          document.documentElement.setAttribute('data-theme', 'light');
+        }
+      })();
+    </script>
+    <script type="module" crossorigin src="/lwh/app-assets/index-Bq8OWRkR.js"></script>
+    <link rel="modulepreload" crossorigin href="/lwh/app-assets/renderPage-WM0V_lah.js">
+    <link rel="stylesheet" crossorigin href="/lwh/app-assets/renderPage-CiHJrMpg.css">
+  </head>
+  <body>
+    <div id="app"></div>
+  </body>
 </html>

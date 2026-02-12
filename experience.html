@@ -1,218 +1,45 @@
 <!doctype html>
 <html lang="en" data-theme="light">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Professional experience, education, and technical profile of Wenzel Liu in cardiovascular medicine and translational research.">
-  <title>Experience | Wenzel Liu</title>
-  <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
-  <link rel="stylesheet" href="assets/css/fonts.css">
-  <link rel="stylesheet" href="assets/css/bento-base.css">
-  <link rel="stylesheet" href="assets/css/bento-pages.css">
-  <script>
-    (function () {
-      document.documentElement.classList.add("reveal-ready");
-      try {
-        var key = "site-theme";
-        var pref = localStorage.getItem(key) || "system";
-        var dark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-        var resolved = pref === "system" ? (dark ? "dark" : "light") : pref;
-        document.documentElement.setAttribute("data-theme-preference", pref);
-        document.documentElement.setAttribute("data-theme", resolved);
-        document.documentElement.classList.toggle("dark", resolved === "dark");
-      } catch (err) {
-        document.documentElement.setAttribute("data-theme", "light");
-      }
-    })();
-  </script>
-</head>
-<body>
-  <div class="site-shell">
-    <header class="topbar">
-      <div class="topbar-inner">
-        <a class="brand" href="index.html" aria-label="Wenzel Liu homepage">
-          <span class="brand-dot"></span>
-          <span class="brand-text">Wenzel Liu</span>
-        </a>
-
-        <nav class="top-nav" aria-label="Primary" data-top-nav>
-          <a class="nav-link" href="index.html" data-nav-link>Bio</a>
-          <a class="nav-link" href="blog.html" data-nav-link>Blog</a>
-          <a class="nav-link" href="experience.html" data-nav-link>Experience</a>
-          <a class="nav-link" href="research.html" data-nav-link>Papers & Talks</a>
-        </nav>
-
-        <div class="topbar-actions">
-          <div class="theme-control" data-theme-control>
-            <button class="icon-button" type="button" data-theme-toggle aria-haspopup="true" aria-expanded="false" aria-label="Theme options">
-              <span aria-hidden="true">◐</span>
-              <span class="theme-label" data-theme-current>System</span>
-            </button>
-            <div class="theme-menu" data-theme-menu role="menu" aria-label="Theme mode">
-              <button class="theme-option" type="button" data-theme-option="light" role="menuitem">Light</button>
-              <button class="theme-option" type="button" data-theme-option="dark" role="menuitem">Dark</button>
-              <button class="theme-option" type="button" data-theme-option="system" role="menuitem">System</button>
-            </div>
-          </div>
-
-          <button class="icon-button mobile-toggle" type="button" data-mobile-toggle aria-controls="mobile-nav" aria-expanded="false" aria-label="Toggle navigation">☰</button>
-        </div>
-      </div>
-
-      <nav class="mobile-nav" id="mobile-nav" data-mobile-nav aria-label="Mobile navigation">
-        <a class="nav-link" href="index.html" data-nav-link>Bio</a>
-        <a class="nav-link" href="blog.html" data-nav-link>Blog</a>
-        <a class="nav-link" href="experience.html" data-nav-link>Experience</a>
-        <a class="nav-link" href="research.html" data-nav-link>Papers & Talks</a>
-      </nav>
-    </header>
-
-    <main class="site-content">
-      <section class="page-intro" data-reveal>
-        <p class="page-kicker">Career Path</p>
-        <h1 class="page-title">Professional & Academic Experience</h1>
-        <p class="page-description">Clinical training, research execution, and translational work across heart failure medicine and molecular cardiology.</p>
-      </section>
-
-      <section class="bento-grid" aria-label="Experience content">
-        <article class="bento-card span-3" data-reveal data-reveal-delay="20">
-          <h2 class="card-title">Profile Snapshot</h2>
-          <div class="chips">
-            <span class="chip soft">M.D. / Ph.D. Track</span>
-            <span class="chip soft">Cardiovascular Medicine</span>
-            <span class="chip soft">Translational Research</span>
-            <span class="chip">Clinical Trial Design</span>
-            <span class="chip">Omics Analytics</span>
-            <span class="chip">Heart Failure</span>
-          </div>
-        </article>
-
-        <article class="bento-card span-2 row-2" data-reveal data-reveal-delay="60">
-          <h3 class="card-title">Professional & Research Experience</h3>
-          <div class="entry-grid">
-            <section class="entry">
-              <h4>Ph.D. Candidate · The University of Tokyo, Graduate School of Medicine</h4>
-              <p class="meta">Apr 2022 - Present · Tokyo, Japan</p>
-              <ul class="text-list">
-                <li>Prioritized validation of DEAD-box RNA helicase as a therapeutic target for heart failure.</li>
-                <li>Built Python/R analytics across scRNA-seq, CUT&Tag, ChIP-seq, and eCLIP to guide experiment design.</li>
-                <li>Presented findings to academic and industry audiences at AHA/ESC (6 talks).</li>
-              </ul>
-            </section>
-
-            <section class="entry">
-              <h4>Foreign Research Student · The University of Tokyo, Department of Cardiovascular Medicine</h4>
-              <p class="meta">Sep 2020 - Mar 2022 · Tokyo, Japan</p>
-              <ul class="text-list">
-                <li>Invented and validated a bioluminescent ATP probe for real-time cardiomyocyte imaging.</li>
-                <li>Published in Circulation and delivered reusable protocols for cross-lab adoption.</li>
-                <li>Coordinated imaging and cardiology collaboration to improve reproducibility.</li>
-              </ul>
-            </section>
-
-            <section class="entry">
-              <h4>Resident Physician, Cardiovascular Medicine · First Teaching Hospital of Tianjin University of TCM</h4>
-              <p class="meta">Jul 2019 - Aug 2020 · Tianjin, China</p>
-              <ul class="text-list">
-                <li>Co-led an RCT on heart failure with preserved ejection fraction (HFpEF).</li>
-                <li>Integrated echocardiography and CPET datasets to clarify peripheral contributors.</li>
-                <li>Authored publications translating clinical observations into peer-reviewed evidence.</li>
-              </ul>
-            </section>
-
-            <section class="entry">
-              <h4>Resident Physician, Internal Medicine · First Teaching Hospital of Tianjin University of TCM</h4>
-              <p class="meta">Sep 2017 - Jun 2019 · Tianjin, China</p>
-              <ul class="text-list">
-                <li>Managed inpatient and outpatient care including CCU responsibilities.</li>
-                <li>Completed all clinical rotations and national residency training requirements.</li>
-              </ul>
-            </section>
-          </div>
-        </article>
-
-        <article class="bento-card" data-reveal data-reveal-delay="100">
-          <h3 class="card-title">Education</h3>
-          <div class="list-compact">
-            <section class="list-item">
-              <h4>Ph.D. in Cardiovascular Medicine · The University of Tokyo</h4>
-              <p>Apr 2022 - Mar 2026 (Expected) · Thesis on DEAD-box RNA helicase-targeted therapy.</p>
-              <p class="card-meta">The University of Tokyo Award</p>
-            </section>
-            <section class="list-item">
-              <h4>Bachelor of Medicine & Bachelor of Surgery (MBBS)</h4>
-              <p>Tianjin University of Traditional Chinese Medicine · Sep 2012 - Jun 2017</p>
-            </section>
-          </div>
-        </article>
-
-        <article class="bento-card" data-reveal data-reveal-delay="140">
-          <h3 class="card-title">Training</h3>
-          <div class="timeline-list">
-            <div class="timeline-item">
-              <h4>Fellow of Echocardiography</h4>
-              <p>Fuwai Hospital, National Center for Cardiovascular Diseases · Sep-Oct 2019</p>
-            </div>
-            <div class="timeline-item">
-              <h4>Resident Physician, Cardiovascular Medicine</h4>
-              <p>First Teaching Hospital of Tianjin University of TCM · 2019-2020</p>
-            </div>
-            <div class="timeline-item">
-              <h4>Resident Physician, Internal Medicine</h4>
-              <p>First Teaching Hospital of Tianjin University of TCM · 2017-2019</p>
-            </div>
-          </div>
-        </article>
-
-        <article class="bento-card span-2" data-reveal data-reveal-delay="180">
-          <h3 class="card-title">Skills & Languages</h3>
-          <div class="entry-grid">
-            <section class="entry">
-              <h4>Technical and Research Skills</h4>
-              <div class="chips" style="margin-top:0.55rem;">
-                <span class="chip">Python</span>
-                <span class="chip">R</span>
-                <span class="chip">SPSS</span>
-                <span class="chip">scRNA-seq</span>
-                <span class="chip">CUT&Tag</span>
-                <span class="chip">ChIP-seq</span>
-                <span class="chip">eCLIP</span>
-                <span class="chip">RNA-seq</span>
-                <span class="chip">Echocardiography</span>
-                <span class="chip">CPET</span>
-                <span class="chip">RCT Design</span>
-                <span class="chip">Animal Models</span>
-              </div>
-            </section>
-
-            <section class="entry">
-              <h4>Languages</h4>
-              <div class="chips" style="margin-top:0.55rem;">
-                <span class="chip soft">Chinese · Native</span>
-                <span class="chip soft">Japanese · Fluent (N1)</span>
-                <span class="chip soft">English · Fluent</span>
-              </div>
-            </section>
-          </div>
-        </article>
-
-        <article class="bento-card cta-card" data-reveal data-reveal-delay="230">
-          <h3 class="card-title">Research Collaboration</h3>
-          <p class="card-subtitle">Interested in collaborative studies around pressure overload, RNA metabolism, or translational heart failure programs.</p>
-          <div class="cta-actions">
-            <a class="button-link" href="mailto:wenzel_liu@outlook.jp">Discuss Collaboration</a>
-          </div>
-        </article>
-      </section>
-    </main>
-
-    <footer class="site-footer">
-      <p>© 2026 Wenzel Liu. Licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC-ND 4.0</a>.</p>
-    </footer>
-  </div>
-
-  <script src="assets/js/site-theme.js"></script>
-  <script src="assets/js/site-nav.js"></script>
-  <script src="assets/js/site-motion.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Professional experience, education, and technical profile of Wenzel Liu in cardiovascular medicine and translational research."
+    />
+    <title>Experience | Wenzel Liu</title>
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      (function () {
+        document.documentElement.classList.add('reveal-ready');
+        try {
+          var key = 'site-theme';
+          var pref = localStorage.getItem(key) || 'system';
+          var valid = ['light', 'dark', 'system'];
+          if (valid.indexOf(pref) < 0) {
+            pref = 'system';
+          }
+          var dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          var resolved = pref === 'system' ? (dark ? 'dark' : 'light') : pref;
+          document.documentElement.setAttribute('data-theme-preference', pref);
+          document.documentElement.setAttribute('data-theme', resolved);
+          document.documentElement.classList.toggle('dark', resolved === 'dark');
+        } catch {
+          document.documentElement.setAttribute('data-theme', 'light');
+        }
+      })();
+    </script>
+    <script type="module" crossorigin src="/lwh/app-assets/experience-BpYyqj7E.js"></script>
+    <link rel="modulepreload" crossorigin href="/lwh/app-assets/renderPage-WM0V_lah.js">
+    <link rel="stylesheet" crossorigin href="/lwh/app-assets/renderPage-CiHJrMpg.css">
+  </head>
+  <body>
+    <div id="app"></div>
+  </body>
 </html>
