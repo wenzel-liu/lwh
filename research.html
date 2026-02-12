@@ -1,846 +1,232 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" data-theme="light">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Papers & Talks - Wenzel Liu</title>
-    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html, body {
-            height: 100%;
-        }
-
-        :root {
-            --liquid-panel:
-                radial-gradient(140% 120% at 10% 5%, rgba(194, 255, 205, 0.24) 0%, rgba(194, 255, 205, 0) 42%),
-                radial-gradient(130% 120% at 90% 0%, rgba(111, 196, 127, 0.18) 0%, rgba(111, 196, 127, 0) 44%),
-                linear-gradient(145deg, rgba(44, 92, 56, 0.56) 0%, rgba(15, 42, 24, 0.66) 100%);
-            --liquid-panel-soft:
-                radial-gradient(140% 120% at 10% 5%, rgba(194, 255, 205, 0.18) 0%, rgba(194, 255, 205, 0) 44%),
-                radial-gradient(130% 120% at 90% 0%, rgba(111, 196, 127, 0.12) 0%, rgba(111, 196, 127, 0) 44%),
-                linear-gradient(145deg, rgba(40, 84, 52, 0.44) 0%, rgba(13, 34, 20, 0.58) 100%);
-            --liquid-border: rgba(181, 245, 191, 0.34);
-            --liquid-shadow: 0 10px 34px rgba(5, 20, 10, 0.42), inset 0 1px 0 rgba(224, 255, 228, 0.24);
-            --liquid-filter: blur(10px) saturate(132%) contrast(104%);
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: url('assets/images/background.jpg') no-repeat center center fixed;
-            background-size: cover;
-            color: #ffffff;
-            line-height: 1.6;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .liquid-filters {
-            position: absolute;
-            width: 0;
-            height: 0;
-            pointer-events: none;
-        }
-
-        /* SVG liquid grass base: turbulence + displacement + green highlights */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image:
-                url('assets/images/background.jpg'),
-                radial-gradient(circle at 18% 24%, rgba(152, 226, 166, 0.34) 0%, rgba(152, 226, 166, 0) 46%),
-                radial-gradient(circle at 82% 28%, rgba(116, 196, 135, 0.24) 0%, rgba(116, 196, 135, 0) 48%),
-                radial-gradient(circle at 50% 82%, rgba(196, 246, 201, 0.22) 0%, rgba(196, 246, 201, 0) 52%);
-            background-repeat: no-repeat;
-            background-size: cover, 140% 140%, 130% 130%, 160% 160%;
-            background-position: center center, 18% 24%, 82% 28%, 50% 82%;
-            filter: blur(7px) saturate(1.12) contrast(1.02) brightness(0.78);
-            mix-blend-mode: screen;
-            opacity: 0.9;
-            transform: scale(1.08);
-            transform-origin: center center;
-            animation: none;
-            z-index: -2;
-            pointer-events: none;
-        }
-
-        /* Glass membrane: readability + subtle highlight + fine grain */
-        body::after {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background:
-                radial-gradient(120% 85% at 12% 8%, rgba(214, 255, 224, 0.18) 0%, rgba(214, 255, 224, 0) 45%),
-                radial-gradient(90% 70% at 88% 12%, rgba(173, 235, 186, 0.14) 0%, rgba(173, 235, 186, 0) 48%),
-                linear-gradient(160deg, rgba(10, 20, 12, 0.3) 0%, rgba(9, 18, 11, 0.36) 60%, rgba(6, 14, 8, 0.44) 100%),
-                repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.026) 0 2px, rgba(0, 0, 0, 0.018) 2px 4px);
-            background-repeat: no-repeat;
-            animation: none;
-            z-index: -1;
-            pointer-events: none;
-        }
-
-        @keyframes liquidDrift {
-            0% {
-                background-position: center center, 18% 24%, 82% 28%, 50% 82%;
-            }
-            50% {
-                background-position: center center, 22% 18%, 77% 32%, 54% 76%;
-            }
-            100% {
-                background-position: center center, 15% 27%, 85% 24%, 47% 86%;
-            }
-        }
-
-        @keyframes liquidSheen {
-            0% {
-                background-position: 12% 8%, 88% 12%, center center, 0 0;
-            }
-            100% {
-                background-position: 18% 12%, 82% 18%, center center, 24px 16px;
-            }
-        }
-
-        @keyframes liquidPanelFlow {
-            0% {
-                background-position: 10% 5%, 90% 0%, center center;
-            }
-            100% {
-                background-position: 18% 12%, 82% 8%, center center;
-            }
-        }
-
-        .header,
-        .nav-mobile,
-        .footer {
-            background-size: 180% 180%, 170% 170%, 100% 100%;
-            animation: none;
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            body::before,
-            body::after {
-                animation: none;
-            }
-
-            body::before {
-                filter: blur(6px) saturate(1.08) contrast(1.01) brightness(0.8);
-            }
-
-            .liquid-filters {
-                display: none;
-            }
-
-            .header,
-            .nav-mobile,
-            .footer {
-                animation: none;
-            }
-        }
-
-        /* Global hover glow effect for interactive elements */
-        .glow-effect {
-            transition: all 0.3s ease;
-        }
-
-        .glow-effect:hover {
-            box-shadow: 0 4px 16px rgba(76, 175, 80, 0.2), 0 0 20px rgba(76, 175, 80, 0.1);
-            transform: translateY(-2px);
-        }
-
-        /* Apply glow effect to all interactive elements */
-        button, .paper-item, .nav a {
-            transition: all 0.3s ease;
-        }
-
-        button:hover, .paper-item:hover, .nav a:hover {
-            box-shadow: 0 4px 16px rgba(76, 175, 80, 0.2), 0 0 20px rgba(76, 175, 80, 0.1);
-            transform: translateY(-2px);
-        }
-
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header Navigation - Fluent Design */
-        .header {
-            padding: 20px 0;
-            background: var(--liquid-panel-soft);
-            backdrop-filter: var(--liquid-filter);
-            -webkit-backdrop-filter: var(--liquid-filter);
-            border-bottom: 1px solid var(--liquid-border);
-            box-shadow: var(--liquid-shadow);
-            position: relative;
-        }
-
-        .header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: relative;
-        }
-
-        .nav {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex: 1;
-        }
-
-        .nav a {
-            color: #ffffff;
-            text-decoration: none;
-            font-weight: 500;
-            padding: 12px 24px;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            position: relative;
-            white-space: nowrap;
-        }
-
-        .nav a:hover, .nav a.active {
-            color: #4CAF50;
-            background: rgba(76, 175, 80, 0.1);
-            box-shadow: 0 4px 16px rgba(76, 175, 80, 0.2);
-            transform: translateY(-2px);
-        }
-
-        .nav a::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .nav a:hover::before {
-            opacity: 1;
-        }
-
-        /* Hamburger Menu */
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            padding: 10px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            margin-left: auto;
-        }
-
-        .hamburger:hover {
-            background: rgba(76, 175, 80, 0.1);
-        }
-
-        .hamburger span {
-            width: 25px;
-            height: 3px;
-            background: #ffffff;
-            margin: 3px 0;
-            transition: 0.3s;
-            border-radius: 2px;
-        }
-
-        .hamburger.active span:nth-child(1) {
-            transform: rotate(-45deg) translate(-5px, 6px);
-        }
-
-        .hamburger.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .hamburger.active span:nth-child(3) {
-            transform: rotate(45deg) translate(-5px, -6px);
-        }
-
-        .nav-mobile {
-            display: none;
-            position: absolute;
-            top: 100%;
-            right: 0;
-            min-width: 200px;
-            background: var(--liquid-panel);
-            backdrop-filter: var(--liquid-filter);
-            -webkit-backdrop-filter: var(--liquid-filter);
-            border: 1px solid var(--liquid-border);
-            box-shadow: var(--liquid-shadow);
-            border-radius: 10px;
-            margin-top: 10px;
-            padding: 20px;
-            flex-direction: column;
-            gap: 10px;
-            z-index: 1000;
-        }
-
-        .nav-mobile.active {
-            display: flex;
-        }
-
-        .nav-mobile a {
-            color: #ffffff;
-            text-decoration: none;
-            font-weight: 500;
-            padding: 12px 20px;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            text-align: center;
-        }
-
-        .nav-mobile a:hover {
-            color: #4CAF50;
-            background: rgba(76, 175, 80, 0.1);
-        }
-
-        /* Progressive hiding of nav items */
-        @media (max-width: 900px) {
-            .nav a:nth-child(4) { display: none; }
-            .hamburger { display: flex; }
-        }
-
-        @media (max-width: 800px) {
-            .nav a:nth-child(3) { display: none; }
-        }
-
-        @media (max-width: 700px) {
-            .nav a:nth-child(2) { display: none; }
-        }
-
-        @media (max-width: 600px) {
-            .nav a:nth-child(1) { display: none; }
-            .nav { display: none; }
-        }
-
-        /* Main Content */
-        .main-wrapper {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .main-content {
-            padding: 60px 0;
-            flex: 1;
-        }
-
-        .page-title {
-            text-align: center;
-            font-size: 48px;
-            font-weight: 700;
-            margin-bottom: 60px;
-            color: #ffffff;
-        }
-
-        .section-title {
-            font-size: 28px;
-            font-weight: 600;
-            color: #ffffff;
-            margin-bottom: 30px;
-            text-align: center;
-            padding-bottom: 15px;
-            border-bottom: 2px solid rgba(76, 175, 80, 0.3);
-        }
-
-        .section {
-            margin-bottom: 60px;
-        }
-
-        .papers-list {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .paper-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 20px;
-            padding: 20px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .paper-item:hover {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-            padding: 20px;
-            margin: 0 -20px;
-        }
-
-        .paper-year {
-            color: #888888;
-            font-size: 14px;
-            font-weight: 400;
-            min-width: 60px;
-            flex-shrink: 0;
-        }
-
-        .paper-content {
-            flex: 1;
-        }
-
-        .paper-icon {
-            margin-right: 10px;
-            font-size: 16px;
-        }
-
-        .paper-title {
-            font-size: 15px;
-            font-weight: 500;
-            color: #ffffff;
-            margin-bottom: 5px;
-            line-height: 1.4;
-            display: flex;
-            align-items: flex-start;
-        }
-
-        .paper-authors {
-            color: #cccccc;
-            font-size: 13px;
-            line-height: 1.5;
-            margin-bottom: 5px;
-        }
-
-        .paper-authors strong {
-            color: #4CAF50;
-        }
-
-        .paper-venue {
-            color: #4CAF50;
-            font-size: 13px;
-            font-style: italic;
-            margin-bottom: 5px;
-        }
-
-        .paper-description {
-            color: #aaaaaa;
-            font-size: 13px;
-            line-height: 1.4;
-            margin-bottom: 8px;
-        }
-
-        /* Footer */
-        .footer {
-            text-align: center;
-            padding: 40px 0;
-            background: var(--liquid-panel-soft);
-            backdrop-filter: var(--liquid-filter);
-            -webkit-backdrop-filter: var(--liquid-filter);
-            border-top: 1px solid var(--liquid-border);
-            box-shadow: var(--liquid-shadow);
-            color: #cccccc;
-            font-size: 14px;
-            margin-top: auto;
-        }
-
-        .footer a {
-            color: #4CAF50;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .footer a:hover {
-            color: #66BB6A;
-        }
-
-        @media (max-width: 768px) {
-            body::before {
-                filter: blur(6px) saturate(1.1) contrast(1.01) brightness(0.8);
-                opacity: 0.84;
-            }
-
-            body::after {
-                background:
-                    radial-gradient(110% 70% at 12% 10%, rgba(214, 255, 224, 0.14) 0%, rgba(214, 255, 224, 0) 44%),
-                    radial-gradient(85% 65% at 86% 14%, rgba(173, 235, 186, 0.1) 0%, rgba(173, 235, 186, 0) 46%),
-                    linear-gradient(160deg, rgba(10, 20, 12, 0.34) 0%, rgba(8, 16, 10, 0.4) 60%, rgba(5, 12, 7, 0.46) 100%),
-                    repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.02) 0 2px, rgba(0, 0, 0, 0.014) 2px 4px);
-            }
-
-            .page-title {
-                font-size: 36px;
-            }
-
-            .paper-item {
-                flex-direction: column;
-                gap: 10px;
-            }
-
-            .paper-year {
-                min-width: auto;
-            }
-
-            .nav {
-                justify-content: center;
-                gap: 20px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Publications and conference presentations by Wenzel Liu in cardiovascular medicine and molecular cardiology.">
+  <title>Papers & Talks | Wenzel Liu</title>
+  <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+  <link rel="stylesheet" href="assets/css/fonts.css">
+  <link rel="stylesheet" href="assets/css/bento-base.css">
+  <link rel="stylesheet" href="assets/css/bento-pages.css">
+  <script>
+    (function () {
+      document.documentElement.classList.add("reveal-ready");
+      try {
+        var key = "site-theme";
+        var pref = localStorage.getItem(key) || "system";
+        var dark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        var resolved = pref === "system" ? (dark ? "dark" : "light") : pref;
+        document.documentElement.setAttribute("data-theme-preference", pref);
+        document.documentElement.setAttribute("data-theme", resolved);
+        document.documentElement.classList.toggle("dark", resolved === "dark");
+      } catch (err) {
+        document.documentElement.setAttribute("data-theme", "light");
+      }
+    })();
+  </script>
 </head>
 <body>
-    <header class="header">
-        <div class="container">
-            <div class="nav-container">
-                <nav class="nav">
-                    <a href="index.html">Bio</a>
-                    <a href="blog.html">Blog</a>
-                    <a href="experience.html">Experience</a>
-                    <a href="research.html" class="active">Papers & Talks</a>
-                </nav>
-                
-                <div class="hamburger" onclick="toggleMobileNav()">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-                
-                <nav class="nav-mobile" id="navMobile">
-                    <!-- Hidden nav items will be dynamically added here -->
-                </nav>
+  <div class="site-shell">
+    <header class="topbar">
+      <div class="topbar-inner">
+        <a class="brand" href="index.html" aria-label="Wenzel Liu homepage">
+          <span class="brand-dot"></span>
+          <span class="brand-text">Wenzel Liu</span>
+        </a>
+
+        <nav class="top-nav" aria-label="Primary" data-top-nav>
+          <a class="nav-link" href="index.html" data-nav-link>Bio</a>
+          <a class="nav-link" href="blog.html" data-nav-link>Blog</a>
+          <a class="nav-link" href="experience.html" data-nav-link>Experience</a>
+          <a class="nav-link" href="research.html" data-nav-link>Papers & Talks</a>
+        </nav>
+
+        <div class="topbar-actions">
+          <div class="theme-control" data-theme-control>
+            <button class="icon-button" type="button" data-theme-toggle aria-haspopup="true" aria-expanded="false" aria-label="Theme options">
+              <span aria-hidden="true">◐</span>
+              <span class="theme-label" data-theme-current>System</span>
+            </button>
+            <div class="theme-menu" data-theme-menu role="menu" aria-label="Theme mode">
+              <button class="theme-option" type="button" data-theme-option="light" role="menuitem">Light</button>
+              <button class="theme-option" type="button" data-theme-option="dark" role="menuitem">Dark</button>
+              <button class="theme-option" type="button" data-theme-option="system" role="menuitem">System</button>
             </div>
+          </div>
+
+          <button class="icon-button mobile-toggle" type="button" data-mobile-toggle aria-controls="mobile-nav" aria-expanded="false" aria-label="Toggle navigation">☰</button>
         </div>
+      </div>
+
+      <nav class="mobile-nav" id="mobile-nav" data-mobile-nav aria-label="Mobile navigation">
+        <a class="nav-link" href="index.html" data-nav-link>Bio</a>
+        <a class="nav-link" href="blog.html" data-nav-link>Blog</a>
+        <a class="nav-link" href="experience.html" data-nav-link>Experience</a>
+        <a class="nav-link" href="research.html" data-nav-link>Papers & Talks</a>
+      </nav>
     </header>
 
-    <div class="main-wrapper">
-        <main class="container">
-            <div class="main-content">
-            <h1 class="page-title">Papers & Talks</h1>
-            
-            <div class="section">
-                <h2 class="section-title">Publications</h2>
-                <div class="papers-list">
-                    <div class="paper-item">
-                        <div class="paper-year">2024</div>
-                        <div class="paper-content">
-                            <h2 class="paper-title">
-                                <span class="paper-icon">📄</span>
-                                Chronobiological rhythms and artificial light at night in vascular physiology and pathology
-                            </h2>
-                            <div class="paper-authors"><strong>Liu W</strong>, Higashikuni Y, Sata M.</div>
-                            <div class="paper-venue">Hypertension Research, 2024 Dec 04</div>
-                        </div>
-                    </div>
+    <main class="site-content">
+      <section class="page-intro" data-reveal>
+        <p class="page-kicker">Research Output</p>
+        <h1 class="page-title">Papers & Conference Talks</h1>
+        <p class="page-description">A curated record of peer-reviewed publications and conference presentations in cardiovascular medicine and translational molecular research.</p>
+      </section>
 
-                    <div class="paper-item">
-                        <div class="paper-year">2023</div>
-                        <div class="paper-content">
-                            <h2 class="paper-title">
-                                <span class="paper-icon">📄</span>
-                                Nocturnal blood pressure and left ventricular hypertrophy in patients with diabetes mellitus
-                            </h2>
-                            <div class="paper-authors">Higashikuni Y, <strong>Liu W</strong>, Sata M.</div>
-                            <div class="paper-venue">Hypertension Research, 2023 Dec 26</div>
-                        </div>
-                    </div>
+      <section class="bento-grid" aria-label="Research content">
+        <article class="bento-card span-3" data-reveal data-reveal-delay="20">
+          <h2 class="card-title">Publication Highlights</h2>
+          <p class="card-subtitle">Work spans vascular biology, inflammasome signaling, RNA metabolism, and clinical cardiovascular outcomes, with emphasis on translational relevance.</p>
+        </article>
 
-                    <div class="paper-item">
-                        <div class="paper-year">2023</div>
-                        <div class="paper-content">
-                            <h2 class="paper-title">
-                                <span class="paper-icon">📄</span>
-                                Self-DNA sensing in cigarette smoke-induced vascular inflammation: the role of mitochondrial DNA release in vascular endothelial cells
-                            </h2>
-                            <div class="paper-authors">Higashikuni Y, <strong>Liu W</strong>, Sata M.</div>
-                            <div class="paper-venue">Hypertension Research, 2023 Dec 19</div>
-                        </div>
-                    </div>
+        <article class="bento-card span-2" data-reveal data-reveal-delay="60">
+          <h3 class="card-title">Publications (2024 - 2022)</h3>
 
-                    <div class="paper-item">
-                        <div class="paper-year">2023</div>
-                        <div class="paper-content">
-                            <h2 class="paper-title">
-                                <span class="paper-icon">📄</span>
-                                Not a small frog in a big pond: targeting bradykinin receptor B2 signaling in vascular smooth muscle cells for treatment of hypertension
-                            </h2>
-                            <div class="paper-authors">Higashikuni Y, <strong>Liu W</strong>, Sata M.</div>
-                            <div class="paper-venue">Hypertension Research, 2023 Jul 28</div>
-                        </div>
-                    </div>
-
-                    <div class="paper-item">
-                        <div class="paper-year">2023</div>
-                        <div class="paper-content">
-                            <h2 class="paper-title">
-                                <span class="paper-icon">📄</span>
-                                Optimizing antihypertensive therapy in patients with diabetes mellitus
-                            </h2>
-                            <div class="paper-authors"><strong>Liu W</strong>, Higashikuni Y, Sata M.</div>
-                            <div class="paper-venue">Hypertension Research, 2023 Mar;46(3):797-800</div>
-                        </div>
-                    </div>
-
-                    <div class="paper-item">
-                        <div class="paper-year">2023</div>
-                        <div class="paper-content">
-                            <h2 class="paper-title">
-                                <span class="paper-icon">📄</span>
-                                NLRP3 Inflammasome Activation Through Heart-Brain Interaction Initiates Cardiac Inflammation and Hypertrophy During Pressure Overload
-                            </h2>
-                            <div class="paper-authors">Higashikuni Y, <strong>Liu W</strong>, Numata G, Tanaka K, Fukuda D, Tanaka Y, Hirata Y, Imamura T, Takimoto E, Komuro I, Sata M.</div>
-                            <div class="paper-venue">Circulation, 2023 Jan 24;147(4):338-355</div>
-                        </div>
-                    </div>
-
-                    <div class="paper-item">
-                        <div class="paper-year">2022</div>
-                        <div class="paper-content">
-                            <h2 class="paper-title">
-                                <span class="paper-icon">📄</span>
-                                Linking RNA dynamics to heart disease: The lncRNA/miRNA/mRNA axis in myocardial ischemia–reperfusion injury
-                            </h2>
-                            <div class="paper-authors"><strong>Liu W</strong>, Higashikuni Y, Sata M.</div>
-                            <div class="paper-venue">Hypertension Research, 2022;45(6):1067-1069</div>
-                        </div>
-                    </div>
-
-                    <div class="paper-item">
-                        <div class="paper-year">2022</div>
-                        <div class="paper-content">
-                            <h2 class="paper-title">
-                                <span class="paper-icon">📄</span>
-                                Give a leg up: Screening for peripheral artery disease after acute myocardial infarction
-                            </h2>
-                            <div class="paper-authors">Higashikuni Y, <strong>Liu W</strong>, Sata M.</div>
-                            <div class="paper-venue">Journal of Atherosclerosis and Thrombosis, 2022;29(7):989-991</div>
-                        </div>
-                    </div>
-
-                    <div class="paper-item">
-                        <div class="paper-year">2021</div>
-                        <div class="paper-content">
-                            <h2 class="paper-title">
-                                <span class="paper-icon">📄</span>
-                                Pathogenic basis of thrombo inflammation and endothelial injury in covid-19: Current findings and therapeutic implications
-                            </h2>
-                            <div class="paper-authors">Higashikuni Y, <strong>Liu W</strong>, Obana T, Sata M.</div>
-                            <div class="paper-venue">International Journal of Molecular Sciences, 2021;22(21)</div>
-                        </div>
-                    </div>
-
-                    <div class="paper-item">
-                        <div class="paper-year">2020</div>
-                        <div class="paper-content">
-                            <h2 class="paper-title">
-                                <span class="paper-icon">📄</span>
-                                Non-diastolic mechanisms of exercise intolerance in heart failure with preserved ejection fraction
-                            </h2>
-                            <div class="paper-authors"><strong>Liu Wenhao</strong>, Shi Liu, Li Bin, Liu Yu.</div>
-                            <div class="paper-venue">Journal of Clinical Cardiology, 2020;(12):1150-1154</div>
-                        </div>
-                    </div>
-
-                    <div class="paper-item">
-                        <div class="paper-year">2020</div>
-                        <div class="paper-content">
-                            <h2 class="paper-title">
-                                <span class="paper-icon">📄</span>
-                                Using Speckle Tracking Imaging to Evaluate the Left Ventricular Systolic Function of Heart Failure with Preserved Ejection Fraction by Treatment of YangyinShuxin Decoction
-                            </h2>
-                            <div class="paper-authors">Li Bin, <strong>Liu Wenhao</strong>, Li Xuesong, Shi Liu, Gu Shaoke, Zhao Yangyang, Mao Jingyuan.</div>
-                            <div class="paper-venue">Chinese Journal of Integrated Traditional And Western Medicine, 2020;(09):1064-1069</div>
-                        </div>
-                    </div>
-
-                    <div class="paper-item">
-                        <div class="paper-year">2019</div>
-                        <div class="paper-content">
-                            <h2 class="paper-title">
-                                <span class="paper-icon">📄</span>
-                                Rhabdomyolysis associated with bezafibrate therapy: a case report
-                            </h2>
-                            <div class="paper-authors"><strong>Liu Wenhao</strong>, Li Bin.</div>
-                            <div class="paper-venue">Chinese Circulation Journal, 2019;(08):828-829</div>
-                        </div>
-                    </div>
-                </div>
+          <section class="year-group">
+            <span class="year">2024</span>
+            <div class="paper-list">
+              <div class="paper-item">
+                <h4>Chronobiological rhythms and artificial light at night in vascular physiology and pathology</h4>
+                <p><strong>Liu W</strong>, Higashikuni Y, Sata M. · Hypertension Research, 2024 Dec 04</p>
+              </div>
             </div>
+          </section>
 
-            <div class="section">
-                <h2 class="section-title">Conference Presentations</h2>
-                <div class="papers-list">
-                    <div class="paper-item">
-                        <div class="paper-year">2025</div>
-                        <div class="paper-content">
-                            <h2 class="paper-title">
-                                <span class="paper-icon">🎤</span>
-                                N6-methyladenosine regulator Rbm15b protects against adverse cardiac remodeling under pressure overload through modulating RNA methylation
-                            </h2>
-                            <div class="paper-authors"><strong>W. Liu</strong>, Y Higashikuni, S. Tumurbaatar, A. Matsumoto, Y Hirata, M Sata, T Matsumura, N Takeda.</div>
-                            <div class="paper-venue">ESC Congress 2025, Aug 29-Sep 1, 2025 (Moderated Poster Presentation)</div>
-                        </div>
-                    </div>
-
-                    <div class="paper-item">
-                        <div class="paper-year">2025</div>
-                        <div class="paper-content">
-                            <h2 class="paper-title">
-                                <span class="paper-icon">🎤</span>
-                                N6-methyladenosine regulator Rbm15b protects against adverse cardiac remodeling during pressure overload by modulating RNA methylation
-                            </h2>
-                            <div class="paper-authors"><strong>W. Liu</strong>, Y Higashikuni, S. Tumurbaatar, A. Matsumoto, Y Hirata, M Sata, T Matsumura, N Takeda.</div>
-                            <div class="paper-venue">ISHR 2025, May 11-14, 2025 (Poster Presentation)</div>
-                        </div>
-                    </div>
-
-                    <div class="paper-item">
-                        <div class="paper-year">2024</div>
-                        <div class="paper-content">
-                            <h2 class="paper-title">
-                                <span class="paper-icon">🎤</span>
-                                N6-methyladenosine regulator Rbm15b protects against adverse cardiac remodeling under pressure overload
-                            </h2>
-                            <div class="paper-authors"><strong>W. Liu</strong>, Y Higashikuni, Y Hirata, M Sata, T Matsumura, N Takeda.</div>
-                            <div class="paper-venue">ISHR 2024, Dec 11-13, 2024 (Poster Presentation)</div>
-                        </div>
-                    </div>
-
-                    <div class="paper-item">
-                        <div class="paper-year">2024</div>
-                        <div class="paper-content">
-                            <h2 class="paper-title">
-                                <span class="paper-icon">🎤</span>
-                                The DEAD-box RNA helicase Ddx41 contributes to adverse cardiac remodeling induced by pressure overload through modulation of RNA metabolism
-                            </h2>
-                            <div class="paper-authors"><strong>W. Liu</strong>, Y. Higashikuni, T. Hirata et al.</div>
-                            <div class="paper-venue">The 88th Annual Scientific Meeting of the Japanese Circulation Society (JCS2024), Mar 8-10, 2024 (Poster Presentation)</div>
-                        </div>
-                    </div>
-
-                    <div class="paper-item">
-                        <div class="paper-year">2024</div>
-                        <div class="paper-content">
-                            <h2 class="paper-title">
-                                <span class="paper-icon">🎤</span>
-                                Rbm15b is an RNA-binding protein that protects against adverse cardiac remodeling during pressure overload
-                            </h2>
-                            <div class="paper-authors"><strong>W. Liu</strong>, Y. Higashikuni, T. Hirata et al.</div>
-                            <div class="paper-venue">The 88th Annual Scientific Meeting of the Japanese Circulation Society (JCS2024), Mar 8-10, 2024 (Poster Presentation)</div>
-                        </div>
-                    </div>
-
-                    <div class="paper-item">
-                        <div class="paper-year">2023</div>
-                        <div class="paper-content">
-                            <h2 class="paper-title">
-                                <span class="paper-icon">🎤</span>
-                                The DEAD-box RNA helicase Ddx41 contributes to adverse cardiac remodeling during pressure overload through modulation of RNA metabolism
-                            </h2>
-                            <div class="paper-authors"><strong>W. Liu</strong>, Y. Higashikuni, T. Obana et al.</div>
-                            <div class="paper-venue">AHA Scientific Sessions 2023, Nov 11-13, 2023 (Poster Presentation)</div>
-                        </div>
-                    </div>
-                </div>
+          <section class="year-group">
+            <span class="year">2023</span>
+            <div class="paper-list">
+              <div class="paper-item">
+                <h4>Nocturnal blood pressure and left ventricular hypertrophy in patients with diabetes mellitus</h4>
+                <p>Higashikuni Y, <strong>Liu W</strong>, Sata M. · Hypertension Research, 2023 Dec 26</p>
+              </div>
+              <div class="paper-item">
+                <h4>Self-DNA sensing in cigarette smoke-induced vascular inflammation</h4>
+                <p>Higashikuni Y, <strong>Liu W</strong>, Sata M. · Hypertension Research, 2023 Dec 19</p>
+              </div>
+              <div class="paper-item">
+                <h4>Targeting bradykinin receptor B2 signaling in vascular smooth muscle cells</h4>
+                <p>Higashikuni Y, <strong>Liu W</strong>, Sata M. · Hypertension Research, 2023 Jul 28</p>
+              </div>
+              <div class="paper-item">
+                <h4>Optimizing antihypertensive therapy in patients with diabetes mellitus</h4>
+                <p><strong>Liu W</strong>, Higashikuni Y, Sata M. · Hypertension Research, 2023 Mar;46(3):797-800</p>
+              </div>
+              <div class="paper-item">
+                <h4>NLRP3 Inflammasome Activation Through Heart-Brain Interaction During Pressure Overload</h4>
+                <p>Higashikuni Y, <strong>Liu W</strong>, et al. · Circulation, 2023 Jan;147(4):338-355</p>
+              </div>
             </div>
-        </div>
+          </section>
+
+          <section class="year-group">
+            <span class="year">2022</span>
+            <div class="paper-list">
+              <div class="paper-item">
+                <h4>Linking RNA dynamics to heart disease: lncRNA/miRNA/mRNA axis in ischemia-reperfusion</h4>
+                <p><strong>Liu W</strong>, Higashikuni Y, Sata M. · Hypertension Research, 2022;45(6):1067-1069</p>
+              </div>
+              <div class="paper-item">
+                <h4>Screening for peripheral artery disease after acute myocardial infarction</h4>
+                <p>Higashikuni Y, <strong>Liu W</strong>, Sata M. · Journal of Atherosclerosis and Thrombosis, 2022;29(7):989-991</p>
+              </div>
+            </div>
+          </section>
+        </article>
+
+        <article class="bento-card" data-reveal data-reveal-delay="100">
+          <h3 class="card-title">Earlier Publications</h3>
+
+          <section class="year-group">
+            <span class="year">2021</span>
+            <div class="paper-list">
+              <div class="paper-item">
+                <h4>Pathogenic basis of thrombo inflammation and endothelial injury in COVID-19</h4>
+                <p>Higashikuni Y, <strong>Liu W</strong>, Obana T, Sata M. · IJMS, 2021;22(21)</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="year-group">
+            <span class="year">2020</span>
+            <div class="paper-list">
+              <div class="paper-item">
+                <h4>Non-diastolic mechanisms of exercise intolerance in HFpEF</h4>
+                <p><strong>Liu Wenhao</strong>, Shi Liu, Li Bin, Liu Yu. · Journal of Clinical Cardiology, 2020;(12):1150-1154</p>
+              </div>
+              <div class="paper-item">
+                <h4>Speckle Tracking Imaging for left ventricular function in HFpEF treatment</h4>
+                <p>Li Bin, <strong>Liu Wenhao</strong>, et al. · Chinese Journal of Integrated Traditional and Western Medicine, 2020;(09):1064-1069</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="year-group">
+            <span class="year">2019</span>
+            <div class="paper-list">
+              <div class="paper-item">
+                <h4>Rhabdomyolysis associated with bezafibrate therapy: case report</h4>
+                <p><strong>Liu Wenhao</strong>, Li Bin. · Chinese Circulation Journal, 2019;(08):828-829</p>
+              </div>
+            </div>
+          </section>
+        </article>
+
+        <article class="bento-card span-3" data-reveal data-reveal-delay="160">
+          <h3 class="card-title">Conference Presentations</h3>
+
+          <section class="year-group">
+            <span class="year">2025</span>
+            <div class="paper-list">
+              <div class="paper-item">
+                <h4>N6-methyladenosine regulator Rbm15b protects against adverse cardiac remodeling under pressure overload through RNA methylation</h4>
+                <p><strong>W. Liu</strong>, Y Higashikuni, et al. · ESC Congress 2025 (Moderated Poster)</p>
+              </div>
+              <div class="paper-item">
+                <h4>N6-methyladenosine regulator Rbm15b protects against adverse cardiac remodeling during pressure overload by modulating RNA methylation</h4>
+                <p><strong>W. Liu</strong>, Y Higashikuni, et al. · ISHR 2025 (Poster)</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="year-group">
+            <span class="year">2024</span>
+            <div class="paper-list">
+              <div class="paper-item">
+                <h4>N6-methyladenosine regulator Rbm15b protects against adverse cardiac remodeling under pressure overload</h4>
+                <p><strong>W. Liu</strong>, Y Higashikuni, et al. · ISHR 2024 (Poster)</p>
+              </div>
+              <div class="paper-item">
+                <h4>Ddx41 contributes to adverse cardiac remodeling induced by pressure overload through RNA metabolism</h4>
+                <p><strong>W. Liu</strong>, Y. Higashikuni, T. Hirata et al. · JCS2024 (Poster)</p>
+              </div>
+              <div class="paper-item">
+                <h4>Rbm15b is an RNA-binding protein that protects against adverse cardiac remodeling during pressure overload</h4>
+                <p><strong>W. Liu</strong>, Y. Higashikuni, T. Hirata et al. · JCS2024 (Poster)</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="year-group">
+            <span class="year">2023</span>
+            <div class="paper-list">
+              <div class="paper-item">
+                <h4>Ddx41 contributes to adverse cardiac remodeling during pressure overload through modulation of RNA metabolism</h4>
+                <p><strong>W. Liu</strong>, Y. Higashikuni, T. Obana et al. · AHA Scientific Sessions 2023 (Poster)</p>
+              </div>
+            </div>
+          </section>
+        </article>
+      </section>
     </main>
 
-        <footer class="footer">
-            <div class="container">
-                <p>© 2025. This work is licensed under <a href="#">CC BY-NC-ND 4.0</a></p>
-                <p>Created by Wenzel Liu, ChatGPT and Claude.</p>
-            </div>
-        </footer>
-    </div>
+    <footer class="site-footer">
+      <p>© 2026 Wenzel Liu. Licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC-ND 4.0</a>.</p>
+    </footer>
+  </div>
 
-    <script>
-        // Navigation items data
-        const navItems = [
-            { text: 'Bio', href: 'index.html' },
-            { text: 'Blog', href: 'blog.html' },
-            { text: 'Experience', href: 'experience.html' },
-            { text: 'Papers & Talks', href: 'research.html' }
-        ];
-
-        // Update mobile nav with hidden items
-        function updateMobileNav() {
-            const navMobile = document.getElementById('navMobile');
-            const nav = document.querySelector('.nav');
-            const visibleNavItems = Array.from(nav.children).filter(item => 
-                window.getComputedStyle(item).display !== 'none'
-            );
-            const hiddenItems = navItems.filter((item, index) => index >= visibleNavItems.length);
-            
-            navMobile.innerHTML = '';
-            hiddenItems.forEach(item => {
-                const link = document.createElement('a');
-                link.href = item.href;
-                link.textContent = item.text;
-                if (item.href === window.location.pathname || 
-                    (item.href === 'research.html' && window.location.pathname.includes('research'))) {
-                    link.classList.add('active');
-                }
-                navMobile.appendChild(link);
-            });
-        }
-
-        // Mobile navigation toggle
-        function toggleMobileNav() {
-            const hamburger = document.querySelector('.hamburger');
-            const navMobile = document.getElementById('navMobile');
-            
-            updateMobileNav();
-            hamburger.classList.toggle('active');
-            navMobile.classList.toggle('active');
-        }
-
-        // Close mobile nav when clicking outside
-        document.addEventListener('click', function(event) {
-            const hamburger = document.querySelector('.hamburger');
-            const navMobile = document.getElementById('navMobile');
-            const navContainer = document.querySelector('.nav-container');
-            
-            if (!navContainer.contains(event.target)) {
-                hamburger.classList.remove('active');
-                navMobile.classList.remove('active');
-            }
-        });
-
-        // Update mobile nav on window resize
-        window.addEventListener('resize', function() {
-            const hamburger = document.querySelector('.hamburger');
-            const navMobile = document.getElementById('navMobile');
-            
-            if (hamburger.classList.contains('active')) {
-                updateMobileNav();
-            }
-        });
-
-        // Add glow effect to interactive elements
-        document.addEventListener('DOMContentLoaded', () => {
-            // Add glow effect class to interactive elements
-            const interactiveElements = document.querySelectorAll('button, .paper-item');
-            interactiveElements.forEach(element => {
-                element.classList.add('glow-effect');
-            });
-        });
-    </script>
+  <script src="assets/js/site-theme.js"></script>
+  <script src="assets/js/site-nav.js"></script>
+  <script src="assets/js/site-motion.js"></script>
 </body>
 </html>

@@ -1,710 +1,170 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" data-theme="light">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog - Wenzel Liu</title>
-    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html, body {
-            height: 100%;
-        }
-
-        :root {
-            --liquid-panel:
-                radial-gradient(140% 120% at 10% 5%, rgba(194, 255, 205, 0.24) 0%, rgba(194, 255, 205, 0) 42%),
-                radial-gradient(130% 120% at 90% 0%, rgba(111, 196, 127, 0.18) 0%, rgba(111, 196, 127, 0) 44%),
-                linear-gradient(145deg, rgba(44, 92, 56, 0.56) 0%, rgba(15, 42, 24, 0.66) 100%);
-            --liquid-panel-soft:
-                radial-gradient(140% 120% at 10% 5%, rgba(194, 255, 205, 0.18) 0%, rgba(194, 255, 205, 0) 44%),
-                radial-gradient(130% 120% at 90% 0%, rgba(111, 196, 127, 0.12) 0%, rgba(111, 196, 127, 0) 44%),
-                linear-gradient(145deg, rgba(40, 84, 52, 0.44) 0%, rgba(13, 34, 20, 0.58) 100%);
-            --liquid-border: rgba(181, 245, 191, 0.34);
-            --liquid-shadow: 0 10px 34px rgba(5, 20, 10, 0.42), inset 0 1px 0 rgba(224, 255, 228, 0.24);
-            --liquid-filter: blur(10px) saturate(132%) contrast(104%);
-            --liquid-filter-strong: blur(12px) saturate(140%) contrast(106%);
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: url('assets/images/background.jpg') no-repeat center center fixed;
-            background-size: cover;
-            color: #ffffff;
-            line-height: 1.6;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .liquid-filters {
-            position: absolute;
-            width: 0;
-            height: 0;
-            pointer-events: none;
-        }
-
-        /* SVG liquid grass base: turbulence + displacement + green highlights */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image:
-                url('assets/images/background.jpg'),
-                radial-gradient(circle at 18% 24%, rgba(152, 226, 166, 0.34) 0%, rgba(152, 226, 166, 0) 46%),
-                radial-gradient(circle at 82% 28%, rgba(116, 196, 135, 0.24) 0%, rgba(116, 196, 135, 0) 48%),
-                radial-gradient(circle at 50% 82%, rgba(196, 246, 201, 0.22) 0%, rgba(196, 246, 201, 0) 52%);
-            background-repeat: no-repeat;
-            background-size: cover, 140% 140%, 130% 130%, 160% 160%;
-            background-position: center center, 18% 24%, 82% 28%, 50% 82%;
-            filter: blur(7px) saturate(1.12) contrast(1.02) brightness(0.78);
-            mix-blend-mode: screen;
-            opacity: 0.9;
-            transform: scale(1.08);
-            transform-origin: center center;
-            animation: none;
-            z-index: -2;
-            pointer-events: none;
-        }
-
-        /* Glass membrane: readability + subtle highlight + fine grain */
-        body::after {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background:
-                radial-gradient(120% 85% at 12% 8%, rgba(214, 255, 224, 0.18) 0%, rgba(214, 255, 224, 0) 45%),
-                radial-gradient(90% 70% at 88% 12%, rgba(173, 235, 186, 0.14) 0%, rgba(173, 235, 186, 0) 48%),
-                linear-gradient(160deg, rgba(10, 20, 12, 0.3) 0%, rgba(9, 18, 11, 0.36) 60%, rgba(6, 14, 8, 0.44) 100%),
-                repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.026) 0 2px, rgba(0, 0, 0, 0.018) 2px 4px);
-            background-repeat: no-repeat;
-            animation: none;
-            z-index: -1;
-            pointer-events: none;
-        }
-
-        @keyframes liquidDrift {
-            0% {
-                background-position: center center, 18% 24%, 82% 28%, 50% 82%;
-            }
-            50% {
-                background-position: center center, 22% 18%, 77% 32%, 54% 76%;
-            }
-            100% {
-                background-position: center center, 15% 27%, 85% 24%, 47% 86%;
-            }
-        }
-
-        @keyframes liquidSheen {
-            0% {
-                background-position: 12% 8%, 88% 12%, center center, 0 0;
-            }
-            100% {
-                background-position: 18% 12%, 82% 18%, center center, 24px 16px;
-            }
-        }
-
-        @keyframes liquidPanelFlow {
-            0% {
-                background-position: 10% 5%, 90% 0%, center center;
-            }
-            100% {
-                background-position: 18% 12%, 82% 8%, center center;
-            }
-        }
-
-        .header,
-        .nav-mobile,
-        .search-box,
-        .blog-card,
-        .footer {
-            background-size: 180% 180%, 170% 170%, 100% 100%;
-            animation: none;
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            body::before,
-            body::after {
-                animation: none;
-            }
-
-            body::before {
-                filter: blur(6px) saturate(1.08) contrast(1.01) brightness(0.8);
-            }
-
-            .liquid-filters {
-                display: none;
-            }
-
-            .header,
-            .nav-mobile,
-            .search-box,
-            .blog-card,
-            .footer {
-                animation: none;
-            }
-        }
-
-        /* Global hover glow effect for interactive elements */
-        .glow-effect {
-            transition: all 0.3s ease;
-        }
-
-        .glow-effect:hover {
-            box-shadow: 0 4px 16px rgba(76, 175, 80, 0.2), 0 0 20px rgba(76, 175, 80, 0.1);
-            transform: translateY(-2px);
-        }
-
-        /* Apply glow effect to all interactive elements */
-        button, .blog-item, .nav a {
-            transition: all 0.3s ease;
-        }
-
-        button:hover, .blog-item:hover, .nav a:hover {
-            box-shadow: 0 4px 16px rgba(76, 175, 80, 0.2), 0 0 20px rgba(76, 175, 80, 0.1);
-            transform: translateY(-2px);
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header Navigation - Fluent Design */
-        .header {
-            padding: 20px 0;
-            background: var(--liquid-panel-soft);
-            backdrop-filter: var(--liquid-filter);
-            -webkit-backdrop-filter: var(--liquid-filter);
-            border-bottom: 1px solid var(--liquid-border);
-            box-shadow: var(--liquid-shadow);
-            position: relative;
-        }
-
-        .header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: relative;
-        }
-
-        .nav {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex: 1;
-        }
-
-        .nav a {
-            color: #ffffff;
-            text-decoration: none;
-            font-weight: 500;
-            padding: 12px 24px;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            position: relative;
-            white-space: nowrap;
-        }
-
-        .nav a:hover, .nav a.active {
-            color: #4CAF50;
-            background: rgba(76, 175, 80, 0.1);
-            box-shadow: 0 4px 16px rgba(76, 175, 80, 0.2);
-            transform: translateY(-2px);
-        }
-
-        .nav a::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .nav a:hover::before {
-            opacity: 1;
-        }
-
-        /* Hamburger Menu */
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            padding: 10px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            margin-left: auto;
-        }
-
-        .hamburger:hover {
-            background: rgba(76, 175, 80, 0.1);
-        }
-
-        .hamburger span {
-            width: 25px;
-            height: 3px;
-            background: #ffffff;
-            margin: 3px 0;
-            transition: 0.3s;
-            border-radius: 2px;
-        }
-
-        .hamburger.active span:nth-child(1) {
-            transform: rotate(-45deg) translate(-5px, 6px);
-        }
-
-        .hamburger.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .hamburger.active span:nth-child(3) {
-            transform: rotate(45deg) translate(-5px, -6px);
-        }
-
-        .nav-mobile {
-            display: none;
-            position: absolute;
-            top: 100%;
-            right: 0;
-            min-width: 200px;
-            background: var(--liquid-panel);
-            backdrop-filter: var(--liquid-filter);
-            -webkit-backdrop-filter: var(--liquid-filter);
-            border: 1px solid var(--liquid-border);
-            box-shadow: var(--liquid-shadow);
-            border-radius: 10px;
-            margin-top: 10px;
-            padding: 20px;
-            flex-direction: column;
-            gap: 10px;
-            z-index: 1000;
-        }
-
-        .nav-mobile.active {
-            display: flex;
-        }
-
-        .nav-mobile a {
-            color: #ffffff;
-            text-decoration: none;
-            font-weight: 500;
-            padding: 12px 20px;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            text-align: center;
-        }
-
-        .nav-mobile a:hover {
-            color: #4CAF50;
-            background: rgba(76, 175, 80, 0.1);
-        }
-
-        /* Progressive hiding of nav items */
-        @media (max-width: 900px) {
-            .nav a:nth-child(4) { display: none; }
-            .hamburger { display: flex; }
-        }
-
-        @media (max-width: 800px) {
-            .nav a:nth-child(3) { display: none; }
-        }
-
-        @media (max-width: 700px) {
-            .nav a:nth-child(2) { display: none; }
-        }
-
-        @media (max-width: 600px) {
-            .nav a:nth-child(1) { display: none; }
-            .nav { display: none; }
-        }
-
-        /* Main Content */
-        .main-wrapper {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .main-content {
-            padding: 60px 0;
-            flex: 1;
-        }
-
-        .page-title {
-            text-align: center;
-            font-size: 48px;
-            font-weight: 700;
-            margin-bottom: 20px;
-            color: #ffffff;
-        }
-
-        .page-subtitle {
-            text-align: center;
-            font-size: 20px;
-            color: #cccccc;
-            margin-bottom: 60px;
-        }
-
-        /* Search Box Styles */
-        .search-container {
-            max-width: 600px;
-            margin: 0 auto 40px auto;
-            position: relative;
-        }
-
-        .search-box {
-            width: 100%;
-            padding: 15px 20px;
-            background: var(--liquid-panel-soft);
-            backdrop-filter: var(--liquid-filter);
-            -webkit-backdrop-filter: var(--liquid-filter);
-            border: 1px solid var(--liquid-border);
-            box-shadow: var(--liquid-shadow);
-            border-radius: 25px;
-            color: #ffffff;
-            font-size: 16px;
-            outline: none;
-        }
-
-        .search-box::placeholder {
-            color: rgba(255, 255, 255, 0.6);
-        }
-
-        .no-results {
-            text-align: center;
-            color: #888888;
-            font-style: italic;
-            margin-top: 40px;
-            display: none;
-        }
-
-        .blog-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 30px;
-            margin-bottom: 60px;
-            max-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .blog-card {
-            background: var(--liquid-panel);
-            backdrop-filter: var(--liquid-filter-strong);
-            -webkit-backdrop-filter: var(--liquid-filter-strong);
-            border: 1px solid var(--liquid-border);
-            box-shadow: var(--liquid-shadow);
-            border-radius: 20px;
-            padding: 30px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .blog-card:hover {
-            background: var(--liquid-panel);
-            border-color: rgba(76, 175, 80, 0.3);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 20px rgba(76, 175, 80, 0.1);
-            transform: translateY(-5px);
-        }
-
-        .blog-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 20px;
-        }
-
-        .blog-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #4CAF50, #66BB6A);
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
-
-        .blog-date {
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 500;
-            background: rgba(255, 255, 255, 0.1);
-            color: #ffffff;
-        }
-
-        .blog-title {
-            font-size: 24px;
-            font-weight: 600;
-            color: #ffffff;
-            margin-bottom: 15px;
-            line-height: 1.3;
-        }
-
-        .blog-description {
-            color: #cccccc;
-            font-size: 16px;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-
-        .blog-links {
-            display: flex;
-            gap: 15px;
-        }
-
-        .blog-link {
-            color: #4CAF50;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .blog-link:hover {
-            color: #66BB6A;
-        }
-
-        /* Footer */
-        .footer {
-            text-align: center;
-            padding: 40px 0;
-            background: var(--liquid-panel-soft);
-            backdrop-filter: var(--liquid-filter);
-            -webkit-backdrop-filter: var(--liquid-filter);
-            border-top: 1px solid var(--liquid-border);
-            box-shadow: var(--liquid-shadow);
-            color: #cccccc;
-            font-size: 14px;
-            margin-top: auto;
-        }
-
-        .footer a {
-            color: #4CAF50;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .footer a:hover {
-            color: #66BB6A;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            body::before {
-                filter: blur(6px) saturate(1.1) contrast(1.01) brightness(0.8);
-                opacity: 0.84;
-            }
-
-            body::after {
-                background:
-                    radial-gradient(110% 70% at 12% 10%, rgba(214, 255, 224, 0.14) 0%, rgba(214, 255, 224, 0) 44%),
-                    radial-gradient(85% 65% at 86% 14%, rgba(173, 235, 186, 0.1) 0%, rgba(173, 235, 186, 0) 46%),
-                    linear-gradient(160deg, rgba(10, 20, 12, 0.34) 0%, rgba(8, 16, 10, 0.4) 60%, rgba(5, 12, 7, 0.46) 100%),
-                    repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.02) 0 2px, rgba(0, 0, 0, 0.014) 2px 4px);
-            }
-
-            .page-title {
-                font-size: 36px;
-            }
-
-            .blog-grid {
-                grid-template-columns: 1fr;
-                max-width: 500px;
-            }
-
-            .nav {
-                justify-content: center;
-                gap: 20px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Project notes and writing by Wenzel Liu on cardiovascular research, translational medicine, and technology strategy.">
+  <title>Blog | Wenzel Liu</title>
+  <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+  <link rel="stylesheet" href="assets/css/fonts.css">
+  <link rel="stylesheet" href="assets/css/bento-base.css">
+  <link rel="stylesheet" href="assets/css/bento-pages.css">
+  <script>
+    (function () {
+      document.documentElement.classList.add("reveal-ready");
+      try {
+        var key = "site-theme";
+        var pref = localStorage.getItem(key) || "system";
+        var dark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        var resolved = pref === "system" ? (dark ? "dark" : "light") : pref;
+        document.documentElement.setAttribute("data-theme-preference", pref);
+        document.documentElement.setAttribute("data-theme", resolved);
+        document.documentElement.classList.toggle("dark", resolved === "dark");
+      } catch (err) {
+        document.documentElement.setAttribute("data-theme", "light");
+      }
+    })();
+  </script>
 </head>
 <body>
-    <header class="header">
-        <div class="container">
-            <div class="nav-container">
-                <nav class="nav">
-                    <a href="index.html">Bio</a>
-                    <a href="blog.html" class="active">Blog</a>
-                    <a href="experience.html">Experience</a>
-                    <a href="research.html">Papers & Talks</a>
-                </nav>
-                
-                <div class="hamburger" onclick="toggleMobileNav()">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-                
-                <nav class="nav-mobile" id="navMobile">
-                    <!-- Hidden nav items will be dynamically added here -->
-                </nav>
+  <div class="site-shell">
+    <header class="topbar">
+      <div class="topbar-inner">
+        <a class="brand" href="index.html" aria-label="Wenzel Liu homepage">
+          <span class="brand-dot"></span>
+          <span class="brand-text">Wenzel Liu</span>
+        </a>
+
+        <nav class="top-nav" aria-label="Primary" data-top-nav>
+          <a class="nav-link" href="index.html" data-nav-link>Bio</a>
+          <a class="nav-link" href="blog.html" data-nav-link>Blog</a>
+          <a class="nav-link" href="experience.html" data-nav-link>Experience</a>
+          <a class="nav-link" href="research.html" data-nav-link>Papers & Talks</a>
+        </nav>
+
+        <div class="topbar-actions">
+          <div class="theme-control" data-theme-control>
+            <button class="icon-button" type="button" data-theme-toggle aria-haspopup="true" aria-expanded="false" aria-label="Theme options">
+              <span aria-hidden="true">◐</span>
+              <span class="theme-label" data-theme-current>System</span>
+            </button>
+            <div class="theme-menu" data-theme-menu role="menu" aria-label="Theme mode">
+              <button class="theme-option" type="button" data-theme-option="light" role="menuitem">Light</button>
+              <button class="theme-option" type="button" data-theme-option="dark" role="menuitem">Dark</button>
+              <button class="theme-option" type="button" data-theme-option="system" role="menuitem">System</button>
             </div>
+          </div>
+
+          <button class="icon-button mobile-toggle" type="button" data-mobile-toggle aria-controls="mobile-nav" aria-expanded="false" aria-label="Toggle navigation">☰</button>
         </div>
+      </div>
+
+      <nav class="mobile-nav" id="mobile-nav" data-mobile-nav aria-label="Mobile navigation">
+        <a class="nav-link" href="index.html" data-nav-link>Bio</a>
+        <a class="nav-link" href="blog.html" data-nav-link>Blog</a>
+        <a class="nav-link" href="experience.html" data-nav-link>Experience</a>
+        <a class="nav-link" href="research.html" data-nav-link>Papers & Talks</a>
+      </nav>
     </header>
 
-    <div class="main-wrapper">
-        <main class="container">
-            <div class="main-content">
-            <h1 class="page-title">Blog</h1>
-            <p class="page-subtitle">Sharing insights on cardiovascular research, academic life, and technology</p>
-            
-            <div class="blog-grid">
-                <div class="blog-card">
-                    <div class="blog-header">
-                        <div class="blog-icon">🧬</div>
-                        <div class="blog-date">Project</div>
-                    </div>
-                    <h2 class="blog-title">
-                        MedPrism
-                    </h2>
-                    <p class="blog-description">
-                        A comprehensive platform for medical research and data analysis, designed to accelerate cardiovascular research through advanced analytics and collaborative tools.
-                    </p>
-                    <div class="blog-links">
-                        <a href="https://whliu.notion.site/medprism?v=214aeaa78a4c81718d16000c31332e38&source=copy_link" class="blog-link" target="_blank">🌐 Visit Project →</a>
-                    </div>
-                </div>
+    <main class="site-content">
+      <section class="page-intro" data-reveal>
+        <p class="page-kicker">Writing & Builds</p>
+        <h1 class="page-title">Projects, Notes, and Experiments</h1>
+        <p class="page-description">A focused space for practical projects and reflective writing around cardiovascular science, research operations, and technology translation.</p>
+      </section>
 
-                <div class="blog-card">
-                    <div class="blog-header">
-                        <div class="blog-icon">🔬</div>
-                        <div class="blog-date">Project</div>
-                    </div>
-                    <h2 class="blog-title">
-                        Sci-Industrialist
-                    </h2>
-                    <p class="blog-description">
-                        An innovative platform bridging scientific research and industrial applications, focusing on translating cardiovascular research into real-world healthcare solutions.
-                    </p>
-                    <div class="blog-links">
-                        <a href="https://whliu.notion.site/sci-industrialist?v=200aeaa78a4c80739092000ce65639af&source=copy_link" class="blog-link" target="_blank">🌐 Visit Project →</a>
-                    </div>
-                </div>
+      <section class="bento-grid" aria-label="Blog content">
+        <article class="bento-card span-3" data-reveal data-reveal-delay="20">
+          <h2 class="card-title">How I Use This Page</h2>
+          <p class="card-subtitle">This section tracks active project surfaces and selected long-form notes. The goal is not volume, but reusable thinking artifacts and applied outputs.</p>
+          <div class="chips" style="margin-top:0.75rem;">
+            <span class="chip soft">Research Workflow</span>
+            <span class="chip soft">Translation</span>
+            <span class="chip soft">Technical Execution</span>
+          </div>
+        </article>
+
+        <article class="bento-card" data-reveal data-reveal-delay="70">
+          <h3 class="card-title">MedPrism</h3>
+          <p class="card-subtitle">A structured workspace for cardiovascular research intelligence, experimental planning, and synthesis.</p>
+          <div class="chips" style="margin-top:0.7rem;">
+            <span class="chip">Research Ops</span>
+            <span class="chip">Knowledge Base</span>
+          </div>
+          <div class="cta-actions">
+            <a class="button-link secondary" href="https://whliu.notion.site/medprism?v=214aeaa78a4c81718d16000c31332e38&source=copy_link" target="_blank" rel="noopener noreferrer">Visit Project</a>
+          </div>
+        </article>
+
+        <article class="bento-card" data-reveal data-reveal-delay="100">
+          <h3 class="card-title">Sci-Industrialist</h3>
+          <p class="card-subtitle">An exploration hub for bridging scientific novelty with industrial and clinical implementation pathways.</p>
+          <div class="chips" style="margin-top:0.7rem;">
+            <span class="chip">Strategy</span>
+            <span class="chip">Translation</span>
+          </div>
+          <div class="cta-actions">
+            <a class="button-link secondary" href="https://whliu.notion.site/sci-industrialist?v=200aeaa78a4c80739092000ce65639af&source=copy_link" target="_blank" rel="noopener noreferrer">Visit Project</a>
+          </div>
+        </article>
+
+        <article class="bento-card" data-reveal data-reveal-delay="130">
+          <h3 class="card-title">Recent Notes</h3>
+          <div class="list-compact">
+            <div class="list-item">
+              <h4>Academic Life in Tokyo</h4>
+              <p>Reflections on research culture and adaptation in Tokyo.</p>
+              <a class="link-inline" href="posts/academic-life-in-tokyo.html">Read note</a>
             </div>
-            
-            <div class="no-results" id="noResults">
-                No blog posts found matching your search.
+            <div class="list-item">
+              <h4>RNA Metabolism and Heart Disease</h4>
+              <p>Practical implications of RNA regulation in cardiovascular pathology.</p>
+              <a class="link-inline" href="posts/rna-metabolism-heart-disease.html">Read note</a>
             </div>
-        </div>
+            <div class="list-item">
+              <h4>Welcome Note</h4>
+              <p>Context for this site and what I am building here.</p>
+              <a class="link-inline" href="posts/welcome-to-my-blog.html">Read note</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="bento-card span-2" data-reveal data-reveal-delay="170">
+          <h3 class="card-title">Themes I Work Through</h3>
+          <div class="entry-grid">
+            <div class="entry">
+              <h4>Cardiovascular Mechanisms</h4>
+              <p class="desc">From molecular circuits to clinically relevant endpoints in pressure overload and heart failure.</p>
+            </div>
+            <div class="entry">
+              <h4>Data-to-Decision Design</h4>
+              <p class="desc">Building concise, action-oriented representations from high-dimensional biological data.</p>
+            </div>
+            <div class="entry">
+              <h4>Science to Industry Interface</h4>
+              <p class="desc">Framing research outputs so they can be evaluated and deployed in real operating environments.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="bento-card cta-card" data-reveal data-reveal-delay="220">
+          <h3 class="card-title">Share a Build Idea</h3>
+          <p class="card-subtitle">If your team is exploring translational cardiology, omics analytics, or research workflow design, I’m happy to connect.</p>
+          <div class="cta-actions">
+            <a class="button-link" href="mailto:wenzel_liu@outlook.jp">Start a Conversation</a>
+          </div>
+        </article>
+      </section>
     </main>
 
-        <footer class="footer">
-            <div class="container">
-                <p>© 2025. This work is licensed under <a href="#">CC BY-NC-ND 4.0</a></p>
-                <p>Created by Wenzel Liu, ChatGPT and Claude.</p>
-            </div>
-        </footer>
-    </div>
+    <footer class="site-footer">
+      <p>© 2026 Wenzel Liu. Licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC-ND 4.0</a>.</p>
+    </footer>
+  </div>
 
-    <script>
-        // Navigation items data
-        const navItems = [
-            { text: 'Bio', href: 'index.html' },
-            { text: 'Blog', href: 'blog.html' },
-            { text: 'Experience', href: 'experience.html' },
-            { text: 'Papers & Talks', href: 'research.html' }
-        ];
-
-        // Update mobile nav with hidden items
-        function updateMobileNav() {
-            const navMobile = document.getElementById('navMobile');
-            const nav = document.querySelector('.nav');
-            const visibleNavItems = Array.from(nav.children).filter(item => 
-                window.getComputedStyle(item).display !== 'none'
-            );
-            const hiddenItems = navItems.filter((item, index) => index >= visibleNavItems.length);
-            
-            navMobile.innerHTML = '';
-            hiddenItems.forEach(item => {
-                const link = document.createElement('a');
-                link.href = item.href;
-                link.textContent = item.text;
-                if (item.href === window.location.pathname || 
-                    (item.href === 'blog.html' && window.location.pathname.includes('blog'))) {
-                    link.classList.add('active');
-                }
-                navMobile.appendChild(link);
-            });
-        }
-
-        // Mobile navigation toggle
-        function toggleMobileNav() {
-            const hamburger = document.querySelector('.hamburger');
-            const navMobile = document.getElementById('navMobile');
-            
-            updateMobileNav();
-            hamburger.classList.toggle('active');
-            navMobile.classList.toggle('active');
-        }
-
-        // Close mobile nav when clicking outside
-        document.addEventListener('click', function(event) {
-            const hamburger = document.querySelector('.hamburger');
-            const navMobile = document.getElementById('navMobile');
-            const navContainer = document.querySelector('.nav-container');
-            
-            if (!navContainer.contains(event.target)) {
-                hamburger.classList.remove('active');
-                navMobile.classList.remove('active');
-            }
-        });
-
-        // Update mobile nav on window resize
-        window.addEventListener('resize', function() {
-            const hamburger = document.querySelector('.hamburger');
-            const navMobile = document.getElementById('navMobile');
-            
-            if (hamburger.classList.contains('active')) {
-                updateMobileNav();
-            }
-        });
-
-        // Add glow effect to interactive elements
-        document.addEventListener('DOMContentLoaded', () => {
-            // Add glow effect class to interactive elements
-            const interactiveElements = document.querySelectorAll('button, .blog-card');
-            interactiveElements.forEach(element => {
-                element.classList.add('glow-effect');
-            });
-            
-            // Update mobile nav on load and resize
-            updateMobileNav();
-            window.addEventListener('resize', updateMobileNav);
-        });
-    </script>
+  <script src="assets/js/site-theme.js"></script>
+  <script src="assets/js/site-nav.js"></script>
+  <script src="assets/js/site-motion.js"></script>
 </body>
-</html> 
+</html>
