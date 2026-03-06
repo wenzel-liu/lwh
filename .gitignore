@@ -30,3 +30,12 @@ codekit-config.json
 .sass-cache
 _asset_bundler_cache
 _site
+
+# Claude Code worktrees
+.claude/worktrees
+
+# Build output
+app/dist
+
+# Test output
+test-results
