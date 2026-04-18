@@ -14,7 +14,7 @@ button,
 input,
 textarea,
 select {
-  font-family: var(--font-text);
+  font-family: var(--font-ui);
 }
 
 body {
@@ -26,7 +26,7 @@ body {
     radial-gradient(600px 400px at 50% 120%, rgba(15, 108, 189, 0.05), transparent 50%),
     var(--color-bg-canvas);
   background-attachment: fixed;
-  line-height: 1.55;
+  line-height: 1.62;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -113,6 +113,7 @@ html[data-theme='dark'] .fds-topbar {
   margin-top: 2px;
   font-size: 11px;
   color: var(--color-fg-tertiary);
+  font-family: var(--font-ui);
 }
 
 .top-nav {
@@ -126,6 +127,7 @@ html[data-theme='dark'] .fds-topbar {
   align-items: center;
   padding: 7px 12px;
   border-radius: var(--radius-small);
+  font-family: var(--font-ui);
   font-size: 13px;
   font-weight: 500;
   color: var(--color-fg-secondary);
@@ -175,6 +177,7 @@ html[data-theme='dark'] .fds-topbar {
   background: var(--color-bg-subtle);
   border: 1px solid transparent;
   border-radius: 6px;
+  font-family: var(--font-ui);
   font-size: 13px;
 }
 
@@ -211,6 +214,7 @@ html[data-theme='dark'] .fds-topbar {
 
 .theme-toggle-label,
 .mobile-toggle-label {
+  font-family: var(--font-ui);
   font-size: 13px;
   font-weight: 600;
 }
@@ -254,6 +258,7 @@ html[data-theme='dark'] .theme-menu {
   background: transparent;
   color: var(--color-fg-primary);
   text-align: left;
+  font-family: var(--font-ui);
   font-size: 13px;
   cursor: pointer;
 }
@@ -305,8 +310,10 @@ html[data-theme='dark'] .theme-menu {
   max-width: 720px;
   margin: 0;
   color: var(--color-fg-secondary);
-  font-size: 16px;
-  line-height: 1.6;
+  font-family: var(--font-text);
+  font-size: 16.5px;
+  font-weight: 400;
+  line-height: 1.72;
 }
 
 .fds-bento {
@@ -379,8 +386,10 @@ html[data-theme='dark'] .fds-card--mica {
 .fds-card-description {
   margin: 0;
   color: var(--color-fg-secondary);
-  font-size: 14px;
-  line-height: 1.55;
+  font-family: var(--font-text);
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.68;
 }
 
 .fds-section-head {
@@ -418,6 +427,7 @@ html[data-theme='dark'] .fds-card--mica {
   background: var(--color-bg-subtle);
   color: var(--color-fg-secondary);
   border: 1px solid transparent;
+  font-family: var(--font-ui);
   font-size: 12px;
   font-weight: 500;
 }
@@ -439,6 +449,7 @@ html[data-theme='dark'] .fds-card--mica {
   padding: 9px 16px;
   border-radius: var(--radius-small);
   border: 1px solid transparent;
+  font-family: var(--font-ui);
   font-size: 14px;
   font-weight: 600;
   transition: all 150ms var(--ease-decelerate);
@@ -473,6 +484,7 @@ html[data-theme='dark'] .fds-card--mica {
   align-items: center;
   gap: 6px;
   color: var(--accent-primary);
+  font-family: var(--font-ui);
   font-size: 13px;
   font-weight: 600;
 }
@@ -493,6 +505,7 @@ html[data-theme='dark'] .fds-card--mica {
   flex-wrap: wrap;
   gap: 8px;
   color: var(--color-fg-tertiary);
+  font-family: var(--font-ui);
   font-size: 12px;
 }
 
