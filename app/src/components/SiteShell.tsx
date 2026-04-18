@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import { useEffect, useRef, useState } from 'react';
+import { FluentIcon } from './FluentIcon';
 import { PrimaryNav } from './PrimaryNav';
 import { ThemeControl } from './ThemeControl';
 import { SiteMotion } from './SiteMotion';
@@ -61,29 +62,36 @@ export function SiteShell({ children }: SiteShellProps) {
   }, []);
 
   return (
-    <div className="site-shell">
-      <header className="topbar">
-        <div className="topbar-inner">
-          <a className="brand" href="index.html" aria-label="Wenzel Liu homepage">
-            <span className="brand-dot" />
-            <span className="brand-text">Wenzel Liu</span>
+    <div className="fds-app-shell">
+      <header className="fds-topbar">
+        <div className="fds-topbar-inner">
+          <a className="fds-brand" href="index.html" aria-label="Wenzel Liu homepage">
+            <span className="fds-brand-glyph">W</span>
+            <span className="fds-brand-copy">
+              <strong>Wenzel Liu</strong>
+              <span>Fluent Research Portfolio</span>
+            </span>
           </a>
 
           <PrimaryNav currentPath={currentPath} className="top-nav" ariaLabel="Primary" />
 
-          <div className="topbar-actions">
+          <div className="fds-topbar-actions">
+            <div className="fds-search-shell" aria-hidden="true">
+              <FluentIcon name="search" size={14} />
+              <span>Search papers, talks, notes</span>
+            </div>
             <ThemeControl />
 
             <button
               ref={mobileToggleRef}
-              className="icon-button mobile-toggle"
+              className="fds-iconbtn mobile-toggle"
               type="button"
               aria-controls="mobile-nav"
               aria-expanded={mobileOpen}
               aria-label="Toggle navigation"
               onClick={() => setMobileOpen((open) => !open)}
             >
-              Menu
+              <span className="mobile-toggle-label">Menu</span>
             </button>
           </div>
         </div>
@@ -98,16 +106,16 @@ export function SiteShell({ children }: SiteShellProps) {
         />
       </header>
 
-      <main className="site-content">{children}</main>
+      <main className="fds-shell">{children}</main>
 
-      <footer className="site-footer">
-        <p>
-          (c) 2026 Wenzel Liu. Licensed under{' '}
-          <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener noreferrer">
-            CC BY-NC-ND 4.0
-          </a>
-          .
-        </p>
+      <footer className="fds-footer">
+        <span>© 2026 Wenzel Liu</span>
+        <span className="sep">·</span>
+        <span>Fluent rebuild for the personal research site</span>
+        <span className="sep">·</span>
+        <a href="https://github.com/wenzel-liu/lwh" target="_blank" rel="noopener noreferrer">
+          View source
+        </a>
       </footer>
 
       <SiteMotion />

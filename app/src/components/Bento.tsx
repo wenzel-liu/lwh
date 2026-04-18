@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 
 export function BentoGrid({ children, ariaLabel }: { children: ReactNode; ariaLabel: string }) {
   return (
-    <section className="bento-grid" aria-label={ariaLabel}>
+    <section className="fds-bento" aria-label={ariaLabel}>
       {children}
     </section>
   );
@@ -16,7 +16,7 @@ interface BentoCardProps {
 
 export function BentoCard({ children, className, revealDelay }: BentoCardProps) {
   return (
-    <article className={`bento-card${className ? ` ${className}` : ''}`} data-reveal data-reveal-delay={revealDelay}>
+    <article className={`fds-card${className ? ` ${className}` : ''}`} data-reveal data-reveal-delay={revealDelay}>
       {children}
     </article>
   );

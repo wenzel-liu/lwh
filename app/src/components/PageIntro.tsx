@@ -6,10 +6,10 @@ interface PageIntroProps {
 
 export function PageIntro({ kicker, title, description }: PageIntroProps) {
   return (
-    <section className="page-intro" data-reveal>
-      <p className="page-kicker">{kicker}</p>
-      <h1 className="page-title">{title}</h1>
-      <p className="page-description">{description}</p>
-    </section>
+    <header className="fds-page-header" data-reveal>
+      <p className="fds-eyebrow">{kicker}</p>
+      <h1 className="fds-page-title">{title}</h1>
+      <p className="fds-page-description">{description}</p>
+    </header>
   );
 }
