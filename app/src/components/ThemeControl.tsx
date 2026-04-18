@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
+import { FluentIcon } from '@/components/FluentIcon';
 import { useTheme } from '@/context/ThemeContext';
 import type { ThemePreference } from '@/lib/theme';
 
@@ -9,7 +10,7 @@ function labelForPreference(preference: ThemePreference): string {
 }
 
 export function ThemeControl() {
-  const { preference, setPreference } = useTheme();
+  const { preference, resolvedTheme, setPreference } = useTheme();
   const [open, setOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -45,11 +46,12 @@ export function ThemeControl() {
   }, [open]);
 
   const currentLabel = useMemo(() => labelForPreference(preference), [preference]);
+  const iconName = preference === 'system' ? 'auto' : resolvedTheme === 'dark' ? 'moon' : 'sun';
 
   return (
     <div className={`theme-control${open ? ' open' : ''}`} data-theme-control ref={containerRef}>
       <button
-        className="icon-button"
+        className="fds-iconbtn theme-toggle-button"
         type="button"
         data-theme-toggle
         aria-haspopup="true"
@@ -60,8 +62,8 @@ export function ThemeControl() {
           setOpen((prev) => !prev);
         }}
       >
-        <span aria-hidden="true">*</span>
-        <span className="theme-label" data-theme-current>
+        <FluentIcon name={iconName} size={16} />
+        <span className="theme-toggle-label" data-theme-current>
           {currentLabel}
         </span>
       </button>
@@ -69,6 +71,7 @@ export function ThemeControl() {
       <div className="theme-menu" data-theme-menu role="menu" aria-label="Theme mode">
         {options.map((option) => {
           const isActive = option === preference;
+          const optionIcon = option === 'system' ? 'auto' : option === 'dark' ? 'moon' : 'sun';
           return (
             <button
               key={option}
@@ -82,6 +85,7 @@ export function ThemeControl() {
                 setOpen(false);
               }}
             >
+              <FluentIcon name={optionIcon} size={14} />
               {labelForPreference(option)}
             </button>
           );
