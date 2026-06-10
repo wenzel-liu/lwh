@@ -63,6 +63,12 @@ export function SiteShell({ children }: SiteShellProps) {
 
   return (
     <div className="fds-app-shell">
+      <div className="fds-aurora" aria-hidden="true">
+        <span className="fds-aurora-blob fds-aurora-blob--1" />
+        <span className="fds-aurora-blob fds-aurora-blob--2" />
+        <span className="fds-aurora-blob fds-aurora-blob--3" />
+      </div>
+
       <header className="fds-topbar">
         <div className="fds-topbar-inner">
           <a className="fds-brand" href="index.html" aria-label="Wenzel Liu homepage">

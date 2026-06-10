@@ -211,9 +211,9 @@
 
 .fds-project-card {
   padding: 18px;
-  border: 1px solid var(--color-stroke-1);
-  border-radius: var(--radius-large);
-  background: var(--color-bg-layer-2);
+  border: 1px solid var(--glass-stroke);
+  border-radius: var(--radius-card-inner);
+  background: var(--glass-inner);
 }
 
 .fds-project-card h4 {
@@ -226,9 +226,9 @@
 
 .fds-year-group {
   padding: 16px 18px;
-  border: 1px solid var(--color-stroke-1);
-  border-radius: var(--radius-large);
-  background: var(--color-bg-layer-2);
+  border: 1px solid var(--glass-stroke);
+  border-radius: var(--radius-card-inner);
+  background: var(--glass-inner);
 }
 
 .fds-year-group + .fds-year-group {
@@ -258,9 +258,9 @@
 
 .fds-stat {
   padding: 14px 16px;
-  border-radius: var(--radius-large);
-  background: var(--color-bg-layer-2);
-  border: 1px solid var(--color-stroke-1);
+  border-radius: var(--radius-card-inner);
+  background: var(--glass-inner);
+  border: 1px solid var(--glass-stroke);
 }
 
 .fds-stat strong {

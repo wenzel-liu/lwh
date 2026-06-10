@@ -35,8 +35,33 @@
   --radius-xlarge: 12px;
   --radius-circular: 9999px;
 
+  /* Liquid Glass geometry */
+  --radius-card: 22px;
+  --radius-card-inner: 12px;
+  --radius-bar: 28px;
+
   --ease-decelerate: cubic-bezier(0.1, 0.9, 0.2, 1);
   --ease-accelerate: cubic-bezier(0.9, 0.1, 1, 0.2);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Liquid Glass material — light */
+  --glass-bg: rgba(255, 255, 255, 0.55);
+  --glass-bg-strong: rgba(255, 255, 255, 0.68);
+  --glass-bg-soft: rgba(255, 255, 255, 0.4);
+  --glass-inner: rgba(255, 255, 255, 0.45);
+  --glass-blur: blur(24px) saturate(180%);
+  --glass-stroke: rgba(255, 255, 255, 0.45);
+  --glass-rim:
+    inset 0 1px 0 rgba(255, 255, 255, 0.65), inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+  --glass-sheen: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.35),
+    rgba(255, 255, 255, 0.06) 42%,
+    transparent 60%
+  );
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), 0 2px 8px rgba(0, 0, 0, 0.06);
+  --glass-shadow-hover: 0 16px 48px rgba(0, 0, 0, 0.14), 0 4px 12px rgba(0, 0, 0, 0.08);
+  --glass-pill: rgba(255, 255, 255, 0.75);
 }
 
 html.dark,
@@ -59,4 +84,41 @@ html[data-theme='dark'] {
   --accent-primary: #2b88d8;
   --accent-tint-70: #1c2e3f;
   --accent2-tint-70: #1c2e22;
+
+  /* Liquid Glass material — dark */
+  --glass-bg: rgba(30, 30, 34, 0.55);
+  --glass-bg-strong: rgba(30, 30, 34, 0.7);
+  --glass-bg-soft: rgba(255, 255, 255, 0.06);
+  --glass-inner: rgba(255, 255, 255, 0.07);
+  --glass-stroke: rgba(255, 255, 255, 0.12);
+  --glass-rim:
+    inset 0 1px 0 rgba(255, 255, 255, 0.14), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+  --glass-sheen: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent 45%);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.42), 0 2px 8px rgba(0, 0, 0, 0.3);
+  --glass-shadow-hover: 0 16px 48px rgba(0, 0, 0, 0.5), 0 4px 12px rgba(0, 0, 0, 0.34);
+  --glass-pill: rgba(255, 255, 255, 0.14);
+}
+
+/* Reduced transparency: swap glass to near-opaque fills */
+@media (prefers-reduced-transparency: reduce) {
+  :root {
+    --glass-bg: #ffffff;
+    --glass-bg-strong: #ffffff;
+    --glass-bg-soft: #f5f5f5;
+    --glass-inner: #fafafa;
+    --glass-blur: none;
+    --glass-sheen: none;
+    --glass-pill: #ffffff;
+  }
+
+  html.dark,
+  html[data-theme='dark'] {
+    --glass-bg: #2b2b2b;
+    --glass-bg-strong: #2b2b2b;
+    --glass-bg-soft: #383838;
+    --glass-inner: #333333;
+    --glass-blur: none;
+    --glass-sheen: none;
+    --glass-pill: #404040;
+  }
 }
