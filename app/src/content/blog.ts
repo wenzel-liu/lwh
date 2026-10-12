@@ -1,10 +1,11 @@
 import type { ProjectItem } from './types';
+import { focusReaderProject } from './projects';
 
 export const blogIntro = {
   kicker: 'Writing & Builds',
   title: 'Projects, Notes, and Experiments',
   description:
-    'A focused space for practical projects and reflective writing around cardiovascular science, research operations, and technology translation.'
+    'Independent software, research projects, and notes on cardiovascular science, learning, and practical technology.'
 };
 
 export const blogUsage = {
@@ -15,6 +16,7 @@ export const blogUsage = {
 };
 
 export const blogProjects: ProjectItem[] = [
+  focusReaderProject,
   {
     title: 'MedPrism',
     description: 'A structured workspace for cardiovascular research intelligence, experimental planning, and synthesis.',

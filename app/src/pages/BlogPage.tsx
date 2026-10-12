@@ -23,10 +23,15 @@ export function BlogPage() {
         </BentoCard>
 
         {blogProjects.map((project, index) => (
-          <BentoCard className="span-3" key={project.title} revealDelay={70 + index * 30}>
-            <p className="fds-eyebrow">Project Surface</p>
+          <BentoCard className={project.featured ? 'span-6' : 'span-3'} key={project.title} revealDelay={70 + index * 30}>
+            <p className="fds-eyebrow">{project.featured ? 'Featured Work' : 'Project'}</p>
             <h3 className="fds-card-title">{project.title}</h3>
             <p className="fds-card-description">{project.description}</p>
+            {project.features ? (
+              <ul className="fds-bullet-list">
+                {project.features.map((feature) => <li key={feature}>{feature}</li>)}
+              </ul>
+            ) : null}
             <div className="fds-chip-row">
               {project.tags.map((tag) => (
                 <span className="fds-chip fds-chip--green" key={`${project.title}-${tag}`}>
@@ -36,7 +41,7 @@ export function BlogPage() {
             </div>
             <div className="fds-hero-actions">
               <a className="fds-btn fds-btn--secondary" href={project.url} target="_blank" rel="noopener noreferrer">
-                Visit project
+                {project.linkLabel ?? 'Visit project'}
                 <FluentIcon name="arrow" size={14} />
               </a>
             </div>
