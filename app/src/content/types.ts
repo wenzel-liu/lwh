@@ -27,6 +27,9 @@ export interface ProjectItem {
   description: string;
   tags: string[];
   url: string;
+  features?: string[];
+  linkLabel?: string;
+  featured?: boolean;
 }
 
 export interface ExperienceItem {

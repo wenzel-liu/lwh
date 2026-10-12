@@ -216,6 +216,10 @@
   background: var(--glass-inner);
 }
 
+.fds-project-card--featured {
+  grid-column: 1 / -1;
+}
+
 .fds-project-card h4 {
   font-size: 18px;
 }

@@ -54,11 +54,12 @@ export function BioPage() {
         </article>
 
         <article className="fds-card fds-card--accent fds-hero-main">
-          <p className="fds-eyebrow">Cardiology · RNA Biology · Translational Analytics</p>
+          <p className="fds-eyebrow">Cardiovascular Research · Clinical Education · Open Source</p>
           <h2 className="fds-hero-title">{profileSummary.tagline}</h2>
           <p className="fds-hero-description">
-            I work at the intersection of mechanistic cardiovascular research and deployable evidence design, with a
-            focus on heart failure, omics-driven target validation, and clinically grounded translational workflows.
+            I completed my Ph.D. at the University of Tokyo in March 2026 and joined Edwards Lifesciences as a
+            Clinical Education Senior Specialist in TMTT. My research background is in heart failure and RNA
+            metabolism. I also build independent tools such as Focus Reader.
           </p>
           <div className="fds-hero-chips">
             {profileSummary.heroChips.map((chip, index) => (
@@ -147,16 +148,21 @@ export function BioPage() {
 
         <BentoCard className="span-6" revealDelay={220}>
           <div className="fds-section-head">
-            <h3 className="fds-card-title">Projects and active surfaces</h3>
+            <h3 className="fds-card-title">Works and projects</h3>
             <a className="fds-link-inline" href="blog.html">
               Notes and builds
             </a>
           </div>
           <div className="fds-project-grid">
             {homeProjects.map((project) => (
-              <section className="fds-project-card" key={project.title}>
+              <section className={`fds-project-card${project.featured ? ' fds-project-card--featured' : ''}`} key={project.title}>
                 <h4>{project.title}</h4>
                 <p>{project.description}</p>
+                {project.features ? (
+                  <ul className="fds-bullet-list">
+                    {project.features.map((feature) => <li key={feature}>{feature}</li>)}
+                  </ul>
+                ) : null}
                 <div className="fds-chip-row">
                   {project.tags.map((tag) => (
                     <span className="fds-chip fds-chip--accent" key={`${project.title}-${tag}`}>
@@ -165,7 +171,7 @@ export function BioPage() {
                   ))}
                 </div>
                 <a className="fds-link-inline" href={project.url} target="_blank" rel="noopener noreferrer">
-                  Visit project
+                  {project.linkLabel ?? 'Visit project'}
                   <FluentIcon name="arrow" size={12} />
                 </a>
               </section>

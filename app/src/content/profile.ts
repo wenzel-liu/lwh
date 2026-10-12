@@ -1,10 +1,11 @@
 import type { ProfileSummary, ProjectItem } from './types';
+import { focusReaderProject } from './projects';
 
 export const profileSummary: ProfileSummary = {
-  name: 'Wenzel Liu, M.D.',
-  role: 'Cardiologist, Ph.D. candidate, and techno-industrialist based in Tokyo',
+  name: 'Wenzel Liu, MBBS, Ph.D.',
+  role: 'Clinical Education Senior Specialist at Edwards Lifesciences · Cardiovascular researcher based in Tokyo',
   tagline:
-    'Focused on heart failure, RNA biology, and translational analytics at the intersection of medicine and computation.',
+    'Connecting cardiovascular research, structural heart education, and practical technology.',
   location: 'Tokyo, Japan',
   email: 'wenzel_liu@outlook.jp',
   avatarSrc: 'assets/images/avatar.jpg',
@@ -15,11 +16,11 @@ export const profileSummary: ProfileSummary = {
     { label: 'ORCID', href: 'https://orcid.org/0000-0002-2243-8391' }
   ],
   focusItems: [
-    'Target validation of DEAD-box RNA helicases for adverse cardiac remodeling.',
-    'Integrated analysis across scRNA-seq, CUT&Tag, ChIP-seq, eCLIP, and RNA-seq.',
-    'Bridging mechanistic biology and clinically deployable evidence pathways.'
+    'Clinical education in transcatheter mitral and tricuspid therapies at Edwards Lifesciences.',
+    'Heart failure and RNA biology, building on doctoral research into DDX41 and cardiac remodeling.',
+    'Independent, privacy-respecting tools for reading and research, including Focus Reader.'
   ],
-  heroChips: ['Heart Failure', 'Omics Analysis', 'Real-World Data', 'Python', 'R', 'Clinical Trials'],
+  heroChips: ['Clinical Education', 'Structural Heart', 'Heart Failure', 'RNA Biology', 'Python', 'R'],
   coreStack: ['Python', 'R', 'SPSS', 'scRNA-seq', 'CUT&Tag', 'ChIP-seq', 'eCLIP', 'Echocardiography', 'CPET', 'RCT Design'],
   languages: ['Chinese - Native', 'Japanese - N1', 'English - Fluent']
 };
@@ -28,21 +29,21 @@ export const homeIntro = {
   kicker: 'Open to Collaboration',
   title: 'Cardiovascular Research, Clinical Insight, and Applied Technology',
   description:
-    'I work at the intersection of medicine and computation, translating mechanistic insights into practical pathways for heart failure research and care.'
+    'I am a medically trained cardiovascular researcher working in clinical education in Tokyo. My interests connect heart failure mechanisms, structural heart therapies, and practical tools for learning.'
 };
 
 export const selectedExperience = [
   {
-    title: 'Ph.D. Candidate - The University of Tokyo',
-    summary: 'Apr 2022 - Present - Cardiovascular medicine and RNA-centric therapeutic strategy.'
+    title: 'Clinical Education Senior Specialist - Edwards Lifesciences',
+    summary: 'Mar 2026 - Present - Transcatheter Mitral and Tricuspid Therapies (TMTT), Tokyo.'
   },
   {
-    title: 'Foreign Research Student - The University of Tokyo',
-    summary: 'Sep 2020 - Mar 2022 - Bioluminescent ATP probe development and translational imaging workflow.'
+    title: 'Ph.D. - The University of Tokyo',
+    summary: 'Dec 2020 - Mar 2026 - Cardiovascular research on DDX41, RNA metabolism, and heart failure; degree awarded.'
   },
   {
-    title: 'Resident Physician - Cardiovascular Medicine',
-    summary: 'Jul 2019 - Aug 2020 - Heart failure trial operations, multimodal diagnostic synthesis.'
+    title: 'Resident Physician - Internal Medicine',
+    summary: 'Jun 2017 - Jun 2020 - Residency training with a focus on cardiovascular medicine and heart failure.'
   }
 ];
 
@@ -62,6 +63,7 @@ export const homePublications = [
 ];
 
 export const homeProjects: ProjectItem[] = [
+  focusReaderProject,
   {
     title: 'MedPrism',
     description: 'Platform concept for medical research and analytics workflows in cardiovascular contexts.',
