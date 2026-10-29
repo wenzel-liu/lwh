@@ -160,7 +160,8 @@ include:
   - .htaccess
   - _pages
 exclude:
-  - app
+  # Jekyll 3 treats plain exclusions as prefixes; keep app-assets public.
+  - "app/**"
   - "*.sublime-project"
   - "*.sublime-workspace"
   - vendor
