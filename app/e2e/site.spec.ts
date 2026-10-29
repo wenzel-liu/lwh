@@ -4,6 +4,7 @@ import { readFileSync } from 'node:fs';
 const pages = [
   { file: 'index.html', title: /Bio \| Wenhao Liu/i },
   { file: 'blog.html', title: /Blog \| Wenhao Liu/i },
+  { file: 'projects.html', title: /Projects \| Wenhao Liu/i },
   { file: 'experience.html', title: /Experience \| Wenhao Liu/i },
   { file: 'research.html', title: /Papers & Talks \| Wenhao Liu/i },
   { file: 'posts/academic-life-in-tokyo.html', title: /东京学术生活/ },
@@ -113,7 +114,7 @@ test.describe('unified site', () => {
       const shell = page.locator('.fds-app-shell');
       const light = await shell.evaluate((node) => getComputedStyle(node).backgroundColor);
       expect(light).toBe('rgb(246, 245, 240)');
-      for (const width of [390, 768, 940, 1280]) {
+      for (const width of [390, 768, 940, 981, 1024, 1280]) {
         await page.setViewportSize({ width, height: 844 });
         expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
         await expect(page.getByRole('heading', { level: 1 })).toBeVisible();

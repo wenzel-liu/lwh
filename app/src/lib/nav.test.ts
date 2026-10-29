@@ -14,6 +14,8 @@ describe('nav helpers', () => {
   it('matches active nav by file name', () => {
     expect(isNavItemActive('/lwh/blog.html', 'blog.html')).toBe(true);
     expect(isNavItemActive('/lwh/research.html', 'blog.html')).toBe(false);
+    expect(isNavItemActive('/lwh/projects.html', 'projects.html')).toBe(true);
+    expect(isNavItemActive('/lwh/projects.html', 'blog.html')).toBe(false);
   });
 
   it('keeps the blog section active while reading a nested article', () => {

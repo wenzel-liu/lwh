@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { profileSummary } from './profile';
-import { blogProjects } from './blog';
+import { blogCollections } from './blog';
+import { projects } from './projects';
 import { professionalExperience } from './experience';
 import { publications } from './research';
 
@@ -10,9 +11,9 @@ describe('content schema', () => {
     expect(profileSummary.email).toContain('@');
   });
 
-  it('blog projects include url and title', () => {
-    expect(blogProjects.length).toBeGreaterThan(0);
-    blogProjects.forEach((item) => {
+  it('writing collections and projects include valid destinations', () => {
+    expect(blogCollections.length).toBeGreaterThan(0);
+    [...blogCollections, ...projects].forEach((item) => {
       expect(item.title.length).toBeGreaterThan(0);
       expect(new URL(item.url, 'https://wenzel-liu.github.io').protocol).toBe('https:');
     });

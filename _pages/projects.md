@@ -1,6 +1,6 @@
 ---
 layout: portfolio-redirect
-redirect_to: /blog.html#projects
+redirect_to: /projects.html
 title: Projects
 permalink: /projects/
 ---
@@ -36,4 +36,4 @@ function toggleTheme() {
   const themeBtn = document.querySelector('.theme-btn');
   themeBtn.textContent = document.body.classList.contains('light-theme') ? '☀️' : '🌙';
 }
-</script> 
+</script>

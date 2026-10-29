@@ -1,9 +1,4 @@
 import type { ProjectItem } from './types';
-import { collections } from './collections';
-import { siteHref } from '@/lib/nav';
-
-export const medPrismProject: ProjectItem = { ...collections.medprism, url: siteHref(collections.medprism.path), linkLabel: 'Read articles' };
-export const sciIndustrialistProject: ProjectItem = { ...collections['sci-industrialist'], url: siteHref(collections['sci-industrialist'].path), linkLabel: 'Read articles' };
 
 export const focusReaderProject: ProjectItem = {
   title: 'Focus Reader',
@@ -18,4 +13,12 @@ export const focusReaderProject: ProjectItem = {
   url: 'https://github.com/wenzel-liu/focus-reader',
   linkLabel: 'Source & installation',
   featured: true
+};
+
+export const projects: ProjectItem[] = [focusReaderProject];
+
+export const projectsIntro = {
+  kicker: 'Made independently',
+  title: 'Projects',
+  description: 'Software and tools I build for focused reading, research, and everyday work.'
 };
