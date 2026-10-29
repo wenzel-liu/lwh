@@ -1,3 +1,4 @@
+import { ProjectCard } from '@/components/PortfolioParts';
 import { ReadingPreview } from '@/components/ReadingPreview';
 import { FluentIcon } from '@/components/FluentIcon';
 import { SocialIcon } from '@/components/SocialIcon';
@@ -59,16 +60,7 @@ export function BioPage() {
           </article>
         ) : null}
         <div className="portfolio-projects">
-          {otherProjects.map((project) => (
-            <article className="portfolio-project" key={project.title}>
-              <div className="portfolio-project-heading"><h3>{project.title}</h3><span aria-hidden="true">↗</span></div>
-              <p>{project.description}</p>
-              <div className="portfolio-project-bottom">
-                <ul className="portfolio-tags" aria-label={`${project.title} topics`}>{project.tags.map((tag) => <li key={tag}>{tag}</li>)}</ul>
-                <a className="portfolio-text-link" href={project.url} target="_blank" rel="noopener noreferrer" aria-label={`Explore ${project.title}`}>Explore project</a>
-              </div>
-            </article>
-          ))}
+          {otherProjects.map((project) => <ProjectCard project={project} key={project.title} />)}
         </div>
       </section>
 

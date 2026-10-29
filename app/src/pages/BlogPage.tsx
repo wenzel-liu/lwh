@@ -11,7 +11,7 @@ export function BlogPage() {
       <PageIntro {...blogIntro}>
         <nav className="portfolio-page-index" aria-label="On this page">
           <a href="#projects"><span>Projects</span><span>01 — 03 ↘</span></a>
-          <a href="#notes"><span>Notes</span><span>01 — 03 ↘</span></a>
+          <a href="#notes"><span>Notes</span><span>{String(recentNotes.length).padStart(2, '0')} articles ↘</span></a>
         </nav>
       </PageIntro>
 

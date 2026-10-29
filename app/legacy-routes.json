@@ -4,7 +4,7 @@
   "blog/index.html": "blog.html",
   "experience/index.html": "experience.html",
   "projects/index.html": "blog.html#projects",
-  "Techno-Industrialist/index.html": "blog.html#projects",
+  "Techno-Industrialist/index.html": "sci-industrialist/",
   "uses/index.html": "experience.html#skills",
   "publications/index.html": "research.html",
   "research/index.html": "research.html",

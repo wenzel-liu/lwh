@@ -24,6 +24,7 @@ export interface ProfileSummary {
 
 export interface ProjectItem {
   title: string;
+  subtitle?: string;
   description: string;
   tags: string[];
   url: string;

@@ -6,14 +6,15 @@ import { ThemeControl } from './ThemeControl';
 
 interface SiteShellProps {
   children: ReactNode;
+  currentPath?: string;
 }
 
-export function SiteShell({ children }: SiteShellProps) {
+export function SiteShell({ children, currentPath: suppliedPath }: SiteShellProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const mobileNavRef = useRef<HTMLElement>(null);
   const mobileToggleRef = useRef<HTMLButtonElement>(null);
 
-  const currentPath = typeof window !== 'undefined' ? window.location.pathname : '/index.html';
+  const currentPath = suppliedPath ?? (typeof window !== 'undefined' ? window.location.pathname : '/index.html');
 
   useEffect(() => {
     // React mounts after the browser's first attempt to resolve a URL fragment.

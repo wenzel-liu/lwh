@@ -19,10 +19,11 @@ export function ProjectCard({ project }: { project: ProjectItem }) {
   return (
     <article className="portfolio-project">
       <div className="portfolio-project-heading"><h3>{project.title}</h3><span aria-hidden="true">↗</span></div>
+      {project.subtitle ? <p className="portfolio-project-subtitle"><em>{project.subtitle}</em></p> : null}
       <p>{project.description}</p>
       <div className="portfolio-project-bottom">
         <Tags items={project.tags} label={`${project.title} topics`} />
-        <a className="portfolio-text-link" href={project.url} target="_blank" rel="noopener noreferrer" aria-label={`Explore ${project.title}`}>Explore project</a>
+        <a className="portfolio-text-link" href={project.url} target={project.url.startsWith('https://') ? '_blank' : undefined} rel={project.url.startsWith('https://') ? 'noopener noreferrer' : undefined} aria-label={`Explore ${project.title}`}>{project.linkLabel ?? 'Explore project'}</a>
       </div>
     </article>
   );

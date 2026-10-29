@@ -130,9 +130,10 @@ test.describe('unified site', () => {
   for (const note of pages.filter((item) => item.file.startsWith('posts/'))) {
     test(`article navigation works for ${note.file}`, async ({ page }) => {
       await page.setViewportSize({ width: 390, height: 844 });
-      await page.goto('blog.html');
-      await page.locator('a[href="' + note.file + '"]').click();
+      await page.goto(note.file.includes('rna-metabolism') ? 'medprism/' : 'blog.html');
+      await page.locator('a[href="/lwh/' + note.file + '"]').click();
       await expect(page).toHaveTitle(note.title);
+      await page.locator('[data-article-toc] summary').click();
       await page.getByRole('navigation', { name: '文章目录' }).getByRole('link').first().click();
       await expect(page.locator('#section-1')).toBeInViewport();
       await page.getByRole('button', { name: 'Toggle navigation' }).click();

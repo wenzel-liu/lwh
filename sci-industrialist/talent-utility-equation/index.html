@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Talent Utility Equation | Wenzel Liu</title><meta name="description" content="梳理薪酬、自主权、影响力、人才集群等维度，以及它们之间的区别。"><link rel="canonical" href="https://wenzel-liu.github.io/lwh/sci-industrialist/talent-utility-equation/"><meta property="og:title" content="Talent Utility Equation"><meta property="og:description" content="梳理薪酬、自主权、影响力、人才集群等维度，以及它们之间的区别。"><meta property="og:type" content="article"><meta property="og:url" content="https://wenzel-liu.github.io/lwh/sci-industrialist/talent-utility-equation/"><link rel="icon" href="/lwh/assets/images/favicon.ico"><link rel="stylesheet" href="/lwh/assets/css/fonts.css"><script>
+      (function () {
+        document.documentElement.classList.add('reveal-ready');
+        try {
+          var key = 'site-theme';
+          var pref = localStorage.getItem(key) || 'system';
+          var valid = ['light', 'dark', 'system'];
+          if (valid.indexOf(pref) < 0) {
+            pref = 'system';
+          }
+          var dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          var resolved = pref === 'system' ? (dark ? 'dark' : 'light') : pref;
+          document.documentElement.setAttribute('data-theme-preference', pref);
+          document.documentElement.setAttribute('data-theme', resolved);
+          document.documentElement.classList.toggle('dark', resolved === 'dark');
+        } catch {
+          document.documentElement.setAttribute('data-theme', 'light');
+        }
+      })();
+    </script><script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Talent Utility Equation","datePublished":"2025-07-04","dateModified":"2025-07-04","inLanguage":"zh-CN","url":"https://wenzel-liu.github.io/lwh/sci-industrialist/talent-utility-equation/","author":{"@type":"Person","name":"Wenzel Liu"}}</script>  <script type="module" crossorigin src="/lwh/app-assets/site-34OX503n.js"></script>
+  <script type="module" crossorigin src="/lwh/app-assets/article-BlI9wjjb.js"></script>
+  <link rel="stylesheet" crossorigin href="/lwh/app-assets/site-YWU7nzYo.css">
+  <link rel="stylesheet" crossorigin href="/lwh/app-assets/math-DYAYuugC.css">
+</head><body><div class="fds-app-shell fds-app-shell--portfolio"><a class="fds-skip-link" href="#main-content">Skip to content</a><header class="fds-topbar"><div class="fds-topbar-inner"><a class="fds-brand" href="/lwh/index.html" aria-label="Wenzel Liu homepage"><span class="fds-brand-glyph">W</span><span class="fds-brand-copy"><strong>Wenzel Liu</strong><span>Research · Education · Technology</span></span></a><nav class="top-nav" aria-label="Primary"><a class="nav-link" href="/lwh/index.html" data-nav-link="true">Bio</a><a class="nav-link active" href="/lwh/blog.html" data-nav-link="true" aria-current="page">Blog</a><a class="nav-link" href="/lwh/experience.html" data-nav-link="true">Experience</a><a class="nav-link" href="/lwh/research.html" data-nav-link="true">Papers &amp; Talks</a></nav><div class="fds-topbar-actions"><a class="fds-nav-contact" href="mailto:wenzel_liu@outlook.jp">Contact</a><div class="theme-control" data-theme-control="true"><button class="fds-iconbtn theme-toggle-button" type="button" data-theme-toggle="true" aria-haspopup="true" aria-expanded="false" aria-label="Theme options"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 3v18"></path><path d="M12 3a9 9 0 0 0 0 18" fill="currentColor" stroke="none"></path></svg><span class="theme-toggle-label" data-theme-current="true">System</span></button><div class="theme-menu" data-theme-menu="true" role="menu" aria-label="Theme mode"><button class="theme-option" type="button" data-theme-option="light" role="menuitem" aria-pressed="false"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path></svg>Light</button><button class="theme-option" type="button" data-theme-option="dark" role="menuitem" aria-pressed="false"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg>Dark</button><button class="theme-option active" type="button" data-theme-option="system" role="menuitem" aria-pressed="true"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 3v18"></path><path d="M12 3a9 9 0 0 0 0 18" fill="currentColor" stroke="none"></path></svg>System</button></div></div><button class="fds-iconbtn mobile-toggle" type="button" aria-controls="mobile-nav" aria-expanded="false" aria-label="Toggle navigation"><span class="mobile-toggle-label">Menu</span></button></div></div><nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation"><a class="nav-link" href="/lwh/index.html" data-nav-link="true">Bio</a><a class="nav-link active" href="/lwh/blog.html" data-nav-link="true" aria-current="page">Blog</a><a class="nav-link" href="/lwh/experience.html" data-nav-link="true">Experience</a><a class="nav-link" href="/lwh/research.html" data-nav-link="true">Papers &amp; Talks</a></nav></header><main class="fds-shell" id="main-content" tabindex="-1"><article class="portfolio-article" lang="zh-CN"><header class="portfolio-article-header"><a class="portfolio-text-link" href="/lwh/sci-industrialist/">← Sci-Industrialist</a><p class="portfolio-kicker"><time dateTime="2025-07-04">2025-07-04</time><span>Talent &amp; institutions</span></p><h1>Talent Utility Equation</h1><ul class="portfolio-tags" aria-label="文章标签"><li>Talent &amp; institutions</li></ul></header><div class="portfolio-article-layout"><aside class="portfolio-toc"><details open="" data-article-toc="true"><summary>文章目录</summary><nav aria-label="文章目录"><a href="#section-1">使用建议</a></nav></details></aside><div class="portfolio-prose"><div data-article-body="true"><div class="portfolio-table-scroll" tabindex="0" role="region" aria-label="Scrollable table"><table>
+<thead>
+<tr>
+<th>维度</th>
+<th>英文关键词</th>
+<th>中文概念 / 核心含义</th>
+<th>与其他维度的关键区别</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>R – Reward / Remuneration</strong></td>
+<td>薪酬与即时物质回报</td>
+<td>竞争性现金、奖金、福利等直接经济激励</td>
+<td>着重“短期可见的金钱回报”，不涵盖长期收益或非金钱动机</td>
+</tr>
+<tr>
+<td><strong>F – Freedom</strong></td>
+<td>自主权</td>
+<td>定义研究 / 业务方向、挑战权威而不受惩罚的自由度</td>
+<td>解决“做什么、如何做”决定权；与成长、使命感不同</td>
+</tr>
+<tr>
+<td><strong>I – Impact</strong></td>
+<td>影响力</td>
+<td>成果或产品面向全球、被顶尖同行采用的外部影响</td>
+<td>强调“外部可见度与市场 / 学术渗透”，非个人意义感</td>
+</tr>
+<tr>
+<td><strong>C – Cluster</strong></td>
+<td>人才集群</td>
+<td>高密度、同层次的“智力碰撞”与网络效应</td>
+<td>网络外部性——规模未达临界点前，高薪难留人</td>
+</tr>
+<tr>
+<td><strong>G – Growth</strong></td>
+<td>成长曲线</td>
+<td>高频学习、能力跃迁、导师反馈、跨职能轮岗</td>
+<td>聚焦“学习斜率”，区别于 Freedom 的“选择自由”</td>
+</tr>
+<tr>
+<td><strong>S – Stability / Security</strong></td>
+<td>安全与稳定</td>
+<td>法规、政治、经济及生活配套的确定性下界</td>
+<td>为高自由度和高风险回报提供“兜底”</td>
+</tr>
+<tr>
+<td><strong>E – Equity / Upside</strong></td>
+<td>长期收益权</td>
+<td>股权、期权、署名权、行业声望等乘数激励</td>
+<td>着重“长期价值共享”，区别于 R 的即时现金</td>
+</tr>
+<tr>
+<td><strong>P – Purpose / Mission Fit</strong></td>
+<td>使命共鸣</td>
+<td>工作目标与个人价值观、社会责任的契合度</td>
+<td>解决“做这件事是否有意义”——属于内在驱动力</td>
+</tr>
+<tr>
+<td><strong>B – Balance / Well-being</strong></td>
+<td>身心平衡</td>
+<td>健康、心理支持、可持续工作节奏与生活质量</td>
+<td>确保长期高效产出的“隐形天花板”</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p>说明：</p>
+<ul>
+<li>
+<p>R-F-I-C 为“基础条件（Four Fundamentals）”；</p>
+</li>
+<li>
+<p>G-S-E-P-B 为“加速放大器（Accelerators）”。</p>
+<p>你可按人才画像为各维度设权重，进一步量化 Utility_max。</p>
+</li>
+</ul>
+</blockquote>
+<ol>
+<li>
+<p><strong>层级嵌套法</strong></p>
+<section><eqn><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>U</mi><mtext>max</mtext></msub><mo>=</mo><mi>f</mi><mo fence="true" stretchy="true" minsize="1.2em" maxsize="1.2em">(</mo><mi>R</mi><mo separator="true">,</mo><mtext> </mtext><mi>F</mi><mo separator="true">,</mo><mtext> </mtext><mi>I</mi><mo separator="true">,</mo><mtext> </mtext><mi>C</mi><mo separator="true">;</mo><mtext>  </mtext><mtext>  </mtext><mi>G</mi><mo separator="true">,</mo><mtext> </mtext><mi>S</mi><mo separator="true">,</mo><mtext> </mtext><mi>E</mi><mo separator="true">,</mo><mtext> </mtext><mi>P</mi><mo separator="true">,</mo><mtext> </mtext><mi>B</mi><mo fence="true" stretchy="true" minsize="1.2em" maxsize="1.2em">)</mo></mrow><annotation encoding="application/x-tex">
+    
+    U_{\text{max}}
+    = f\bigl(R,\,F,\,I,\,C;\;\;G,\,S,\,E,\,P,\,B\bigr)
+    
+    </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.109em;">U</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.109em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">max</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1.2em;vertical-align:-0.35em;"></span><span class="mord mathnormal" style="margin-right:0.1076em;">f</span><span class="mopen"><span class="delimsizing size1">(</span></span><span class="mord mathnormal" style="margin-right:0.0077em;">R</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.1389em;">F</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.0785em;">I</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.0715em;">C</span><span class="mpunct">;</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">G</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.0576em;">S</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.0576em;">E</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.1389em;">P</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.0502em;">B</span><span class="mclose"><span class="delimsizing size1">)</span></span></span></span></span></span></eqn></section></li>
+</ol>
+<ul>
+<li>前四维为<strong>必要条件（Four Fundamentals）</strong>，后五维为<strong>加速放大器（Accelerators）</strong>。</li>
+<li>用分号隔开表示“缺一不可”与“锦上添花”的不同权重可视化。</li>
+</ul>
+<hr>
+<h3 id="section-1">使用建议</h3>
+<ol>
+<li><strong>先核对痛点，再决定扩充</strong>
+<ul>
+<li>若企业核心短板仍在 F（制度容忍度）或 C（集群强度），先集中火力补短，新增维度只能锦上添花。</li>
+</ul>
+</li>
+<li><strong>指标化 &amp; 可操作化</strong>
+<ul>
+<li>例如 G 可用“每人每年外部培训/会议预算”“跨职能项目数”量化；</li>
+<li>S 可用“签证/落户时长”“团队核心成员离职率”等衡量。</li>
+</ul>
+</li>
+<li><strong>动态迭代</strong>
+<ul>
+<li>人才生命周期不同阶段权重不同：年轻博士更看 G/E，已成名科学家或许更注重 P/B。</li>
+<li>可以按季/半年跑一次“效用热力图”，持续校准。</li>
+</ul>
+</li>
+</ol>
+</div><footer class="portfolio-article-end"><p>写于 <time dateTime="2025-07-04">2025-07-04</time></p><a class="portfolio-text-link" href="/lwh/sci-industrialist/">← Sci-Industrialist</a></footer></div></div><section class="portfolio-related"><h2>继续阅读</h2><div class="portfolio-related-links"><a href="/lwh/sci-industrialist/talent-attraction-score/index.html">Talent Attraction Score框架 ↗</a><a href="/lwh/sci-industrialist/abundance/index.html">Abundance How We Build a Better Future-Ezra Klein &amp; Derek Thompson ↗</a></div></section></article></main><footer class="fds-footer"><span>© 2026 Wenzel Liu</span><span class="sep">·</span><span>Tokyo, Japan</span><span class="sep">·</span><a href="https://github.com/wenzel-liu/lwh" target="_blank" rel="noopener noreferrer">View source</a></footer></div></body></html>

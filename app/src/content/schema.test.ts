@@ -14,7 +14,7 @@ describe('content schema', () => {
     expect(blogProjects.length).toBeGreaterThan(0);
     blogProjects.forEach((item) => {
       expect(item.title.length).toBeGreaterThan(0);
-      expect(item.url.startsWith('http')).toBe(true);
+      expect(new URL(item.url, 'https://wenzel-liu.github.io').protocol).toBe('https:');
     });
   });
 
