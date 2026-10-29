@@ -81,10 +81,10 @@ export function SiteShell({ children, currentPath: suppliedPath }: SiteShellProp
 
       <header className="fds-topbar">
         <div className="fds-topbar-inner">
-          <a className="fds-brand" href={siteHref('index.html')} aria-label="Wenzel Liu homepage">
+          <a className="fds-brand" href={siteHref('index.html')} aria-label="Wenhao Liu homepage">
             <span className="fds-brand-glyph">W</span>
             <span className="fds-brand-copy">
-              <strong>Wenzel Liu</strong>
+              <strong>Wenhao Liu</strong>
               <span>Research · Education · Technology</span>
             </span>
           </a>
@@ -122,7 +122,7 @@ export function SiteShell({ children, currentPath: suppliedPath }: SiteShellProp
       <main className="fds-shell" id="main-content" tabIndex={-1}>{children}</main>
 
       <footer className="fds-footer">
-        <span>© 2026 Wenzel Liu</span>
+        <span>© 2026 Wenhao Liu</span>
         <span className="sep">·</span>
         <span>Tokyo, Japan</span>
         <span className="sep">·</span>

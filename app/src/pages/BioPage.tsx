@@ -24,7 +24,7 @@ export function BioPage() {
           </div>
         </div>
         <aside className="portfolio-profile" aria-label="Profile and contact">
-          <img className="portfolio-portrait" src={profileSummary.avatarSrc} alt="Portrait of Wenzel Liu" width={112} height={112} />
+          <img className="portfolio-portrait" src={profileSummary.avatarSrc} alt="Portrait of Wenhao Liu" width={112} height={112} />
           <p className="portfolio-availability"><span aria-hidden="true" />{homeIntro.kicker}</p>
           <div className="portfolio-profile-role"><p className="portfolio-kicker">Currently</p><p>{profileSummary.role}</p></div>
           <div className="portfolio-profile-links">
@@ -96,7 +96,7 @@ export function BioPage() {
       <section id="contact" className="portfolio-contact" aria-labelledby="contact-title">
         <div><p className="portfolio-kicker">Get in touch</p><h2 id="contact-title">{homeCta.title}.</h2><p>{homeCta.description}</p></div>
         <div className="portfolio-contact-actions">
-          <a className="portfolio-button" href={homeCta.emailHref}>Email Wenzel <FluentIcon name="arrow" size={14} /></a>
+          <a className="portfolio-button" href={homeCta.emailHref}>Email Wenhao <FluentIcon name="arrow" size={14} /></a>
           <a className="portfolio-text-link" href={homeCta.cvHref} download>Download CV <FluentIcon name="download" size={14} /></a>
         </div>
       </section>

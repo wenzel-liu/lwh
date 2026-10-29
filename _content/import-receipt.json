@@ -71,6 +71,16 @@
     "source": "app/src/content/notes/welcome-to-my-blog.html",
     "sha256": "ba0e50b9ecb6ec89e4ae7956c38d1326e74f049cfee81681c4685f88db4fea15",
     "target": "_content/notes/welcome-to-my-blog.html",
-    "legacy": true
+    "legacy": true,
+    "post_import_edits": [
+      {
+        "date": "2026-10-29",
+        "reason": "User requested the site display name Wenhao Liu",
+        "replace": {
+          "from": "Wenzel Liu",
+          "to": "Wenhao Liu"
+        }
+      }
+    ]
   }
 ]

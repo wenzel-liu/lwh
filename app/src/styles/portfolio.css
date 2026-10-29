@@ -54,11 +54,12 @@ html[data-theme='dark'] .fds-app-shell--portfolio {
 .fds-app-shell--portfolio .fds-topbar-inner { height: 84px; padding: 0; gap: 24px; }
 .fds-app-shell--portfolio .fds-brand { flex-shrink: 0; }
 .fds-app-shell--portfolio .fds-brand-glyph { background: var(--portfolio-ink); color: var(--portfolio-paper); border-radius: 50%; box-shadow: none; font-family: var(--font-display); font-size: 18px; width: 36px; height: 36px; }
-.fds-app-shell--portfolio .fds-brand-copy strong { font-family: var(--font-ui); font-size: 17px; font-weight: 650; }
+.fds-app-shell--portfolio .fds-brand-copy strong { font-family: var(--font-display); font-size: 20px; font-weight: 600; }
 .fds-app-shell--portfolio .fds-brand-copy > span { display: none; }
 .fds-app-shell--portfolio .top-nav { margin-left: auto; gap: 8px; }
 .fds-app-shell--portfolio .fds-topbar-actions { margin-left: 12px; }
-.fds-app-shell--portfolio .nav-link { min-height: 44px; padding: 8px 12px; font-size: 15px; }
+.fds-app-shell--portfolio .fds-topbar :is(.nav-link, .fds-nav-contact, .theme-toggle-label, .mobile-toggle-label, .theme-option) { font-family: var(--font-display); }
+.fds-app-shell--portfolio .nav-link { min-height: 44px; padding: 8px 12px; font-size: 16px; }
 .fds-app-shell--portfolio .nav-link.active { background: transparent; box-shadow: none; text-decoration: underline; text-decoration-color: var(--portfolio-accent); text-underline-offset: 8px; }
 .fds-app-shell--portfolio .fds-iconbtn { min-height: 44px; min-width: 44px; }
 .fds-app-shell--portfolio .theme-menu { background: var(--portfolio-paper); border-color: var(--portfolio-line); box-shadow: var(--shadow-4); border-radius: 10px; }
@@ -175,7 +176,7 @@ html[data-theme='dark'] .fds-app-shell--portfolio {
   .fds-app-shell--portfolio .fds-topbar { width: calc(100% - 40px); }
   .fds-app-shell--portfolio .fds-topbar-inner { height: 72px; gap: 10px; }
   .fds-app-shell--portfolio .fds-brand { gap: 8px; }
-  .fds-app-shell--portfolio .fds-brand-copy strong { font-size: 16px; }
+  .fds-app-shell--portfolio .fds-brand-copy strong { font-size: 18px; }
   .fds-app-shell--portfolio .fds-nav-contact { display: none; }
   .fds-app-shell--portfolio .fds-topbar-actions { gap: 2px; }
   .fds-app-shell--portfolio .theme-toggle-label { display: none; }

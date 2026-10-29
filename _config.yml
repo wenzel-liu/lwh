@@ -17,11 +17,11 @@ minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt"
 # Site Settings
 locale                   : "en-US"
 rtl                      : # true, false (default) # turns direction of the page into right to left for RTL languages
-title                    : "Wenzel Liu | Cardiovascular Research & Clinical Education"
+title                    : "Wenhao Liu | Cardiovascular Research & Clinical Education"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
-name                     : "Wenzel Liu"
-description              : "Wenzel Liu, MBBS, Ph.D. - Clinical Education Senior Specialist at Edwards Lifesciences and cardiovascular researcher based in Tokyo."
+name                     : "Wenhao Liu"
+description              : "Wenhao Liu, MBBS, Ph.D. - Clinical Education Senior Specialist at Edwards Lifesciences and cardiovascular researcher based in Tokyo."
 url                      : "https://wenzel-liu.github.io"  # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "/lwh" # the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
@@ -114,7 +114,7 @@ analytics:
 
 # Site Author
 author:
-  name: "Wenzel Liu"
+  name: "Wenhao Liu"
   avatar: "/assets/images/avatar.jpg"
   bio: "MBBS, Ph.D. · Clinical Education Senior Specialist at Edwards Lifesciences · Cardiovascular researcher"
   location: "Tokyo, JP"
