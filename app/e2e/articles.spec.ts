@@ -1,20 +1,20 @@
 import { expect, test } from '@playwright/test';
 import { articleIndex } from '../src/content/article-index';
 
-test('project cards use local collections with italic subtitles', async ({ page }) => {
+test('writing cards use local collections with italic subtitles', async ({ page }) => {
   for (const file of ['index.html', 'blog.html']) {
     await page.goto(file);
     for (const [title, subtitle, route] of [
       ['MedPrism', 'Biopharma Insight', 'medprism/'],
       ['Sci-Industrialist', 'Technology, Manufacturing & Historical Materialism', 'sci-industrialist/']
     ]) {
-      const card = page.locator('.portfolio-project').filter({ has: page.getByRole('heading', { name: title, exact: true }) });
+      const card = page.locator('.portfolio-collection-card').filter({ has: page.getByRole('heading', { name: title, exact: true }) });
       await expect(card.locator('em')).toHaveText(subtitle);
-      await expect(card.getByRole('link')).toHaveAttribute('href', '/lwh/' + route);
-      await expect(card.getByRole('link')).not.toHaveAttribute('target', '_blank');
+      await expect(card.getByRole('link', { name: title, exact: true })).toHaveAttribute('href', '/lwh/' + route);
+      await expect(card.getByRole('link', { name: title, exact: true })).not.toHaveAttribute('target', '_blank');
     }
   }
-  await page.getByRole('link', { name: 'Explore Sci-Industrialist' }).click();
+  await page.getByRole('link', { name: 'View all Sci-Industrialist articles' }).click();
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Sci-Industrialist');
   await expect(page.locator('.portfolio-note-row')).toHaveCount(5);
   await page.getByRole('link', { name: 'MedPrism ↗', exact: true }).click();

@@ -7,7 +7,7 @@ const repoRoot = path.resolve(scriptDir, '..', '..');
 const distDir = path.resolve(repoRoot, 'app', 'dist');
 
 const htmlFiles = [
-  'index.html', 'blog.html', 'experience.html', 'research.html',
+  'index.html', 'blog.html', 'projects.html', 'experience.html', 'research.html',
   ...JSON.parse(await readFile(path.join(repoRoot, 'app/.content-pages.json'), 'utf8'))
 ];
 

@@ -1,5 +1,7 @@
 import { ProjectCard } from '@/components/PortfolioParts';
-import { ReadingPreview } from '@/components/ReadingPreview';
+import { FeaturedProject } from '@/components/FeaturedProject';
+import { BlogCollectionCard } from '@/components/BlogCollectionCard';
+import { blogCollections } from '@/content/blog';
 import { FluentIcon } from '@/components/FluentIcon';
 import { SocialIcon } from '@/components/SocialIcon';
 import { homeCta, homeIntro, homeProjects, homePublications, profileSummary, selectedExperience } from '@/content/profile';
@@ -43,24 +45,21 @@ export function BioPage() {
       <section id="work" className="portfolio-section portfolio-work" aria-labelledby="work-title">
         <header className="portfolio-section-heading">
           <div><p className="portfolio-kicker">Independent projects</p><h2 id="work-title">Selected work</h2></div>
-          <a className="portfolio-text-link" href="blog.html">Notes & builds <FluentIcon name="arrow" size={14} /></a>
+          <a className="portfolio-text-link" href="projects.html">All projects <FluentIcon name="arrow" size={14} /></a>
         </header>
-        {featured ? (
-          <article className="portfolio-featured" aria-labelledby="featured-title">
-            <div className="portfolio-featured-copy">
-              <p className="portfolio-kicker">Open source · Chrome extension</p>
-              <h3 id="featured-title">{featured.title}</h3>
-              <p className="portfolio-project-description">{featured.description}</p>
-              <ul className="portfolio-feature-list">{featured.features?.map((feature) => <li key={feature}>{feature}</li>)}</ul>
-              <a className="portfolio-button portfolio-button--light" href={featured.url} target="_blank" rel="noopener noreferrer">
-                {featured.linkLabel ?? 'Explore project'} <FluentIcon name="arrow" size={14} />
-              </a>
-            </div>
-            <ReadingPreview />
-          </article>
-        ) : null}
-        <div className="portfolio-projects">
-          {otherProjects.map((project) => <ProjectCard project={project} key={project.title} />)}
+        {featured ? <FeaturedProject project={featured} /> : null}
+        {otherProjects.length ? <div className="portfolio-projects">
+          {otherProjects.map(project => <ProjectCard project={project} key={project.title} />)}
+        </div> : null}
+      </section>
+
+      <section id="writing" className="portfolio-section" aria-labelledby="writing-title">
+        <header className="portfolio-section-heading">
+          <div><p className="portfolio-kicker">Blog</p><h2 id="writing-title">Writing</h2></div>
+          <a className="portfolio-text-link" href="blog.html">All writing <FluentIcon name="arrow" size={14} /></a>
+        </header>
+        <div className="portfolio-blog-collections">
+          {blogCollections.map(collection => <BlogCollectionCard collection={collection} compact key={collection.id} />)}
         </div>
       </section>
 

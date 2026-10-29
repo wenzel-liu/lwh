@@ -40,6 +40,7 @@ export default defineConfig({
       input: {
         index: path.resolve(__dirname, 'index.html'),
         blog: path.resolve(__dirname, 'blog.html'),
+        projects: path.resolve(__dirname, 'projects.html'),
         experience: path.resolve(__dirname, 'experience.html'),
         research: path.resolve(__dirname, 'research.html'),
         ...Object.fromEntries(contentPages.map((page, index) => [`content-${index}`, path.resolve(__dirname, page)]))

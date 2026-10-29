@@ -1,5 +1,5 @@
 import type { ProfileSummary, ProjectItem } from './types';
-import { focusReaderProject, medPrismProject, sciIndustrialistProject } from './projects';
+import { projects } from './projects';
 
 export const profileSummary: ProfileSummary = {
   name: 'Wenhao Liu, MBBS, Ph.D.',
@@ -62,7 +62,7 @@ export const homePublications = [
   }
 ];
 
-export const homeProjects: ProjectItem[] = [focusReaderProject, medPrismProject, sciIndustrialistProject];
+export const homeProjects: ProjectItem[] = projects;
 
 export const homeCta = {
   title: "Let's Connect",
