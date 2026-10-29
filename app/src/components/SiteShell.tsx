@@ -1,9 +1,8 @@
 import type { ReactNode } from 'react';
 import { useEffect, useRef, useState } from 'react';
-import { FluentIcon } from './FluentIcon';
+import { siteHref } from '@/lib/nav';
 import { PrimaryNav } from './PrimaryNav';
 import { ThemeControl } from './ThemeControl';
-import { SiteMotion } from './SiteMotion';
 
 interface SiteShellProps {
   children: ReactNode;
@@ -15,6 +14,19 @@ export function SiteShell({ children }: SiteShellProps) {
   const mobileToggleRef = useRef<HTMLButtonElement>(null);
 
   const currentPath = typeof window !== 'undefined' ? window.location.pathname : '/index.html';
+
+  useEffect(() => {
+    // React mounts after the browser's first attempt to resolve a URL fragment.
+    const frame = window.requestAnimationFrame(() => {
+      if (!window.location.hash) return;
+      try {
+        document.getElementById(decodeURIComponent(window.location.hash.slice(1)))?.scrollIntoView();
+      } catch {
+        // An invalid URL fragment should not prevent the page from loading.
+      }
+    });
+    return () => window.cancelAnimationFrame(frame);
+  }, []);
 
   useEffect(() => {
     if (!mobileOpen) {
@@ -38,6 +50,7 @@ export function SiteShell({ children }: SiteShellProps) {
     const onEscape = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
         setMobileOpen(false);
+        mobileToggleRef.current?.focus();
       }
     };
 
@@ -52,7 +65,7 @@ export function SiteShell({ children }: SiteShellProps) {
 
   useEffect(() => {
     const onResize = () => {
-      if (window.innerWidth > 900) {
+      if (window.innerWidth > 980) {
         setMobileOpen(false);
       }
     };
@@ -62,30 +75,23 @@ export function SiteShell({ children }: SiteShellProps) {
   }, []);
 
   return (
-    <div className="fds-app-shell">
-      <div className="fds-aurora" aria-hidden="true">
-        <span className="fds-aurora-blob fds-aurora-blob--1" />
-        <span className="fds-aurora-blob fds-aurora-blob--2" />
-        <span className="fds-aurora-blob fds-aurora-blob--3" />
-      </div>
+    <div className="fds-app-shell fds-app-shell--portfolio">
+      <a className="fds-skip-link" href="#main-content">Skip to content</a>
 
       <header className="fds-topbar">
         <div className="fds-topbar-inner">
-          <a className="fds-brand" href="index.html" aria-label="Wenzel Liu homepage">
+          <a className="fds-brand" href={siteHref('index.html')} aria-label="Wenzel Liu homepage">
             <span className="fds-brand-glyph">W</span>
             <span className="fds-brand-copy">
               <strong>Wenzel Liu</strong>
-              <span>Fluent Research Portfolio</span>
+              <span>Research · Education · Technology</span>
             </span>
           </a>
 
           <PrimaryNav currentPath={currentPath} className="top-nav" ariaLabel="Primary" />
 
           <div className="fds-topbar-actions">
-            <div className="fds-search-shell" aria-hidden="true">
-              <FluentIcon name="search" size={14} />
-              <span>Search papers, talks, notes</span>
-            </div>
+            <a className="fds-nav-contact" href="mailto:wenzel_liu@outlook.jp">Contact</a>
             <ThemeControl />
 
             <button
@@ -112,19 +118,18 @@ export function SiteShell({ children }: SiteShellProps) {
         />
       </header>
 
-      <main className="fds-shell">{children}</main>
+      <main className="fds-shell" id="main-content" tabIndex={-1}>{children}</main>
 
       <footer className="fds-footer">
         <span>© 2026 Wenzel Liu</span>
         <span className="sep">·</span>
-        <span>Fluent rebuild for the personal research site</span>
+        <span>Tokyo, Japan</span>
         <span className="sep">·</span>
         <a href="https://github.com/wenzel-liu/lwh" target="_blank" rel="noopener noreferrer">
           View source
         </a>
       </footer>
 
-      <SiteMotion />
     </div>
   );
 }

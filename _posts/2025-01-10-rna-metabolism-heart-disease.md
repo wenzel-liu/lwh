@@ -1,5 +1,6 @@
 ---
-layout: post
+layout: portfolio-redirect
+redirect_to: /posts/rna-metabolism-heart-disease.html
 title: "RNA代谢在心脏疾病中的关键作用"
 date: 2025-01-10
 categories: [research, cardiology]

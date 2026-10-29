@@ -1,6 +1,6 @@
 import type { Ref } from 'react';
 import { navItems } from '@/content/navigation';
-import { isNavItemActive } from '@/lib/nav';
+import { isNavItemActive, siteHref } from '@/lib/nav';
 
 interface PrimaryNavProps {
   currentPath?: string;
@@ -31,7 +31,7 @@ export function PrimaryNav({
           <a
             key={item.href}
             className={`nav-link${isActive ? ' active' : ''}`}
-            href={item.href}
+            href={siteHref(item.href)}
             data-nav-link
             aria-current={isActive ? 'page' : undefined}
             onClick={() => onNavigate?.()}

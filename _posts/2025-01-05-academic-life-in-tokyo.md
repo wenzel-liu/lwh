@@ -1,5 +1,6 @@
 ---
-layout: post
+layout: portfolio-redirect
+redirect_to: /posts/academic-life-in-tokyo.html
 title: "东京学术生活：在日本进行心血管研究的体验"
 date: 2025-01-05
 categories: [academic, personal]

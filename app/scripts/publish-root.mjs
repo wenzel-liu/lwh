@@ -6,7 +6,12 @@ const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(scriptDir, '..', '..');
 const distDir = path.resolve(repoRoot, 'app', 'dist');
 
-const htmlFiles = ['index.html', 'blog.html', 'experience.html', 'research.html'];
+const htmlFiles = [
+  'index.html', 'blog.html', 'experience.html', 'research.html',
+  'posts/academic-life-in-tokyo.html',
+  'posts/rna-metabolism-heart-disease.html',
+  'posts/welcome-to-my-blog.html'
+];
 
 async function ensureBuildExists() {
   try {

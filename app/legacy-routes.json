@@ -1,0 +1,14 @@
+{
+  "bio/index.html": "index.html",
+  "about/index.html": "index.html",
+  "blog/index.html": "blog.html",
+  "experience/index.html": "experience.html",
+  "projects/index.html": "blog.html#projects",
+  "Techno-Industrialist/index.html": "blog.html#projects",
+  "uses/index.html": "experience.html#skills",
+  "publications/index.html": "research.html",
+  "research/index.html": "research.html",
+  "academic/personal/academic-life-in-tokyo/index.html": "posts/academic-life-in-tokyo.html",
+  "research/cardiology/rna-metabolism-heart-disease/index.html": "posts/rna-metabolism-heart-disease.html",
+  "blog/personal/welcome-to-my-blog/index.html": "posts/welcome-to-my-blog.html"
+}

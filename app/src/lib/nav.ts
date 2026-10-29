@@ -12,8 +12,12 @@ export function normalizePagePath(pathname: string): string {
 }
 
 export function isNavItemActive(currentPath: string, navHref: string): boolean {
-  const current = normalizePagePath(currentPath);
+  const current = currentPath.includes('/posts/') ? 'blog.html' : normalizePagePath(currentPath);
   const target = normalizePagePath(navHref);
 
   return current === target;
+}
+
+export function siteHref(path: string): string {
+  return `${import.meta.env.BASE_URL}${path}`;
 }

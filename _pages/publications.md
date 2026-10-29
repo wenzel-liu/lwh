@@ -1,5 +1,6 @@
 ---
-layout: archive-with-title
+layout: portfolio-redirect
+redirect_to: /research.html
 title: "Publications & Presentations"
 permalink: /publications/
 author_profile: true

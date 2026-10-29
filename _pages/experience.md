@@ -1,5 +1,6 @@
 ---
-layout: clean-default
+layout: portfolio-redirect
+redirect_to: /experience.html
 title: Experience
 permalink: /experience/
 ---

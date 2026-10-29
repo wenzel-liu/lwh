@@ -1,5 +1,6 @@
 ---
-layout: clean-default
+layout: portfolio-redirect
+redirect_to: /blog.html#projects
 title: Projects
 permalink: /projects/
 ---
