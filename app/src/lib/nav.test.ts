@@ -19,5 +19,7 @@ describe('nav helpers', () => {
   it('keeps the blog section active while reading a nested article', () => {
     expect(isNavItemActive('/lwh/posts/academic-life-in-tokyo.html', 'blog.html')).toBe(true);
     expect(isNavItemActive('/lwh/posts/academic-life-in-tokyo.html', 'index.html')).toBe(false);
+    expect(isNavItemActive('/lwh/medprism/', 'blog.html')).toBe(true);
+    expect(isNavItemActive('/lwh/sci-industrialist/abundance/', 'blog.html')).toBe(true);
   });
 });

@@ -1,4 +1,4 @@
-import { access, cp, rm } from 'node:fs/promises';
+import { access, cp, rm, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -8,9 +8,7 @@ const distDir = path.resolve(repoRoot, 'app', 'dist');
 
 const htmlFiles = [
   'index.html', 'blog.html', 'experience.html', 'research.html',
-  'posts/academic-life-in-tokyo.html',
-  'posts/rna-metabolism-heart-disease.html',
-  'posts/welcome-to-my-blog.html'
+  ...JSON.parse(await readFile(path.join(repoRoot, 'app/.content-pages.json'), 'utf8'))
 ];
 
 async function ensureBuildExists() {
@@ -22,11 +20,16 @@ async function ensureBuildExists() {
 }
 
 async function copyHtmlFiles() {
+  const oldFiles = JSON.parse(await readFile(path.join(repoRoot, '_content/published-pages.json'), 'utf8').catch(() => '[]'));
+  for (const file of oldFiles) {
+    if (!htmlFiles.includes(file) && /^(posts|medprism|sci-industrialist|notes)\/[a-z0-9/-]+\.html$/.test(file)) await rm(path.join(repoRoot, file), { force: true });
+  }
   for (const file of htmlFiles) {
     const source = path.resolve(distDir, file);
     const target = path.resolve(repoRoot, file);
     await cp(source, target, { force: true });
   }
+  await writeFile(path.join(repoRoot, '_content/published-pages.json'), JSON.stringify(htmlFiles, null, 2) + '\n');
 }
 
 async function syncAssets() {

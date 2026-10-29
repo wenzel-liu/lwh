@@ -5,6 +5,7 @@ import { readFileSync } from 'node:fs';
 
 // Match the legacy Jekyll routes in local production previews.
 const legacyRoutes: Record<string, string> = JSON.parse(readFileSync(path.resolve(__dirname, 'legacy-routes.json'), 'utf8'));
+const contentPages: string[] = JSON.parse(readFileSync(path.resolve(__dirname, '.content-pages.json'), 'utf8'));
 
 export default defineConfig({
   root: __dirname,
@@ -41,9 +42,7 @@ export default defineConfig({
         blog: path.resolve(__dirname, 'blog.html'),
         experience: path.resolve(__dirname, 'experience.html'),
         research: path.resolve(__dirname, 'research.html'),
-        'academic-life': path.resolve(__dirname, 'posts/academic-life-in-tokyo.html'),
-        'rna-metabolism': path.resolve(__dirname, 'posts/rna-metabolism-heart-disease.html'),
-        'welcome-note': path.resolve(__dirname, 'posts/welcome-to-my-blog.html')
+        ...Object.fromEntries(contentPages.map((page, index) => [`content-${index}`, path.resolve(__dirname, page)]))
       }
     }
   }

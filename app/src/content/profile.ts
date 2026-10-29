@@ -1,5 +1,5 @@
 import type { ProfileSummary, ProjectItem } from './types';
-import { focusReaderProject } from './projects';
+import { focusReaderProject, medPrismProject, sciIndustrialistProject } from './projects';
 
 export const profileSummary: ProfileSummary = {
   name: 'Wenzel Liu, MBBS, Ph.D.',
@@ -62,21 +62,7 @@ export const homePublications = [
   }
 ];
 
-export const homeProjects: ProjectItem[] = [
-  focusReaderProject,
-  {
-    title: 'MedPrism',
-    description: 'Platform concept for medical research and analytics workflows in cardiovascular contexts.',
-    tags: ['Research Ops', 'Knowledge Workflow'],
-    url: 'https://whliu.notion.site/medprism?v=214aeaa78a4c81718d16000c31332e38&source=copy_link'
-  },
-  {
-    title: 'Sci-Industrialist',
-    description: 'Bridge between frontier scientific output and industrial execution opportunities.',
-    tags: ['Translation', 'Strategy'],
-    url: 'https://whliu.notion.site/sci-industrialist?v=200aeaa78a4c80739092000ce65639af&source=copy_link'
-  }
-];
+export const homeProjects: ProjectItem[] = [focusReaderProject, medPrismProject, sciIndustrialistProject];
 
 export const homeCta = {
   title: "Let's Connect",

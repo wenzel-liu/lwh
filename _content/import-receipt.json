@@ -1,0 +1,76 @@
+[
+  {
+    "source": "Novartis R&D, Pipeline, and Clinical Trials A Comp 21baeaa78a4c80c981afc38768578e3a.md",
+    "entry": "Novartis R&D, Pipeline, and Clinical Trials A Comp 21baeaa78a4c80c981afc38768578e3a.md",
+    "sha256": "7bec21ba58b01cde015efcc50b16edeead06a1b678016e19a6dde18c3f6337eb",
+    "body_sha256": "100413568c63b59e01b50527b7b2e618197a21adc7413dff23cdb4eff72ab931",
+    "target": "_content/medprism/novartis-research-overview.md",
+    "image_rewritten": false
+  },
+  {
+    "source": "礼来公司全球研发重点与临床研究进展报告 214aeaa78a4c81dea918dd9707d81a82.md",
+    "entry": "礼来公司全球研发重点与临床研究进展报告 214aeaa78a4c81dea918dd9707d81a82.md",
+    "sha256": "08e824a634d1cb319e0e92ccbac2f180ff3f4bcb71b404354d5007a22a261b3e",
+    "body_sha256": "1ac1f4a39ad9beffa04bdbee8f2cc20f57fac78045316b79ace2c1c8c9b4d4d7",
+    "target": "_content/medprism/lilly-research-pipeline.md",
+    "image_rewritten": false
+  },
+  {
+    "source": "92a6f056-40da-4d22-8c11-db77a3ac5402_ExportBlock-890803cd-4b16-4ee4-ad32-cd2c03295955.zip",
+    "entry": "基层治理的缺失导致西洋的败北 200aeaa78a4c801c9bb4df4293bc5fbc.md",
+    "sha256": "7fc2c008837a0b48a30bb7f4d1c6d4973f0d36fa373b7316d791aa7c69f6d380",
+    "body_sha256": "f9b2135ba469f8e289d024552495fa42733ca3468b8b3c055271ef98ad156a39",
+    "target": "_content/sci-industrialist/defeat-of-the-west.md",
+    "image_rewritten": false
+  },
+  {
+    "source": "9a01f064-4d29-466f-9fc8-10a0e617501b_ExportBlock-8824e8d6-f302-4d1c-8dbf-a6c519ecb312.zip",
+    "entry": "American Factory 是一部无产阶级的悲剧片？ 200aeaa78a4c805995a0ee7039b2fde0.md",
+    "sha256": "324c0408c2ee152dd83000c470b344814e851362b4af608395c181c225db5796",
+    "body_sha256": "25eb02ee3895df1f87a52942bf44d00712de16b2b8693e20c5851d9c62cccb89",
+    "target": "_content/sci-industrialist/american-factory.md",
+    "image_rewritten": false
+  },
+  {
+    "source": "b94ed76f-977a-405a-baa0-5f2ed46f56ce_ExportBlock-9764bb2c-19cf-4068-b65d-5cfe79fa47d5.zip",
+    "entry": "Abundance How We Build a Better Future-Ezra Klein  214aeaa78a4c807db3c8d2aef336ca7b.md",
+    "sha256": "8ab3a5562deb40f8cf1471050afa5dba1cfa9ad7f7b029ece666c2334c3660e8",
+    "body_sha256": "c9424807498cbc55f1770dfaa34c26f08bab9191523de0198698679c0fbea9be",
+    "target": "_content/sci-industrialist/abundance.md",
+    "image_rewritten": true
+  },
+  {
+    "source": "bb8e7ba6-bb41-4aad-9423-8b6c3843dda0_ExportBlock-6ded1e65-188f-4165-8241-e77a737b8aac.zip",
+    "entry": "Talent Attraction Score框架 225aeaa78a4c8047b060e1180bea9f04.md",
+    "sha256": "70afc995d15026e39d3990a2592f73b48b44e357039acedca39576317380e456",
+    "body_sha256": "f4456f1453727a313eb85c4e36b9c65aea0c16031799e89c372e3b58ae012798",
+    "target": "_content/sci-industrialist/talent-attraction-score.md",
+    "image_rewritten": false
+  },
+  {
+    "source": "e259ec31-a079-48e1-ba01-c32b05444ee7_ExportBlock-7102b24b-7c84-4c53-b87e-74c06f828612.zip",
+    "entry": "Talent Utility Equation 225aeaa78a4c8095acc4f4b81e29fbe4.md",
+    "sha256": "1805a80402de90347a223012c1c15a0e2292a599c04838f3395aae18f72cd9e5",
+    "body_sha256": "46e0384176cedfe185d21a031ef4903034119b6410161c2eee26f8c733f42331",
+    "target": "_content/sci-industrialist/talent-utility-equation.md",
+    "image_rewritten": false
+  },
+  {
+    "source": "app/src/content/notes/academic-life-in-tokyo.html",
+    "sha256": "ae2c60f48433abccbde8ec008ec61ee1fbf774833d934fa6db161908fd09e187",
+    "target": "_content/notes/academic-life-in-tokyo.html",
+    "legacy": true
+  },
+  {
+    "source": "app/src/content/notes/rna-metabolism-heart-disease.html",
+    "sha256": "bf4bc96ed535b424fc5b831e32cf81d47eccce1a9977ee98cae0c566e494b927",
+    "target": "_content/medprism/rna-metabolism-heart-disease.html",
+    "legacy": true
+  },
+  {
+    "source": "app/src/content/notes/welcome-to-my-blog.html",
+    "sha256": "ba0e50b9ecb6ec89e4ae7956c38d1326e74f049cfee81681c4685f88db4fea15",
+    "target": "_content/notes/welcome-to-my-blog.html",
+    "legacy": true
+  }
+]

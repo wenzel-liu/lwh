@@ -12,7 +12,7 @@ export function normalizePagePath(pathname: string): string {
 }
 
 export function isNavItemActive(currentPath: string, navHref: string): boolean {
-  const current = currentPath.includes('/posts/') ? 'blog.html' : normalizePagePath(currentPath);
+  const current = /\/(posts|medprism|sci-industrialist|notes)\//.test(currentPath) ? 'blog.html' : normalizePagePath(currentPath);
   const target = normalizePagePath(navHref);
 
   return current === target;
