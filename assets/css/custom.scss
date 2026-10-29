@@ -1,0 +1,77 @@
+@import "minimal-mistakes";
+
+/* Custom styles for external title positioning */
+
+/* External title wrapper - positioned above content area, aligned with content text */
+.external-title-wrapper {
+  /* Desktop ≥ 1024px: Position title above content area, aligned with content */
+  @media (min-width: 1024px) {
+    float: inline-end;
+    width: calc(100% - 200px); /* $right-sidebar-width-narrow */
+    padding-inline-end: 200px;
+    margin-bottom: 1.5rem; /* mt-6 equivalent */
+    /* Match archive content padding (1.5em) plus #main padding (1em) */
+    padding-inline-start: 2.5em;
+  }
+  
+  @media (min-width: 1280px) {
+    width: calc(100% - 300px); /* $right-sidebar-width */
+    padding-inline-end: 300px;
+    /* Keep same left padding */
+    padding-inline-start: 2.5em;
+  }
+  
+  /* Mobile and tablet: Full width, normal spacing */
+  @media (max-width: 1023px) {
+    width: 100%;
+    margin-bottom: 1rem;
+    /* No additional padding on mobile - let it follow #main's padding */
+  }
+}
+
+/* External page title styling */
+.page__title--external {
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 1.2;
+  
+  a {
+    color: #3d4144; /* $text-color equivalent */
+    text-decoration: none;
+  }
+}
+
+/* Archive content adjustments for external title layout */
+.archive--with-external-title {
+  /* Desktop ≥ 1024px: Position alongside sidebar */
+  @media (min-width: 1024px) {
+    float: inline-end;
+    width: calc(100% - 200px); /* $right-sidebar-width-narrow */
+    padding-inline-end: 200px;
+    margin-top: 0;
+  }
+  
+  @media (min-width: 1280px) {
+    width: calc(100% - 300px); /* $right-sidebar-width */
+    padding-inline-end: 300px;
+  }
+  
+  /* Mobile and tablet: Full width */
+  @media (max-width: 1023px) {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+
+/* Legacy support for publications layout */
+.publications-title-wrapper {
+  @extend .external-title-wrapper;
+}
+
+.page__title--publications {
+  @extend .page__title--external;
+}
+
+.archive--publications {
+  @extend .archive--with-external-title;
+} 

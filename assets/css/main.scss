@@ -1,0 +1,652 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+search: false
+---
+
+/* CSS Compiled at: 2024-12-28 - Force cache refresh */
+
+@charset "utf-8";
+
+@import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
+@import "minimal-mistakes"; // main partials
+
+/* Custom CSS for masthead layout modification with Fluent Design effects */
+.masthead {
+  /* Increase height to accommodate two-row layout */
+  min-height: auto;
+  position: relative;
+  /* Fluent Design background with blur effect */
+  background-color: rgba(255, 255, 255, 0.85) !important;
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.125);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Ensure it stays on top */
+  z-index: 1000;
+  
+  &__inner-wrap {
+    /* Change from flex to block layout for vertical stacking */
+    display: block;
+    text-align: center;
+    padding: 1em;
+    max-width: 100%;
+    position: relative;
+  }
+}
+
+.masthead__menu {
+  /* Remove float and set width */
+  float: none;
+  width: 100%;
+  
+  /* Center the navigation */
+  .greedy-nav {
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    min-height: auto;
+    background: transparent !important;
+    
+    .site-title {
+      /* Center title and give it proper spacing */
+      position: static;
+      transform: none;
+      left: auto;
+      font-size: 1.3em;
+      margin: 0 0 1em 0;
+      text-align: center;
+      order: -1;
+      flex: none;
+      /* Fluent Design text styling */
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 600;
+      
+      /* Allow title to break to multiple lines if needed */
+      @media (max-width: 768px) {
+        font-size: 1.1em;
+        line-height: 1.3;
+        margin-bottom: 0.8em;
+      }
+      
+      @media (max-width: 480px) {
+        font-size: 1em;
+        line-height: 1.2;
+      }
+    }
+    
+    .visible-links {
+      /* Center navigation items */
+      justify-content: center;
+      margin-top: 0;
+      flex-wrap: wrap;
+      gap: 0.5em;
+      
+      @media (max-width: 768px) {
+        margin-top: 0;
+        gap: 0.3em;
+      }
+      
+      li {
+        flex: none;
+        position: relative;
+      }
+      
+      a {
+        margin: 0 0.8em;
+        position: relative;
+        padding: 12px 20px;
+        border-radius: 6px;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        overflow: hidden;
+        color: #333;
+        font-weight: 500;
+        
+        /* Reveal effect base */
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), 
+                      rgba(255, 255, 255, 0.8) 0%, 
+                      rgba(255, 255, 255, 0.1) 40%, 
+                      transparent 70%);
+          opacity: 0;
+          transition: opacity 0.3s ease;
+          border-radius: 6px;
+          z-index: 1;
+        }
+        
+        /* Subtle background */
+        &::after {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: rgba(255, 255, 255, 0.1);
+          border-radius: 6px;
+          opacity: 0;
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          z-index: 0;
+        }
+        
+        /* Text should be above effects */
+        span, & {
+          position: relative;
+          z-index: 2;
+        }
+        
+        /* Hover effects */
+        &:hover {
+          transform: translateY(-2px);
+          color: #1a1a1a;
+          text-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+          
+          &::before {
+            opacity: 1;
+          }
+          
+          &::after {
+            opacity: 1;
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+          }
+        }
+        
+        /* Active state */
+        &:active {
+          transform: translateY(0);
+        }
+        
+        @media (max-width: 768px) {
+          margin: 0 0.5em;
+          font-size: 0.9em;
+          padding: 10px 16px;
+        }
+      }
+    }
+  }
+}
+
+/* Enhanced Reveal effect with JavaScript tracking */
+.reveal-effect {
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), 
+                rgba(102, 126, 234, 0.3) 0%, 
+                rgba(118, 75, 162, 0.1) 40%, 
+                transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 1;
+  }
+  
+  &:hover::before {
+    opacity: 1;
+  }
+}
+
+/* Ensure the site logo doesn't interfere */
+.site-logo {
+  display: none !important;
+}
+
+/* Adjust main content margin to account for taller header */
+.initial-content {
+  margin-top: 1em;
+}
+
+/* Custom background color for better visual comfort with blur support */
+body {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%) !important;
+  min-height: 100vh;
+}
+
+/* Ensure content areas have proper background with Fluent Design */
+.page {
+  background-color: transparent;
+}
+
+.page__content {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 1.5em;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.125);
+  margin-bottom: 1em;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.15);
+  }
+}
+
+/* Sidebar background adjustment with Fluent Design */
+.sidebar {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.125);
+  padding: 1em;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.15);
+  }
+  
+  .author__avatar {
+    img {
+      border-radius: 50%;
+      border: 3px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      
+      &:hover {
+        transform: scale(1.05);
+        box-shadow: 0 12px 48px rgba(0, 0, 0, 0.2);
+      }
+    }
+  }
+}
+
+/* Footer background adjustment */
+.page__footer {
+  background: rgba(233, 236, 239, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255, 255, 255, 0.125);
+  
+  footer {
+    background-color: transparent;
+  }
+}
+
+/* Archive and post list styling with Fluent Design */
+.archive {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 1.5em;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.125);
+  margin-bottom: 1em;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.15);
+  }
+}
+
+/* Enhanced navigation links hover effect */
+.greedy-nav .visible-links a:hover {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+  border-radius: 6px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Make single layout pages use the same extended width as archive layout (home page) */
+/* Extend content into sidebar area like archive pages do */
+.layout--single {
+  .page__content {
+    /* Publications & Presentations 内容栏宽度×2 */
+    @media (min-width: 1024px) {
+      /* 不扩展到侧边栏区域，而是让内容栏占据更多空间 */
+      margin-right: 0;
+      padding-right: 0;
+      /* 使用flex布局让内容栏占据更多比例 */
+      max-width: none;
+      width: 100%;
+    }
+
+    @media (min-width: 1280px) {
+      margin-right: 0;
+      padding-right: 0;
+      max-width: none;
+      width: 100%;
+    }
+  }
+}
+
+/* 重新定义 Publications & Presentations 页面的布局比例 */
+/* 使用更强的选择器确保覆盖默认样式 */
+@media (min-width: 1024px) {
+  .layout--single #main {
+    display: flex !important;
+    gap: 2rem !important;
+    max-width: 1400px !important; /* 增加最大宽度以容纳更宽的内容 */
+    margin: 0 auto !important;
+    padding: 0 1em !important;
+    align-items: flex-start !important; /* 确保两栏顶部对齐 */
+  }
+  
+  .layout--single .sidebar {
+    /* 使用原始的侧边栏宽度，保持原状 */
+    flex: 0 0 200px !important; /* 使用原始的 narrow 宽度 */
+    width: 200px !important;
+    min-width: 200px !important;
+    max-width: 200px !important;
+    /* 恢复原始高度行为 */
+    height: auto !important;
+    min-height: auto !important;
+    float: none !important;
+    /* 移除可能影响对齐的margin */
+    margin-top: 0 !important;
+    
+    /* 确保侧边栏内容从顶部开始 */
+    > * {
+      &:first-child {
+        margin-top: 0 !important;
+      }
+    }
+  }
+  
+  .layout--single .page {
+    /* 右侧内容栏占据剩余空间×2的比例 */
+    flex: 2 !important; /* 这让内容栏比默认情况宽2倍 */
+    width: auto !important;
+    float: none !important;
+    padding-inline-end: 0 !important;
+    min-width: 0 !important; /* 允许flexbox正确计算宽度 */
+    margin-top: 0 !important; /* 移除顶部margin确保对齐 */
+  }
+  
+  /* 确保页面内容容器也从顶部开始 */
+  .layout--single .page .page__inner-wrap {
+    width: 100% !important;
+    max-width: none !important; /* 移除最大宽度限制 */
+    margin-top: 0 !important; /* 移除顶部margin确保对齐 */
+  }
+  
+  /* 确保页面标题从顶部开始 */
+  .layout--single .page__title {
+    margin-top: 0 !important;
+  }
+  
+  .layout--single .page .page__content {
+    width: 100% !important;
+    max-width: none !important; /* 移除最大宽度限制，让文字排版利用全部宽度 */
+  }
+  
+  /* 确保文字段落能够利用全部宽度 */
+  .layout--single .page__content p,
+  .layout--single .page__content li,
+  .layout--single .page__content ol,
+  .layout--single .page__content ul {
+    max-width: none !important;
+    width: 100% !important;
+  }
+  
+  /* 针对列表项目的特殊处理 */
+  .layout--single .page__content ol li,
+  .layout--single .page__content ul li {
+    margin-bottom: 1em !important;
+    line-height: 1.6 !important;
+  }
+  
+  /* 让文字内容使用完整宽度 */
+  .layout--single .page__content ol li p,
+  .layout--single .page__content ul li p {
+    margin: 0.5em 0 !important;
+    width: 100% !important;
+  }
+}
+
+@media (min-width: 1280px) {
+  .layout--single #main {
+    max-width: 1600px !important; /* 在大屏幕上进一步增加最大宽度 */
+    align-items: flex-start !important; /* 确保大屏幕上也保持顶部对齐 */
+  }
+  
+  .layout--single .sidebar {
+    /* 使用原始的侧边栏宽度 */
+    flex: 0 0 300px !important; /* 使用原始的标准宽度 */
+    width: 300px !important;
+    min-width: 300px !important;
+    max-width: 300px !important;
+    margin-top: 0 !important; /* 确保大屏幕上也无顶部margin */
+    
+    /* 确保侧边栏内容从顶部开始 */
+    > * {
+      &:first-child {
+        margin-top: 0 !important;
+      }
+    }
+  }
+  
+  /* 确保大屏幕上页面容器也从顶部开始 */
+  .layout--single .page {
+    margin-top: 0 !important;
+  }
+  
+  .layout--single .page .page__inner-wrap {
+    margin-top: 0 !important;
+  }
+  
+  /* 确保页面标题从顶部开始 */
+  .layout--single .page__title {
+    margin-top: 0 !important;
+  }
+  
+  /* 在大屏幕上确保内容区域能够充分利用空间 */
+  .layout--single .page .page__content {
+    /* 在大屏幕上优化文字排版 */
+    font-size: 1rem !important;
+    line-height: 1.7 !important;
+  }
+  
+  /* 确保列表和段落使用完整宽度 */
+  .layout--single .page__content ol,
+  .layout--single .page__content ul {
+    width: 100% !important;
+  }
+  
+  .layout--single .page__content ol li,
+  .layout--single .page__content ul li {
+    margin-bottom: 1.2em !important;
+  }
+  
+  /* 确保 PDF 链接和文字在同一行时也能正确布局 */
+  .layout--single .page__content a[href$=".PDF"],
+  .layout--single .page__content a[href$=".pdf"] {
+    margin-left: 0.5em !important;
+  }
+}
+
+/* 确保移动端（≤640px）保持单列布局不受影响 */
+@media (max-width: 1023px) {
+  .layout--single #main {
+    display: block; /* 恢复默认布局 */
+  }
+  
+  .layout--single .sidebar,
+  .layout--single .page {
+    flex: none;
+    width: 100%;
+    float: none;
+    padding: 0;
+    margin: 0;
+  }
+}
+
+/* Scrollbar styling for Fluent Design */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.6) 0%, rgba(118, 75, 162, 0.6) 100%);
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.8) 0%, rgba(118, 75, 162, 0.8) 100%);
+}
+
+/* 专门针对author profile的对齐修复 */
+@media (min-width: 1024px) {
+  .layout--single .sidebar .author__avatar,
+  .layout--single .sidebar .author__content,
+  .layout--single .sidebar .author__urls-wrapper {
+    margin-top: 0 !important;
+  }
+  
+  /* 确保第一个author相关元素没有顶部margin */
+  .layout--single .sidebar [itemscope="itemscope"] {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+  
+  /* 移除可能导致错位的第一个子元素的margin */
+  .layout--single .sidebar > :first-child {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+  
+  /* 确保author name从正确位置开始 */
+  .layout--single .sidebar .author__name {
+    margin-top: 0 !important;
+  }
+}
+
+/* 强力修复：专门针对布局对齐问题的CSS */
+@media screen and (min-width: 1024px) {
+  /* 更强的选择器确保覆盖所有可能的样式 */
+  body.layout--single #main {
+    display: flex !important;
+    align-items: flex-start !important;
+    gap: 2rem !important;
+    margin: 0 auto !important;
+    padding: 0 1em !important;
+    max-width: 1400px !important;
+  }
+  
+  /* 强制侧边栏从顶部开始 */
+  body.layout--single .sidebar.sticky {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    align-self: flex-start !important;
+    flex: 0 0 200px !important;
+    max-width: 200px !important;
+  }
+  
+  /* 强制页面内容从顶部开始 */
+  body.layout--single article.page {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    flex: 2 !important;
+    align-self: flex-start !important;
+  }
+  
+  /* 强制页面内部包装器从顶部开始 */
+  body.layout--single .page__inner-wrap {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+  
+  /* 强制页面标题从顶部开始 */
+  body.layout--single h1.page__title {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+  
+  /* 移除可能影响对齐的所有margin和padding */
+  body.layout--single .sidebar > * {
+    margin-top: 0 !important;
+  }
+  
+  body.layout--single .sidebar > *:first-child {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+  
+  /* 确保author profile卡片本身没有顶部间距 */
+  body.layout--single .sidebar h-card,
+  body.layout--single .sidebar [itemscope] {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  body.layout--single #main {
+    max-width: 1600px !important;
+  }
+  
+  body.layout--single .sidebar.sticky {
+    flex: 0 0 300px !important;
+    max-width: 300px !important;
+  }
+}
+
+/* Emergency alignment fix - Very specific targeting */
+@media screen and (min-width: 1024px) {
+  /* Direct targeting of the specific elements shown in the screenshot */
+  .layout--single div#main {
+    display: flex !important;
+    align-items: flex-start !important;
+    gap: 2rem !important;
+  }
+  
+  /* Target the specific sidebar class combination */
+  .layout--single .sidebar.sticky,
+  .layout--single div.sidebar {
+    margin: 0 !important;
+    padding-top: 0 !important;
+    transform: translateY(0) !important;
+    position: relative !important;
+    top: 0 !important;
+  }
+  
+  /* Target the specific page article */
+  .layout--single article.page {
+    margin: 0 !important;
+    padding-top: 0 !important;
+    transform: translateY(0) !important;
+  }
+  
+  /* Reset any potential CSS that might cause offset */
+  .layout--single .page__inner-wrap header,
+  .layout--single .page__inner-wrap h1 {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+  
+  /* Ensure both containers start at the same baseline */
+  .layout--single .sidebar > *:first-child,
+  .layout--single .page > *:first-child {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+}
