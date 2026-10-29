@@ -18,7 +18,7 @@ export default defineConfig({
         const layout = readFileSync(path.resolve(__dirname, '../_layouts/portfolio-redirect.html'), 'utf8');
         for (const [fileName, target] of Object.entries(legacyRoutes)) {
           const source = layout
-            .split('{{ page.title }}').join('Wenzel Liu')
+            .split('{{ page.title }}').join('Wenhao Liu')
             .split('{{ page.redirect_to | relative_url }}').join('/lwh/' + target)
             .split('{{ page.redirect_to | absolute_url }}').join('https://wenzel-liu.github.io/lwh/' + target)
             .split("{{ '/assets/css/fonts.css' | relative_url }}").join('/lwh/assets/css/fonts.css');

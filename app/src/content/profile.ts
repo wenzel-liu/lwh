@@ -2,7 +2,7 @@ import type { ProfileSummary, ProjectItem } from './types';
 import { focusReaderProject, medPrismProject, sciIndustrialistProject } from './projects';
 
 export const profileSummary: ProfileSummary = {
-  name: 'Wenzel Liu, MBBS, Ph.D.',
+  name: 'Wenhao Liu, MBBS, Ph.D.',
   role: 'Clinical Education Senior Specialist at Edwards Lifesciences · Cardiovascular researcher based in Tokyo',
   tagline:
     'Connecting cardiovascular research, structural heart education, and practical technology.',

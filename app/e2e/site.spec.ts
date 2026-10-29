@@ -2,10 +2,10 @@ import { expect, test } from '@playwright/test';
 import { readFileSync } from 'node:fs';
 
 const pages = [
-  { file: 'index.html', title: /Bio \| Wenzel Liu/i },
-  { file: 'blog.html', title: /Blog \| Wenzel Liu/i },
-  { file: 'experience.html', title: /Experience \| Wenzel Liu/i },
-  { file: 'research.html', title: /Papers & Talks \| Wenzel Liu/i },
+  { file: 'index.html', title: /Bio \| Wenhao Liu/i },
+  { file: 'blog.html', title: /Blog \| Wenhao Liu/i },
+  { file: 'experience.html', title: /Experience \| Wenhao Liu/i },
+  { file: 'research.html', title: /Papers & Talks \| Wenhao Liu/i },
   { file: 'posts/academic-life-in-tokyo.html', title: /东京学术生活/ },
   { file: 'posts/rna-metabolism-heart-disease.html', title: /RNA代谢/ },
   { file: 'posts/welcome-to-my-blog.html', title: /欢迎来到我的博客/ }
@@ -93,7 +93,7 @@ test.describe('work-first homepage', () => {
 
   test('portrait and CV are available in the production preview', async ({ page }) => {
     await page.goto('index.html');
-    const portrait = page.getByRole('img', { name: 'Portrait of Wenzel Liu' });
+    const portrait = page.getByRole('img', { name: 'Portrait of Wenhao Liu' });
     await expect(portrait).toBeVisible();
     expect(await portrait.evaluate((node) => (node as HTMLImageElement).naturalWidth)).toBeGreaterThan(0);
     const href = await page.getByRole('link', { name: 'Curriculum Vitae', exact: true }).getAttribute('href');
