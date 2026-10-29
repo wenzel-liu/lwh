@@ -1,10 +1,14 @@
 import { expect, test } from '@playwright/test';
+import { readFileSync } from 'node:fs';
 
 const pages = [
   { file: 'index.html', title: /Bio \| Wenzel Liu/i },
   { file: 'blog.html', title: /Blog \| Wenzel Liu/i },
   { file: 'experience.html', title: /Experience \| Wenzel Liu/i },
-  { file: 'research.html', title: /Papers & Talks \| Wenzel Liu/i }
+  { file: 'research.html', title: /Papers & Talks \| Wenzel Liu/i },
+  { file: 'posts/academic-life-in-tokyo.html', title: /东京学术生活/ },
+  { file: 'posts/rna-metabolism-heart-disease.html', title: /RNA代谢/ },
+  { file: 'posts/welcome-to-my-blog.html', title: /欢迎来到我的博客/ }
 ];
 
 test.describe('site smoke checks', () => {
@@ -96,5 +100,57 @@ test.describe('work-first homepage', () => {
     const response = await page.request.get(href!);
     expect(response.ok()).toBe(true);
     expect((await response.body()).subarray(0, 4).toString()).toBe('%PDF');
+  });
+});
+
+// Every public page must retain the same navigation, responsive shell and theme.
+test.describe('unified site', () => {
+  for (const pageMeta of pages) {
+    test(`layout and theme work on ${pageMeta.file}`, async ({ page }) => {
+      await page.goto(pageMeta.file);
+      await page.getByRole('button', { name: 'Theme options' }).click();
+      await page.getByRole('menuitem', { name: 'Light', exact: true }).click();
+      const shell = page.locator('.fds-app-shell');
+      const light = await shell.evaluate((node) => getComputedStyle(node).backgroundColor);
+      expect(light).toBe('rgb(246, 245, 240)');
+      for (const width of [390, 768, 940, 1280]) {
+        await page.setViewportSize({ width, height: 844 });
+        expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+        await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
+      }
+      await page.getByRole('button', { name: 'Theme options' }).click();
+      await page.getByRole('menuitem', { name: 'Dark', exact: true }).click();
+      await expect(shell).toHaveCSS('background-color', 'rgb(17, 30, 32)');
+      await page.getByRole('navigation', { name: 'Primary', exact: true }).getByRole('link', { name: 'Experience', exact: true }).click();
+      await expect(page).toHaveURL(/\/lwh\/experience\.html$/);
+      await expect(page.locator('html')).toHaveAttribute('data-theme-preference', 'dark');
+    });
+  }
+
+  for (const note of pages.filter((item) => item.file.startsWith('posts/'))) {
+    test(`article navigation works for ${note.file}`, async ({ page }) => {
+      await page.setViewportSize({ width: 390, height: 844 });
+      await page.goto('blog.html');
+      await page.locator('a[href="' + note.file + '"]').click();
+      await expect(page).toHaveTitle(note.title);
+      await page.getByRole('navigation', { name: '文章目录' }).getByRole('link').first().click();
+      await expect(page.locator('#section-1')).toBeInViewport();
+      await page.getByRole('button', { name: 'Toggle navigation' }).click();
+      const mobile = page.getByRole('navigation', { name: 'Mobile navigation' });
+      await expect(mobile.getByRole('link', { name: 'Blog', exact: true })).toHaveAttribute('aria-current', 'page');
+      await mobile.getByRole('link', { name: 'Bio', exact: true }).click();
+      await expect(page).toHaveURL(/\/lwh\/index\.html$/);
+    });
+  }
+
+  test('all legacy URLs forward to a current page and section', async ({ page }) => {
+    const routes: Record<string, string> = JSON.parse(readFileSync(new URL('../legacy-routes.json', import.meta.url), 'utf8'));
+    for (const [from, to] of Object.entries(routes)) {
+      await page.goto(from);
+      await expect(page).toHaveURL(new URL('/lwh/' + to, page.url()).href);
+      await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
+      const hash = to.split('#')[1];
+      if (hash) await expect(page.locator('#' + hash)).toBeInViewport();
+    }
   });
 });

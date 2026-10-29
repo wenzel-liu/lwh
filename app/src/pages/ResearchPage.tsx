@@ -1,132 +1,60 @@
-import { BentoCard, BentoGrid } from '@/components/Bento';
-import { FluentIcon } from '@/components/FluentIcon';
 import { PageIntro } from '@/components/PageIntro';
-import {
-  earlierPublicationYears,
-  presentations,
-  publicationHighlights,
-  publications,
-  recentPublicationYears,
-  researchIntro
-} from '@/content/research';
+import { SectionHeading, Tags } from '@/components/PortfolioParts';
+import { presentations, publicationHighlights, publications, researchIntro } from '@/content/research';
 import type { PresentationItem, PublicationItem } from '@/content/types';
 
-function groupByYear<T extends { year: number }>(items: T[], years: number[]): Array<{ year: number; items: T[] }> {
-  return years.map((year) => ({
-    year,
-    items: items.filter((item) => item.year === year)
-  }));
-}
-
-function PublicationGroups({ items }: { items: Array<{ year: number; items: PublicationItem[] }> }) {
+function ResearchList({ items, prefix }: { items: Array<PublicationItem | PresentationItem>; prefix: string }) {
+  const years = Array.from(new Set(items.map((item) => item.year))).sort((a, b) => b - a);
   return (
-    <>
-      {items.map((group) => (
-        <section className="fds-year-group" key={group.year}>
-          <span className="fds-year-pill">{group.year}</span>
-          <div className="fds-publication-list">
-            {group.items.map((paper) => (
-              <div className="fds-publication-item" key={`${paper.year}-${paper.title}`}>
-                <h4>{paper.title}</h4>
-                <p>{paper.citation}</p>
-              </div>
-            ))}
-          </div>
+    <div className="portfolio-records">
+      {years.map((year) => (
+        <section className="portfolio-year" id={prefix + '-' + year} key={year} aria-labelledby={prefix + '-title-' + year}>
+          <h3 id={prefix + '-title-' + year}>{year}</h3>
+          <ol className="portfolio-record-list">
+            {items.filter((item) => item.year === year).map((item) => <li key={item.title}><h4>{item.title}</h4><p>{item.citation}</p></li>)}
+          </ol>
         </section>
       ))}
-    </>
-  );
-}
-
-function PresentationGroups({ items }: { items: Array<{ year: number; items: PresentationItem[] }> }) {
-  return (
-    <>
-      {items.map((group) => (
-        <section className="fds-year-group" key={group.year}>
-          <span className="fds-year-pill">{group.year}</span>
-          <div className="fds-publication-list">
-            {group.items.map((talk) => (
-              <div className="fds-publication-item" key={`${talk.year}-${talk.title}`}>
-                <h4>{talk.title}</h4>
-                <p>{talk.citation}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-      ))}
-    </>
+    </div>
   );
 }
 
 export function ResearchPage() {
-  const recentGroups = groupByYear(publications, recentPublicationYears);
-  const earlierGroups = groupByYear(publications, earlierPublicationYears);
-
-  const presentationYears = Array.from(new Set(presentations.map((item) => item.year))).sort((a, b) => b - a);
-  const presentationGroups = groupByYear(presentations, presentationYears);
-
   return (
-    <>
-      <PageIntro kicker={researchIntro.kicker} title={researchIntro.title} description={researchIntro.description} />
+    <div className="portfolio-page">
+      <PageIntro {...researchIntro}>
+        <div className="portfolio-research-stats">
+          <a href="#publications"><strong>{publications.length}</strong><span>Publications <span aria-hidden="true">↘</span></span></a>
+          <a href="#presentations"><strong>{presentations.length}</strong><span>Presentations <span aria-hidden="true">↘</span></span></a>
+        </div>
+      </PageIntro>
 
-      <BentoGrid ariaLabel="Research content">
-        <BentoCard className="span-2" revealDelay={20}>
-          <p className="fds-eyebrow">Overview</p>
-          <h2 className="fds-card-title">Publication highlights</h2>
-          <p className="fds-card-description">{publicationHighlights}</p>
-          <div className="fds-stat-grid">
-            <div className="fds-stat">
-              <strong>{publications.length}</strong>
-              <span>Publications</span>
-            </div>
-            <div className="fds-stat">
-              <strong>{presentations.length}</strong>
-              <span>Presentations</span>
-            </div>
-          </div>
-        </BentoCard>
+      <section id="publications" className="portfolio-section portfolio-archive-section">
+        <div className="portfolio-archive-aside">
+          <SectionHeading kicker="Peer-reviewed work" title="Publications" />
+          <p>{publicationHighlights}</p>
+          <nav className="portfolio-year-index" aria-label="Publication years">
+            {Array.from(new Set(publications.map((paper) => paper.year))).sort((a, b) => b - a).map((year) => <a href={'#paper-' + year} key={year}>{year}</a>)}
+          </nav>
+        </div>
+        <ResearchList items={publications} prefix="paper" />
+      </section>
 
-        <BentoCard className="span-4" revealDelay={60}>
-          <div className="fds-section-head">
-            <h3 className="fds-card-title">Recent papers</h3>
-            <span>2024 → 2022</span>
-          </div>
-          <PublicationGroups items={recentGroups} />
-        </BentoCard>
+      <section id="presentations" className="portfolio-section portfolio-archive-section">
+        <div className="portfolio-archive-aside">
+          <SectionHeading kicker="At the meeting" title="Conference presentations" />
+          <p>Posters and moderated presentations at cardiovascular research meetings.</p>
+          <a className="portfolio-text-link" href="#publications">Back to publications <span aria-hidden="true">↑</span></a>
+        </div>
+        <ResearchList items={presentations} prefix="talk" />
+      </section>
 
-        <BentoCard className="span-2" revealDelay={100}>
-          <div className="fds-section-head">
-            <h3 className="fds-card-title">Earlier publications</h3>
-            <span>2021 → 2019</span>
-          </div>
-          <PublicationGroups items={earlierGroups} />
-        </BentoCard>
-
-        <BentoCard className="span-4" revealDelay={160}>
-          <div className="fds-section-head">
-            <h3 className="fds-card-title">Conference presentations</h3>
-            <span>Recent meeting record</span>
-          </div>
-          <PresentationGroups items={presentationGroups} />
-        </BentoCard>
-
-        <BentoCard className="span-2 fds-card--mica" revealDelay={200}>
-          <p className="fds-eyebrow">Profile</p>
-          <h3 className="fds-card-title">Research profile</h3>
-          <div className="fds-chip-row">
-            <span className="fds-chip fds-chip--accent">Heart Failure</span>
-            <span className="fds-chip fds-chip--accent">RNA Biology</span>
-            <span className="fds-chip">Pressure Overload</span>
-            <span className="fds-chip">Translational Analytics</span>
-            <span className="fds-chip">Mechanistic Studies</span>
-            <span className="fds-chip">Clinical Relevance</span>
-          </div>
-          <a className="fds-link-inline with-icon" href="experience.html">
-            See training and career context
-            <FluentIcon name="arrow" size={12} />
-          </a>
-        </BentoCard>
-      </BentoGrid>
-    </>
+      <section className="portfolio-section">
+        <SectionHeading kicker="Research profile" title="Areas of interest">
+          <a className="portfolio-text-link" href="experience.html">Training & career <span aria-hidden="true">↗</span></a>
+        </SectionHeading>
+        <Tags items={['Heart Failure', 'RNA Biology', 'Pressure Overload', 'Translational Analytics', 'Mechanistic Studies', 'Clinical Relevance']} />
+      </section>
+    </div>
   );
 }

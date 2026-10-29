@@ -1,5 +1,6 @@
 ---
-layout: clean-default
+layout: portfolio-redirect
+redirect_to: /index.html
 title: Bio
 permalink: /bio/
 ---

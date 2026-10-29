@@ -1,5 +1,6 @@
 ---
-layout: post
+layout: portfolio-redirect
+redirect_to: /posts/welcome-to-my-blog.html
 title: "欢迎来到我的博客"
 date: 2025-01-15
 categories: [blog, personal]

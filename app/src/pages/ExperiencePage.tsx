@@ -1,126 +1,67 @@
-import { BentoCard, BentoGrid } from '@/components/Bento';
 import { FluentIcon } from '@/components/FluentIcon';
 import { PageIntro } from '@/components/PageIntro';
+import { ContactSection, SectionHeading, Tags } from '@/components/PortfolioParts';
+import { homeCta } from '@/content/profile';
 import {
-  collaborationCta,
-  educationItems,
-  experienceIntro,
-  languageSkills,
-  profileSnapshotChips,
-  professionalExperience,
-  technicalSkills,
-  trainingItems
+  collaborationCta, educationItems, experienceIntro, languageSkills, profileSnapshotChips,
+  professionalExperience, technicalSkills, trainingItems
 } from '@/content/experience';
 
 export function ExperiencePage() {
   return (
-    <>
-      <PageIntro
-        kicker={experienceIntro.kicker}
-        title={experienceIntro.title}
-        description={experienceIntro.description}
-      />
+    <div className="portfolio-page">
+      <PageIntro {...experienceIntro}>
+        <a className="portfolio-button" href={homeCta.cvHref} download>Download CV<FluentIcon name="download" size={15} /></a>
+        <nav className="portfolio-page-index" aria-label="On this page">
+          <a href="#career"><span>Experience</span><span aria-hidden="true">↘</span></a>
+          <a href="#education"><span>Education & training</span><span aria-hidden="true">↘</span></a>
+          <a href="#skills"><span>Skills & languages</span><span aria-hidden="true">↘</span></a>
+        </nav>
+      </PageIntro>
 
-      <BentoGrid ariaLabel="Experience content">
-        <BentoCard className="span-6" revealDelay={20}>
-          <p className="fds-eyebrow">Profile Snapshot</p>
-          <div className="fds-chip-row">
-            {profileSnapshotChips.map((chip) => (
-              <span className="fds-chip fds-chip--accent" key={chip}>
-                {chip}
-              </span>
-            ))}
-          </div>
-        </BentoCard>
+      <section id="career" className="portfolio-section">
+        <SectionHeading kicker="Clinical to translational" title="Experience" />
+        <Tags items={profileSnapshotChips} label="Profile overview" />
+        <ol className="portfolio-timeline">
+          {professionalExperience.map((entry, index) => (
+            <li key={entry.title}>
+              <div className="portfolio-timeline-meta">
+                <p className="portfolio-kicker">{index === 0 ? 'Current role' : 'Earlier experience'}</p>
+                <p>{entry.period}</p><span>{entry.location}</span>
+              </div>
+              <article><h3>{entry.title}</h3><ul>{entry.bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}</ul></article>
+            </li>
+          ))}
+        </ol>
+      </section>
 
-        <BentoCard className="span-4" revealDelay={60}>
-          <div className="fds-section-head">
-            <h3 className="fds-card-title">Professional and research experience</h3>
-            <span>Clinical to translational</span>
-          </div>
-          <div className="fds-timeline-stack">
-            {professionalExperience.map((entry) => (
-              <section className="fds-timeline-card" key={entry.title}>
-                <h4>{entry.title}</h4>
-                <p className="fds-entry-meta">
-                  {entry.period} · {entry.location}
-                </p>
-                <ul className="fds-bullet-list">
-                  {entry.bullets.map((bullet) => (
-                    <li key={bullet}>{bullet}</li>
-                  ))}
-                </ul>
-              </section>
-            ))}
-          </div>
-        </BentoCard>
-
-        <BentoCard className="span-2" revealDelay={100}>
-          <p className="fds-eyebrow">Education</p>
-          <div className="fds-stack-list">
+      <section id="education" className="portfolio-section">
+        <SectionHeading kicker="Foundation" title="Education & training" />
+        <div className="portfolio-detail-grid">
+          <div className="portfolio-detail-column">
+            <h3 className="portfolio-column-title">Education</h3>
             {educationItems.map((item) => (
-              <section className="fds-stack-item" key={item.title}>
-                <h4>{item.title}</h4>
-                <p>
-                  {item.period} · {item.details}
-                </p>
-                {item.note ? <p className="fds-muted-note">{item.note}</p> : null}
-              </section>
+              <article className="portfolio-detail-item" key={item.title}>
+                <p className="portfolio-kicker">{item.period}</p><h4>{item.title}</h4><p>{item.details}</p>
+                {item.note ? <p className="portfolio-award">{item.note}</p> : null}
+              </article>
             ))}
           </div>
-        </BentoCard>
-
-        <BentoCard className="span-2" revealDelay={140}>
-          <p className="fds-eyebrow">Training</p>
-          <div className="fds-stack-list">
-            {trainingItems.map((item) => (
-              <div className="fds-stack-item" key={item.title}>
-                <h4>{item.title}</h4>
-                <p>{item.details}</p>
-              </div>
-            ))}
+          <div className="portfolio-detail-column">
+            <h3 className="portfolio-column-title">Clinical training</h3>
+            {trainingItems.map((item) => <article className="portfolio-detail-item" key={item.title}><h4>{item.title}</h4><p>{item.details}</p></article>)}
           </div>
-        </BentoCard>
+        </div>
+      </section>
 
-        <BentoCard className="span-2" revealDelay={180}>
-          <p className="fds-eyebrow">Skills</p>
-          <div className="fds-stack-list">
-            <section className="fds-stack-item">
-              <h4>Technical and Research Skills</h4>
-              <div className="fds-chip-row">
-                {technicalSkills.map((skill) => (
-                  <span className="fds-chip" key={skill}>
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </section>
-
-            <section className="fds-stack-item">
-              <h4>Languages</h4>
-              <div className="fds-chip-row">
-                {languageSkills.map((language) => (
-                  <span className="fds-chip fds-chip--green" key={language}>
-                    {language}
-                  </span>
-                ))}
-              </div>
-            </section>
-          </div>
-        </BentoCard>
-
-        <BentoCard className="span-2 fds-card--cta" revealDelay={230}>
-          <p className="fds-eyebrow">Collaboration</p>
-          <h3 className="fds-card-title">{collaborationCta.title}</h3>
-          <p className="fds-card-description">{collaborationCta.description}</p>
-          <div className="fds-hero-actions">
-            <a className="fds-btn fds-btn--primary" href={collaborationCta.href}>
-              <FluentIcon name="mail" size={15} />
-              Discuss Collaboration
-            </a>
-          </div>
-        </BentoCard>
-      </BentoGrid>
-    </>
+      <section id="skills" className="portfolio-section">
+        <SectionHeading kicker="In practice" title="Tools & languages" />
+        <div className="portfolio-detail-grid">
+          <div><h3 className="portfolio-column-title">Technical & research skills</h3><Tags items={technicalSkills} /></div>
+          <div><h3 className="portfolio-column-title">Working languages</h3><Tags items={languageSkills} /></div>
+        </div>
+      </section>
+      <ContactSection kicker="Work together" title={collaborationCta.title} description={collaborationCta.description} href={collaborationCta.href} label="Discuss collaboration" />
+    </div>
   );
 }

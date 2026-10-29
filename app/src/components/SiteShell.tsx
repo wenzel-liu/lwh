@@ -1,9 +1,8 @@
 import type { ReactNode } from 'react';
 import { useEffect, useRef, useState } from 'react';
-import { isNavItemActive } from '@/lib/nav';
+import { siteHref } from '@/lib/nav';
 import { PrimaryNav } from './PrimaryNav';
 import { ThemeControl } from './ThemeControl';
-import { SiteMotion } from './SiteMotion';
 
 interface SiteShellProps {
   children: ReactNode;
@@ -15,7 +14,19 @@ export function SiteShell({ children }: SiteShellProps) {
   const mobileToggleRef = useRef<HTMLButtonElement>(null);
 
   const currentPath = typeof window !== 'undefined' ? window.location.pathname : '/index.html';
-  const isHomepage = isNavItemActive(currentPath, 'index.html');
+
+  useEffect(() => {
+    // React mounts after the browser's first attempt to resolve a URL fragment.
+    const frame = window.requestAnimationFrame(() => {
+      if (!window.location.hash) return;
+      try {
+        document.getElementById(decodeURIComponent(window.location.hash.slice(1)))?.scrollIntoView();
+      } catch {
+        // An invalid URL fragment should not prevent the page from loading.
+      }
+    });
+    return () => window.cancelAnimationFrame(frame);
+  }, []);
 
   useEffect(() => {
     if (!mobileOpen) {
@@ -64,17 +75,12 @@ export function SiteShell({ children }: SiteShellProps) {
   }, []);
 
   return (
-    <div className={`fds-app-shell${isHomepage ? ' fds-app-shell--portfolio' : ''}`}>
+    <div className="fds-app-shell fds-app-shell--portfolio">
       <a className="fds-skip-link" href="#main-content">Skip to content</a>
-      <div className="fds-aurora" aria-hidden="true">
-        <span className="fds-aurora-blob fds-aurora-blob--1" />
-        <span className="fds-aurora-blob fds-aurora-blob--2" />
-        <span className="fds-aurora-blob fds-aurora-blob--3" />
-      </div>
 
       <header className="fds-topbar">
         <div className="fds-topbar-inner">
-          <a className="fds-brand" href="index.html" aria-label="Wenzel Liu homepage">
+          <a className="fds-brand" href={siteHref('index.html')} aria-label="Wenzel Liu homepage">
             <span className="fds-brand-glyph">W</span>
             <span className="fds-brand-copy">
               <strong>Wenzel Liu</strong>
@@ -124,7 +130,6 @@ export function SiteShell({ children }: SiteShellProps) {
         </a>
       </footer>
 
-      <SiteMotion />
     </div>
   );
 }

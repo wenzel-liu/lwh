@@ -15,4 +15,9 @@ describe('nav helpers', () => {
     expect(isNavItemActive('/lwh/blog.html', 'blog.html')).toBe(true);
     expect(isNavItemActive('/lwh/research.html', 'blog.html')).toBe(false);
   });
+
+  it('keeps the blog section active while reading a nested article', () => {
+    expect(isNavItemActive('/lwh/posts/academic-life-in-tokyo.html', 'blog.html')).toBe(true);
+    expect(isNavItemActive('/lwh/posts/academic-life-in-tokyo.html', 'index.html')).toBe(false);
+  });
 });
